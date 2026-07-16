@@ -118,7 +118,10 @@ different matches can never mix.
   generator; a kit revision re-imports + re-verifies (`pheromone.json` joins at M3-2 with
   `domain/scent`).
 - One test module per vector file, driving **our** `domain/crypto` (not a vendored checker) over
-  every vector. CI-blocking in both repos (the mirror carries `copthief_core` + tests).
+  every vector. CI-blocking in both repos. `tests/` is not currently a mirrored path, so M1-3
+  extends `sync_core.py`'s `MIRRORED` with the core test tree (`tests/core/` +
+  `tests/conformance/`; role-package tests stay per-repo) — conformance and core tests ride the
+  same manifest-gated channel as the code they exercise.
 - **Process rule (constraint #13):** any change touching wire format, canonicalization, or hashing
   re-runs the conformance suite and is re-verified against the kit before merge.
 
