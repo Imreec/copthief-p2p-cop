@@ -23,11 +23,16 @@ SCOPE_COUNTED = "counted_series"
 
 @dataclass(frozen=True)
 class AppFEntry:
-    """One row of the binding table: status, book default, enforcement scope."""
+    """One row of the binding table: status, book default, scope, optionality.
+
+    `optional` marks reference-only parameters absent from the App B schema (e.g. the
+    pheromone emission gate) — validated when present, but never required to exist.
+    """
 
     status: str
     default: Any
     scope: str = SCOPE_ALWAYS
+    optional: bool = False
 
 
 @dataclass(frozen=True)
@@ -46,6 +51,7 @@ class AppFTable:
                 status=spec["status"],
                 default=spec["default"],
                 scope=spec.get("scope", SCOPE_ALWAYS),
+                optional=spec.get("optional", False),
             )
             for key, spec in raw["parameters"].items()
         }
@@ -86,7 +92,10 @@ def validate_constitution(config: dict[str, Any], table: AppFTable, *, counted: 
             continue
         present, value = _lookup(config, key)
         if not present:
-            violations.append(f"{key}: missing — App F requires every parameter defined and locked")
+            if not entry.optional:
+                violations.append(
+                    f"{key}: missing — App F requires every parameter defined and locked"
+                )
             continue
         problem = _check(key, entry, value)
         if problem is not None:

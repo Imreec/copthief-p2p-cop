@@ -84,6 +84,11 @@ def load_constitution(path: Path, table: AppFTable, *, counted: bool) -> Constit
             center_intensity=raw["pheromones"]["pheromone_center_intensity"],
             decay=raw["pheromones"]["pheromone_decay"],
             grid_size=raw["pheromones"]["pheromone_grid_size"],
+            # Reference-only gate: signed value when present, App F table default otherwise.
+            min_center_intensity=raw["pheromones"].get(
+                "min_center_intensity",
+                table.entries["pheromones.min_center_intensity"].default,
+            ),
         ),
         league=LeagueParams(**league),
         gatekeeper=GatekeeperParams(**gate),

@@ -23,7 +23,7 @@
 
 - ☑ **M1-1** `docs/PRD_engine.md` + `docs/PRD_crypto.md` (mechanism PRDs) — C, approve I.
 - ☑ **M1-2** `domain/board+rules+scoring` (config-driven, App F guard in `shared/config`) — C, review E/AG. DoD: unit tests incl. capture-by-barrier, imprisonment, tie rule; ≥90% cov.
-- ☐ **M1-3** `domain/crypto` from kit CORE (canonical, commit, terms sig, game_uid) + kit vectors as CI fixtures — C. DoD: all CORE vectors green in both repos.
+- ☑ **M1-3** `domain/crypto` from kit CORE (canonical, commit, terms sig, game_uid) + kit vectors as CI fixtures — C. DoD: all CORE vectors green in both repos.
 - ☐ **M1-4** `domain/state machine` (transition table per PLAN §5) — C. DoD: property tests reject all illegal transitions.
 - ☐ **M1-5** `wire/` dataclasses + validation (mirror reference fields; forward-compat rule) — C. DoD: schema tests incl. reject-missing/tolerate-unknown.
 - ☐ **M1-6** `infra/mcp` server (4 tools) + client + in-process fake; `peer/` minimal loop (handshake→turns→audit, geometric play, template hints stubbed) — C, review AG. DoD: PLAN §13 M1 — one command, full localhost mini-game, self-audit pass.
