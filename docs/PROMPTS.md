@@ -3,6 +3,20 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #5 — feat/domain-crypto (M1-3)
+
+- **Driver:** Imree (merge authorization + "continue") · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** two RED→GREEN cycles. (1) `domain/crypto` re-derived from kit CORE — canonical
+  form, commit/verify, terms signature, `game_uid`; the four vector files copied verbatim
+  (provenance in `tests/conformance/SOURCE.md`, kit@5b3927e) and driven by OUR code in
+  CI-blocking conformance tests; all reproduce byte-for-byte. (2) `domain/terms` — the kit's
+  14-key reference-named extraction; `min_center_intensity` added to the App F transcription as
+  an optional negotiable row (default 0.5 flows through the loader when the signed file omits
+  it). Also extends `sync_core.py` MIRRORED with the core test tree (PRD_crypto §7) so the
+  post-merge sync keeps the thief repo's coverage gate green — the M1-2+M1-3 sync rides on this
+  merge.
+
 ## PR #4 — feat/domain-engine (M1-2)
 
 - **Driver:** Imree (merge authorization for #3 + "continue") · **Author:** Claude (terminal) ·
