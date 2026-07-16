@@ -3,6 +3,18 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #3 — docs/m1-mechanism-prds (M1-1 gate)
+
+- **Driver:** Imree (review + explicit approval, incl. the `num_games` terminology ruling) ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **Context:** M1 session opened on primary sources — book ch.3/ch.5/App B/App F re-read from the
+  extraction, kit SPEC + `verify_vectors.py` + all four crypto vector fixtures read in full.
+- **This PR:** `docs/PRD_engine.md` (board/rules/scoring + state machine + App F guard; App F
+  statuses transcribed to a data-file spec; four documented interpretations incl. counted match =
+  six mini-games fixed) and `docs/PRD_crypto.md` (canonical JSON, commit/verify, terms signature
+  with the reference-key-name extraction mapping, `game_uid`, conformance-fixture plan; two open
+  items routed to the M2 spike). TODO M1-1 ticked in the same change.
+
 ## PR #1 — chore/m0-bootstrap (M0 process bedrock)
 
 - **Driver:** Imree (direction, approvals, repo/remote setup) · **Author:** Claude (terminal) ·
