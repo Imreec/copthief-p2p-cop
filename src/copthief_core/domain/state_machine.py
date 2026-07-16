@@ -24,7 +24,7 @@ class GameState(Enum):
     TECHNICAL_LOSS = "technical_loss"
 
 
-class IllegalTransition(RuntimeError):
+class IllegalTransitionError(RuntimeError):
     """A transition outside the PLAN §5 table was attempted — always a caller bug."""
 
 
@@ -53,7 +53,7 @@ class GameStateMachine:
 
     Input: the initial state — WAITING_FOR_OPPONENT by default; the first mover starts
     at COMPUTING_MOVE (PLAN §4 handshake fixes who moves first). Output: `advance`
-    returns the new state or raises `IllegalTransition` without mutating anything.
+    returns the new state or raises `IllegalTransitionError` without mutating anything.
     """
 
     state: GameState = field(default=GameState.WAITING_FOR_OPPONENT)
@@ -66,7 +66,7 @@ class GameStateMachine:
     def advance(self, target: GameState) -> GameState:
         """Move to `target` iff the PLAN §5 table allows it; refuse loudly otherwise."""
         if (self.state, target) not in _TRANSITIONS:
-            raise IllegalTransition(
+            raise IllegalTransitionError(
                 f"illegal transition {self.state.name} -> {target.name} (PLAN s5 table)"
             )
         self.state = target

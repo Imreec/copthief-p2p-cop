@@ -3,6 +3,17 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #6 — feat/domain-state-machine (M1-4)
+
+- **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
+  (cross-model, on the PR).
+- **This PR:** one RED→GREEN cycle. `domain/state_machine` — frozen PLAN §5 transition table
+  (11 legal pairs incl. the any-comm-state → TECHNICAL_LOSS escape hatch), IllegalTransition
+  raised without state mutation, absorbing terminals. The 49-pair transition space is proven by
+  exhaustive parametrization rather than sampling. Between PR #5 and this one, the deferred sync
+  ritual ran: thief PR #4 ("sync: core from police@3e747bf" + config tree) merged, both repos'
+  mains green with kit CORE vectors green in both CIs (M1-3 DoD closed).
+
 ## PR #5 — feat/domain-crypto (M1-3)
 
 - **Driver:** Imree (merge authorization + "continue") · **Author:** Claude (terminal) ·

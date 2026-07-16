@@ -10,7 +10,7 @@ import pytest
 from copthief_core.domain.state_machine import (
     GameState,
     GameStateMachine,
-    IllegalTransition,
+    IllegalTransitionError,
 )
 
 S = GameState
@@ -34,15 +34,13 @@ LEGAL: set[tuple[GameState, GameState]] = {
 
 @pytest.mark.parametrize("source", list(GameState))
 @pytest.mark.parametrize("target", list(GameState))
-def test_every_transition_pair_matches_the_plan_table(
-    source: GameState, target: GameState
-) -> None:
+def test_every_transition_pair_matches_the_plan_table(source: GameState, target: GameState) -> None:
     machine = GameStateMachine(state=source)
     if (source, target) in LEGAL:
         assert machine.advance(target) is target
         assert machine.state is target
     else:
-        with pytest.raises(IllegalTransition, match=f"{source.name}.*{target.name}"):
+        with pytest.raises(IllegalTransitionError, match=f"{source.name}.*{target.name}"):
             machine.advance(target)
         assert machine.state is source  # a refused transition never mutates state
 
@@ -52,7 +50,7 @@ def test_terminal_states_absorb(terminal: GameState) -> None:
     machine = GameStateMachine(state=terminal)
     assert machine.is_terminal
     for target in GameState:
-        with pytest.raises(IllegalTransition):
+        with pytest.raises(IllegalTransitionError):
             machine.advance(target)
 
 
