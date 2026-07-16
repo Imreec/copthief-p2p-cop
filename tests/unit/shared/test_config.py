@@ -59,7 +59,7 @@ def test_counted_flag_arms_the_num_games_rule(tmp_path: Path) -> None:
 def test_private_toml_can_never_override_a_signed_term(tmp_path: Path) -> None:
     clone = _copy_config(tmp_path)
     toml = clone / "game.toml"
-    toml.write_text(toml.read_text(encoding="utf-8") + '\ngrid_size = 99\n', encoding="utf-8")
+    toml.write_text(toml.read_text(encoding="utf-8") + "\ngrid_size = 99\n", encoding="utf-8")
     constitution, _, _ = load_all(clone, counted=False)
     assert constitution.board.grid_size != 99  # JSON overlays TOML on shared keys (App B)
 
@@ -67,7 +67,10 @@ def test_private_toml_can_never_override_a_signed_term(tmp_path: Path) -> None:
 def test_malformed_private_version_is_refused(tmp_path: Path) -> None:
     clone = _copy_config(tmp_path)
     toml = clone / "game.toml"
-    toml.write_text(toml.read_text(encoding="utf-8").replace('version = "1.00"', 'version = "1.0"'), encoding="utf-8")
+    toml.write_text(
+        toml.read_text(encoding="utf-8").replace('version = "1.00"', 'version = "1.0"'),
+        encoding="utf-8",
+    )
     with pytest.raises(ConfigError, match="version"):
         load_all(clone, counted=False)
 

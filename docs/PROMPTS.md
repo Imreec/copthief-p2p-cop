@@ -3,6 +3,18 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #4 — feat/domain-engine (M1-2)
+
+- **Driver:** Imree (merge authorization for #3 + "continue") · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** strict RED→GREEN TDD (5 cycles, RED commit before each GREEN): board geometry
+  (axis contract incl. all four origin corners), rules (legality, barrier law, imprisonment,
+  capture, end states), scoring (rows + series settlement; tie-rule interpretation documented
+  and M2-flagged), App F guard (statuses from `config/app_f_table.json`, `num_games`
+  counted-series scope), typed config loader (JSON-wins overlay, N.NN versions, rate-limits
+  precedence). Four config data files landed; PRD_engine §8 acceptance test drives all four
+  scored endings through a scripted referee-mode mini-game. Coverage 100% on the new modules.
+
 ## PR #3 — docs/m1-mechanism-prds (M1-1 gate)
 
 - **Driver:** Imree (review + explicit approval, incl. the `num_games` terminology ruling) ·

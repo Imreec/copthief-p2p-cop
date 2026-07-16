@@ -43,9 +43,9 @@ def _version(raw: dict[str, Any], source: str) -> str:
     return value
 
 
-def _pair(raw: Any) -> tuple[int, int]:
+def _pair(raw: list[int]) -> tuple[int, int]:
     """A JSON [row, col] array as a Coord tuple."""
-    return (int(raw[0]), int(raw[1]))
+    return (raw[0], raw[1])
 
 
 def load_constitution(path: Path, table: AppFTable, *, counted: bool) -> Constitution:
@@ -56,7 +56,11 @@ def load_constitution(path: Path, table: AppFTable, *, counted: bool) -> Constit
     if violations:
         raise ConfigError("App F guard refused the constitution:\n" + "\n".join(violations))
     board, world = raw["board_and_agents"], raw["world"]
-    movement, league, gate = raw["movement_and_barriers"], raw["network_and_league"], raw["rate_limiter_gatekeeper"]
+    movement, league, gate = (
+        raw["movement_and_barriers"],
+        raw["network_and_league"],
+        raw["rate_limiter_gatekeeper"],
+    )
     return Constitution(
         schema_version=str(raw["schema_version"]),
         agreed_between=(str(raw["agreed_between"][0]), str(raw["agreed_between"][1])),
@@ -115,7 +119,13 @@ def load_rate_limits(path: Path, gatekeeper: GatekeeperParams) -> RateLimits:
     )
     breaches = [
         name
-        for name in ("requests_per_minute", "concurrent_requests", "retry_backoff_sec", "max_retries", "queue_depth")
+        for name in (
+            "requests_per_minute",
+            "concurrent_requests",
+            "retry_backoff_sec",
+            "max_retries",
+            "queue_depth",
+        )
         if getattr(limits, name) < getattr(gatekeeper, name)
     ]
     if breaches:

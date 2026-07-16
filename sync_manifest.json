@@ -13,9 +13,17 @@
     "scripts/check_submission.py": "c6499a3591e79abf79a7a1aac483fd16609cfa2b3447300cdc8821e895b6c3ef",
     "scripts/self_grade.py": "ddd3502071896bc68b167018200d54b0202ec1d5849b97ec98057217611542d9",
     "scripts/sync_core.py": "50c0b3f9b49d07f52a2d79b79d56463df51832244f7cc16fcd5e5dc443e96c34",
-    "src/copthief_core/__init__.py": "36228893a32a52b09aceaa062a7ea99fc0e3a64e8328514590f26c3ed96c9232"
+    "src/copthief_core/__init__.py": "36228893a32a52b09aceaa062a7ea99fc0e3a64e8328514590f26c3ed96c9232",
+    "src/copthief_core/domain/__init__.py": "f2a030c99c021e72c2960a9ff2b55dce2ec64dae40a0e153ff57be3db5eef7d5",
+    "src/copthief_core/domain/board.py": "08b256712d0a8203b1250fd3faaeb974de47eed7b55bf864af3a759e21cab880",
+    "src/copthief_core/domain/rules.py": "97d179145e35d077c6f343bdbc41047bfa344da49aabed035391d56d6dbf400a",
+    "src/copthief_core/domain/scoring.py": "dc4197f9962cb7a672d805aa25a23e30868f68c457ea618f6c4ad4778239a375",
+    "src/copthief_core/shared/__init__.py": "0c113f2b42d805107190af829bca55cfa6651929918842dea76facae9f002ab2",
+    "src/copthief_core/shared/appf_guard.py": "42903491f24cb96483b8155c5ef44d238bd0a6d9f22d14fde197832ba986f92e",
+    "src/copthief_core/shared/config.py": "2874e26b2c07e23a7b20babe279656533c41426b22e9bffa372ebae845092461",
+    "src/copthief_core/shared/config_model.py": "5ec9dacc104db695c4d08a4d8f2daabcb2545045eed4ed7e7a67f551748b30d3"
   },
-  "source_commit": "942b613",
+  "source_commit": "61627f5",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "39e56bf84afff743d4d4a6b24bcf5292c14af64316c6a74d7cf5f3b93ef28145"
+  "tree_hash": "ad544f92a15789c8be41d3f9c31dc4df3502ad826b4232b319f0a349b25862e4"
 }

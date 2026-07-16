@@ -64,5 +64,7 @@ class Board:
 
     def neighbors(self, cell: Coord) -> tuple[Coord, ...]:
         """The in-bounds orthogonal neighbors of `cell` (barriers NOT filtered here)."""
-        candidates = ((cell[0] + d_row, cell[1] + d_col) for d_row, d_col in _TOP_LEFT_DELTAS.values())
+        candidates = (
+            (cell[0] + d_row, cell[1] + d_col) for d_row, d_col in _TOP_LEFT_DELTAS.values()
+        )
         return tuple(c for c in candidates if self.in_bounds(c))

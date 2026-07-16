@@ -14,7 +14,9 @@ MOVE_SET = ("N", "S", "E", "W", "STAY")
 
 
 def _board(size: int = 7, barriers: frozenset[Coord] = frozenset()) -> Board:
-    return Board(grid_size=size, axis_origin_corner="top-left", axis_start_index=0, barriers=barriers)
+    return Board(
+        grid_size=size, axis_origin_corner="top-left", axis_start_index=0, barriers=barriers
+    )
 
 
 def test_all_five_moves_legal_from_an_open_center_cell() -> None:
@@ -73,37 +75,86 @@ def test_full_ring_imprisons_even_though_stay_is_possible() -> None:
 
 
 def test_cop_landing_on_thief_ends_in_capture() -> None:
-    outcome = check_end(_board(), cop_pos=(3, 3), thief_pos=(3, 3), steps_survived=5, survival_threshold=35, max_moves=35)
+    outcome = check_end(
+        _board(),
+        cop_pos=(3, 3),
+        thief_pos=(3, 3),
+        steps_survived=5,
+        survival_threshold=35,
+        max_moves=35,
+    )
     assert outcome is Outcome.COP_CAPTURE
 
 
 def test_barrier_dropped_on_thief_cell_ends_in_capture() -> None:
     board = _board(barriers=frozenset({(3, 3)}))
-    outcome = check_end(board, cop_pos=(3, 4), thief_pos=(3, 3), steps_survived=5, survival_threshold=35, max_moves=35)
+    outcome = check_end(
+        board,
+        cop_pos=(3, 4),
+        thief_pos=(3, 3),
+        steps_survived=5,
+        survival_threshold=35,
+        max_moves=35,
+    )
     assert outcome is Outcome.COP_CAPTURE
 
 
 def test_imprisoned_thief_counts_as_captured() -> None:
     ring = frozenset({(2, 3), (4, 3), (3, 2), (3, 4)})
-    outcome = check_end(_board(barriers=ring), cop_pos=(0, 0), thief_pos=(3, 3), steps_survived=5, survival_threshold=35, max_moves=35)
+    outcome = check_end(
+        _board(barriers=ring),
+        cop_pos=(0, 0),
+        thief_pos=(3, 3),
+        steps_survived=5,
+        survival_threshold=35,
+        max_moves=35,
+    )
     assert outcome is Outcome.COP_CAPTURE
 
 
 def test_thief_reaching_the_survival_threshold_wins() -> None:
-    outcome = check_end(_board(), cop_pos=(0, 0), thief_pos=(3, 3), steps_survived=35, survival_threshold=35, max_moves=35)
+    outcome = check_end(
+        _board(),
+        cop_pos=(0, 0),
+        thief_pos=(3, 3),
+        steps_survived=35,
+        survival_threshold=35,
+        max_moves=35,
+    )
     assert outcome is Outcome.THIEF_SURVIVAL
 
 
 def test_step_cap_without_capture_is_survival() -> None:
-    outcome = check_end(_board(), cop_pos=(0, 0), thief_pos=(3, 3), steps_survived=40, survival_threshold=99, max_moves=40)
+    outcome = check_end(
+        _board(),
+        cop_pos=(0, 0),
+        thief_pos=(3, 3),
+        steps_survived=40,
+        survival_threshold=99,
+        max_moves=40,
+    )
     assert outcome is Outcome.THIEF_SURVIVAL
 
 
 def test_midgame_position_has_no_outcome_yet() -> None:
-    outcome = check_end(_board(), cop_pos=(0, 0), thief_pos=(3, 3), steps_survived=5, survival_threshold=35, max_moves=35)
+    outcome = check_end(
+        _board(),
+        cop_pos=(0, 0),
+        thief_pos=(3, 3),
+        steps_survived=5,
+        survival_threshold=35,
+        max_moves=35,
+    )
     assert outcome is None
 
 
 def test_capture_takes_precedence_over_simultaneous_survival() -> None:
-    outcome = check_end(_board(), cop_pos=(3, 3), thief_pos=(3, 3), steps_survived=35, survival_threshold=35, max_moves=35)
+    outcome = check_end(
+        _board(),
+        cop_pos=(3, 3),
+        thief_pos=(3, 3),
+        steps_survived=35,
+        survival_threshold=35,
+        max_moves=35,
+    )
     assert outcome is Outcome.COP_CAPTURE

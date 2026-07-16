@@ -17,8 +17,8 @@ def table() -> AppFTable:
     return AppFTable.load(CONFIG_DIR / "app_f_table.json")
 
 
-@pytest.fixture()
-def game(table: AppFTable) -> dict[str, Any]:
+@pytest.fixture
+def game() -> dict[str, Any]:
     raw: dict[str, Any] = json.loads((CONFIG_DIR / "game.json").read_text(encoding="utf-8"))
     return copy.deepcopy(raw)
 
@@ -69,6 +69,14 @@ def test_sample_num_games_allowed_only_outside_counted_series(
 def test_counted_series_of_six_minigames_passes(table: AppFTable, game: dict[str, Any]) -> None:
     game["network_and_league"]["num_games"] = 6
     assert validate_constitution(game, table, counted=True) == []
+
+
+def test_non_numeric_value_for_a_minimum_parameter_is_refused(
+    table: AppFTable, game: dict[str, Any]
+) -> None:
+    game["movement_and_barriers"]["max_barriers"] = "many"
+    violations = validate_constitution(game, table, counted=False)
+    assert any("max_barriers" in v and "numeric" in v for v in violations)
 
 
 def test_changing_the_fixed_move_set_is_refused(table: AppFTable, game: dict[str, Any]) -> None:

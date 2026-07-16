@@ -5,8 +5,15 @@ import pytest
 from copthief_core.domain.board import Board, Coord
 
 
-def _board(size: int = 7, origin: str = "top-left", start: int = 0, barriers: frozenset[Coord] = frozenset()) -> Board:
-    return Board(grid_size=size, axis_origin_corner=origin, axis_start_index=start, barriers=barriers)
+def _board(
+    size: int = 7,
+    origin: str = "top-left",
+    start: int = 0,
+    barriers: frozenset[Coord] = frozenset(),
+) -> Board:
+    return Board(
+        grid_size=size, axis_origin_corner=origin, axis_start_index=start, barriers=barriers
+    )
 
 
 def test_in_bounds_covers_exactly_the_grid_range() -> None:

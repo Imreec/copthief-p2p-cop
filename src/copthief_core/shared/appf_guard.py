@@ -52,7 +52,7 @@ class AppFTable:
         return cls(version=raw["version"], entries=entries)
 
 
-def _lookup(config: dict[str, Any], dotted_key: str) -> tuple[bool, Any]:
+def _lookup(config: dict[str, Any], dotted_key: str) -> tuple[bool, object]:
     """(present, value) for a dotted `section.parameter` key in the raw config mapping."""
     section_name, _, param = dotted_key.partition(".")
     section = config.get(section_name)
@@ -61,18 +61,20 @@ def _lookup(config: dict[str, Any], dotted_key: str) -> tuple[bool, Any]:
     return True, section[param]
 
 
-def _check(key: str, entry: AppFEntry, value: Any) -> str | None:
+def _check(key: str, entry: AppFEntry, value: object) -> str | None:
     """One parameter against its App F row; None when compliant."""
     if entry.status == "fixed" and value != entry.default:
         return f"{key}: fixed at {entry.default!r} by App F, got {value!r} (deviation disqualifies)"
-    if entry.status == "minimum" and value < entry.default:
-        return f"{key}: App F minimum is {entry.default!r}, got {value!r} (may only be raised)"
+    if entry.status == "minimum":
+        floor = entry.default
+        if not isinstance(value, int | float) or not isinstance(floor, int | float):
+            return f"{key}: App F minimum parameters are numeric, got {value!r}"
+        if value < floor:
+            return f"{key}: App F minimum is {floor!r}, got {value!r} (may only be raised)"
     return None
 
 
-def validate_constitution(
-    config: dict[str, Any], table: AppFTable, *, counted: bool
-) -> list[str]:
+def validate_constitution(config: dict[str, Any], table: AppFTable, *, counted: bool) -> list[str]:
     """Every App F parameter checked; `counted` arms the counted-series-scoped rows.
 
     PRD_engine §6.1: `num_games` is fixed at six for a counted match; the App B

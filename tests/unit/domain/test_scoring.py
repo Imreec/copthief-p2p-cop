@@ -4,7 +4,12 @@ from copthief_core.domain.rules import Outcome
 from copthief_core.domain.scoring import ScoringTable, score_mini_game, settle_series
 
 TABLE = ScoringTable(
-    capture_cop=20, capture_thief=5, survival_cop=5, survival_thief=10, tie_score=2, technical_loss=0
+    capture_cop=20,
+    capture_thief=5,
+    survival_cop=5,
+    survival_thief=10,
+    tie_score=2,
+    technical_loss=0,
 )
 
 
