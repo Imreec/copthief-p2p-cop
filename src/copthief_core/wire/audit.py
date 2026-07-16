@@ -82,8 +82,7 @@ class AuditPayload:
         wire: dict[str, Any] = {
             "sender": self.sender,
             "records": [
-                {"payload": r.payload, "nonce": r.nonce, "commit": r.commit}
-                for r in self.records
+                {"payload": r.payload, "nonce": r.nonce, "commit": r.commit} for r in self.records
             ],
             "result_claim": self.result_claim,
         }

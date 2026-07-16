@@ -46,6 +46,13 @@ def test_round_trip_is_lossless() -> None:
     assert TurnMessage.from_wire(msg.to_wire()) == msg
 
 
+def test_win_claim_round_trips_when_present() -> None:
+    msg = TurnMessage.from_wire({**VALID, "win_claim": "survival"})
+    assert msg.win_claim == "survival"
+    assert msg.to_wire()["win_claim"] == "survival"
+    assert TurnMessage.from_wire(msg.to_wire()) == msg
+
+
 def test_bad_step_and_timestamp_types_are_rejected() -> None:
     with pytest.raises(WireValidationError, match="step"):
         TurnMessage.from_wire({**VALID, "step": "three"})

@@ -14,6 +14,18 @@
   ritual ran: thief PR #4 ("sync: core from police@3e747bf" + config tree) merged, both repos'
   mains green with kit CORE vectors green in both CIs (M1-3 DoD closed).
 
+## PR #7 — feat/wire-messages (M1-5)
+
+- **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
+  (cross-model, on the PR).
+- **This PR:** two RED→GREEN cycles. `wire/validation` (primitive checkers, all problems
+  collected into one WireValidationError), `wire/turn` (TurnMessage: PLAN §6 field set,
+  reject-missing + tolerate-unknown with extras preserved through to_wire), `wire/audit`
+  (AuditPayload with verbatim record payloads + per-index diagnostics; ControlMessage with the
+  closed status/restart/quit action set, never sealed). Optional-field types flagged for M2
+  verification vs the live reference. Between PR #6 and this one the M1-4 sync ritual ran
+  (thief PR #5, `sync: core from police@7dc7e48`, merged green).
+
 ## PR #5 — feat/domain-crypto (M1-3)
 
 - **Driver:** Imree (merge authorization + "continue") · **Author:** Claude (terminal) ·

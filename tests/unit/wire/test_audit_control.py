@@ -74,6 +74,16 @@ def test_control_action_outside_the_contract_is_rejected() -> None:
         ControlMessage.from_wire({"action": "quit"})
 
 
+def test_non_object_record_entry_is_rejected() -> None:
+    with pytest.raises(WireValidationError, match=r"records\[0\]: must be an object"):
+        AuditPayload.from_wire({**VALID_AUDIT, "records": ["sealed-blob"]})
+
+
+def test_non_string_control_message_is_rejected() -> None:
+    with pytest.raises(WireValidationError, match="message"):
+        ControlMessage.from_wire({"sender": "thief", "action": "quit", "message": 42})
+
+
 def test_control_round_trip_with_message_and_extras() -> None:
     raw = {"sender": "thief", "action": "restart", "message": "resync please", "ping": 1}
     msg = ControlMessage.from_wire(raw)
