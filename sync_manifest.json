@@ -26,10 +26,10 @@
     "src/copthief_core/shared/config_model.py": "fce476535c01bca97af802ae145673a1b409814f4f7c531c7318e6a7523cf165",
     "tests/conformance/SOURCE.md": "bdff0656712f71166727f74b96f66c7e67c269d6a64b95c5c4824becf61db2e7",
     "tests/conformance/test_kit_core_vectors.py": "2a309ed3e6a7ee72f4841e50ffc955fecd964c7e7376cfba7fe0199bfd441c6d",
-    "tests/conformance/vectors/canonical_json.json": "351d00e6e5cf558423d321fe92ea15a68eee421f4a71bf6462d378916be3cd06",
-    "tests/conformance/vectors/commit_reveal.json": "b87b7b325f85d24a595ba23c454f575963be3b3d8fcf5787eafb2de3dee4f20d",
-    "tests/conformance/vectors/game_uid.json": "043f79e37d58a089eb1df4ded9edf28bb033775d62a0526402f2cedcd3098971",
-    "tests/conformance/vectors/terms_signature.json": "97e90da01b84a52bc6f76e3ed365ffac4d8114a93f80b53f395d94cf9e59e0c6",
+    "tests/conformance/vectors/canonical_json.json": "7b4b144078f0ba3d401b9bdf189632b309da0f210f86499b0ad0821f4d3fcd8d",
+    "tests/conformance/vectors/commit_reveal.json": "ec6041a54203cde0ef18e4d328ddcdf8322d9898e718829eb32ed460a047dae3",
+    "tests/conformance/vectors/game_uid.json": "1e86e0e5763cdf1ef6157651033960dbd7e9e5069265d75f6bce897afee33d49",
+    "tests/conformance/vectors/terms_signature.json": "479cf58decb26a8298fcdd7e9286052b674e568cfb1aa667fe1fbd3be21c7b70",
     "tests/integration/test_referee_minigame.py": "c2063d346b281de933144301e76ab8b845a9ed7b2d0ac08a87bfc13b80003e81",
     "tests/unit/domain/test_board.py": "66edf4f238671ffc513957acc689d7ec13ad8b5e263e0bfa29625faa2a6927b6",
     "tests/unit/domain/test_crypto.py": "e7bc6d11c27e0b8d5084c315405ca5a22402be00980b274971fc6a404dd15fca",
@@ -39,7 +39,7 @@
     "tests/unit/shared/test_appf_guard.py": "e11582463a868d2bebdc3da9036026c4bddf185c0b9bbc6e9ae8a3ba75ef4173",
     "tests/unit/shared/test_config.py": "b94bd1e3a3241bed56582b2c27d4b0a7446eb8a4ebc8bf2e0c808b95c2c7f025"
   },
-  "source_commit": "ba35e41",
+  "source_commit": "208ca08",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "b20ab6fd1834618a69a1e6a09a98bfecfcdfed74a4aa73325c13bc1d1968e05e"
+  "tree_hash": "cd0f1a156797aa0e6dfc89bc5f62c9dfea3cd8b37d53a95f26784071afdfab46"
 }
