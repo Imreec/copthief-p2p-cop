@@ -21,6 +21,7 @@
     "scoring.tie_score": { "status": "fixed", "default": 2 },
     "scoring.technical_loss": { "status": "fixed", "default": 0 },
     "pheromones.pheromone_center_intensity": { "status": "fixed", "default": 0.9 },
+    "pheromones.min_center_intensity": { "status": "negotiable", "default": 0.5, "optional": true, "note": "reference-only emission gate (kit s5); absent from App B/App F - PRD_crypto s8.2" },
     "pheromones.pheromone_decay": { "status": "fixed", "default": 0.1 },
     "pheromones.pheromone_grid_size": { "status": "fixed", "default": 5 },
     "network_and_league.num_games": { "status": "fixed", "default": 6, "scope": "counted_series" },

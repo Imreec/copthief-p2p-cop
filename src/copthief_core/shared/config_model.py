@@ -53,11 +53,14 @@ class MovementParams:
 
 @dataclass(frozen=True)
 class PheromoneParams:
-    """`pheromones`: emission intensity, per-step decay, emission window side."""
+    """`pheromones`: emission intensity, per-step decay, emission window side, and the
+    reference-only emission gate (kit §5; sourced from the App F table default when the
+    signed file omits it — PRD_crypto §8.2)."""
 
     center_intensity: float
     decay: float
     grid_size: int
+    min_center_intensity: float
 
 
 @dataclass(frozen=True)
