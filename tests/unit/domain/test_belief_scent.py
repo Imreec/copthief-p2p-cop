@@ -15,7 +15,7 @@ MOVE_SET = ("N", "S", "E", "W", "STAY")
 FRESH = 0.8  # center_intensity 0.9 - one decay 0.1 (PRD_scent §2 example)
 
 
-def make_filter(*, start=(3, 3), smell_trust=4.0) -> BeliefFilter:
+def make_filter(*, start: tuple[int, int] = (3, 3), smell_trust: float = 4.0) -> BeliefFilter:
     board = Board(grid_size=7, axis_origin_corner="top-left", axis_start_index=0)
     return BeliefFilter(
         board=board,

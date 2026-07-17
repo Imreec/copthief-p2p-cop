@@ -12,10 +12,13 @@ from copthief_core.domain.board import Board
 MOVE_SET = ("N", "S", "E", "W", "STAY")
 
 
-def make_filter(*, start=(3, 3), barriers=frozenset(), smell_trust=4.0) -> BeliefFilter:
-    board = Board(
-        grid_size=7, axis_origin_corner="top-left", axis_start_index=0, barriers=barriers
-    )
+def make_filter(
+    *,
+    start: tuple[int, int] = (3, 3),
+    barriers: frozenset[tuple[int, int]] = frozenset(),
+    smell_trust: float = 4.0,
+) -> BeliefFilter:
+    board = Board(grid_size=7, axis_origin_corner="top-left", axis_start_index=0, barriers=barriers)
     return BeliefFilter(
         board=board,
         move_set=MOVE_SET,

@@ -96,6 +96,15 @@ def handle_receive_turn(session: PeerSession, raw: dict[str, Any]) -> dict[str, 
     if message.step != expected:
         raise session.collapse(f"step discontinuity: expected {expected}, got {message.step}")
     session.inbound.append(message)
+    # F9: a declared barrier is sealed/audited evidence — it constrains OUR OWN move
+    # legality (the M2 gap) and the belief motion model, before anything else reads it.
+    if message.barrier_placed is not None:
+        barrier = (message.barrier_placed[0], message.barrier_placed[1])
+        session.board = session.board.with_barrier(barrier)
+        session.belief.note_barrier(barrier)
+    # PRD_belief §4 pipeline (reference order): predict, then sharpen with the scent.
+    session.belief.predict()
+    session.belief.update_scent(message.smell_grid)
     # SQ1 receive side: absorb their transmitted trail, then one per-message decay.
     session.known_field.absorb(message.smell_grid)
     session.known_field.decay()

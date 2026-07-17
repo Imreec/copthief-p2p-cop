@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.scent import ScentField
 from copthief_core.domain.state_machine import GameState, GameStateMachine
 from copthief_core.peer import handshake, turns
@@ -72,6 +73,19 @@ class PeerSession:
         # Locked scent-model hashes (PRD_scent §4), recorded by the handshake.
         self.scent_model_hash: str | None = None
         self.opponent_scent_model_hash: str | None = None
+        # PRD_belief: the opponent's position filter, primed at THEIR signed start;
+        # peer/turns runs its predict/update pipeline on every inbound message.
+        self.belief = BeliefFilter(
+            board=self.board,
+            move_set=constitution.movement.move_set,
+            start=(
+                constitution.board.thief_start if role == "police" else constitution.board.cop_start
+            ),
+            center_intensity=constitution.pheromones.center_intensity,
+            decay=constitution.pheromones.decay,
+            smell_trust=private.smell_trust_weight,
+            hint_trust=private.hint_trust_default,
+        )
 
     # -- handshake (PLAN §4; peer/handshake) -----------------------------------------
 

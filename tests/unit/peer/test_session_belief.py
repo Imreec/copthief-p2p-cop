@@ -74,9 +74,7 @@ def test_inbound_turn_runs_predict_then_scent_update() -> None:
     police.handle_receive_turn(message)
     # After one thief turn: support spread beyond the start, sharpened by the fresh
     # center their honest grid transmitted at the new position.
-    fresh = round(
-        CONSTITUTION.pheromones.center_intensity - CONSTITUTION.pheromones.decay, 3
-    )
+    fresh = round(CONSTITUTION.pheromones.center_intensity - CONSTITUTION.pheromones.decay, 3)
     center = next(
         tuple(int(p) for p in key.split(","))
         for key, value in message["smell_grid"].items()
