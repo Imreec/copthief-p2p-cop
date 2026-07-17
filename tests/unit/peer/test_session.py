@@ -31,8 +31,21 @@ def test_negotiate_payload_carries_the_reference_identity_shape() -> None:
     police, _thief = _pair()
     payload = police.negotiate_payload()
     assert set(payload) == {"terms", "nonce", "signature", "identity"}
+    # F8b (observed live): the reference's declaration writer group_block() KeyErrors
+    # unless the identity carries all seven reference keys.
+    assert set(payload["identity"]) == {
+        "group_id",
+        "group_name",
+        "members",
+        "repos",
+        "mcp_servers",
+        "llm_model",
+        "spec",
+    }
     assert payload["identity"]["group_id"] == PRIVATE.group_id
     assert payload["identity"]["group_name"] == PRIVATE.group_name
+    assert payload["identity"]["members"] == list(PRIVATE.members)
+    assert isinstance(payload["identity"]["spec"], dict)
 
 
 def test_handle_negotiate_reads_the_group_from_the_identity_dict() -> None:
