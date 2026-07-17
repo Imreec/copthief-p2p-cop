@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #17 — feat/m3-scent (M3-2 — domain/scent per the approved PRD_scent)
+
+- **Driver:** Imree (overnight M3 build directive: stacked chain M3-2→M3-6, merge
+  nothing, full TDD + gates) · **Author:** Claude (terminal) · **Reviewer:** Antigravity
+  (cross-model, on the PR).
+- **This PR:** strict RED→GREEN TDD (3 cycles): `domain/scent.ScentField` (kit-pinned
+  subtractive-Chebyshev form; kit `pheromone.json` joins tests/conformance as
+  CI-blocking fixtures, constraint #13), the locked scent-model document
+  (`subtractive_chebyshev_v1`, canonical bytes pinned literally in a test), and the SQ1
+  peer wiring (deposit-after-move at the new position → one decay → snapshot on the
+  wire; receiver absorbs then decays; deposits on STAY and the final caught message —
+  source-pinned against the reference's unconditional send path). Session turn cycle
+  extracted to `peer/turns.py` (150-line rule; mirrors the reference's
+  turn_sender/turn_handler split). Handshake now carries the locked model as a
+  negotiate extra (reference `verify_peer` provably ignores it) and records both
+  hashes. ADR-0004 (subtractive-vs-multiplicative contradiction). Coverage 100% on all
+  touched modules. TODO M3-2 ticked.
+
 ## PR #16 — docs/m3-prds (M3-1 — scent + belief mechanism PRDs; approved by Imree)
 
 - **Driver:** Imree ("let's continue" after the M2-5 GO) · **Author:** Claude (terminal)
