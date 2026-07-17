@@ -9,6 +9,7 @@ police initiates (M1 stub — the reference's first-mover convention is M2-verif
 
 from __future__ import annotations
 
+from datetime import UTC, datetime
 from typing import Any
 
 from copthief_core.domain.crypto import make_nonce, terms_signature
@@ -107,7 +108,9 @@ class PeerSession:
             hint=hint,
             smell_grid={},  # scent field lands at M3-2 (kit §5)
             commit=sealed.commit,
-            timestamp=now,
+            # Reference-pinned wire form (F5): ISO-8601 UTC string, derived from the
+            # caller-supplied epoch so the session itself never reads a clock.
+            timestamp=datetime.fromtimestamp(now, UTC).isoformat(),
         ).to_wire()
 
     def collapse(self, reason: str) -> ProtocolViolationError:
