@@ -110,7 +110,7 @@ class PeerSession:
             timestamp=now,
         ).to_wire()
 
-    def _collapse(self, reason: str) -> ProtocolViolationError:
+    def collapse(self, reason: str) -> ProtocolViolationError:
         """Record the violation as TECHNICAL_LOSS, then hand back the error to raise."""
         if not self.machine.is_terminal:
             self.machine.advance(GameState.TECHNICAL_LOSS)
@@ -121,10 +121,10 @@ class PeerSession:
         try:
             message = TurnMessage.from_wire(raw)
         except WireValidationError as error:
-            raise self._collapse(str(error)) from error
+            raise self.collapse(str(error)) from error
         expected = len(self.inbound) + 1
         if message.step != expected:
-            raise self._collapse(f"step discontinuity: expected {expected}, got {message.step}")
+            raise self.collapse(f"step discontinuity: expected {expected}, got {message.step}")
         self.inbound.append(message)
         if self.machine.state is GameState.WAITING_FOR_OPPONENT:
             self.machine.advance(GameState.COMPUTING_MOVE)
@@ -136,7 +136,7 @@ class PeerSession:
             else:
                 self.machine.advance(GameState.WAITING_FOR_OPPONENT)
         else:
-            raise self._collapse(f"turn arrived in state {self.machine.state.name}")
+            raise self.collapse(f"turn arrived in state {self.machine.state.name}")
         return {"status": "ok", "step": message.step}
 
     def handle_receive_control(self, raw: dict[str, Any]) -> dict[str, Any]:

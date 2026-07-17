@@ -18,7 +18,8 @@ CONFIG_DIR = Path("config")
 def test_full_minigame_over_the_fake_transport_self_audits_clean() -> None:
     result = run_local_minigame(CONFIG_DIR, police_seed=11, thief_seed=22)
     assert result.outcome == "thief_survival"
-    assert result.audit_ok_police_side and result.audit_ok_thief_side
+    assert result.audit_ok_police_side
+    assert result.audit_ok_thief_side
     assert result.steps == result.survival_threshold
     assert result.game_uid  # both peers derived the same shared id
     assert result.police_state is GameState.GAME_OVER

@@ -78,6 +78,18 @@ def test_step_discontinuity_collapses_to_technical_loss() -> None:
     assert thief.machine.state is GameState.TECHNICAL_LOSS
 
 
+def test_turn_arriving_mid_computation_collapses_to_technical_loss() -> None:
+    police, thief = _pair()
+    _handshake(police, thief)
+    outbound = police.take_turn(now=1.0)
+    thief.handle_receive_turn(outbound)  # thief now COMPUTING_MOVE
+    duplicate = dict(outbound)
+    duplicate["step"] = 2  # passes continuity, arrives in a state that cannot accept it
+    with pytest.raises(Exception, match="arrived in state"):
+        thief.handle_receive_turn(duplicate)
+    assert thief.machine.state is GameState.TECHNICAL_LOSS
+
+
 def test_control_message_is_answered_without_touching_game_state() -> None:
     police, thief = _pair()
     _handshake(police, thief)

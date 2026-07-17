@@ -26,7 +26,7 @@
 - ☑ **M1-3** `domain/crypto` from kit CORE (canonical, commit, terms sig, game_uid) + kit vectors as CI fixtures — C. DoD: all CORE vectors green in both repos.
 - ☑ **M1-4** `domain/state machine` (transition table per PLAN §5) — C. DoD: property tests reject all illegal transitions.
 - ☑ **M1-5** `wire/` dataclasses + validation (mirror reference fields; forward-compat rule) — C. DoD: schema tests incl. reject-missing/tolerate-unknown.
-- ☐ **M1-6** `infra/mcp` server (4 tools) + client + in-process fake; `peer/` minimal loop (handshake→turns→audit, geometric play, template hints stubbed) — C, review AG. DoD: PLAN §13 M1 — one command, full localhost mini-game, self-audit pass.
+- ◐ **M1-6** `infra/mcp` server (4 tools) + client + in-process fake; `peer/` minimal loop (handshake→turns→audit, geometric play, template hints stubbed) — C, review AG. DoD: PLAN §13 M1 — one command, full localhost mini-game, self-audit pass. *(Fake-transport half landed: full mini-game + mutual audit over the in-process fake in CI; the real FastMCP adapters + the one-command two-process form ride with M1-7's CLI.)*
 - ☐ **M1-7** `sdk/` facade + CLI entry (`run peer`, `run local-match`) — C. DoD: all M1 flows callable only via sdk.
 - ☐ **M1-8** JSONL logger (verbatim bytes, transitions, decisions, provenance) — C. DoD: M1 game replayable from log.
 

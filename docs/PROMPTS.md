@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #8 — feat/peer-loop (M1-6, fake-transport half)
+
+- **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
+  (cross-model, on the PR).
+- **This PR:** three RED→GREEN cycles. `peer/sealing` (kit-pinned state string — first ADR-0002
+  micro-snippet log entry; verifiable records, fresh nonce each), `peer/policy` (seeded legal
+  walk + template hints, M1-only), `peer/session` (handshake gate: value-equal terms + signature
+  → game_uid; turn choreography on the PLAN §5 machine; collapse-to-TECHNICAL_LOSS on any
+  violation), `peer/audit_flow` (build/verify with our serializer, per-step tamper flags,
+  derived results, submit_audit round-trip), `infra/fake_mcp` + `peer/match` (full mini-game
+  over the fake: all four tools exercised, survival ending, mutual audit Verified OK — the
+  fake-transport half of the M1 exit; observed in tests/integration/test_local_minigame.py).
+  Also: MIRRORED hardened to whole test trees after tests/unit/wire silently missed the mirror
+  (thief PR #6 closed red; role test moved to tests/role/). M1-6 marked ◐ — the one-command
+  two-process form completes with M1-7's CLI + real FastMCP adapters.
+
 ## PR #6 — feat/domain-state-machine (M1-4)
 
 - **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
