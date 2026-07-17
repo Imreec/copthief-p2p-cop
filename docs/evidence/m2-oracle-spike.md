@@ -1,7 +1,7 @@
 # M2 oracle spike — notes (living document during the spike)
 
-> Status: **IN PROGRESS** — local prep + source-level findings done, Stage A (tunnels)
-> awaiting operator authorization. Nothing here is final until the M2-5 GO/NO-GO.
+> Status: **CLOSED — GO (M2-5, 2026-07-18).** Phase M2 complete; §8 lists the residual
+> gaps carried into M3/M6/M7.
 > The reference is an **oracle only** (ADR-0002 / EULA): run and observe, never copy code.
 > SQ probes are throwaway harnesses — scratchpad only, never committed under `src/` or `tests/`.
 
@@ -210,11 +210,10 @@ per-move capture claims for 35 straight turns and closed with the survival win c
 
 ## 7. Remaining for the gate
 
-- [ ] Stage A: both OUR peers public via tunnels, vs the reference over public URLs —
-  needs Imree: tunnel account + credentials + the word. (Caveat for the record:
-  loopback-through-tunnel does not prove a different firewall/NAT environment — Stage B adds
-  that; if Stage B stalls on VPS logistics, Stage A alone is sufficient evidence for the
-  GO/NO-GO.)
+- [x] Stage A run (2026-07-18): tunnels live, both role pairings vs the live reference
+  over public URLs, mutual audits Verified OK — §6. (Caveat stands: loopback-through-
+  tunnel does not prove a different firewall/NAT environment — Stage B adds that; Stage A
+  alone was accepted as sufficient for the gate.)
 - [x] F3/F4/F5/F6 fixed — PR #11 (`feat/m2-wire-reference-pins`), conformance re-run green.
 - [x] F1/F2 fixed — `feat/m2-symmetric-transport` (stacked on #11): symmetric push/inbox
   transport, one loop for both roles, thief-first, win_claim game end. Observed
@@ -238,7 +237,21 @@ per-move capture claims for 35 straight turns and closed with the survival win c
   claims in g2; SQ3's absent smell grid observed in every exchanged log).
 - [x] M2-4: ADR-0003 (crypto-early, spike-validated) + ADR-0006 (deploy + tunnel,
   incl. the 421/Host-rewrite requirement).
-- [ ] F8/F8b fix PR merged + synced (branch `feat/m2-negotiate-identity`).
-- [ ] Stage B: sparring VPS (OI-4) — needs Imree: VPS account + SSH handover. Stage A
-  suffices for the GO/NO-GO if logistics lag.
-- [ ] M2-5: GO/NO-GO with Imree.
+- [x] F8/F8b fix merged (PR #14 → cop main `4c30e82`) + synced (thief PR #11 → `2b2a5b5`).
+- [ ] Stage B: sparring VPS (OI-4) — deferred past the gate; doubles as M7-1 infra.
+- [x] **M2-5: GO — 2026-07-18** (Imree, on this evidence + Claude's candid assessment).
+
+## 8. Residual gaps carried out of M2 (disclosed at the gate, none blocking)
+
+1. **F9 — opponent-barrier tracking.** Our session validates inbound `barrier_placed`
+   but does not note it into the board, so our own move legality ignores opponent
+   barriers. In g2 the reference cop placed 7 barriers; post-hoc path analysis shows our
+   thief never occupied a barrier cell after its placement (it crossed [3,5] at step 2,
+   before the barrier landed) — the evidence is legitimate, but by luck, not
+   correctness. **Fix rides M3-3** (barriers are constraints of the belief motion model
+   anyway) and must land before any external friendly.
+2. **Loopback-through-tunnel** does not prove a foreign firewall/NAT environment —
+   Stage B (VPS, OI-4) adds that and doubles as M7-1.
+3. **Scent live-interop** untested vs the reference (our grids were legally empty; the
+   kit vectors pin the math) — M3-2 lands the field, re-verify in the first friendly.
+4. **Series / role alternation** (`num_games` > 1) untested — M6-6 scope.

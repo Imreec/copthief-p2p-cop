@@ -36,7 +36,7 @@
 - ☑ **M2-2** Both role pairings vs the live reference over public URLs: negotiate locks terms → play → mutual audit Verified OK both directions; shared game_uid property verified cross-implementation — I+C. DoD: spike notes §6 + four JSONL logs in `docs/evidence/`.
 - ☑ **M2-3** SQ1/SQ2/SQ3 answered in writing against the running reference (spike notes §3, live-confirmed §6; SQ3 feeds the M3 belief/audit PRDs) — C.
 - ☑ **M2-4** `docs/adr/0003-crypto-early.md` + `0006-deploy-tunnel.md` (spike results) — C.
-- ☐ **M2-5** **GO/NO-GO review with I** — everything below blocked until pass — I.
+- ☑ **M2-5** **GO/NO-GO review with I** — **GO, 2026-07-18** (Imree, on the Stage A evidence + Claude's candid assessment; residual gaps F9/Stage-B/scent-live/series documented in spike notes §8 and scoped to M3/M6/M7) — I.
 
 ## Phase M3 — Perception + arena
 
