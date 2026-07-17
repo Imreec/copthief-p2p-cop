@@ -21,19 +21,19 @@ def _records(n: int) -> list:
 
 
 def test_built_audit_verifies_cleanly() -> None:
-    audit = AuditPayload.from_wire(build_audit("police", _records(5), {"result": "pending"}))
+    audit = AuditPayload.from_wire(build_audit("police", _records(5), "pending"))
     assert verify_audit(audit) == []
 
 
 def test_tampered_record_is_flagged_with_its_step() -> None:
-    wire = build_audit("police", _records(5), {"result": "pending"})
+    wire = build_audit("police", _records(5), "pending")
     wire["records"][2]["payload"]["move"] = "MOVE:N"  # rewrite history after sealing
     problems = verify_audit(AuditPayload.from_wire(wire))
     assert any("step 3" in p for p in problems)
 
 
 def test_wrong_nonce_is_flagged() -> None:
-    wire = build_audit("police", _records(3), {"result": "pending"})
+    wire = build_audit("police", _records(3), "pending")
     wire["records"][0]["nonce"] = "0f" * 16
     problems = verify_audit(AuditPayload.from_wire(wire))
     assert any("step 1" in p for p in problems)
@@ -42,7 +42,7 @@ def test_wrong_nonce_is_flagged() -> None:
 def test_step_gap_is_flagged() -> None:
     records = _records(4)
     del records[1]  # steps 1,3,4
-    problems = verify_audit(AuditPayload.from_wire(build_audit("police", records, {})))
+    problems = verify_audit(AuditPayload.from_wire(build_audit("police", records, "pending")))
     assert any("continuity" in p for p in problems)
 
 
@@ -59,7 +59,7 @@ def test_audit_in_a_wrong_state_collapses_the_session() -> None:
     constitution, private, _ = load_all(Path("config"), counted=False)
     session = PeerSession(constitution, private, role="thief", seed=1)  # WAITING state
     with pytest.raises(ProtocolViolationError, match="audit arrived"):
-        handle_submit_audit(session, build_audit("police", _records(1), {}))
+        handle_submit_audit(session, build_audit("police", _records(1), "pending"))
     assert session.machine.state is GameState.TECHNICAL_LOSS
 
 
@@ -77,7 +77,9 @@ def test_malformed_audit_wire_collapses_the_last_mover() -> None:
     session = PeerSession(constitution, private, role="police", seed=1)
     session.take_turn(now=1.0)  # -> AWAITING_REVEAL, the last-mover audit-arrival state
     with pytest.raises(ProtocolViolationError, match="records"):
-        handle_submit_audit(session, {"sender": "thief", "records": "oops", "result_claim": {}})
+        handle_submit_audit(
+            session, {"sender": "thief", "records": "oops", "result_claim": "survival"}
+        )
     assert session.machine.state is GameState.TECHNICAL_LOSS
 
 

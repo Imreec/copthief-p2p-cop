@@ -20,9 +20,16 @@ if TYPE_CHECKING:  # annotation-only: session imports nothing from this module's
     from copthief_core.peer.session import PeerSession
 
 
-def build_audit(
-    sender: str, records: list[SealedTurn], result_claim: dict[str, Any]
-) -> dict[str, Any]:
+# Internal outcome -> the reference's wire result vocabulary (spike notes §2 F5).
+_WIRE_RESULTS = {"thief_survival": "survival"}
+
+
+def wire_result(result: str) -> str:
+    """The result string as the reference speaks it on the wire ("survival", ...)."""
+    return _WIRE_RESULTS.get(result, result)
+
+
+def build_audit(sender: str, records: list[SealedTurn], result_claim: str) -> dict[str, Any]:
     """The outbound AuditPayload wire dict: full sealed records + withheld nonces revealed."""
     return AuditPayload.from_wire(
         {
@@ -76,14 +83,13 @@ def handle_submit_audit(session: PeerSession, raw: dict[str, Any]) -> dict[str, 
     own = build_audit(
         session.role,
         session.records,
-        {
-            "result": derive_result(
+        wire_result(
+            derive_result(
                 steps_survived=len(session.records),
                 survival_threshold=movement.survival_threshold,
                 max_moves=movement.max_moves,
-            ),
-            "steps": len(session.records),
-        },
+            )
+        ),
     )
     return {
         "status": "verified" if not problems else "tamper_detected",

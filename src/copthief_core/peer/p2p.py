@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Protocol
 
-from copthief_core.peer.audit_flow import build_audit, derive_result, verify_audit
+from copthief_core.peer.audit_flow import build_audit, derive_result, verify_audit, wire_result
 from copthief_core.peer.session import PeerSession
 from copthief_core.shared.config import load_all
 from copthief_core.wire.audit import AuditPayload
@@ -49,19 +49,16 @@ def drive_match(config_dir: Path, client: ToolClient, *, police_seed: int) -> P2
         response = client.call("receive_turn", police.take_turn(now=time.time()))
         police.handle_receive_turn(response["turn"])
 
-    claim = {
-        "result": derive_result(
-            steps_survived=len(police.records),
-            survival_threshold=threshold,
-            max_moves=constitution.movement.max_moves,
-        ),
-        "steps": len(police.records),
-    }
-    audit_answer = client.call("submit_audit", build_audit(police.role, police.records, claim))
+    outcome = derive_result(
+        steps_survived=len(police.records),
+        survival_threshold=threshold,
+        max_moves=constitution.movement.max_moves,
+    )
+    audit_answer = client.call(
+        "submit_audit", build_audit(police.role, police.records, wire_result(outcome))
+    )
     thief_side_ok = audit_answer["status"] == "verified"
     police_side_ok = verify_audit(AuditPayload.from_wire(audit_answer["audit"])) == []
-
-    outcome = str(claim["result"])
     scoring = constitution.scoring
     scores = (
         (scoring.survival_cop, scoring.survival_thief) if outcome == "thief_survival" else (0, 0)

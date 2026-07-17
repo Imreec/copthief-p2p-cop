@@ -94,6 +94,6 @@ def test_control_message_is_answered_without_touching_game_state() -> None:
     police, thief = _pair()
     _handshake(police, thief)
     before = thief.machine.state
-    response = thief.handle_receive_control({"sender": "police", "action": "status"})
+    response = thief.handle_receive_control({"sender": "police", "kind": "status"})
     assert response["status"] == "ok"
     assert thief.machine.state is before

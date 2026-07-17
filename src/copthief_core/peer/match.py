@@ -17,6 +17,7 @@ from copthief_core.peer.audit_flow import (
     derive_result,
     handle_submit_audit,
     verify_audit,
+    wire_result,
 )
 from copthief_core.peer.session import PeerSession
 from copthief_core.shared.config import load_all
@@ -92,22 +93,18 @@ def run_local_minigame(
             }
         )
 
-    police_claim = {
-        "result": derive_result(
-            steps_survived=len(police.records),
-            survival_threshold=threshold,
-            max_moves=constitution.movement.max_moves,
-        ),
-        "steps": len(police.records),
-    }
-    police_audit = build_audit(police.role, police.records, police_claim)
+    outcome = derive_result(
+        steps_survived=len(police.records),
+        survival_threshold=threshold,
+        max_moves=constitution.movement.max_moves,
+    )
+    police_audit = build_audit(police.role, police.records, wire_result(outcome))
     log({"event": "audit", "payload": police_audit})
     settlement = to_thief.call("submit_audit", police_audit)
     log({"event": "audit_answer", "payload": settlement})
     thief_side_ok = settlement["status"] == "verified"
     police_side_ok = verify_audit(AuditPayload.from_wire(settlement["audit"])) == []
 
-    outcome = str(police_claim["result"])
     scoring = constitution.scoring
     scores = (
         (scoring.survival_cop, scoring.survival_thief) if outcome == "thief_survival" else (0, 0)

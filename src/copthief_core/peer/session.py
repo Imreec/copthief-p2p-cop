@@ -147,4 +147,4 @@ class PeerSession:
         from copthief_core.wire.audit import ControlMessage
 
         message = ControlMessage.from_wire(raw)
-        return {"status": "ok", "action": message.action, "state": self.machine.state.value}
+        return {"status": "ok", "kind": message.kind, "state": self.machine.state.value}
