@@ -28,7 +28,12 @@ included.
 
 ## Micro-snippet log
 
-*(none yet)*
+- **2026-07-17 · `src/copthief_core/peer/sealing.py:state_string`** — the sealed record's
+  `state` encoding: `f"grid={n}x{n};self={list(pos)};barriers={sorted_barrier_lists}"` (Python
+  list repr with the space after the comma, barriers sorted). Provenance: reference
+  `domain/crypto.py` state format, as pinned byte-for-byte by the kit
+  (`SPEC.md` §3 + `vectors/commit_reveal.json`). Transplanted because the byte form, not the
+  idea, is the interop constraint.
 
 ## Consequences
 
