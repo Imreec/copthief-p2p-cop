@@ -19,6 +19,21 @@
   (thief PR #6 closed red; role test moved to tests/role/). M1-6 marked ◐ — the one-command
   two-process form completes with M1-7's CLI + real FastMCP adapters.
 
+## PR #9 — feat/sdk-cli (M1-7 + M1-6 completion)
+
+- **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
+  (cross-model, on the PR).
+- **This PR:** fastmcp 3.4.4 added (the milestone-planned first runtime dependency; API pinned
+  by a scratchpad smoke before adapter work). `infra/mcp_server` + `infra/mcp_client` (thin real
+  FastMCP adapters; M1 response-carried composition documented, M2 pins the reference's real
+  call pattern), `peer/p2p` (initiator-side driving loop), `sdk/SimulationSdk` (the single
+  business entry point: local-match / serve-peer / p2p-match with subprocess spawn+teardown),
+  `sdk/cli` + `[project.scripts] copthief`. **M1 exit criterion OBSERVED:**
+  `uv run copthief run p2p-match` → two OS processes over localhost FastMCP, 35 sealed turns,
+  mutual audit Verified OK both directions (docs/evidence/m1-p2p-match.md). Live adapters are
+  coverage-omitted with a documented rationale (PLAN §12 keyless CI) and covered by the
+  @pytest.mark.live test + the committed evidence. TODO M1-6 + M1-7 ticked.
+
 ## PR #6 — feat/domain-state-machine (M1-4)
 
 - **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
