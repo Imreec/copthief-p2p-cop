@@ -90,7 +90,8 @@ def test_origin_one_board_clips_below_the_start_index() -> None:
     field = make_field(origin=1)
     field.deposit((1, 1), CENTER)
     cells = field.cells()
-    assert (0, 0) not in cells and (0, 1) not in cells
+    assert (0, 0) not in cells
+    assert (0, 1) not in cells
     assert field.intensity_at((1, 1)) == 0.9
     assert field.intensity_at((3, 3)) == 0.3  # ring-2 still inside a 7-wide board at origin 1
 
