@@ -3,7 +3,7 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR — docs/m3-prds (M3-1 — scent + belief mechanism PRDs, AWAITING APPROVAL)
+## PR #16 — docs/m3-prds (M3-1 — scent + belief mechanism PRDs; approved by Imree)
 
 - **Driver:** Imree ("let's continue" after the M2-5 GO) · **Author:** Claude (terminal)
   · **Reviewer:** Antigravity (cross-model, on the PR) · **Approver:** Imree (M3-1 gate).
@@ -16,7 +16,7 @@
   last-known-position baseline as the M3 exit). No code — M3-2/M3-3 start only after
   approval.
 
-## PR — docs/m2-close (M2-5 GO recorded — phase M2 complete)
+## PR #15 — docs/m2-close (M2-5 GO recorded — phase M2 complete)
 
 - **Driver:** Imree ("I think I'm satisfied, but are you? If you are, then let's
   continue" — GO conditional on Claude's candid assessment) · **Author:** Claude
