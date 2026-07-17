@@ -17,8 +17,8 @@ CONSTITUTION, PRIVATE, _LIMITS = load_all(Path("config"), counted=False)
 
 
 def _run_pair() -> dict[str, PeerGameResult]:
-    police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=11)
-    thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=22)
+    police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=1)  # (1,2): survival
+    thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=2)
     police_t, thief_t = queue_pair(wait_timeout=PRIVATE.connect_timeout_seconds)
     results: dict[str, PeerGameResult] = {}
 

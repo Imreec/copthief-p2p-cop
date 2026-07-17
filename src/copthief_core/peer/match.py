@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from copthief_core.domain.scoring import scores_for
 from copthief_core.domain.state_machine import GameState
 from copthief_core.peer.p2p import PeerGameResult, run_peer_game
 from copthief_core.peer.session import PeerSession
@@ -91,9 +92,7 @@ def run_local_minigame(
 
     outcome = results["thief"].outcome
     scoring = constitution.scoring
-    scores = (
-        (scoring.survival_cop, scoring.survival_thief) if outcome == "thief_survival" else (0, 0)
-    )
+    scores = scores_for(outcome, scoring)
     log(
         {
             "event": "result",
