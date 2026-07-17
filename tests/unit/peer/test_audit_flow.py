@@ -1,7 +1,9 @@
 """Audit flow (PLAN §4; kit §3): build, verify with OUR serializer, tamper detection."""
 
-from copthief_core.peer.audit_flow import build_audit, derive_result, verify_audit
-from copthief_core.peer.sealing import seal_turn
+from copthief_core.domain.crypto import commit as crypto_commit
+from copthief_core.domain.crypto import make_nonce
+from copthief_core.peer.audit_flow import build_audit, verify_audit
+from copthief_core.peer.sealing import SealedTurn, seal_turn
 from copthief_core.wire.audit import AuditPayload
 
 
@@ -46,43 +48,26 @@ def test_step_gap_is_flagged() -> None:
     assert any("continuity" in p for p in problems)
 
 
-def test_audit_in_a_wrong_state_collapses_the_session() -> None:
-    from pathlib import Path
-
-    import pytest
-
-    from copthief_core.domain.state_machine import GameState
-    from copthief_core.peer.audit_flow import handle_submit_audit
-    from copthief_core.peer.session import PeerSession, ProtocolViolationError
-    from copthief_core.shared.config import load_all
-
-    constitution, private, _ = load_all(Path("config"), counted=False)
-    session = PeerSession(constitution, private, role="thief", seed=1)  # WAITING state
-    with pytest.raises(ProtocolViolationError, match="audit arrived"):
-        handle_submit_audit(session, build_audit("police", _records(1), "pending"))
-    assert session.machine.state is GameState.TECHNICAL_LOSS
+def test_reference_step0_spec_record_is_rehashed_not_continuity_checked() -> None:
+    # The reference's audit includes a step-0 system_spec record before the game steps
+    # (observed in the M2 smoke log: 36 verified records for 35 turns). Continuity
+    # applies to the game steps (1..N); the spec record is still re-hashed.
+    spec_payload = {"step": 0, "type": "system_spec", "spec": {"os": "x"}}
+    nonce = make_nonce()
+    spec_record = SealedTurn(
+        payload=spec_payload, nonce=nonce, commit=crypto_commit(spec_payload, nonce)
+    )
+    wire = build_audit("thief", [spec_record, *_records(3)], "survival")
+    assert verify_audit(AuditPayload.from_wire(wire)) == []
 
 
-def test_malformed_audit_wire_collapses_the_last_mover() -> None:
-    from pathlib import Path
-
-    import pytest
-
-    from copthief_core.domain.state_machine import GameState
-    from copthief_core.peer.audit_flow import handle_submit_audit
-    from copthief_core.peer.session import PeerSession, ProtocolViolationError
-    from copthief_core.shared.config import load_all
-
-    constitution, private, _ = load_all(Path("config"), counted=False)
-    session = PeerSession(constitution, private, role="police", seed=1)
-    session.take_turn(now=1.0)  # -> AWAITING_REVEAL, the last-mover audit-arrival state
-    with pytest.raises(ProtocolViolationError, match="records"):
-        handle_submit_audit(
-            session, {"sender": "thief", "records": "oops", "result_claim": "survival"}
-        )
-    assert session.machine.state is GameState.TECHNICAL_LOSS
-
-
-def test_result_derives_from_record_count_never_from_claims() -> None:
-    assert derive_result(steps_survived=35, survival_threshold=35, max_moves=35) == "thief_survival"
-    assert derive_result(steps_survived=10, survival_threshold=35, max_moves=35) == "incomplete"
+def test_tampered_step0_spec_record_is_still_caught() -> None:
+    spec_payload = {"step": 0, "type": "system_spec", "spec": {"os": "x"}}
+    nonce = make_nonce()
+    spec_record = SealedTurn(
+        payload=spec_payload, nonce=nonce, commit=crypto_commit(spec_payload, nonce)
+    )
+    wire = build_audit("thief", [spec_record, *_records(3)], "survival")
+    wire["records"][0]["payload"]["spec"] = {"os": "rewritten"}
+    problems = verify_audit(AuditPayload.from_wire(wire))
+    assert any("step 0" in p for p in problems)

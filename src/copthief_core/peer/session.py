@@ -43,14 +43,17 @@ class PeerSession:
         self.position = (
             constitution.board.cop_start if role == "police" else constitution.board.thief_start
         )
+        # F2 (M2, oracle sha 960499fd): the THIEF takes the first game turn; the
+        # police peer starts in the receive loop.
         self.machine = GameStateMachine(
-            state=GameState.COMPUTING_MOVE if role == "police" else GameState.WAITING_FOR_OPPONENT
+            state=GameState.COMPUTING_MOVE if role == "thief" else GameState.WAITING_FOR_OPPONENT
         )
         self.policy = SkeletonPolicy(seed=seed)
         self.records: list[SealedTurn] = []
         self.inbound: list[TurnMessage] = []
         self.game_uid: str | None = None
         self.opponent_group: str | None = None
+        self.outcome: str | None = None  # set by protocol events, cross-checked at audit
 
     # -- handshake (PLAN §4) ---------------------------------------------------------
 
@@ -102,6 +105,14 @@ class PeerSession:
         self.records.append(sealed)
         self.machine.advance(GameState.COMMITTING)
         self.machine.advance(GameState.AWAITING_REVEAL)
+        # Reference semantics (F2): the thief's threshold-reaching turn carries the
+        # survival win claim and ends the sender's own game with it.
+        win_claim = None
+        if self.role == "thief" and step >= self.constitution.movement.survival_threshold:
+            win_claim = {"type": "survival"}
+            self.outcome = "thief_survival"
+            self.machine.advance(GameState.VERIFYING)
+            self.machine.advance(GameState.GAME_OVER)
         return TurnMessage(
             step=step,
             sender=self.role,
@@ -111,6 +122,7 @@ class PeerSession:
             # Reference-pinned wire form (F5): ISO-8601 UTC string, derived from the
             # caller-supplied epoch so the session itself never reads a clock.
             timestamp=datetime.fromtimestamp(now, UTC).isoformat(),
+            win_claim=win_claim,
         ).to_wire()
 
     def collapse(self, reason: str) -> ProtocolViolationError:
@@ -133,8 +145,10 @@ class PeerSession:
             self.machine.advance(GameState.COMPUTING_MOVE)
         elif self.machine.state is GameState.AWAITING_REVEAL:
             self.machine.advance(GameState.VERIFYING)
-            threshold = self.constitution.movement.survival_threshold
-            if len(self.records) >= threshold and len(self.inbound) >= threshold:
+            if message.win_claim is not None:
+                # The opponent's game-ending claim; honored here, cross-checked at
+                # audit (their revealed steps must actually reach the threshold).
+                self.outcome = "thief_survival"
                 self.machine.advance(GameState.GAME_OVER)
             else:
                 self.machine.advance(GameState.WAITING_FOR_OPPONENT)

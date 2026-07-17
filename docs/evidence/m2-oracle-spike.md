@@ -170,8 +170,16 @@ observed.
   loopback-through-tunnel does not prove a different firewall/NAT environment — Stage B adds
   that; if Stage B stalls on VPS logistics, Stage A alone is sufficient evidence for the
   GO/NO-GO.)
-- [ ] F1-F6 fixes on branches (F1+F2 first — nothing interops until the transport matches),
-  kit conformance re-run per constraint #13, PR ritual per fix.
+- [x] F3/F4/F5/F6 fixed — PR #11 (`feat/m2-wire-reference-pins`), conformance re-run green.
+- [x] F1/F2 fixed — `feat/m2-symmetric-transport` (stacked on #11): symmetric push/inbox
+  transport, one loop for both roles, thief-first, win_claim game end. Observed
+  2026-07-17: `uv run copthief run p2p-match` under the NEW convention — two OS
+  processes, real FastMCP, `{"outcome": "thief_survival", "steps": 34, "audit_ok_police_side":
+  true, "audit_ok_thief_side": true, "scores": [5, 10]}` (each side now reports its OWN
+  audit verdict; police legitimately ends one turn short on the inbound win claim).
+  Debug find for the record: FastMCP INFO access logs once filled the spawned peer's
+  stdout pipe and froze it mid-game — server runs at log_level warning now (the
+  reference does the same).
 - [ ] M2-2 both role pairings vs the reference, mutual audit Verified OK both directions,
   JSONL logs committed as evidence.
 - [ ] SQ1-SQ3 live confirmation during those games (this file updated).

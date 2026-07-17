@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — feat/m2-symmetric-transport (M2 spike, fix batch 2: F1–F2)
+
+- **Driver:** Imree (M2 session brief) · **Author:** Claude (terminal) · **Reviewer:**
+  Antigravity (cross-model, on the PR). Stacked on PR #11.
+- **This PR:** two RED→GREEN cycles rebuilding the calling convention to the observed
+  reference: session turn order flips (thief moves first; survival win_claim ends the
+  game, cross-checked at audit with a threshold backstop and step-0 spec-record
+  tolerance); then the symmetric push/inbox transport — `PeerTransport` protocol,
+  in-process queue pair for keyless CI (replacing the response-carried MCP fake),
+  `run_peer_game` (one loop, both roles), FastMCP tools that enqueue-and-ack, real
+  `McpTransport` (retry-until-up, best-effort audit), sdk/CLI where `run peer` PLAYS a
+  full standalone game. Two-process localhost run observed post-rewrite: mutual audit
+  Verified OK both directions under the new convention. Debug find: FastMCP INFO access
+  logs filled the spawned peer's stdout pipe and froze it — servers run at
+  log_level=warning now.
+
 ## PR #11 — feat/m2-wire-reference-pins (M2 spike, fix batch 1: F3–F6)
 
 - **Driver:** Imree (M2 session brief: run the oracle spike, fix M1 stubs on branches as

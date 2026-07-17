@@ -108,6 +108,9 @@ def load_private_settings(path: Path) -> PrivateSettings:
         sub_game_number=int(game["sub_game_number"]),
         my_port=int(network["my_port"]),
         opponent_url=str(network["opponent_url"]),
+        turn_timeout_seconds=float(network["turn_timeout_seconds"]),
+        poll_interval_seconds=float(network["poll_interval_seconds"]),
+        connect_timeout_seconds=float(network["connect_timeout_seconds"]),
     )
 
 
