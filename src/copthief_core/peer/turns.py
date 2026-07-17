@@ -15,6 +15,7 @@ from typing import TYPE_CHECKING, Any
 
 from copthief_core.domain.state_machine import GameState
 from copthief_core.peer.sealing import seal_turn
+from copthief_core.strategy.brains import Observation
 from copthief_core.strategy.hints import VERDICT_TRUTH, compose_hint
 from copthief_core.wire.turn import TurnMessage
 from copthief_core.wire.validation import WireValidationError
@@ -34,8 +35,16 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
     if session.caught:  # the mandatory final message: no move, honest answer
         move, hint = "STAY", FINAL_CAUGHT_HINT
     else:
-        move = session.policy.pick_move(
-            session.board, session.position, session.constitution.movement.move_set
+        # M3-5: the brain reads OUR truth + the belief — never the opponent's truth.
+        move = session.brain.pick_move(
+            Observation(
+                board=session.board,
+                position=session.position,
+                move_set=session.constitution.movement.move_set,
+                role=session.role,
+                step=len(session.records) + 1,
+            ),
+            session.belief,
         )
         session.position = session.board.apply_move(session.position, move)
         max_words = session.constitution.world.hint_max_words

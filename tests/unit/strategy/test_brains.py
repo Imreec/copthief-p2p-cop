@@ -23,9 +23,7 @@ MOVE_SET = ("N", "S", "E", "W", "STAY")
 
 
 def make_board(barriers: frozenset = frozenset()) -> Board:  # type: ignore[type-arg]
-    return Board(
-        grid_size=7, axis_origin_corner="top-left", axis_start_index=0, barriers=barriers
-    )
+    return Board(grid_size=7, axis_origin_corner="top-left", axis_start_index=0, barriers=barriers)
 
 
 def make_belief(board: Board, opponent_at: tuple[int, int]) -> BeliefFilter:
@@ -74,12 +72,10 @@ def test_random_brain_is_seed_reproducible_and_always_legal() -> None:
     board = make_board(barriers=frozenset({(2, 3), (3, 2)}))
     belief = make_belief(board, (0, 0))
     first = [
-        RandomBrain(seed=7).pick_move(observation(board, (3, 3), "thief"), belief)
-        for _ in range(1)
+        RandomBrain(seed=7).pick_move(observation(board, (3, 3), "thief"), belief) for _ in range(1)
     ]
     again = [
-        RandomBrain(seed=7).pick_move(observation(board, (3, 3), "thief"), belief)
-        for _ in range(1)
+        RandomBrain(seed=7).pick_move(observation(board, (3, 3), "thief"), belief) for _ in range(1)
     ]
     assert first == again
     brain = RandomBrain(seed=11)

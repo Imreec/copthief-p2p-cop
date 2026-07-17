@@ -22,6 +22,12 @@ thief = "https://github.com/Imreec/copthief-p2p-thief"
 cop = "https://cop.imreeyal.com/mcp"
 thief = "https://thief.imreeyal.com/mcp"
 
+[strategy]
+# Private brain selection (PLAN s7): which BrainBase class each role runs. Baselines
+# only until M5 lands the role brains; the sparring host stays on the generic brain.
+police_class = "random"
+thief_class = "random"
+
 [belief]
 # Private evidence-trust tuning (PRD_belief s5): how sharply the scent/hint likelihoods
 # multiply into the Bayes filter. Never signed, never crosses the wire (SQ3 stance:

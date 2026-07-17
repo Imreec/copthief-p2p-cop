@@ -11,7 +11,7 @@ from pathlib import Path
 from copthief_core.domain.rules import Outcome
 from copthief_core.peer.match import run_local_minigame
 from copthief_core.shared.config import load_all
-from copthief_core.strategy.referee import play_referee_game, play_referee_series
+from copthief_core.strategy.referee import play_referee_series
 
 CONSTITUTION, PRIVATE, _LIMITS = load_all(Path("config"), counted=False)
 SEEDS = (1, 2, 3, 4, 5)
@@ -34,12 +34,12 @@ def test_referee_series_runs_headless_and_ends_every_game_legally() -> None:
 
 
 def test_referee_series_is_seed_reproducible() -> None:
-    kwargs = dict(
-        police_brain_name="random",
-        thief_brain_name="greedy-manhattan",
-        smell_trust=PRIVATE.smell_trust_weight,
-        seeds=SEEDS,
-    )
+    kwargs = {
+        "police_brain_name": "random",
+        "thief_brain_name": "greedy-manhattan",
+        "smell_trust": PRIVATE.smell_trust_weight,
+        "seeds": SEEDS,
+    }
     assert play_referee_series(CONSTITUTION, **kwargs) == play_referee_series(
         CONSTITUTION, **kwargs
     )
@@ -60,9 +60,7 @@ def test_referee_mode_greedy_police_catches_a_random_thief_sometimes() -> None:
 
 def test_peer_mode_series_with_config_brains_audits_clean_every_game() -> None:
     for seed in (1, 2, 3):
-        result = run_local_minigame(
-            Path("config"), police_seed=seed, thief_seed=seed + 100
-        )
+        result = run_local_minigame(Path("config"), police_seed=seed, thief_seed=seed + 100)
         assert result.outcome in ("thief_survival", "cop_capture")
         assert result.audit_ok_police_side
         assert result.audit_ok_thief_side

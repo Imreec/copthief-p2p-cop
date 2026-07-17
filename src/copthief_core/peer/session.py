@@ -22,6 +22,7 @@ from copthief_core.peer.policy import SkeletonPolicy
 from copthief_core.peer.sealing import SealedTurn
 from copthief_core.peer.turns import FINAL_CAUGHT_HINT
 from copthief_core.shared.config_model import Constitution, PrivateSettings
+from copthief_core.strategy.brains import make_brain
 from copthief_core.wire.turn import TurnMessage
 
 __all__ = ["FINAL_CAUGHT_HINT", "NegotiationError", "PeerSession", "ProtocolViolationError"]
@@ -69,7 +70,12 @@ class PeerSession:
         self.machine = GameStateMachine(
             state=GameState.COMPUTING_MOVE if role == "thief" else GameState.WAITING_FOR_OPPONENT
         )
-        self.policy: Any = SkeletonPolicy(seed=seed)  # duck-typed seam (BrainBase at M3-5)
+        # M3-5 BrainBase seam: moves come from the config-selected brain reading the
+        # belief; the M1 policy remains ONLY as the no-gazetteer hint fallback.
+        self.brain: Any = make_brain(
+            private.police_class if role == "police" else private.thief_class, seed=seed
+        )
+        self.policy: Any = SkeletonPolicy(seed=seed)
         self.records: list[SealedTurn] = []
         self.inbound: list[TurnMessage] = []
         self.game_uid: str | None = None

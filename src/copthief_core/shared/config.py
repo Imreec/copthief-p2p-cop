@@ -14,8 +14,6 @@ import tomllib
 from pathlib import Path
 from typing import Any
 
-from copthief_core.domain.board import Board
-from copthief_core.domain.gazetteer import Gazetteer
 from copthief_core.domain.scoring import ScoringTable
 from copthief_core.shared.appf_guard import AppFTable, validate_constitution
 from copthief_core.shared.config_model import (
@@ -29,6 +27,7 @@ from copthief_core.shared.config_model import (
     RateLimits,
     WorldParams,
 )
+from copthief_core.shared.gazetteer_loader import load_gazetteer as load_gazetteer
 
 _VERSION_FORM = re.compile(r"^\d+\.\d{2}$")
 
@@ -103,7 +102,7 @@ def load_private_settings(path: Path) -> PrivateSettings:
     (JSON overlays TOML on shared keys — the signed file always wins, App B §4)."""
     raw = tomllib.loads(path.read_text(encoding="utf-8"))
     game, network = raw.get("game", {}), raw.get("network", {})
-    belief = raw.get("belief", {})
+    belief, strategy = raw.get("belief", {}), raw.get("strategy", {})
     return PrivateSettings(
         version=_version(raw, path.name),
         group_name=str(game["group_name"]),
@@ -120,6 +119,8 @@ def load_private_settings(path: Path) -> PrivateSettings:
         connect_timeout_seconds=float(network["connect_timeout_seconds"]),
         smell_trust_weight=float(belief["smell_trust_weight"]),
         hint_trust_default=float(belief["hint_trust_default"]),
+        police_class=str(strategy["police_class"]),
+        thief_class=str(strategy["thief_class"]),
     )
 
 
@@ -151,15 +152,6 @@ def load_rate_limits(path: Path, gatekeeper: GatekeeperParams) -> RateLimits:
             f"{path.name}: below the signed gatekeeper minimums: {', '.join(breaches)}"
         )
     return limits
-
-
-def load_gazetteer(path: Path, *, map_area: str, board: Board) -> Gazetteer:
-    """Private landmark payload (M3-4) resolved onto the signed board; a missing file
-    or unknown area yields an EMPTY gazetteer (hint layer falls back, never invents)."""
-    if not path.exists():
-        return Gazetteer.from_payload({}, map_area=map_area, board=board)
-    payload: dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
-    return Gazetteer.from_payload(payload, map_area=map_area, board=board)
 
 
 def load_all(
