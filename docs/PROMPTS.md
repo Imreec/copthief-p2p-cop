@@ -3,7 +3,7 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR — feat/m2-claim-flow (M2 spike, fix batch 3: SQ2)
+## PR #13 — feat/m2-claim-flow (M2 spike, fix batch 3: SQ2)
 
 - **Driver:** Imree (M2 session brief) · **Author:** Claude (terminal) · **Reviewer:**
   Antigravity (cross-model, on the PR). Stacked on the F1/F2 transport PR.
@@ -16,7 +16,7 @@
   outcome-pinned tests moved to probed seed pairs (survival 1/2, capture 3/3). Observed
   live two-process: both endings with mutual audit Verified OK.
 
-## PR — feat/m2-symmetric-transport (M2 spike, fix batch 2: F1–F2)
+## PR #12 — feat/m2-symmetric-transport (M2 spike, fix batch 2: F1–F2)
 
 - **Driver:** Imree (M2 session brief) · **Author:** Claude (terminal) · **Reviewer:**
   Antigravity (cross-model, on the PR). Stacked on PR #11.
