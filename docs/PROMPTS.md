@@ -3,6 +3,19 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #10 — feat/jsonl-logger (M1-8 — phase M1 complete)
+
+- **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
+  (cross-model, on the PR).
+- **This PR:** one RED→GREEN cycle. `shared/jsonl_logger` (append-only canonical-JSON lines,
+  monotonic seq, lossless unicode round-trip), match-runner instrumentation (provenance,
+  negotiate/turn/audit payloads verbatim, per-step state snapshots, derived result),
+  `peer/replay.replay_from_log` (pairs each traveled TurnMessage with its revealed audit
+  record: commit-that-traveled == sealed commit, record re-hashes, revealed hint == traveled
+  hint; moves reconstructed). DoD observed in CI: a logged game replays Verified; a tampered
+  record and a hint divergence are both flagged. CLI gains `run local-match --log PATH`.
+  **Phase M1 (walking skeleton) is complete: M1-1..M1-8 all ☑.**
+
 ## PR #8 — feat/peer-loop (M1-6, fake-transport half)
 
 - **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
