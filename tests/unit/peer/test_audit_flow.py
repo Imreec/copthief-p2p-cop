@@ -48,6 +48,14 @@ def test_step_gap_is_flagged() -> None:
     assert any("continuity" in p for p in problems)
 
 
+def test_wire_result_speaks_the_reference_vocabulary() -> None:
+    from copthief_core.peer.audit_flow import wire_result
+
+    assert wire_result("thief_survival") == "survival"
+    assert wire_result("cop_capture") == "capture"
+    assert wire_result("timeout") == "timeout"
+
+
 def test_reference_step0_spec_record_is_rehashed_not_continuity_checked() -> None:
     # The reference's audit includes a step-0 system_spec record before the game steps
     # (observed in the M2 smoke log: 36 verified records for 35 turns). Continuity

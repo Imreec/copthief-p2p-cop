@@ -139,6 +139,71 @@ def test_turn_arriving_mid_computation_collapses_to_technical_loss() -> None:
     assert police.machine.state is GameState.TECHNICAL_LOSS
 
 
+class _ScriptedPolicy:
+    """Deterministic stand-in: plays a scripted move list, then STAYs."""
+
+    def __init__(self, moves: list[str]) -> None:
+        self._moves = list(moves)
+
+    def pick_move(self, board, position, move_set):  # noqa: ANN001, ANN201 - test stub
+        return self._moves.pop(0) if self._moves else "STAY"
+
+    def next_hint(self, *, hint_max_words: int) -> str:
+        return "scripted"
+
+
+def test_police_move_turn_carries_its_landing_cell_as_capture_claim() -> None:
+    # SQ2 (oracle sha 960499fd): the reference police claims its OWN landing cell on
+    # EVERY moving turn — free, automatic, answered honestly by the thief.
+    police, thief = _pair()
+    _handshake(police, thief)
+    police.machine.state = GameState.COMPUTING_MOVE  # as if the thief's turn arrived
+    police.policy = _ScriptedPolicy(["S"])
+    message = police.take_turn(now=1.0)
+    assert message["capture_claim"] == list(police.position)
+
+
+def test_police_stay_turn_claims_nothing() -> None:
+    police, thief = _pair()
+    _handshake(police, thief)
+    police.machine.state = GameState.COMPUTING_MOVE
+    police.policy = _ScriptedPolicy(["STAY"])
+    assert police.take_turn(now=1.0)["capture_claim"] is None
+
+
+def test_thief_answers_a_missed_claim_honestly_and_plays_on() -> None:
+    police, thief = _pair()
+    _handshake(police, thief)
+    first = thief.take_turn(now=1.0)
+    police.handle_receive_turn(first)
+    police.policy = _ScriptedPolicy(["S"])
+    claim_turn = police.take_turn(now=1.5)
+    assert claim_turn["capture_claim"] is not None
+    thief.handle_receive_turn(claim_turn)
+    reply = thief.take_turn(now=2.0)
+    assert reply["claim_response"] == {"claim": claim_turn["capture_claim"], "caught": False}
+    assert thief.machine.state is GameState.AWAITING_REVEAL  # game continues
+
+
+def test_caught_thief_sends_the_final_message_and_both_games_end_capture() -> None:
+    police, thief = _pair()
+    _handshake(police, thief)
+    first = thief.take_turn(now=1.0)
+    police.handle_receive_turn(first)
+    police.policy = _ScriptedPolicy(["S"])
+    claim_turn = police.take_turn(now=1.5)
+    claim_turn["capture_claim"] = list(thief.position)  # the claim lands on the thief
+    thief.handle_receive_turn(claim_turn)
+    final = thief.take_turn(now=2.0)
+    assert final["claim_response"] == {"claim": list(thief.position), "caught": True}
+    assert final["capture_claim"] is None and final["win_claim"] is None
+    assert thief.machine.state is GameState.GAME_OVER
+    assert thief.outcome == "cop_capture"
+    police.handle_receive_turn(final)
+    assert police.machine.state is GameState.GAME_OVER
+    assert police.outcome == "cop_capture"
+
+
 def test_control_message_is_answered_without_touching_game_state() -> None:
     police, thief = _pair()
     _handshake(police, thief)
