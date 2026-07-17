@@ -3,6 +3,21 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #11 — feat/m2-wire-reference-pins (M2 spike, fix batch 1: F3–F6)
+
+- **Driver:** Imree (M2 session brief: run the oracle spike, fix M1 stubs on branches as
+  findings come in) · **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model,
+  on the PR).
+- **This PR:** M2-1 groundwork first — reference cloned OUTSIDE the repos, pinned at sha
+  `960499fd` (v3.0.0), run keyless (template banter, stub LLM, email disabled) to a clean
+  localhost mutual audit; all observations in `docs/evidence/m2-oracle-spike.md`. Then four
+  RED→GREEN cycles pinning our wire/domain/config to the observed reference: TurnMessage
+  shapes (ISO timestamp, cell capture_claim, dict claim_response/win_claim, explicit-null
+  tolerance, asdict-parity outbound with extras never emitted), AuditPayload result string +
+  reference ControlMessage (kind-keyed), terms `max_steps` ← `survival_threshold`
+  (discriminating test), loader reads `pheromone_min_center_intensity`. Kit conformance
+  re-run per constraint #13. F1/F2 (push/inbox transport + thief-first) are the next branch.
+
 ## PR #10 — feat/jsonl-logger (M1-8 — phase M1 complete)
 
 - **Driver:** Imree ("continue") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
