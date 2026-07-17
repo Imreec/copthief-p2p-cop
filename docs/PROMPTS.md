@@ -3,6 +3,17 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — docs/m2-close (M2-5 GO recorded — phase M2 complete)
+
+- **Driver:** Imree ("I think I'm satisfied, but are you? If you are, then let's
+  continue" — GO conditional on Claude's candid assessment) · **Author:** Claude
+  (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** the assessment ran one extra check before answering: the reference cop
+  placed 7 barriers in g2 and our skeleton ignores opponent barriers (new finding F9) —
+  post-hoc path analysis proved our thief never occupied a barrier cell after placement,
+  so the evidence stands. GO recorded; spike notes closed with §8 (residual gaps F9 /
+  Stage-B / scent-live / series, scoped to M3-3, M7, M3-2, M6-6); TODO M2-5 ticked.
+
 ## PR #14 — feat/m2-negotiate-identity (M2 Stage A: F8/F8b + evidence + ADRs)
 
 - **Driver:** Imree (OI-3 decision = Cloudflare named tunnel on `imreeyal.com`; domain
