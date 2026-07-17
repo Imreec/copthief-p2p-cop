@@ -48,8 +48,10 @@ def test_both_symmetric_loops_finish_with_mutual_audit_ok() -> None:
     assert results["police"].outcome == "thief_survival"
     assert results["thief"].steps == threshold
     assert results["police"].steps == threshold - 1  # ends on the inbound win claim
-    assert results["police"].audit_ok and results["thief"].audit_ok
-    assert results["police"].problems == () and results["thief"].problems == ()
+    assert results["police"].audit_ok
+    assert results["thief"].audit_ok
+    assert results["police"].problems == ()
+    assert results["thief"].problems == ()
     assert results["police"].game_uid == results["thief"].game_uid != ""
     assert results["police"].opponent_claim == "survival"
 

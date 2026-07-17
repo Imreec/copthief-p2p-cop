@@ -20,7 +20,7 @@ class _ScriptedPolicy:
     def __init__(self, moves: list[str]) -> None:
         self._moves = list(moves)
 
-    def pick_move(self, board, position, move_set):  # noqa: ANN001, ANN201 - test stub
+    def pick_move(self, board, position, move_set) -> str:  # noqa: ANN001 - test stub
         return self._moves.pop(0) if self._moves else "STAY"
 
     def next_hint(self, *, hint_max_words: int) -> str:  # noqa: ARG002 - stub ignores cap
@@ -71,7 +71,8 @@ def test_caught_thief_sends_the_final_message_and_both_games_end_capture() -> No
     thief.handle_receive_turn(claim_turn)
     final = thief.take_turn(now=2.0)
     assert final["claim_response"] == {"claim": list(thief.position), "caught": True}
-    assert final["capture_claim"] is None and final["win_claim"] is None
+    assert final["capture_claim"] is None
+    assert final["win_claim"] is None
     assert thief.machine.state is GameState.GAME_OVER
     assert thief.outcome == "cop_capture"
     police.handle_receive_turn(final)

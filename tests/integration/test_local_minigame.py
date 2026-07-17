@@ -32,7 +32,8 @@ def test_capture_ends_the_game_early_with_the_capture_scores() -> None:
     result = run_local_minigame(CONFIG_DIR, police_seed=3, thief_seed=3)
     assert result.outcome == "cop_capture"
     assert result.steps < result.survival_threshold
-    assert result.audit_ok_police_side and result.audit_ok_thief_side
+    assert result.audit_ok_police_side
+    assert result.audit_ok_thief_side
     assert result.police_state is GameState.GAME_OVER
     assert result.thief_state is GameState.GAME_OVER
     from copthief_core.shared.config import load_all

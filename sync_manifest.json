@@ -53,11 +53,11 @@
     "tests/conformance/vectors/commit_reveal.json": "ec6041a54203cde0ef18e4d328ddcdf8322d9898e718829eb32ed460a047dae3",
     "tests/conformance/vectors/game_uid.json": "1e86e0e5763cdf1ef6157651033960dbd7e9e5069265d75f6bce897afee33d49",
     "tests/conformance/vectors/terms_signature.json": "479cf58decb26a8298fcdd7e9286052b674e568cfb1aa667fe1fbd3be21c7b70",
-    "tests/integration/test_local_minigame.py": "1e886f3803b26ce571a2e3a1722ee79afe48a547ba52c9a5b13aa57dce25464b",
+    "tests/integration/test_local_minigame.py": "9375f20aecd3ac7f2e81f3e0ceb93873fd31b5552753de2acfa5baa3e040d65b",
     "tests/integration/test_p2p_live.py": "602bc67c91b94dcc32c703f4008b41a635763b8ed4efb51121d02c3515f8819b",
     "tests/integration/test_referee_minigame.py": "c2063d346b281de933144301e76ab8b845a9ed7b2d0ac08a87bfc13b80003e81",
     "tests/integration/test_replay_from_log.py": "3825378361e1fc13078f53fcbfe6c483497bafd66d81472130d7abb2b4fc91ac",
-    "tests/integration/test_symmetric_loop.py": "babbd65cee91ba86a5bff665481b56c187c0a22b0b93971d5247e26402f243d6",
+    "tests/integration/test_symmetric_loop.py": "e40c2654cf33289c3fbd000abb00f8388f2e6e2b1cb37c0db1ace7671b497457",
     "tests/unit/domain/test_board.py": "66edf4f238671ffc513957acc689d7ec13ad8b5e263e0bfa29625faa2a6927b6",
     "tests/unit/domain/test_crypto.py": "e7bc6d11c27e0b8d5084c315405ca5a22402be00980b274971fc6a404dd15fca",
     "tests/unit/domain/test_rules.py": "c1424fcb4562693d2692613514af9e4ba147a9374f39c39705048559ddcc2818",
@@ -65,7 +65,7 @@
     "tests/unit/domain/test_state_machine.py": "686982f450a13bca02dcb9d0197ff5fdff11f36865dff21a0f6ea03ac8f3be36",
     "tests/unit/domain/test_terms.py": "2fd25374970179c442702fa549f475886fe5da29ec279b740f8e1551be5bcd8c",
     "tests/unit/peer/test_audit_flow.py": "c8ae5068d0a8c99106b5d5313dfb38d691ceb46397c381bc04977bcbd6c7d582",
-    "tests/unit/peer/test_claims.py": "7feb754bbfe701cb61cd4fe97e80f901e4c9eb4a2c05b0523d49092fb94bf4d3",
+    "tests/unit/peer/test_claims.py": "a8aff0bbb750dabc8e738e52feecc105b1311fa7361e86a8b13032f6cc09eecd",
     "tests/unit/peer/test_policy.py": "cd95822cd2df85a5fed29ce6c7a43de03a50f5f9ed075f6e14c4cdffc2d082d4",
     "tests/unit/peer/test_sealing.py": "8879a826c237fc9c77b8965cd4b0466e8e1f1c5fd1658d6363e0b5f36a2f2c24",
     "tests/unit/peer/test_session.py": "9819c800e3d714c105fb0184c90f204630a172e8fdccb451c356e3378644f3c1",
@@ -78,7 +78,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "b33c528",
+  "source_commit": "fe97290",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "1e6a2bc0b9cede657e3067fbb90ab9e2864ba35364836fa0ac75f4450bfd7829"
+  "tree_hash": "802bf562534f57c6bf83c76ac40cb151dae00260f1e44394f5fa3e248d709469"
 }
