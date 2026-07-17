@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #21 — feat/m3-arena (M3-6 — arena harness + champion regression gate)
+
+- **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR) · **E review slot:** parked with
+  Imree per TODO (Eyal reviews M3-6).
+- **This PR:** strict RED→GREEN TDD: `sdk/arena.py` — an sdk CONSUMER
+  (`SimulationSdk.referee_series` is the only game source): seeded round-robin over
+  the baseline roster, per-role standings (wins/points from the signed scoring
+  table), and `champion_regression` — the CLAUDE.md §5 gate, proven in BOTH
+  directions in unit tests (green when the pinned champion tops its role table, red
+  with the dethroning named when it does not / when the pin is unknown).
+  `config/arena_champion.json` pins greedy-manhattan for both roles (the empirical
+  winner on the fixed seed set: police 200 vs 185 points, thief 160 vs 85);
+  integration runs the shipped pin blocking in CI + seeded reproducibility.
+  `scripts/arena_run.py` regenerates the committed standings artifact
+  (`docs/evidence/m3-arena.md`). TODO M3-6 ticked — **phase M3 build complete,
+  M3 exit criteria all observed in CI.**
+
 ## PR #20 — feat/m3-brains (M3-5 — BrainBase seam + baseline brains)
 
 - **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·

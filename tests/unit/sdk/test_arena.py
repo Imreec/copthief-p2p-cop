@@ -37,7 +37,7 @@ def _report() -> ArenaReport:
             _series("random", "random", [SURVIVAL, SURVIVAL, SURVIVAL]),
             _series("random", "greedy", [SURVIVAL, SURVIVAL, SURVIVAL]),
         ],
-        scores={k: v for k, v in SCORING.items()},
+        scores=dict(SCORING),
     )
 
 
@@ -61,16 +61,13 @@ def test_standings_sort_best_first_within_each_role() -> None:
 
 
 def test_champion_gate_green_when_the_champion_tops_its_role() -> None:
-    problems = champion_regression(
-        _report(), {"police": "greedy", "thief": "random"}
-    )
+    # greedy tops both role tables in this synthetic report (police 75, thief 55).
+    problems = champion_regression(_report(), {"police": "greedy", "thief": "greedy"})
     assert problems == []
 
 
 def test_champion_gate_red_when_a_pinned_champion_lost_its_role() -> None:
-    problems = champion_regression(
-        _report(), {"police": "random", "thief": "random"}
-    )
+    problems = champion_regression(_report(), {"police": "random", "thief": "random"})
     assert problems  # the gate names the dethroning
     assert any("police" in p and "greedy" in p for p in problems)
 
