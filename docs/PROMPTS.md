@@ -3,7 +3,7 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR — feat/m2-negotiate-identity (M2 Stage A: F8/F8b + evidence + ADRs)
+## PR #14 — feat/m2-negotiate-identity (M2 Stage A: F8/F8b + evidence + ADRs)
 
 - **Driver:** Imree (OI-3 decision = Cloudflare named tunnel on `imreeyal.com`; domain
   purchase + `cloudflared tunnel login`; the Stage-A word) · **Author:** Claude
