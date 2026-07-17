@@ -163,7 +163,52 @@ a domain zone (named tunnels ride your domain's DNS; a cheap/existing domain wor
 session). One-line ADR lands in `docs/adr/0006-deploy-tunnel.md` at M2-4 once decided +
 observed.
 
-## 6. Remaining for the gate
+## 6. Stage A — vs the LIVE reference over public tunnels (observed 2026-07-18)
+
+**Infrastructure (M2-1 DoD):** OI-3 decided = Cloudflare named tunnel (ADR-0006). Domain
+`imreeyal.com` (Cloudflare Registrar), tunnel `copthief` (`a6663e0c…`), hostnames
+`cop.imreeyal.com`→8802 / `thief.imreeyal.com`→8801. Reachability observed both
+directions through the public edge.
+
+- **F-421 (infrastructure finding, kit-worthy):** the MCP streamable-HTTP server's
+  DNS-rebinding protection returns **421 Misdirected Request** to any tunneled request
+  (Host = public hostname ≠ bind address). Both our peer AND the reference failed
+  identically on first contact. Fix: `originRequest.httpHostHeader` rewrite in the
+  tunnel config — no code change, reference untouched. Any team fronting a fastmcp peer
+  with a tunnel will hit this → goes into the kit's deployment notes (M7-2).
+
+**Games (M2-2 DoD, all keyless, 0 tokens, stub LLM + template banter both sides):**
+
+| # | pairing | result | our audit of theirs | their audit of ours | log |
+|---|---|---|---|---|---|
+| g1 | our cop vs ref thief | survival (34/35 steps) | Verified OK (36/36 recs) | passed 34/34 | `m2-stageA-g1-…jsonl` |
+| g2 | our thief vs ref cop | survival (35 steps) | Verified OK | passed 35/35 | `m2-stageA-g2-…jsonl` |
+| g3 | g1 rerun, F8 fix | survival, audit OK | Verified OK | (ref crashed writing artifacts — F8b) | `m2-stageA-g3-…jsonl` |
+| g4 | g1 rerun, F8b fix | survival (34/35), audit OK | Verified OK | passed 34/34 | `m2-stageA-g4-…jsonl` |
+
+**g4 closed the loop:** both sides independently derived the SAME
+`game_uid` (`f757f50d-d4f4-17e7-06cf-755905739b16`), the reference filed us as
+`imreeyal` (artifacts `imreeyal-vs-segal-thief-team_*`), and its declaration carries our
+full group block — the cross-implementation shared-uid property holds.
+
+g2 also proved the SQ2 flow live: our thief honestly answered the reference cop's
+per-move capture claims for 35 straight turns and closed with the survival win claim.
+
+- **F8 (observed in g1/g2):** our negotiate message carried no `identity` dict → the
+  reference filed us as `unknown-group` (artifacts named `…-vs-unknown-group`) and the
+  two sides derived DIFFERENT `game_uid`s (`e8424ee7…` vs `6647b0af…`). Nothing gates on
+  it mid-game — audits still Verified OK — but the shared-uid property and the
+  declaration data were broken. Fix: mirror the reference's exact negotiate shape
+  `{terms, nonce, signature, identity}`; read opponent group from `identity.group_id`
+  (default "unknown-group", mirroring theirs).
+- **F8b (observed in g3):** the reference's declaration writer (`group_block`)
+  KeyErrors unless the identity carries ALL seven keys
+  (`group_id, group_name, members, repos, mcp_servers, llm_model, spec`) — its game and
+  audit completed, then its process died writing artifacts. Fix: full seven-key identity
+  from `game.toml [game]` (spec `{}` until shared/sysinfo, M6-3 — its fields are
+  .get()-safe in their writer).
+
+## 7. Remaining for the gate
 
 - [ ] Stage A: both OUR peers public via tunnels, vs the reference over public URLs —
   needs Imree: tunnel account + credentials + the word. (Caveat for the record:
@@ -187,9 +232,13 @@ observed.
   "audit_ok_thief_side": true, "scores": [20, 5]}` (seeds 3/3) and the survival ending
   (seeds 1/2) — both with mutual audit Verified OK. The skeleton now speaks the full
   reference protocol shape end-to-end (scent grids still empty until M3-2).
-- [ ] M2-2 both role pairings vs the reference, mutual audit Verified OK both directions,
-  JSONL logs committed as evidence.
-- [ ] SQ1-SQ3 live confirmation during those games (this file updated).
-- [ ] Stage B: sparring VPS (OI-4) — needs Imree: VPS account + SSH handover.
-- [ ] M2-4: ADR-0003 (crypto-early) + ADR-0006 (deploy split + tunnel choice).
+- [x] M2-2 both role pairings vs the reference, mutual audit Verified OK both
+  directions (§6); JSONL logs committed beside this file.
+- [x] SQ1-SQ3 confirmed against the running reference (SQ2 exercised for 35 straight
+  claims in g2; SQ3's absent smell grid observed in every exchanged log).
+- [x] M2-4: ADR-0003 (crypto-early, spike-validated) + ADR-0006 (deploy + tunnel,
+  incl. the 421/Host-rewrite requirement).
+- [ ] F8/F8b fix PR merged + synced (branch `feat/m2-negotiate-identity`).
+- [ ] Stage B: sparring VPS (OI-4) — needs Imree: VPS account + SSH handover. Stage A
+  suffices for the GO/NO-GO if logistics lag.
 - [ ] M2-5: GO/NO-GO with Imree.

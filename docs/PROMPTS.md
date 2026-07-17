@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #14 — feat/m2-negotiate-identity (M2 Stage A: F8/F8b + evidence + ADRs)
+
+- **Driver:** Imree (OI-3 decision = Cloudflare named tunnel on `imreeyal.com`; domain
+  purchase + `cloudflared tunnel login`; the Stage-A word) · **Author:** Claude
+  (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** Stage A executed vs the LIVE reference over public tunnels. Findings
+  fixed in two RED→GREEN cycles: F8 (negotiate must mirror the reference's
+  `{terms, nonce, signature, identity}` shape — observed as `unknown-group` +
+  diverging game_uids) and F8b (the reference's declaration writer requires all seven
+  identity keys — observed as its post-game crash). Infrastructure finding F-421
+  (MCP DNS-rebinding protection vs tunnels → `originRequest.httpHostHeader` rewrite)
+  fixed in tunnel config, documented in ADR-0006. Evidence: four JSONL game logs
+  (both role pairings + fix-verification reruns; final run derived the SAME game_uid
+  on both implementations, mutual audits Verified OK). ADR-0003 + ADR-0006 written;
+  spike notes §6; TODO M2-1..M2-4 ticked. M2-5 GO/NO-GO remains with Imree.
+
 ## PR #13 — feat/m2-claim-flow (M2 spike, fix batch 3: SQ2)
 
 - **Driver:** Imree (M2 session brief) · **Author:** Claude (terminal) · **Reviewer:**
