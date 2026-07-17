@@ -3,6 +3,27 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #18 — feat/m3-belief (M3-3 — exact Bayes filter + F9 closure)
+
+- **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR) · **E review slot:** parked with
+  Imree per TODO (Eyal reviews M3-3).
+- **This PR:** strict RED→GREEN TDD: `domain/belief.BeliefFilter` (signed-start delta
+  prior; barrier-aware uniform-legal predict; scent likelihood reading each received
+  cell's implied age under the subtractive model and spreading its voucher over the
+  Manhattan age-ball; hint seam; never-eliminate floor; degenerate-collapse guard).
+  **F9 closed:** inbound `barrier_placed` now enters the session board (our own move
+  legality) AND the belief motion model — regression tests pin the g2 scenario and
+  fail on the M2-era behavior. `LastKnownTracker` baseline under the certain-evidence
+  reading (SQ3: grids are fakeable, so the naive tracker never reads them).
+  Referee-mode eval harness (`strategy/belief_eval`): filter beats baseline on the
+  primary metric on EVERY seed (mean 0.73 vs 0.94; argmax-hit 0.98 vs 0.06);
+  `scripts/belief_eval.py` regenerates the committed evidence table
+  (`docs/evidence/m3-belief-eval.md`); CI asserts the same claim. One likelihood
+  iteration was needed mid-build: the first (flat voucher) model lost to the baseline
+  on 2 of 10 seeds — the ball-spread reading fixed it; both are in the history.
+  `[belief]` private tuning keys added to game.toml. TODO M3-3 ticked.
+
 ## PR #17 — feat/m3-scent (M3-2 — domain/scent per the approved PRD_scent)
 
 - **Driver:** Imree (overnight M3 build directive: stacked chain M3-2→M3-6, merge

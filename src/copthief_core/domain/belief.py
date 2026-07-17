@@ -73,8 +73,10 @@ class BeliefFilter:
     def update_scent(self, grid: dict[str, float]) -> None:
         """§2.3: each received cell implies an age under the subtractive model (every
         missing `decay` of intensity ≈ one turn older), so it vouches for the opponent
-        being within that many moves of it — the sharper the fresher. Multiplies
-        `1 + smell_trust * strongest_voucher(cell)`; never eliminates (floor 1)."""
+        being within that many moves of it. The voucher's weight spreads over its
+        Manhattan age-ball (`value / ball_size`) — a fresh center is a sharp spike,
+        aged scent a wide whisper. Multiplies `1 + smell_trust * strongest_voucher`;
+        never eliminates (floor 1)."""
         if self._smell_trust <= 0.0 or not grid:
             return
         vouchers = []
@@ -83,14 +85,15 @@ class BeliefFilter:
                 continue
             row, col = (int(part) for part in key.split(","))
             age = max(0, round((self._fresh - value) / self._decay)) if self._decay else 0
-            vouchers.append(((row, col), value, age))
+            ball_size = 2 * age * age + 2 * age + 1  # Manhattan ball, boundary-blind
+            vouchers.append(((row, col), value / ball_size, age))
         if not vouchers:
             return
         for cell in self._probs:
             score = max(
                 (
-                    v
-                    for (src, v, age) in vouchers
+                    weight
+                    for (src, weight, age) in vouchers
                     if abs(cell[0] - src[0]) + abs(cell[1] - src[1]) <= age
                 ),
                 default=0.0,
