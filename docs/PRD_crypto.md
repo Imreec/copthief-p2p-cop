@@ -90,8 +90,8 @@ from `game.json` — the kit vectors use the **reference's key names**, which di
 | `smell_grid_size` | `pheromones.pheromone_grid_size` |
 | `decay_per_step` | `pheromones.pheromone_decay` |
 | `emit_intensity` | `pheromones.pheromone_center_intensity` |
-| `min_center_intensity` | *reference-only param; kit-pinned default 0.5 (not in App B/App F — see §8.2)* |
-| `max_steps` | `movement_and_barriers.max_moves` |
+| `min_center_intensity` | `pheromones.pheromone_min_center_intensity` *(reference schema 1.3; App F default 0.5 when absent — see §8.2)* |
+| `max_steps` | `movement_and_barriers.survival_threshold` *(M2 F3: NOT `max_moves` — see §8.3)* |
 | `barriers_max` | `movement_and_barriers.max_barriers` |
 | `setting` | `world.map_area` |
 | `hint_max_words` | `world.hint_max_words` |
@@ -129,15 +129,16 @@ different matches can never mix.
 
 1. **Commit-form contradiction** — resolved by kit adoption (§3); named in the README
    contradiction narrative at M8.
-2. **`min_center_intensity`** — appears in the kit's pinned terms (default 0.5) but in neither
-   App B's listing nor App F's table; it is the reference's emission gate (kit §5). Carried in
-   our terms for byte-compatibility; its App F status is treated as *negotiable with default
-   0.5*. Flagged for the M2 spike notes.
-3. **Terms extraction key set vs the running reference** — the kit pins constructions given a
-   terms dict; the exact extraction is the reference's `terms_from_config`. §5's mapping is our
-   M1 pin; **M2 verifies it byte-for-byte against the live reference peer** (added to the M2-2
-   verification list; a mismatch there fails the negotiate gate visibly, which is exactly what
-   the spike exists to catch).
+2. **`min_center_intensity`** — RESOLVED at the M2 spike (oracle sha 960499fd): the
+   reference's shipped `game.json` (schema 1.3) carries it as the signed shared key
+   `pheromones.pheromone_min_center_intensity` (0.5) — not a reference-code-only param as
+   first assumed. Our loader reads that exact key, App F status *negotiable with default
+   0.5* when absent. (Spike notes §2 F4.)
+3. **Terms extraction key set vs the running reference** — source-pinned at the M2 spike:
+   the mapping matched except `max_steps`, which the reference reads from
+   `movement_and_barriers.survival_threshold`, NOT `max_moves` (value-hidden while the two
+   coincide at 35 — fixed as finding F3, discriminating test added). Final byte-verification
+   happens live at M2-2 via the negotiate gate (a mismatch fails loudly there).
 
 ## 9. Test plan (TDD; DoD of M1-3)
 
