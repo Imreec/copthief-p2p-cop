@@ -12,9 +12,7 @@ from copthief_core.peer.match import run_local_minigame
 from copthief_core.shared.config import load_all
 
 CONSTITUTION, _PRIVATE, _LIMITS = load_all(Path("config"), counted=False)
-FRESH_CENTER = round(
-    CONSTITUTION.pheromones.center_intensity - CONSTITUTION.pheromones.decay, 3
-)
+FRESH_CENTER = round(CONSTITUTION.pheromones.center_intensity - CONSTITUTION.pheromones.decay, 3)
 
 
 def _turn_messages(log_path: Path) -> list[dict]:
@@ -49,8 +47,7 @@ def test_first_transmitted_grid_matches_the_locked_numeric_example(tmp_path: Pat
     half = CONSTITUTION.pheromones.grid_size // 2
     falloff = intensity / (half + 1)
     ring_values = {
-        ring: round(round(max(0.0, intensity - falloff * ring), 3) - decay, 3)
-        for ring in (1, 2)
+        ring: round(round(max(0.0, intensity - falloff * ring), 3) - decay, 3) for ring in (1, 2)
     }
     board = CONSTITUTION.board
     for ring, expected in ring_values.items():

@@ -115,9 +115,7 @@ class ScentField:
 
     def snapshot(self) -> dict[str, float]:
         """The wire form (kit §5): strictly-positive cells only, `"r,c"` string keys."""
-        return {
-            f"{cell[0]},{cell[1]}": value for cell, value in self._cells.items() if value > 0.0
-        }
+        return {f"{cell[0]},{cell[1]}": value for cell, value in self._cells.items() if value > 0.0}
 
     def cells(self) -> dict[Coord, float]:
         """Every known cell (including decayed-to-zero ones) — belief/test read surface."""

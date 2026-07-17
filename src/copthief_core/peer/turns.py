@@ -36,9 +36,7 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
             session.board, session.position, session.constitution.movement.move_set
         )
         session.position = session.board.apply_move(session.position, move)
-        hint = session.policy.next_hint(
-            hint_max_words=session.constitution.world.hint_max_words
-        )
+        hint = session.policy.next_hint(hint_max_words=session.constitution.world.hint_max_words)
     step = len(session.records) + 1
     sealed = seal_turn(
         step=step,

@@ -19,9 +19,7 @@ CONSTITUTION, PRIVATE, _LIMITS = load_all(Path("config"), counted=False)
 
 # The PRD_scent §2 consequence for the shipped config: a just-laid center transmits
 # at center_intensity - decay (values restated here as expectations only).
-FRESH_CENTER = round(
-    CONSTITUTION.pheromones.center_intensity - CONSTITUTION.pheromones.decay, 3
-)
+FRESH_CENTER = round(CONSTITUTION.pheromones.center_intensity - CONSTITUTION.pheromones.decay, 3)
 
 
 def _pair() -> tuple[PeerSession, PeerSession]:
@@ -65,9 +63,7 @@ def test_older_trail_decays_beneath_the_fresh_center() -> None:
     first_center = _fresh_centers(first["smell_grid"])[0]
     # Two decays later the first center reads center - 3*decay (unless re-covered by
     # the newer deposit's stronger ring — max-merge keeps whichever is higher).
-    aged = round(
-        CONSTITUTION.pheromones.center_intensity - 3 * CONSTITUTION.pheromones.decay, 3
-    )
+    aged = round(CONSTITUTION.pheromones.center_intensity - 3 * CONSTITUTION.pheromones.decay, 3)
     assert second["smell_grid"][first_center] >= aged
 
 
