@@ -53,8 +53,10 @@ def check_optional_claim_response(raw: dict[str, Any], key: str) -> str | None:
     value = raw.get(key)
     if value is None:
         return None
-    if isinstance(value, dict) and _is_cell(value.get("claim")) and isinstance(
-        value.get("caught"), bool
+    if (
+        isinstance(value, dict)
+        and _is_cell(value.get("claim"))
+        and isinstance(value.get("caught"), bool)
     ):
         return None
     return f'{key}: must be {{"claim": [r, c], "caught": bool}} when present, got {value!r}'

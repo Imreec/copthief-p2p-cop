@@ -18,9 +18,7 @@ from copthief_core.wire.validation import WireValidationError, check_hex64, chec
 _NONCE_FORM = re.compile(r"^[0-9a-f]+$")
 _CONTROL_KINDS = frozenset({"enable", "status", "restart", "quit"})
 _AUDIT_KEYS = frozenset({"sender", "records", "result_claim"})
-_CONTROL_KEYS = frozenset(
-    {"kind", "sender", "sub_game_number", "status", "step_budget", "payload"}
-)
+_CONTROL_KEYS = frozenset({"kind", "sender", "sub_game_number", "status", "step_budget", "payload"})
 
 
 @dataclass(frozen=True)
