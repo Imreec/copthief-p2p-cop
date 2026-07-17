@@ -18,6 +18,34 @@ from copthief_core.domain.board import Coord
 _ROUND_DIGITS = 3
 
 
+def locked_model_document(
+    *, center_intensity: float, decay: float, grid_size: int, min_center_intensity: float
+) -> dict[str, object]:
+    """The handshake artifact (PRD_scent §4): formula name + params + numeric example.
+
+    Both peers hash this with the standard canonical form and exchange it at handshake,
+    so a scent-model dispute is diagnosable to a hash. The example is per-ring: what a
+    fresh deposit stores, and what it transmits after the one SQ1 decay.
+    """
+    half = grid_size // 2
+    falloff = center_intensity / (half + 1)
+    deposited = [
+        round(max(0.0, center_intensity - falloff * ring), _ROUND_DIGITS)
+        for ring in range(half + 1)
+    ]
+    transmitted = [round(max(0.0, value - decay), _ROUND_DIGITS) for value in deposited]
+    return {
+        "formula": "subtractive_chebyshev_v1",
+        "params": {
+            "pheromone_center_intensity": center_intensity,
+            "pheromone_decay": decay,
+            "pheromone_grid_size": grid_size,
+            "pheromone_min_center_intensity": min_center_intensity,
+        },
+        "example": {"deposited_by_ring": deposited, "transmitted_by_ring": transmitted},
+    }
+
+
 class ScentEmissionError(ValueError):
     """A deposit below the signed `pheromone_min_center_intensity` gate (hard error)."""
 
