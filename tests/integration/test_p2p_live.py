@@ -21,4 +21,5 @@ def test_one_command_two_process_localhost_match_self_audits_clean() -> None:
     assert result.outcome == "thief_survival"
     assert result.audit_ok_police_side
     assert result.audit_ok_thief_side
-    assert result.steps == sdk.constitution.movement.survival_threshold
+    # Police-side step count: it ends on the thief's inbound survival turn (M2 F2).
+    assert result.steps == sdk.constitution.movement.survival_threshold - 1

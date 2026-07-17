@@ -60,9 +60,7 @@ def test_silent_opponent_times_out_to_technical_loss_without_audit() -> None:
     police_t, thief_t = queue_pair(wait_timeout=0.05)
     # Thief only negotiates, then goes silent: police must not wait forever.
     thief_t.exchange_agreement(thief.negotiate_payload())
-    result = run_peer_game(
-        police, police_t, turn_timeout=0.1, poll_interval=0.02
-    )
+    result = run_peer_game(police, police_t, turn_timeout=0.1, poll_interval=0.02)
     assert result.outcome == "timeout"
     assert police.machine.state is GameState.TECHNICAL_LOSS
     assert not result.audit_ok
