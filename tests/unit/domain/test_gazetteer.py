@@ -24,9 +24,7 @@ PAYLOAD = {
 
 
 def make_gazetteer(grid_size: int = 7, origin: int = 0) -> Gazetteer:
-    board = Board(
-        grid_size=grid_size, axis_origin_corner="top-left", axis_start_index=origin
-    )
+    board = Board(grid_size=grid_size, axis_origin_corner="top-left", axis_start_index=origin)
     return Gazetteer.from_payload(PAYLOAD, map_area="Testville", board=board)
 
 

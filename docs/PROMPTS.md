@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #19 — feat/m3-hints (M3-4 — gazetteer + hint templates + injection safety)
+
+- **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** strict RED→GREEN TDD: `domain/gazetteer.py` (fractional anchors →
+  Chebyshev cell balls on the signed grid; CLOSED-vocabulary parser — longest
+  case-insensitive match within the signed word cap, total on any input; empty world
+  for unknown map_areas), `config/gazetteer.json` (10 New-York landmarks, private,
+  never wired), `strategy/hints.py` (template bank × landmark; reference verdict
+  vocabulary truth/lie source-pinned from its constants; lie MECHANISM only — timing
+  is M5), session wiring (outbound hints composed truthful with the verdict sealed
+  as the record's intent; inbound hints reach ONLY the parser and feed
+  `belief.update_hint`). Injection-safety suite over a hostile corpus (prompt
+  injection, size bombs, RTL, JSON lookalikes, near-miss bait) proves: never raises,
+  never leaves the closed vocabulary, game stays playable. M3 exit pin: our hints
+  round-trip our own parser. TODO M3-4 ticked.
+
 ## PR #18 — feat/m3-belief (M3-3 — exact Bayes filter + F9 closure)
 
 - **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·

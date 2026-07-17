@@ -14,6 +14,8 @@ import tomllib
 from pathlib import Path
 from typing import Any
 
+from copthief_core.domain.board import Board
+from copthief_core.domain.gazetteer import Gazetteer
 from copthief_core.domain.scoring import ScoringTable
 from copthief_core.shared.appf_guard import AppFTable, validate_constitution
 from copthief_core.shared.config_model import (
@@ -149,6 +151,15 @@ def load_rate_limits(path: Path, gatekeeper: GatekeeperParams) -> RateLimits:
             f"{path.name}: below the signed gatekeeper minimums: {', '.join(breaches)}"
         )
     return limits
+
+
+def load_gazetteer(path: Path, *, map_area: str, board: Board) -> Gazetteer:
+    """Private landmark payload (M3-4) resolved onto the signed board; a missing file
+    or unknown area yields an EMPTY gazetteer (hint layer falls back, never invents)."""
+    if not path.exists():
+        return Gazetteer.from_payload({}, map_area=map_area, board=board)
+    payload: dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
+    return Gazetteer.from_payload(payload, map_area=map_area, board=board)
 
 
 def load_all(

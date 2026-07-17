@@ -17,7 +17,7 @@ from pathlib import Path
 from copthief_core.peer.match import MatchResult, run_local_minigame
 from copthief_core.peer.p2p import PeerGameResult, run_peer_game
 from copthief_core.peer.session import PeerSession
-from copthief_core.shared.config import load_all
+from copthief_core.shared.config import load_all, load_gazetteer
 from copthief_core.shared.jsonl_logger import JsonlEventLogger
 
 
@@ -75,7 +75,14 @@ class SimulationSdk:
             connect_timeout=self.private.connect_timeout_seconds,
             retry_interval=self.private.poll_interval_seconds,
         )
-        session = PeerSession(self.constitution, self.private, role=role, seed=seed)
+        gazetteer = load_gazetteer(
+            self.config_dir / "gazetteer.json",
+            map_area=self.constitution.world.map_area,
+            board=self.constitution.board.make_board(),
+        )
+        session = PeerSession(
+            self.constitution, self.private, role=role, seed=seed, gazetteer=gazetteer
+        )
         log = JsonlEventLogger(log_path).log if log_path is not None else None
         return run_peer_game(
             session,

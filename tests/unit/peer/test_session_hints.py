@@ -38,9 +38,7 @@ HOSTILE_HINTS = [
 
 
 def _pair() -> tuple[PeerSession, PeerSession]:
-    police = PeerSession(
-        CONSTITUTION, PRIVATE, role="police", seed=1, gazetteer=GAZETTEER
-    )
+    police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=1, gazetteer=GAZETTEER)
     thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=2, gazetteer=GAZETTEER)
     thief.handle_negotiate(police.negotiate_payload())
     police.handle_negotiate(thief.negotiate_payload())
