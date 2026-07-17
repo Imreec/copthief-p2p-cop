@@ -180,6 +180,13 @@ observed.
   Debug find for the record: FastMCP INFO access logs once filled the spawned peer's
   stdout pipe and froze it mid-game — server runs at log_level warning now (the
   reference does the same).
+- [x] SQ2 claim flow implemented — `feat/m2-claim-flow` (stacked): police claims its
+  landing cell on every moving turn; thief answers honestly; caught thief sends the
+  mandatory final message; capture pays the capture row. Observed live two-process
+  2026-07-17: `{"outcome": "cop_capture", "steps": 3, ..., "audit_ok_police_side": true,
+  "audit_ok_thief_side": true, "scores": [20, 5]}` (seeds 3/3) and the survival ending
+  (seeds 1/2) — both with mutual audit Verified OK. The skeleton now speaks the full
+  reference protocol shape end-to-end (scent grids still empty until M3-2).
 - [ ] M2-2 both role pairings vs the reference, mutual audit Verified OK both directions,
   JSONL logs committed as evidence.
 - [ ] SQ1-SQ3 live confirmation during those games (this file updated).

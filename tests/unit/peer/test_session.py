@@ -12,8 +12,10 @@ CONSTITUTION, PRIVATE, _LIMITS = load_all(Path("config"), counted=False)
 
 
 def _pair() -> tuple[PeerSession, PeerSession]:
-    police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=11)
-    thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=22)
+    # Seeds (1, 2) walk the full game without a claim landing (probed) — the survival
+    # tests need that; claim tests script their own policies/claims explicitly.
+    police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=1)
+    thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=2)
     return police, thief
 
 

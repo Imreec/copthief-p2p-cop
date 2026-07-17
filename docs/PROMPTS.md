@@ -3,7 +3,20 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR — feat/m2-symmetric-transport (M2 spike, fix batch 2: F1–F2)
+## PR #13 — feat/m2-claim-flow (M2 spike, fix batch 3: SQ2)
+
+- **Driver:** Imree (M2 session brief) · **Author:** Claude (terminal) · **Reviewer:**
+  Antigravity (cross-model, on the PR). Stacked on the F1/F2 transport PR.
+- **This PR:** one RED→GREEN cycle implementing the observed SQ2 semantics: the police
+  claims its landing cell on every moving turn; the thief answers honestly on its next
+  turn; a caught thief sends the mandatory final message and both games end capture
+  (wire "capture", capture score row via `scoring.scores_for`). Handshake extracted to
+  `peer/handshake.py` (the reference's own split) to hold the 150-line rule. Real find:
+  with claims live, the M1 default seeds (11/22) actually produce a mid-game capture —
+  outcome-pinned tests moved to probed seed pairs (survival 1/2, capture 3/3). Observed
+  live two-process: both endings with mutual audit Verified OK.
+
+## PR #12 — feat/m2-symmetric-transport (M2 spike, fix batch 2: F1–F2)
 
 - **Driver:** Imree (M2 session brief) · **Author:** Claude (terminal) · **Reviewer:**
   Antigravity (cross-model, on the PR). Stacked on PR #11.

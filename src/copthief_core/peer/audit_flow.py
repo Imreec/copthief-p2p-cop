@@ -15,7 +15,7 @@ from copthief_core.peer.sealing import SealedTurn
 from copthief_core.wire.audit import AuditPayload
 
 # Internal outcome -> the reference's wire result vocabulary (spike notes §2 F5).
-_WIRE_RESULTS = {"thief_survival": "survival"}
+_WIRE_RESULTS = {"thief_survival": "survival", "cop_capture": "capture"}
 
 
 def wire_result(result: str) -> str:

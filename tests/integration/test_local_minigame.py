@@ -15,7 +15,7 @@ CONFIG_DIR = Path("config")
 
 
 def test_full_minigame_over_queue_transports_self_audits_clean() -> None:
-    result = run_local_minigame(CONFIG_DIR, police_seed=11, thief_seed=22)
+    result = run_local_minigame(CONFIG_DIR, police_seed=1, thief_seed=2)  # probed: survival
     assert result.outcome == "thief_survival"
     assert result.audit_ok_police_side
     assert result.audit_ok_thief_side
@@ -24,6 +24,22 @@ def test_full_minigame_over_queue_transports_self_audits_clean() -> None:
     assert result.police_state is GameState.GAME_OVER
     assert result.thief_state is GameState.GAME_OVER
     assert result.scores == (result.survival_cop_points, result.survival_thief_points)
+
+
+def test_capture_ends_the_game_early_with_the_capture_scores() -> None:
+    # SQ2 flow end-to-end: seeds (3, 3) collide at step 4 (probed) — the police's
+    # landing-cell claim is answered caught=true, both sides audit clean, capture row pays.
+    result = run_local_minigame(CONFIG_DIR, police_seed=3, thief_seed=3)
+    assert result.outcome == "cop_capture"
+    assert result.steps < result.survival_threshold
+    assert result.audit_ok_police_side
+    assert result.audit_ok_thief_side
+    assert result.police_state is GameState.GAME_OVER
+    assert result.thief_state is GameState.GAME_OVER
+    from copthief_core.shared.config import load_all
+
+    scoring = load_all(CONFIG_DIR, counted=False)[0].scoring
+    assert result.scores == (scoring.capture_cop, scoring.capture_thief)
 
 
 def test_minigame_is_reproducible_for_fixed_seeds() -> None:

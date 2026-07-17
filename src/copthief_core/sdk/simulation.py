@@ -131,15 +131,15 @@ class SimulationSdk:
                 thief_ok = bool(json.loads(thief_out.strip().splitlines()[-1]).get("audit_ok"))
             except (subprocess.TimeoutExpired, ValueError, IndexError):
                 pass  # thief verdict unavailable; reported as False, never guessed
-            scoring = self.constitution.scoring
-            survived = police_result.outcome == "thief_survival"
+            from copthief_core.domain.scoring import scores_for
+
             return P2PMatchResult(
                 outcome=police_result.outcome,
                 steps=police_result.steps,
                 game_uid=police_result.game_uid,
                 audit_ok_police_side=police_result.audit_ok,
                 audit_ok_thief_side=thief_ok,
-                scores=(scoring.survival_cop, scoring.survival_thief) if survived else (0, 0),
+                scores=scores_for(police_result.outcome, self.constitution.scoring),
             )
         finally:
             if thief.poll() is None:
