@@ -105,7 +105,8 @@ def test_referee_observations_carry_the_signed_clock() -> None:
         seed=1,
     )
     movement = CONSTITUTION.movement
-    assert police.seen and thief.seen
+    assert police.seen
+    assert thief.seen
     for seen in (*police.seen, *thief.seen):
         assert seen.survival_threshold == movement.survival_threshold
         assert seen.max_moves == movement.max_moves
