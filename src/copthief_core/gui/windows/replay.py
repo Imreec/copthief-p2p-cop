@@ -65,9 +65,7 @@ class ReplayWindow:
                         self._canvas.create_text(
                             x + cell // 2, y + cell // 2, text=sender[0].upper()
                         )
-        self._status.configure(
-            text=f"step {frame.step} ({self._walk.index + 1}/{len(self._walk)})"
-        )
+        self._status.configure(text=f"step {frame.step} ({self._walk.index + 1}/{len(self._walk)})")
 
 
 def show_replay(log_path: Path, constitution: Constitution, settings: GuiSettings) -> None:

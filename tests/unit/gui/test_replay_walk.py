@@ -32,9 +32,7 @@ def test_walk_builds_verified_frames_from_a_real_log(real_log: Path) -> None:
     assert len(walk) > 0
     events = read_events(real_log)
     records = {
-        e["payload"]["sender"]: e["payload"]["records"]
-        for e in events
-        if e["event"] == "audit"
+        e["payload"]["sender"]: e["payload"]["records"] for e in events if e["event"] == "audit"
     }
     last = walk.frame(len(walk) - 1)
     for role in ("police", "thief"):
