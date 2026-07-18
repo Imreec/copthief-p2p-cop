@@ -3,6 +3,46 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #32 — feat/m5-2-police-brain (M5-2 — PoliceBrain, the graded core ⚑)
+
+- **Driver:** Imree ("merge them, then continue" after approving the M5-1 PRD pair) ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR (stacked on #31):** `copthief_police` role package (never mirrored) —
+  capture-commit (≥ `p_commit` adjacent mass → step onto it; the claim rides free,
+  SQ2) · expectimax over the truncated belief (expectation over position, adversarial
+  min over the thief's replies, max over ours; earlier capture pays more) · barrier
+  graph-surgery (belief-weighted capped-BFS region shrink + trapped mass; only cuts
+  ≥ threshold spend quota) · every knob config-owned (`features.DEFAULT_OPTIONS` data
+  table, AppFTable pattern, overridden by `[strategy.police]`/arena `brain_options` —
+  the M5-4 GA interface). Behavior pins authored before the implementation (pocket-seal,
+  commit, quota, determinism, option-governs-policy); guards: App-E-25 AST scan,
+  legality property, config perf ceiling. **DoD observed and CI-blocking: 24/32 = 75%
+  vs `ref-thief` (floor 60%)** — `dod_series` in arena.json runs as a permanent test;
+  `m5-arena.md` regenerated. Champion pin: `police-brain` dethrones `ref-police`
+  (390 > 330), same-PR evidence. game.toml now selects the brain by dotted spec; five
+  mirrored tests updated role-blind (config-resolved pins, not name pins). TODO M5-2
+  ticked in the same change.
+
+## PR #31 — feat/m5-2-core-seam (M5-2 — role-neutral core groundwork)
+
+- **Driver:** Imree (same directive) · **Author:** Claude (terminal) · **Reviewer:**
+  Antigravity (cross-model, on the PR).
+- **This PR:** strict RED→GREEN per cluster (4 pairs): Decision seam (`strategy/
+  decision.py` + `BrainBase.decide/_decide`; barrier turn keeps position — reference
+  MoveType.BARRIER semantics; baselines byte-identical through the new path) ·
+  re-derived `ref-police`/`ref-thief` arena opponents (ADR-0002 interface-mirror
+  @960499fd; perception held fixed on our BeliefFilter per PRD §2; attributed 0.15
+  coin-flip rate config-owned) · seeded start-scenario suite (canonical-first;
+  deterministic brains get meaningful win-rates) · referee applies full Decisions
+  (barrier joins ground truth + BOTH beliefs; capture-by-barrier proven end-to-end) ·
+  config-driven per-role arena (`config/arena.json` + `sdk/arena_config.py`; mirrored
+  scripts/tests role-blind per the PR #29 rule) · peer outbound barrier path
+  (`barrier_placed` outbound for the first time; sealed move `BARRIER`; SQ2 MOVE-only
+  claims; full-loop proof: always-wall ref-police → mutual audit Verified OK + replay
+  green) · `[strategy.<role>]` options tables · splits `peer/inbound.py`,
+  `sdk/peer_run.py`. Champion pin: `ref-police` dethrones `greedy-manhattan` on the
+  police table (330 > 240), same-PR evidence (`m5-arena.md`).
+
 ## PR #30 — docs/m5-1-police-brain-prd (M5-1 gate — PoliceBrain PRD + ADR-0005)
 
 - **Driver:** Imree (M5 session opening brief: scope M5-1..M5-7, the role-split and
