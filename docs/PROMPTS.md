@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #20 — feat/m3-brains (M3-5 — BrainBase seam + baseline brains)
+
+- **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** strict RED→GREEN TDD: `strategy/brains.py` — the PLAN §8 seam
+  (`_pick_move(observation, belief)`; public template method clamps every proposal to
+  legality: illegal → first sorted legal move, walled-in → STAY, never stall) +
+  RandomBrain (the M1 walk, seam-shaped; byte-identical seeded behavior keeps every
+  M1/M2 pinned outcome) + GreedyManhattanBrain (chase/flee the belief argmax;
+  deterministic tie-breaks) + config-name factory. `strategy/referee.py` — headless
+  referee-mode games resolved by the ONE rules module (all three capture forms),
+  brains fed peer-symmetric information (own truth + belief from the opponent's
+  honest trail). Session now selects its brain from `game.toml [strategy]`
+  (random/random shipped; role brains at M5). DoD observed in CI: seeded referee
+  series (reproducible; capture path reachable) + peer-mode series over the queue
+  transports with clean mutual audits. TODO M3-5 ticked.
+
 ## PR #19 — feat/m3-hints (M3-4 — gazetteer + hint templates + injection safety)
 
 - **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·
