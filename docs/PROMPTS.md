@@ -3,6 +3,7 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+<<<<<<< HEAD
 ## PR #35 — feat/m5-4-genetic (M5-4 — genetic tuning, evolved weights deployed)
 
 - **Driver:** Imree (AFK directive: "continue and build what you need for M5; merge
@@ -21,6 +22,8 @@
   recurring PR-#29 lesson, now swept: local-minigame/symmetric-loop in #34, session/
   facade here). TODO M5-4 ticked; thief-side GA run rides the next sync.
 
+=======
+>>>>>>> main
 ## PR #33 — feat/m5-3-core-prereqs (M5-3 core prerequisites)
 
 - **Driver:** Imree ("merge them, then continue" after approving #31/#32) · **Author:**
