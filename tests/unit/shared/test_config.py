@@ -42,6 +42,7 @@ def test_gui_section_loads_typed_display_knobs() -> None:
     _constitution, private, _limits = load_all(CONFIG_DIR, counted=False)
     assert private.gui.refresh_ms > 0
     assert private.gui.cell_px > 0
+    assert private.gui.png_dpi > 0
     for anchor in (private.gui.heat_low, private.gui.heat_high):
         assert anchor.startswith("#")
         assert len(anchor) == 7
