@@ -64,9 +64,7 @@ def test_series_refuses_a_log_without_the_opponents_audit(
 
 def test_series_detects_the_single_logged_role(game_events: list[dict[str, Any]]) -> None:
     police_only = [
-        e
-        for e in game_events
-        if not (e["event"] == "belief" and e["sender"] == "thief")
+        e for e in game_events if not (e["event"] == "belief" and e["sender"] == "thief")
     ]
     series = overlay_series(police_only, role=None)  # auto-detect from the log
     assert series.role == "police"

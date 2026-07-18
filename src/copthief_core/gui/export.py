@@ -64,9 +64,7 @@ def _render_overlay(
     rows = [r - origin for r, _ in series.truth_path]
     axes.plot(cols, rows, marker="o", label=f"{series.opponent} audited path")
     axes.plot(cols[-1], rows[-1], marker="*", label="final position")
-    axes.set_title(
-        f"{series.role} belief (final) vs {series.opponent} audited truth"
-    )
+    axes.set_title(f"{series.role} belief (final) vs {series.opponent} audited truth")
     axes.legend()
     figure.savefig(out, dpi=settings.png_dpi, bbox_inches="tight")
     plt.close(figure)

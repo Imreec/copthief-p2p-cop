@@ -38,9 +38,7 @@ def overlay_series(events: list[dict[str, Any]], *, role: str | None) -> Overlay
     opponent = _ROLES[0] if detected == _ROLES[1] else _ROLES[1]
     revealed = revealed_records(events).get(opponent)
     if not revealed:
-        raise ValueError(
-            f"no {opponent} audit in the log - the overlay is post-audit only (FR-10)"
-        )
+        raise ValueError(f"no {opponent} audit in the log - the overlay is post-audit only (FR-10)")
     truth_by_step: dict[int, Coord] = {
         r["payload"]["step"]: (r["payload"]["position"][0], r["payload"]["position"][1])
         for r in revealed
