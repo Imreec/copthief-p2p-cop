@@ -38,6 +38,7 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
         move, hint = "STAY", FINAL_CAUGHT_HINT
     else:
         # M3-5/M5-2: the brain reads OUR truth + the belief — never the opponent's.
+        # M5-3 deception kit: gazetteer + our own transmitted trail + signed params.
         decision = session.brain.decide(
             Observation(
                 board=session.board,
@@ -47,6 +48,9 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
                 step=len(session.records) + 1,
                 barriers_used=session.barriers_placed,
                 max_barriers=session.constitution.movement.max_barriers,
+                gazetteer=session.gazetteer,
+                own_smell=session.own_trail.snapshot(),
+                pheromones=session.constitution.pheromones,
             ),
             session.belief,
         )
@@ -61,12 +65,14 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
         max_words = session.constitution.world.hint_max_words
         if session.gazetteer is None:  # M1 fallback bank (no geography for the area)
             hint = session.policy.next_hint(hint_max_words=max_words)
-        else:  # M3-4: template×landmark composer; truthful by default (timing = M5)
+        else:  # M3-4 composer; M5-3: the brain's hint-intent seam decides the timing
             composed = compose_hint(
                 session.gazetteer,
                 position=session.position,
                 max_words=max_words,
                 salt=len(session.records),
+                verdict=decision.hint_verdict or VERDICT_TRUTH,
+                landmark=decision.hint_landmark,
             )
             hint, verdict = composed.text, composed.verdict
     step = len(session.records) + 1

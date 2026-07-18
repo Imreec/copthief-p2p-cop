@@ -108,6 +108,9 @@ def test_observation_carries_the_deception_construction_kit() -> None:
     spy = _SpyBrain()
     session.brain = spy
     session.take_turn(now=0.0)
+    from copthief_core.domain.state_machine import GameState
+
+    session.machine.state = GameState.COMPUTING_MOVE  # as if the reply arrived
     session.take_turn(now=1.0)
     first, second = spy.seen[0], spy.seen[1]
     assert first.gazetteer is GAZETTEER

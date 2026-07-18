@@ -14,17 +14,25 @@ from __future__ import annotations
 import random
 from abc import ABC, abstractmethod
 from collections.abc import Mapping
-from dataclasses import dataclass
+from dataclasses import dataclass, field, replace
 
 from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.board import STAY, Board, Coord
+from copthief_core.domain.gazetteer import Gazetteer
 from copthief_core.domain.rules import legal_moves
+from copthief_core.shared.config_model import PheromoneParams
 from copthief_core.strategy.decision import Decision, barrier_is_playable, clamp_move
 
 
 @dataclass(frozen=True)
 class Observation:
-    """What a brain may see: OUR truth + the signed alphabet — never the opponent's."""
+    """What a brain may see: OUR truth + the signed alphabet — never the opponent's.
+
+    The M5-3 deception kit rides here: the (public) gazetteer, OUR OWN transmitted
+    scent so far (`own_smell` — exactly the evidence the opponent has received from
+    us), and the signed pheromone params — everything a self-mirror needs, nothing
+    about the opponent's truth.
+    """
 
     board: Board
     position: Coord
@@ -33,6 +41,9 @@ class Observation:
     step: int
     barriers_used: int = 0
     max_barriers: int = 0
+    gazetteer: Gazetteer | None = None
+    own_smell: dict[str, float] = field(default_factory=dict)
+    pheromones: PheromoneParams | None = None
 
 
 class BrainBase(ABC):
@@ -52,7 +63,8 @@ class BrainBase(ABC):
         )
 
     def decide(self, observation: Observation, belief: BeliefFilter) -> Decision:
-        """Full-action template method: `_decide`, barrier law enforced, moves clamped."""
+        """Full-action template method: `_decide`, barrier law enforced, moves clamped,
+        hint-intent fields preserved verbatim (the clamp governs actions, not talk)."""
         proposal = self._decide(observation, belief)
         if proposal.barrier is not None:
             if barrier_is_playable(
@@ -63,12 +75,13 @@ class BrainBase(ABC):
                 used=observation.barriers_used,
                 quota=observation.max_barriers,
             ):
-                return Decision(barrier=proposal.barrier)
-            return Decision(move=self.pick_move(observation, belief))
-        return Decision(
+                return replace(proposal, move=STAY)
+            return replace(proposal, barrier=None, move=self.pick_move(observation, belief))
+        return replace(
+            proposal,
             move=clamp_move(
                 observation.board, observation.position, observation.move_set, proposal.move
-            )
+            ),
         )
 
     @abstractmethod

@@ -7,6 +7,7 @@ the constraint-#13 evidence that the sealed-record shape change breaks nothing.
 """
 
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -18,15 +19,26 @@ from copthief_core.peer.replay import replay_from_log
 
 @pytest.fixture
 def waller_config(tmp_path: Path) -> Path:
-    """The shipped config tree with the police brain swapped to an always-wall ref-police."""
+    """The shipped config tree with the police brain swapped to an always-wall ref-police.
+
+    Role-agnostic rewrite (PR #29 rule): each repo ships its own `police_class`, so the
+    KEY is matched, never a literal value; the options section may or may not exist.
+    """
     config = tmp_path / "config"
     shutil.copytree(Path("config"), config)
     toml_path = config / "game.toml"
-    text = toml_path.read_text(encoding="utf-8")
-    text = text.replace(
-        'police_class = "copthief_police.brain:PoliceBrain"', 'police_class = "ref-police"'
+    text, hits = re.subn(
+        r'police_class = "[^"]*"',
+        'police_class = "ref-police"',
+        toml_path.read_text(encoding="utf-8"),
     )
-    text = text.replace("[strategy.police]", "[strategy.police]\nref_police_barrier_chance = 1.0")
+    assert hits == 1, "game.toml lost its police_class key"
+    if "[strategy.police]" in text:
+        text = text.replace(
+            "[strategy.police]", "[strategy.police]\nref_police_barrier_chance = 1.0"
+        )
+    else:
+        text += "\n[strategy.police]\nref_police_barrier_chance = 1.0\n"
     toml_path.write_text(text, encoding="utf-8")
     return config
 

@@ -20,14 +20,23 @@ BARRIER_MOVE = "BARRIER"
 
 @dataclass(frozen=True)
 class Decision:
-    """One turn's chosen action: a move, or a barrier placement (position unchanged)."""
+    """One turn's chosen action: a move, or a barrier placement (position unchanged).
+
+    `hint_verdict`/`hint_landmark` are the M5-3 hint-intent seam: the brain may ask
+    the verbal layer to lie toward a chosen decoy (the M3-4 mechanism's policy input).
+    None means the truthful default; the sealed intent always matches the verdict.
+    """
 
     move: str = STAY
     barrier: Coord | None = None
+    hint_verdict: str | None = None
+    hint_landmark: str | None = None
 
     def __post_init__(self) -> None:
         if self.barrier is not None and self.move != STAY:
             raise ValueError("a barrier turn moves nothing — move must be STAY")
+        if self.hint_landmark is not None and self.hint_verdict is None:
+            raise ValueError("a hint landmark needs a hint verdict")
 
 
 def clamp_move(board: Board, position: Coord, move_set: tuple[str, ...], proposal: str) -> str:
