@@ -30,6 +30,19 @@ def real_log(tmp_path_factory: pytest.TempPathFactory) -> Path:
     return log_path
 
 
+def _police_view(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """The shared local log reduced to what a real one-sided live log carries: our
+    outbound events, our own audit (sender lives in its payload), and the v1.1
+    inbound archives."""
+    return [
+        e
+        for e in events
+        if (e["event"] in ("turn", "negotiated", "peer_result") and e.get("sender") == "police")
+        or (e["event"] == "audit" and e["payload"]["sender"] == "police")
+        or (e["event"] in ("turn_received", "audit_received") and e.get("receiver") == "police")
+    ]
+
+
 def _rewrite(events: list[dict[str, Any]], path: Path) -> Path:
     path.write_text(
         "\n".join(json.dumps(e, ensure_ascii=False, sort_keys=True) for e in events) + "\n",
@@ -79,14 +92,7 @@ def test_one_sided_live_log_verifies_both_sides(real_log: Path, tmp_path: Path) 
     # verifier must re-verify the OPPONENT too: their turns from `turn_received`
     # against their revealed records from `audit_received`.
     events = read_events(real_log)
-    police_view = [
-        e
-        for e in events
-        if (e["event"] in ("turn", "audit", "negotiated") and e.get("sender") == "police")
-        or (e["event"] == "peer_result" and e.get("sender") == "police")
-        or (e["event"] in ("turn_received", "audit_received") and e.get("receiver") == "police")
-    ]
-    one_sided = _rewrite(police_view, tmp_path / "police_view.jsonl")
+    one_sided = _rewrite(_police_view(events), tmp_path / "police_view.jsonl")
     summary = replay_from_log(one_sided)
     assert verdict_for(summary) == VERDICT_OK
     assert set(summary.moves) == {"police", "thief"}  # the opponent's side is walked too
@@ -96,12 +102,7 @@ def test_tampering_the_opponents_archived_audit_is_caught(
     real_log: Path, tmp_path: Path
 ) -> None:
     events = read_events(real_log)
-    police_view = [
-        e
-        for e in events
-        if (e["event"] in ("turn", "audit") and e.get("sender") == "police")
-        or (e["event"] in ("turn_received", "audit_received") and e.get("receiver") == "police")
-    ]
+    police_view = _police_view(events)
     their_audit = next(e for e in police_view if e["event"] == "audit_received")
     their_audit["raw"]["records"][1]["payload"]["move"] = "forged"
     mutated = _rewrite(police_view, tmp_path / "opponent_tamper.jsonl")

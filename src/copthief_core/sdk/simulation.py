@@ -13,6 +13,7 @@ from typing import Any
 
 from copthief_core.peer.match import MatchResult, run_local_minigame
 from copthief_core.peer.p2p import PeerGameResult, run_peer_game
+from copthief_core.peer.replay import ReplaySummary, replay_from_log
 from copthief_core.peer.session import PeerSession
 from copthief_core.sdk.p2p_match import P2PMatchResult, play_p2p_match
 from copthief_core.shared.config import load_all, load_gazetteer
@@ -126,6 +127,18 @@ class SimulationSdk:
         from copthief_core.gui.windows.launch import run_with_views
 
         return run_with_views([role], self.constitution, self.private.gui, play)
+
+    def replay(self, log_path: Path, *, gui: bool = False) -> ReplaySummary:
+        """Re-verify a logged game (M4-3): the cryptographic walk over every record.
+
+        With `gui`, the viewer window (verdict banner + step controls) opens and
+        blocks until closed; the summary is returned either way."""
+        summary = replay_from_log(log_path)
+        if gui:
+            from copthief_core.gui.windows.replay import show_replay
+
+            show_replay(log_path, self.constitution, self.private.gui)
+        return summary
 
     def run_p2p_match(
         self, *, police_seed: int, thief_seed: int, thief_port: int, host: str

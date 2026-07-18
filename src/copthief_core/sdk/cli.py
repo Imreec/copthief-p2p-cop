@@ -4,6 +4,9 @@ Commands:
   copthief run local-match   one command, full mini-game, both peers in-process (queues)
   copthief run p2p-match     one command, full mini-game, TWO processes over localhost HTTP
   copthief run peer          play one full standalone peer (own server + symmetric loop)
+  copthief replay            re-verify a JSONL log -> Verified OK / TAMPERED (M4-3)
+
+`replay` exits 0 on Verified OK and 1 on TAMPERED (script/CI-friendly).
 """
 
 from __future__ import annotations
@@ -47,6 +50,10 @@ def _parser() -> argparse.ArgumentParser:
     peer.add_argument(
         "--opponent-url", default=None, help="default: game.toml network.opponent_url"
     )
+    replay = commands.add_parser("replay", help="re-verify a JSONL log (Verified OK / TAMPERED)")
+    replay.add_argument("--log", type=Path, required=True, help="the JSONL game log to verify")
+    replay.add_argument("--config", type=Path, default=Path("config"))
+    replay.add_argument("--gui", action="store_true", help="open the step-through viewer")
     return parser
 
 
@@ -54,6 +61,24 @@ def main(argv: list[str] | None = None) -> int:
     """Dispatch one CLI invocation; every flow prints one JSON object."""
     args = _parser().parse_args(argv)
     sdk = SimulationSdk(args.config)
+    if args.verb == "replay":
+        from copthief_core.peer.replay import verdict_for
+
+        summary = sdk.replay(args.log, gui=args.gui)
+        verdict = verdict_for(summary)
+        print(
+            json.dumps(
+                {
+                    "verdict": verdict,
+                    "problems": summary.problems,
+                    "steps": summary.steps,
+                    "outcome": summary.outcome,
+                    "game_uid": summary.game_uid,
+                },
+                ensure_ascii=False,
+            )
+        )
+        return 0 if summary.verified else 1
     if args.flow == "local-match":
         result = sdk.run_local_match(
             police_seed=args.police_seed,
