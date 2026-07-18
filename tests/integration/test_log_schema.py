@@ -138,8 +138,13 @@ def test_rejected_inbound_turn_is_still_archived() -> None:
 
 
 def test_pre_schema_evidence_log_still_replays_verified() -> None:
-    # Backward-compat pin (PRD_gui_replay §3): the committed M3 live log verifies
-    # unchanged — new event kinds must never break old-log replay.
-    summary = replay_from_log(Path("docs/evidence/m3-scent-friendly-g1.jsonl"))
-    assert summary.verified
-    assert summary.problems == []
+    # Backward-compat pin (PRD_gui_replay §3): the committed M3 live evidence logs
+    # verify unchanged — new event kinds must never break old-log replay. Globbed,
+    # not named: this test is core-mirrored and each role repo commits its own M3
+    # friendly log (cop: m3-scent-friendly-g1; thief: m3-full-pairing-g1).
+    logs = sorted(Path("docs/evidence").glob("m3-*.jsonl"))
+    assert logs, "no pre-schema M3 evidence log committed in this repo"
+    for log in logs:
+        summary = replay_from_log(log)
+        assert summary.verified, f"{log.name}: {summary.problems}"
+        assert summary.problems == []

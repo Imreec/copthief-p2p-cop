@@ -87,7 +87,7 @@
     "tests/integration/test_belief_vs_baseline.py": "2c903c162ae38687d86aefd7d7aebb9b4dd3a77c9a0abe5841f706a73d1df8c3",
     "tests/integration/test_headless_series.py": "f0f3ceb839370e445af38c392a95b447060da3a1c6199b3c6f92a63b1359bb7b",
     "tests/integration/test_local_minigame.py": "9375f20aecd3ac7f2e81f3e0ceb93873fd31b5552753de2acfa5baa3e040d65b",
-    "tests/integration/test_log_schema.py": "d228011a437c58f1895455ad1289598b3a5c664ed56c5555f9037d492a78cee2",
+    "tests/integration/test_log_schema.py": "46491f8d3b8c64e138b0e0f55bf0823425f9b64ce7ae55d5541c53384c5ec918",
     "tests/integration/test_p2p_live.py": "602bc67c91b94dcc32c703f4008b41a635763b8ed4efb51121d02c3515f8819b",
     "tests/integration/test_referee_minigame.py": "c2063d346b281de933144301e76ab8b845a9ed7b2d0ac08a87bfc13b80003e81",
     "tests/integration/test_replay_from_log.py": "3825378361e1fc13078f53fcbfe6c483497bafd66d81472130d7abb2b4fc91ac",
@@ -128,7 +128,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "35377d6",
+  "source_commit": "9c18917",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "1d9336bcef2d03da31b6282649e7a28225be6f36a3b78f632938d545e6b7a3d6"
+  "tree_hash": "ed11b7af7fd111a0eed9653e5d048d05ceca9d7c5a7ce93ec47ad69ce428d99f"
 }
