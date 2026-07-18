@@ -35,6 +35,14 @@ thief_class = "random"
 smell_trust_weight = 4.0
 hint_trust_default = 1.0
 
+[gui]
+# Live-view render knobs (PRD_gui_replay s7): display-only, never negotiated. The
+# heatmap anchors are the p=0 / p=1 colors of the belief shading (book fig. 9).
+refresh_ms = 200
+cell_px = 64
+heat_low = "#ffffff"
+heat_high = "#c81e1e"
+
 [network]
 my_port = 8802
 opponent_url = ""

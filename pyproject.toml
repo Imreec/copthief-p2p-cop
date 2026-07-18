@@ -54,7 +54,9 @@ source = ["src"]
 # by @pytest.mark.live runs and the committed p2p evidence log, not by keyless CI (PLAN §12).
 omit = [
     "*/tests/*",
-    "src/**/gui/*",
+    # D3 (PRD_gui_replay §8): only the window shells are omitted — gui/models is
+    # pure, tested, and coverage-counted.
+    "src/**/gui/windows/*",
     "src/main.py",
     "src/copthief_core/infra/mcp_server.py",
     "src/copthief_core/infra/mcp_client.py",

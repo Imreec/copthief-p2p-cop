@@ -103,6 +103,18 @@ class Constitution:
 
 
 @dataclass(frozen=True)
+class GuiSettings:
+    """`[gui]`: live-view render knobs (PRD_gui_replay §7) — private, display-only.
+
+    `heat_low`/`heat_high` are the '#rrggbb' heatmap anchors at p=0 / p=1."""
+
+    refresh_ms: int
+    cell_px: int
+    heat_low: str
+    heat_high: str
+
+
+@dataclass(frozen=True)
 class PrivateSettings:
     """The per-peer `config/game.toml` — never crosses the wire, never negotiated."""
 
@@ -127,6 +139,8 @@ class PrivateSettings:
     # [strategy] brain selection per role (PLAN §7) — private, never negotiated.
     police_class: str
     thief_class: str
+    # [gui] live-view render knobs (PRD_gui_replay §7) — private, display-only.
+    gui: GuiSettings
 
 
 @dataclass(frozen=True)
