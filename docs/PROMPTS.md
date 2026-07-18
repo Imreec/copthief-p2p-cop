@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #22 — docs/league-coordination (Alon's analysis folded into the roadmap)
+
+- **Driver:** Imree (relayed the planning session's wrap-up instruction with "don't
+  automatically agree — think about it") · **Author:** Claude (terminal) · **Reviewer:**
+  Antigravity (cross-model, on the PR). Source: `notes/LEAGUE-COORDINATION-ALON.md`.
+- **This PR:** future-phase league-coordination items folded into TODO so later
+  sessions discover them mechanically — M6-2 consensus-signature pin (spaced
+  serialization + sign-then-insert, **re-verified in this session** against reference
+  `report_writer.py` @960499fd before writing the line; credit Alon), M6-3/M6-8
+  sealed per-step token counts (reference's own SQ3 schema), M7-1 conditional
+  dual-model acceptance, M7-2 kit additions as "verify present, else add", and the
+  new gated **M3-7: ADR-0004 revision decision (Imree's; approve-before-build, no
+  scent code changes until)**. One test addition: the float-repr drift pair —
+  **the relayed spec was corrected here**: 0.10000000000000001 IS 0.1 (same IEEE
+  double → identical canonical bytes → signature verifies; asserting failure would
+  be red forever). Pinned both directions: equivalent literals verify; a genuinely
+  distinct double (0.1+0.2 vs 0.3) breaks the terms signature.
+
 ## PR #21 — feat/m3-arena (M3-6 — arena harness + champion regression gate)
 
 - **Driver:** Imree (same overnight directive) · **Author:** Claude (terminal) ·
