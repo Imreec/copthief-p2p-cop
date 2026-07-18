@@ -33,6 +33,12 @@ thief_class = "random"
 # PoliceBrain knobs: the canonical defaults live in copthief_police/features.py
 # (DEFAULT_OPTIONS data table, AppFTable pattern); keys here override them.
 # The M5-4 GA writes tuned values into this table - code never changes.
+barrier_gain_threshold = 4.7893
+p_commit = 0.2
+w_budget = 1.7277
+w_distance = 3.8875
+w_mobility = 3.6061
+w_region = 0.1143
 
 [belief]
 # Private evidence-trust tuning (PRD_belief s5): how sharply the scent/hint likelihoods

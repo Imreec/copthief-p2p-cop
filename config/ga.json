@@ -1,0 +1,42 @@
+{
+  "version": "1.00",
+  "_comment": "Offline genetic-tuning config (M5-4, HW6 salvage adapted; ADR-0002-logged). Per-repo: each repo evolves ITS role brain's weight vector against a fixed reference opponent over a fresh scenario-seed suite (never the DoD seeds - no gate overfitting). The 'smoke' block drives the keyless CI determinism/elitism test; the 'run' block drives the committed offline evolution (scripts/ga_run.py). Tuned weights never deploy to the sparring host (CLAUDE.md s9).",
+  "role": "police",
+  "brain": "copthief_police.brain:PoliceBrain",
+  "opponent": "ref-thief",
+  "opponent_options": {},
+  "genes": {
+    "w_distance": [0.5, 6.0],
+    "w_mobility": [0.0, 5.0],
+    "w_region": [0.0, 3.0],
+    "w_budget": [0.0, 3.0],
+    "barrier_gain_threshold": [0.5, 6.0],
+    "p_commit": [0.2, 0.8]
+  },
+  "run": {
+    "seed": 42,
+    "population": 10,
+    "generations": 8,
+    "elite_count": 2,
+    "tournament_size": 3,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.15,
+    "mutation_rate": 0.35,
+    "fitness_seeds": [201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216],
+    "scenario_min_separation": 4
+  },
+  "smoke": {
+    "seed": 7,
+    "population": 4,
+    "generations": 3,
+    "elite_count": 1,
+    "tournament_size": 2,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.2,
+    "mutation_rate": 0.5,
+    "fitness_seeds": [301, 302, 303],
+    "scenario_min_separation": 4
+  },
+  "artifact_out": "config/ga_weights.json",
+  "evidence_out": "docs/evidence/m5-ga.md"
+}

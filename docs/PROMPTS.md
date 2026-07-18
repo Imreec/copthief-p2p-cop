@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #35 — feat/m5-4-genetic (M5-4 — genetic tuning, evolved weights deployed)
+
+- **Driver:** Imree (AFK directive: "continue and build what you need for M5; merge
+  nothing tonight") · **Author:** Claude (terminal) · **Reviewer:** Antigravity
+  (cross-model, on the PR); chain position: top of the cop stack (#33 → #34 → this).
+- **This PR:** RED `test_genetic.py` → GREEN `strategy/genetic/` (mirrored, stdlib-only,
+  HW6 `policy/genetic` salvage adapted per ADR-0002: bounded genome over config-declared
+  gene boxes · tournament/blend/gaussian operators · seeded elitist loop, best
+  non-decreasing — the CI smoke pins determinism + monotonicity) + `config/ga.json`
+  (role-blind: each repo evolves ITS brain; fitness seeds 201–216 disjoint from the DoD
+  seeds — the gate is not a training target) + `scripts/ga_run.py` (deterministic
+  artifact + curve writer). **Committed run: default 0.688 → evolved 1.000; validated
+  OFF-suite: DoD 75%→94%, fresh holdout 78%→97% — deployed as config** (arena
+  `brain_options` + `game.toml [strategy.police]`); arena regenerated, police-brain
+  sweeps 24/24. Three more seed-coupled mirrored tests pinned to the M1 walk (the
+  recurring PR-#29 lesson, now swept: local-minigame/symmetric-loop in #34, session/
+  facade here). TODO M5-4 ticked; thief-side GA run rides the next sync.
+
 ## PR #33 — feat/m5-3-core-prereqs (M5-3 core prerequisites)
 
 - **Driver:** Imree ("merge them, then continue" after approving #31/#32) · **Author:**
