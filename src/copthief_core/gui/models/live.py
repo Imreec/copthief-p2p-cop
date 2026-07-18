@@ -23,10 +23,7 @@ _TERMINAL = frozenset({GameState.GAME_OVER, GameState.TECHNICAL_LOSS})
 def heat_color(p: float, *, low: str, high: str) -> str:
     """Linear interpolation between two '#rrggbb' anchors — deeper red ⇒ higher
     probability (book fig. 9). Anchors come from `game.toml [gui]`, never from code."""
-    mixed = (
-        round(a + (b - a) * p)
-        for a, b in zip(_channels(low), _channels(high), strict=True)
-    )
+    mixed = (round(a + (b - a) * p) for a, b in zip(_channels(low), _channels(high), strict=True))
     return "#" + "".join(f"{c:02x}" for c in mixed)
 
 

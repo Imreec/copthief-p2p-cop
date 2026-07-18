@@ -56,9 +56,7 @@ class LiveWindow:
         banner = state.outcome or state.banner if state.finished else state.banner
         self._banner.configure(text=banner, bg=state.banner_color)
         self._status.configure(
-            text=(
-                f"step {state.step}   heard: {state.hint_in!r}   said: {state.hint_out!r}"
-            )
+            text=(f"step {state.step}   heard: {state.hint_in!r}   said: {state.hint_out!r}")
         )
         cell, origin = view.settings.cell_px, view.board.axis_start_index
         self._canvas.delete("all")
