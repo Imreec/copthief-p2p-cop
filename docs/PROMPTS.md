@@ -3,6 +3,27 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #24 — docs/m4-prd (M4-1 gate: GUI/replay/observability PRD)
+
+- **Driver:** Eyal (this session's terminal driver; commits authored as @eyalsht for
+  `git shortlog` honesty) · **Author:** Claude (terminal) · **Approver:** Imree (the
+  M4-1 gate — merge is the approval) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **Context:** M4 session opened on primary sources — book ch.7 (pp.69–75) re-read from
+  the extraction (live/retrospective split, banner semantics, the simplified
+  `verify_step` sketch vs the full ch.5 seal), App E rules 8/9/19/20 re-read from App E
+  pages, both repos' M3 friendly evidence docs (the flagged inbound-logging gap), the
+  real M3 JSONL event shapes, and the `peer/p2p` + `peer/replay` + `jsonl_logger` seams.
+- **This PR:** `docs/PRD_gui_replay.md` — workstream L (log schema v1.1: inbound-verbatim
+  `agreement_received`/`turn_received`/`audit_received` + the PLAN §7-promised
+  `belief`/`transition`/`decision` events; log-only, nothing on the wire), M4-2 live GUI
+  (single event stream feeds file + window, so rules 8–9 hold by construction), M4-3
+  replay verifier (binary Verified OK/TAMPERED + per-field mutation matrix as permanent
+  CI regression), M4-4 post-audit overlay + belief-error curve (metric identity with
+  M3-3 `belief_eval`). Four flagged decisions: D1 Tkinter, D2 matplotlib `viz` group,
+  D3 coverage-omit narrowed to `gui/windows/`, D4 backward-compatible log contract.
+  M3-8 blockade honored (no scent/belief internals in scope). TODO M4-1 ticked in the
+  same change.
+
 ## PR #23 — docs/m3-7-decision (ADR-0004 revision: REVISE decided)
 
 - **Driver:** Imree (decision delegated conditionally — "if it isn't blocking we can go
