@@ -8,6 +8,7 @@ does not passively serve tools.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +20,7 @@ from copthief_core.sdk.p2p_match import P2PMatchResult, play_p2p_match
 from copthief_core.shared.config import load_all, load_gazetteer
 from copthief_core.shared.jsonl_logger import JsonlEventLogger
 from copthief_core.strategy.referee import RefereeGameResult, play_referee_series
+from copthief_core.strategy.scenarios import Scenario, play_scenario_series
 
 
 class SimulationSdk:
@@ -62,13 +64,34 @@ class SimulationSdk:
     def referee_series(
         self, police_brain: str, thief_brain: str, *, seeds: list[int]
     ) -> list[RefereeGameResult]:
-        """Headless referee-mode series (M3-5/M3-6) — the arena's only game source."""
+        """Headless referee-mode series on the canonical signed starts (M3-5/M3-6)."""
         return play_referee_series(
             self.constitution,
             police_brain_name=police_brain,
             thief_brain_name=thief_brain,
             smell_trust=self.private.smell_trust_weight,
             seeds=seeds,
+        )
+
+    def scenario_series(
+        self,
+        *,
+        police: str,
+        thief: str,
+        scenarios: list[Scenario],
+        police_options: Mapping[str, float] | None = None,
+        thief_options: Mapping[str, float] | None = None,
+    ) -> list[RefereeGameResult]:
+        """Referee-mode series over a start-scenario suite (M5-2) — the arena's and
+        the DoD floors' game source; options carry per-brain config knobs."""
+        return play_scenario_series(
+            self.constitution,
+            police_brain_name=police,
+            thief_brain_name=thief,
+            smell_trust=self.private.smell_trust_weight,
+            scenarios=scenarios,
+            police_options=police_options,
+            thief_options=thief_options,
         )
 
     def run_peer(
