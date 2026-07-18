@@ -14,12 +14,11 @@ from __future__ import annotations
 from collections.abc import Iterable
 from dataclasses import dataclass
 
-from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.board import Coord
 from copthief_core.domain.rules import Outcome, check_end
-from copthief_core.domain.scent import ScentField
 from copthief_core.shared.config_model import Constitution
 from copthief_core.strategy.brains import BrainBase, Observation, make_brain
+from copthief_core.strategy.referee_setup import referee_belief, referee_trail
 
 
 @dataclass(frozen=True)
@@ -30,28 +29,6 @@ class RefereeGameResult:
     outcome: Outcome
     steps: int
     barriers_placed: int = 0
-
-
-def _belief(constitution: Constitution, *, start: Coord, smell_trust: float) -> BeliefFilter:
-    return BeliefFilter(
-        board=constitution.board.make_board(),
-        move_set=constitution.movement.move_set,
-        start=start,
-        center_intensity=constitution.pheromones.center_intensity,
-        decay=constitution.pheromones.decay,
-        smell_trust=smell_trust,
-        hint_trust=0.0,  # hints are a peer-mode feature; referee trials are scent-only
-    )
-
-
-def _trail(constitution: Constitution) -> ScentField:
-    return ScentField(
-        board_size=constitution.board.grid_size,
-        window=constitution.pheromones.grid_size,
-        decay=constitution.pheromones.decay,
-        min_center_intensity=constitution.pheromones.min_center_intensity,
-        origin=constitution.board.axis_start_index,
-    )
 
 
 def play_referee_game(
@@ -75,9 +52,9 @@ def play_referee_game(
     intensity = constitution.pheromones.center_intensity
     cop = constitution.board.cop_start if cop_start is None else cop_start
     thief = constitution.board.thief_start if thief_start is None else thief_start
-    police_belief = _belief(constitution, start=thief, smell_trust=smell_trust)
-    thief_belief = _belief(constitution, start=cop, smell_trust=smell_trust)
-    thief_trail, cop_trail = _trail(constitution), _trail(constitution)
+    police_belief = referee_belief(constitution, start=thief, smell_trust=smell_trust)
+    thief_belief = referee_belief(constitution, start=cop, smell_trust=smell_trust)
+    thief_trail, cop_trail = referee_trail(constitution), referee_trail(constitution)
 
     def result(outcome: Outcome, steps: int) -> RefereeGameResult:
         return RefereeGameResult(
@@ -89,7 +66,13 @@ def play_referee_game(
             thief,
             thief_brain.decide(
                 Observation(
-                    board=board, position=thief, move_set=move_set, role="thief", step=step
+                    board=board,
+                    position=thief,
+                    move_set=move_set,
+                    role="thief",
+                    step=step,
+                    own_smell=thief_trail.snapshot(),
+                    pheromones=constitution.pheromones,
                 ),
                 thief_belief,
             ).move,
@@ -117,6 +100,8 @@ def play_referee_game(
                 step=step,
                 barriers_used=len(board.barriers),
                 max_barriers=max_barriers,
+                own_smell=cop_trail.snapshot(),
+                pheromones=constitution.pheromones,
             ),
             police_belief,
         )
