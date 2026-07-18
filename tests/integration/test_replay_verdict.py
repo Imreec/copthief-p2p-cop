@@ -98,9 +98,7 @@ def test_one_sided_live_log_verifies_both_sides(real_log: Path, tmp_path: Path) 
     assert set(summary.moves) == {"police", "thief"}  # the opponent's side is walked too
 
 
-def test_tampering_the_opponents_archived_audit_is_caught(
-    real_log: Path, tmp_path: Path
-) -> None:
+def test_tampering_the_opponents_archived_audit_is_caught(real_log: Path, tmp_path: Path) -> None:
     events = read_events(real_log)
     police_view = _police_view(events)
     their_audit = next(e for e in police_view if e["event"] == "audit_received")

@@ -53,9 +53,7 @@ def test_inbound_turns_are_archived_verbatim(game_events: list[dict[str, Any]]) 
     assert len(archived) == len(turns)
     for turn in turns:
         matches = [
-            e
-            for e in archived
-            if e["raw"] == turn["message"] and e["receiver"] != turn["sender"]
+            e for e in archived if e["raw"] == turn["message"] and e["receiver"] != turn["sender"]
         ]
         assert len(matches) == 1, f"turn step {turn['message']['step']} not archived verbatim"
 
