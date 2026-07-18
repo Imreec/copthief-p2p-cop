@@ -101,6 +101,7 @@ def load_private_settings(path: Path) -> PrivateSettings:
     (JSON overlays TOML on shared keys — the signed file always wins, App B §4)."""
     raw = tomllib.loads(path.read_text(encoding="utf-8"))
     game, network = raw.get("game", {}), raw.get("network", {})
+    belief = raw.get("belief", {})
     return PrivateSettings(
         version=_version(raw, path.name),
         group_name=str(game["group_name"]),
@@ -115,6 +116,8 @@ def load_private_settings(path: Path) -> PrivateSettings:
         turn_timeout_seconds=float(network["turn_timeout_seconds"]),
         poll_interval_seconds=float(network["poll_interval_seconds"]),
         connect_timeout_seconds=float(network["connect_timeout_seconds"]),
+        smell_trust_weight=float(belief["smell_trust_weight"]),
+        hint_trust_default=float(belief["hint_trust_default"]),
     )
 
 

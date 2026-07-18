@@ -22,6 +22,13 @@ thief = "https://github.com/Imreec/copthief-p2p-thief"
 cop = "https://cop.imreeyal.com/mcp"
 thief = "https://thief.imreeyal.com/mcp"
 
+[belief]
+# Private evidence-trust tuning (PRD_belief s5): how sharply the scent/hint likelihoods
+# multiply into the Bayes filter. Never signed, never crosses the wire (SQ3 stance:
+# the transmitted grid is unauthenticated - trust is a tunable, never an axiom).
+smell_trust_weight = 4.0
+hint_trust_default = 1.0
+
 [network]
 my_port = 8802
 opponent_url = ""
