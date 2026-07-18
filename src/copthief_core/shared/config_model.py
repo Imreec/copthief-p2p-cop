@@ -106,13 +106,20 @@ class Constitution:
 class GuiSettings:
     """`[gui]`: live-view render knobs (PRD_gui_replay §7) — private, display-only.
 
-    `heat_low`/`heat_high` are the '#rrggbb' heatmap anchors at p=0 / p=1."""
+    `heat_low`/`heat_high` are the '#rrggbb' heatmap anchors at p=0 / p=1; the theme
+    block styles the window chrome (dark slate by default)."""
 
     refresh_ms: int
     cell_px: int
     heat_low: str
     heat_high: str
     png_dpi: int
+    font_family: str
+    font_size: int
+    theme_bg: str
+    theme_panel: str
+    theme_fg: str
+    accent: str
 
 
 @dataclass(frozen=True)
