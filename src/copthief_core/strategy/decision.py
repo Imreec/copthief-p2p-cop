@@ -13,6 +13,10 @@ from dataclasses import dataclass
 from copthief_core.domain.board import STAY, Board, Coord
 from copthief_core.domain.rules import is_legal_barrier, legal_moves
 
+# The sealed-record move value for a wall turn (our own alphabet — self-consistent per
+# side; the audit re-hashes bytes, not grammar. The reference seals "BARRIER:<dir>").
+BARRIER_MOVE = "BARRIER"
+
 
 @dataclass(frozen=True)
 class Decision:
