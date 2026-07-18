@@ -15,6 +15,7 @@ from typing import Any
 
 from copthief_core.domain.board import Board
 from copthief_core.gui.models.live import LiveViewModel, heat_color
+from copthief_core.gui.windows import theme
 from copthief_core.shared.config_model import GuiSettings
 
 
@@ -32,15 +33,13 @@ class LiveView:
 class LiveWindow:
     """One Tk container rendering one LiveView (banner + heatmap grid + hint lines)."""
 
-    def __init__(self, container: tk.Misc, view: LiveView) -> None:
+    def __init__(self, container: tk.Tk | tk.Toplevel, view: LiveView) -> None:
         self._view = view
         side = view.board.grid_size * view.settings.cell_px
-        self._banner = tk.Label(container, text="", fg="white")
-        self._banner.pack(fill="x")
-        self._canvas = tk.Canvas(container, width=side, height=side)
-        self._canvas.pack()
-        self._status = tk.Label(container, text="", justify="left", anchor="w")
-        self._status.pack(fill="x")
+        theme.chrome(container, view.settings)
+        self._banner = theme.banner(container, view.settings)
+        self._canvas = theme.board_canvas(container, view.settings, side)
+        self._status = theme.status_bar(container, view.settings)
 
     def pump(self) -> None:
         """Drain queued events into the model, then redraw the current frame."""
@@ -54,7 +53,7 @@ class LiveWindow:
     def _redraw(self) -> None:
         view, state = self._view, self._view.model.state()
         banner = state.outcome or state.banner if state.finished else state.banner
-        self._banner.configure(text=banner, bg=state.banner_color)
+        self._banner.configure(text=banner, bg=theme.semantic_hex(state.banner_color))
         self._status.configure(
             text=(f"step {state.step}   heard: {state.hint_in!r}   said: {state.hint_out!r}")
         )
@@ -65,17 +64,24 @@ class LiveWindow:
                 coord = (row + origin, col + origin)
                 y = self._display_row(row) * cell
                 x = col * cell
-                fill = heat_color(
-                    self._shade(state.belief, coord),
-                    low=view.settings.heat_low,
-                    high=view.settings.heat_high,
-                )
                 if coord in state.barriers:
-                    fill = "black"
-                self._canvas.create_rectangle(x, y, x + cell, y + cell, fill=fill)
+                    theme.tile(self._canvas, x, y, cell, theme.BARRIER_FILL, theme.BARRIER_EDGE)
+                else:
+                    fill = heat_color(
+                        self._shade(state.belief, coord),
+                        low=view.settings.heat_low,
+                        high=view.settings.heat_high,
+                    )
+                    theme.tile(self._canvas, x, y, cell, fill)
                 if coord == state.own_position:
-                    self._canvas.create_text(
-                        x + cell // 2, y + cell // 2, text=state.role[0].upper()
+                    theme.marker(
+                        self._canvas,
+                        x,
+                        y,
+                        cell,
+                        color=view.settings.accent,
+                        text=state.role[0].upper(),
+                        settings=view.settings,
                     )
 
     def _display_row(self, row: int) -> int:

@@ -52,9 +52,9 @@
 ## Phase M4 — Observability
 
 - ☑ **M4-1** `docs/PRD_gui_replay.md` — C, approved I (PR #24; merge = the approval).
-- ☐ **M4-2** Live GUI (heatmap + turn banner; local truth only) — C. DoD: screenshot from a real game saved to assets/.
-- ☐ **M4-3** Replay verifier (Verified OK / TAMPERED) — C, review AG. DoD: M2 log → Verified OK; mutated log → TAMPERED (both observed).
-- ☐ **M4-4** Belief-vs-truth overlay + belief-error curve export — C. DoD: overlay rendered from a real audited game.
+- ☑ **M4-2** Live GUI (heatmap + turn banner; local truth only) — C (PR #26 + workstream-L log schema PR #25). DoD observed: `assets/m4-live-heatmap.png` from the real audited game `m4-local-g1` (evidence: `docs/evidence/m4-observability.md`).
+- ☑ **M4-3** Replay verifier (Verified OK / TAMPERED) — C, review AG (PR #27). DoD observed: M2 g1 + M3 logs → Verified OK; mutated copy → TAMPERED exit 1 (both quoted in `m4-observability.md`; rule-19 mutation matrix pinned in CI; viewer screenshots in assets/).
+- ☑ **M4-4** Belief-vs-truth overlay + belief-error curve export — C (PR #28). DoD observed: `assets/m4-belief-overlay.png` + `-curve.png` rendered from the real audited game via `copthief overlay`.
 
 ## Phase M5 — Intelligence ⚑
 

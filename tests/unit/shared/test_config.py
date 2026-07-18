@@ -42,9 +42,20 @@ def test_gui_section_loads_typed_display_knobs() -> None:
     _constitution, private, _limits = load_all(CONFIG_DIR, counted=False)
     assert private.gui.refresh_ms > 0
     assert private.gui.cell_px > 0
-    for anchor in (private.gui.heat_low, private.gui.heat_high):
-        assert anchor.startswith("#")
-        assert len(anchor) == 7
+    assert private.gui.png_dpi > 0
+    assert private.gui.font_size > 0
+    assert private.gui.font_family
+    colors = (
+        private.gui.heat_low,
+        private.gui.heat_high,
+        private.gui.theme_bg,
+        private.gui.theme_panel,
+        private.gui.theme_fg,
+        private.gui.accent,
+    )
+    for color in colors:
+        assert color.startswith("#")
+        assert len(color) == 7
 
 
 def test_constitution_builds_the_board_from_the_signed_axis_contract() -> None:

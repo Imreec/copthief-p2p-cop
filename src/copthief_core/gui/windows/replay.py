@@ -12,6 +12,7 @@ from pathlib import Path
 
 from copthief_core.domain.board import Board
 from copthief_core.gui.models.replay import ReplayWalk
+from copthief_core.gui.windows import theme
 from copthief_core.peer.replay import VERDICT_OK
 from copthief_core.shared.config_model import Constitution, GuiSettings
 
@@ -19,19 +20,29 @@ from copthief_core.shared.config_model import Constitution, GuiSettings
 class ReplayWindow:
     """One window walking one verified log."""
 
-    def __init__(self, root: tk.Misc, walk: ReplayWalk, board: Board, cell_px: int) -> None:
-        self._walk, self._board, self._cell = walk, board, cell_px
-        color = "green" if walk.verdict == VERDICT_OK else "red"
-        self._banner = tk.Label(root, text=walk.verdict, fg="white", bg=color)
-        self._banner.pack(fill="x")
-        side = board.grid_size * cell_px
-        self._canvas = tk.Canvas(root, width=side, height=side)
-        self._canvas.pack()
-        controls = tk.Frame(root)
-        controls.pack(fill="x")
-        tk.Button(controls, text="<", command=self._back).pack(side="left")
-        tk.Button(controls, text=">", command=self._forward).pack(side="left")
-        self._status = tk.Label(controls, text="", anchor="w")
+    def __init__(
+        self, root: tk.Tk | tk.Toplevel, walk: ReplayWalk, board: Board, settings: GuiSettings
+    ) -> None:
+        self._walk, self._board, self._settings = walk, board, settings
+        self._cell = settings.cell_px
+        theme.chrome(root, settings)
+        self._banner = theme.banner(root, settings)
+        verdict_color = "green" if walk.verdict == VERDICT_OK else "red"
+        self._banner.configure(text=walk.verdict, bg=theme.semantic_hex(verdict_color))
+        self._canvas = theme.board_canvas(root, settings, board.grid_size * self._cell)
+        controls = tk.Frame(root, bg=settings.theme_bg)
+        controls.pack(fill="x", padx=8)
+        theme.flat_button(controls, settings, "<", self._back)
+        theme.flat_button(controls, settings, ">", self._forward)
+        self._status = tk.Label(
+            controls,
+            text="",
+            anchor="w",
+            bg=settings.theme_bg,
+            fg=settings.theme_fg,
+            font=theme.font(settings, delta=-1),
+            padx=10,
+        )
         self._status.pack(side="left", fill="x", expand=True)
         self._redraw()
 
@@ -58,12 +69,20 @@ class ReplayWindow:
             for col in range(self._board.grid_size):
                 coord = (row + origin, col + origin)
                 x, y = col * cell, self._display_row(row) * cell
-                fill = "black" if coord in frame.barriers else "white"
-                self._canvas.create_rectangle(x, y, x + cell, y + cell, fill=fill)
+                if coord in frame.barriers:
+                    theme.tile(self._canvas, x, y, cell, theme.BARRIER_FILL, theme.BARRIER_EDGE)
+                else:
+                    theme.tile(self._canvas, x, y, cell, self._settings.theme_panel)
                 for sender, position in frame.positions.items():
                     if position == coord:
-                        self._canvas.create_text(
-                            x + cell // 2, y + cell // 2, text=sender[0].upper()
+                        theme.marker(
+                            self._canvas,
+                            x,
+                            y,
+                            cell,
+                            color=theme.ROLE_COLORS.get(sender, self._settings.accent),
+                            text=sender[0].upper(),
+                            settings=self._settings,
                         )
         self._status.configure(text=f"step {frame.step} ({self._walk.index + 1}/{len(self._walk)})")
 
@@ -73,5 +92,5 @@ def show_replay(log_path: Path, constitution: Constitution, settings: GuiSetting
     walk = ReplayWalk.from_log(log_path)
     root = tk.Tk()
     root.title(f"copthief replay - {log_path.name}")
-    ReplayWindow(root, walk, constitution.board.make_board(), settings.cell_px)
+    ReplayWindow(root, walk, constitution.board.make_board(), settings)
     root.mainloop()
