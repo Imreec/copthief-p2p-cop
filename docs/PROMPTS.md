@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #23 — docs/m3-7-decision (ADR-0004 revision: REVISE decided)
+
+- **Driver:** Imree (decision delegated conditionally — "if it isn't blocking we can go
+  with your recommendation"; assessed not blocking: Alon's inputs gate the build, not
+  the decision) · **Author:** Claude (terminal).
+- **This PR:** M3-7 ticked with the decision record (REVISE: second named scent model,
+  pair-locked, belief observation model parameterized) incl. the assessment's two
+  corrections — per-field decay cadence is once per full turn in reference and ours
+  alike, and the locked-model doc is hashed/logged but not terms-signed (step-0
+  sealing added to the build scope to close it). New input-gated M3-8 build item
+  (blocked on Alon's kernel numbers / cadence trace / rounding+ρ / lock fallback;
+  PRD amendment + ADR-0004 v2 approve-before-build; not inside M4). Question list
+  handed to Imree for Alon; kit PR #5 reviewed this session (all four hashes
+  independently recomputed against the reference's own consensus_signature) and
+  recommended for merge.
+
 ## PR #22 — docs/league-coordination (Alon's analysis folded into the roadmap)
 
 - **Driver:** Imree (relayed the planning session's wrap-up instruction with "don't
