@@ -89,14 +89,14 @@
     "tests/conformance/vectors/game_uid.json": "1e86e0e5763cdf1ef6157651033960dbd7e9e5069265d75f6bce897afee33d49",
     "tests/conformance/vectors/pheromone.json": "54671f3a4382225b651524d1cff680ed3f4075db696e35704466d237a8c1ca73",
     "tests/conformance/vectors/terms_signature.json": "479cf58decb26a8298fcdd7e9286052b674e568cfb1aa667fe1fbd3be21c7b70",
-    "tests/integration/test_arena_dod.py": "6004bb1eb4a4fa1e264906e9b04d957cd055e8ac98306dc3d0299f3ed1677f84",
+    "tests/integration/test_arena_dod.py": "6d98cf18b2781054f7a5e29e1be95b4fcf5520fa8ea676ad40ea94702142953f",
     "tests/integration/test_arena_harness.py": "282d004808716380fa5c4ba41e3d93439659e0dab45e7315af6f7ccf23ce3e62",
     "tests/integration/test_belief_vs_baseline.py": "2c903c162ae38687d86aefd7d7aebb9b4dd3a77c9a0abe5841f706a73d1df8c3",
-    "tests/integration/test_headless_series.py": "f0f3ceb839370e445af38c392a95b447060da3a1c6199b3c6f92a63b1359bb7b",
+    "tests/integration/test_headless_series.py": "7fe691cd344a3d428b6ed4443cb697cc49889ef81102dd924d1f44ed5c65279f",
     "tests/integration/test_local_minigame.py": "9375f20aecd3ac7f2e81f3e0ceb93873fd31b5552753de2acfa5baa3e040d65b",
-    "tests/integration/test_log_schema.py": "46491f8d3b8c64e138b0e0f55bf0823425f9b64ce7ae55d5541c53384c5ec918",
+    "tests/integration/test_log_schema.py": "5be95507a8ece05af50dd4b3d9057a7b93f458c94ad1aaff2b6f48075adcf29c",
     "tests/integration/test_p2p_live.py": "602bc67c91b94dcc32c703f4008b41a635763b8ed4efb51121d02c3515f8819b",
-    "tests/integration/test_peer_barriers.py": "1c343bea77a98334c110fc079eb1556fabc8029fe446777110855b207e2155a1",
+    "tests/integration/test_peer_barriers.py": "d89a3363d7acc8249687aec61698ac957eecaf9ecd56ddcddc10a9cb90f02343",
     "tests/integration/test_referee_barriers.py": "7c6df611f0200bc36cd5cac11394913d360221e862d8bf2439d4c68a98ed61ba",
     "tests/integration/test_referee_minigame.py": "c2063d346b281de933144301e76ab8b845a9ed7b2d0ac08a87bfc13b80003e81",
     "tests/integration/test_replay_from_log.py": "3825378361e1fc13078f53fcbfe6c483497bafd66d81472130d7abb2b4fc91ac",
@@ -129,7 +129,7 @@
     "tests/unit/peer/test_transport.py": "77294ba36fc26c86c82996d5d4abaee5ad3cd3a529b9ca16a0dc57136f250299",
     "tests/unit/sdk/test_arena.py": "8d5e6d61fb00190d3a1017dd43126dc8a7e833cb88764882a52cf2652e24ca9d",
     "tests/unit/sdk/test_arena_config.py": "53777bffbda8b4fec43e05b9fd00d1ac3754111a4b46cd037d649f07475b2bee",
-    "tests/unit/sdk/test_cli.py": "5ebc7bf2699a928e9589d3865c20584d2dea24f429742867837f67d77b904b8c",
+    "tests/unit/sdk/test_cli.py": "f543822da1314ef6d0c66db30f40ff5d5002fff7ffd54ee3eb12d72800b67e5d",
     "tests/unit/sdk/test_simulation_sdk.py": "e1a4a97ab32f8264968c342f823ade83e846e52cf03810cc1dfc5926394ab4be",
     "tests/unit/shared/test_appf_guard.py": "e11582463a868d2bebdc3da9036026c4bddf185c0b9bbc6e9ae8a3ba75ef4173",
     "tests/unit/shared/test_config.py": "e771702b542fc6083330c04bbb838698d6d4ce5a22949874826addc4267d4b4e",
@@ -142,7 +142,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "f753c68",
+  "source_commit": "7cad3ec",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "01c1d74feb48af7f99061a1b3522acc738aac1deefe7ced27f08236aac9639fa"
+  "tree_hash": "95d3b0746c73f45f09e17a9a79fcf2e1c31ca66a01697714f71eca6c8fefcac6"
 }

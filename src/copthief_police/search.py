@@ -1,0 +1,88 @@
+"""Expectimax over the belief (PRD_police_brain §5; book §6.3.1 "your own algorithm").
+
+Position uncertainty is epistemic — a chance node: expectation over the truncated
+belief support. Action uncertainty is adversarial — the thief KNOWS where it is, so
+its reply is a min. Our plies maximize. Capture branches pay `w_capture` plus an
+earlier-is-better bonus (remaining plies), so the search prefers the fast catch.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Mapping
+
+from copthief_core.domain.belief import BeliefFilter
+from copthief_core.domain.board import Board, Coord
+from copthief_core.domain.rules import is_imprisoned, legal_moves
+from copthief_police.features import leaf_value
+
+
+def truncated_support(belief: BeliefFilter, top_k: int) -> list[tuple[Coord, float]]:
+    """The `top_k` most probable cells, renormalized (deterministic order)."""
+    ranked = sorted(belief.probs().items(), key=lambda kv: (-kv[1], kv[0]))[:top_k]
+    total = sum(p for _, p in ranked)
+    return [(cell, p / total) for cell, p in ranked] if total > 0 else []
+
+
+def _captured(board: Board, cop: Coord, thief: Coord) -> bool:
+    return cop == thief or thief in board.barriers or is_imprisoned(board, thief)
+
+
+def _cop_turn(
+    board: Board,
+    cop: Coord,
+    thief: Coord,
+    move_set: tuple[str, ...],
+    plies: int,
+    opts: Mapping[str, float],
+    cache: dict[Coord, int],
+) -> float:
+    if _captured(board, cop, thief):
+        return opts["w_capture"] + plies
+    if plies == 0:
+        return leaf_value(board, cop, thief, move_set, opts, cache)
+    values = []
+    for move in sorted(legal_moves(board, cop, move_set)):
+        dest = board.apply_move(cop, move)
+        if dest == thief:
+            values.append(opts["w_capture"] + plies)
+        else:
+            values.append(_thief_turn(board, dest, thief, move_set, plies - 1, opts, cache))
+    return max(values) if values else leaf_value(board, cop, thief, move_set, opts, cache)
+
+
+def _thief_turn(
+    board: Board,
+    cop: Coord,
+    thief: Coord,
+    move_set: tuple[str, ...],
+    plies: int,
+    opts: Mapping[str, float],
+    cache: dict[Coord, int],
+) -> float:
+    if _captured(board, cop, thief):
+        return opts["w_capture"] + plies
+    if plies == 0:
+        return leaf_value(board, cop, thief, move_set, opts, cache)
+    replies = [
+        board.apply_move(thief, move) for move in sorted(legal_moves(board, thief, move_set))
+    ]
+    replies = [dest for dest in replies if dest != cop]  # stepping onto the cop = capture
+    if not replies:
+        return opts["w_capture"] + plies  # cornered: every escape is blocked or suicidal
+    return min(_cop_turn(board, cop, dest, move_set, plies, opts, cache) for dest in replies)
+
+
+def action_value(
+    board: Board,
+    cop_after: Coord,
+    support: list[tuple[Coord, float]],
+    move_set: tuple[str, ...],
+    opts: Mapping[str, float],
+) -> float:
+    """Expected value of one root action over the belief support (fresh region cache
+    per call — the board differs between move and barrier actions)."""
+    cache: dict[Coord, int] = {}
+    plies = int(opts["search_depth"]) - 1
+    return sum(
+        p * _thief_turn(board, cop_after, cell, move_set, plies, opts, cache) for cell, p in support
+    )

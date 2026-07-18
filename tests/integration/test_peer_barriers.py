@@ -23,8 +23,10 @@ def waller_config(tmp_path: Path) -> Path:
     shutil.copytree(Path("config"), config)
     toml_path = config / "game.toml"
     text = toml_path.read_text(encoding="utf-8")
-    text = text.replace('police_class = "random"', 'police_class = "ref-police"')
-    text += "\n[strategy.police]\nref_police_barrier_chance = 1.0\n"
+    text = text.replace(
+        'police_class = "copthief_police.brain:PoliceBrain"', 'police_class = "ref-police"'
+    )
+    text = text.replace("[strategy.police]", "[strategy.police]\nref_police_barrier_chance = 1.0")
     toml_path.write_text(text, encoding="utf-8")
     return config
 

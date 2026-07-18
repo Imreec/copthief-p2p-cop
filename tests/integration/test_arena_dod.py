@@ -28,8 +28,8 @@ def test_every_configured_dod_series_clears_its_win_rate_floor() -> None:
             min_separation=CONFIG.scenario_min_separation,
         )
         results = sdk.scenario_series(
-            police=series.police,
-            thief=series.thief,
+            police=CONFIG.spec_for(series.police),
+            thief=CONFIG.spec_for(series.thief),
             scenarios=scenarios,
             police_options=CONFIG.options_for(series.police),
             thief_options=CONFIG.options_for(series.thief),
