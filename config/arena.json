@@ -5,13 +5,39 @@
     "random",
     "greedy-manhattan",
     "ref-police",
-    {"name": "police-brain", "spec": "copthief_police.brain:PoliceBrain"}
+    {
+      "name": "police-brain",
+      "spec": "copthief_police.brain:PoliceBrain"
+    }
   ],
-  "thief_roster": ["random", "greedy-manhattan", "ref-thief"],
-  "seeds": [1, 2, 3, 4, 5, 6, 7, 8],
+  "thief_roster": [
+    "random",
+    "greedy-manhattan",
+    "ref-thief"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
   "scenario_min_separation": 4,
   "brain_options": {
-    "ref-police": {"ref_police_barrier_chance": 0.15}
+    "ref-police": {
+      "ref_police_barrier_chance": 0.15
+    },
+    "police-brain": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143
+    }
   },
   "dod_series": [
     {
@@ -20,7 +46,40 @@
       "thief": "ref-thief",
       "wins_role": "police",
       "min_win_rate": 0.6,
-      "seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+      "seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
     }
   ],
   "evidence_out": "docs/evidence/m5-arena.md"

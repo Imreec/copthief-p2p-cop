@@ -1,0 +1,68 @@
+{
+  "version": "1.00",
+  "role": "police",
+  "brain": "copthief_police.brain:PoliceBrain",
+  "opponent": "ref-thief",
+  "fitness_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216
+  ],
+  "default_fitness": 0.6875,
+  "evolved_fitness": 1.0,
+  "evolved_options": {
+    "barrier_gain_threshold": 4.7892928049245995,
+    "p_commit": 0.2,
+    "w_budget": 1.7277136390265149,
+    "w_distance": 3.8875354309080175,
+    "w_mobility": 3.6061172110624145,
+    "w_region": 0.11426625525288181
+  },
+  "history": [
+    {
+      "best": 0.9375,
+      "mean": 0.74375
+    },
+    {
+      "best": 0.9375,
+      "mean": 0.84375
+    },
+    {
+      "best": 1.0,
+      "mean": 0.9125
+    },
+    {
+      "best": 1.0,
+      "mean": 0.9375
+    },
+    {
+      "best": 1.0,
+      "mean": 0.9125
+    },
+    {
+      "best": 1.0,
+      "mean": 0.9375
+    },
+    {
+      "best": 1.0,
+      "mean": 0.95625
+    },
+    {
+      "best": 1.0,
+      "mean": 0.9625
+    }
+  ]
+}
