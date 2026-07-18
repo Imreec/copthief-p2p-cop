@@ -13,6 +13,7 @@ from __future__ import annotations
 from typing import Any
 
 from copthief_core.domain.belief import BeliefFilter
+from copthief_core.domain.gazetteer import Gazetteer
 from copthief_core.domain.scent import ScentField
 from copthief_core.domain.state_machine import GameState, GameStateMachine
 from copthief_core.peer import handshake, turns
@@ -45,11 +46,21 @@ class PeerSession:
     """One peer's mini-game session (Input: validated config + role; see handlers)."""
 
     def __init__(
-        self, constitution: Constitution, private: PrivateSettings, *, role: str, seed: int
+        self,
+        constitution: Constitution,
+        private: PrivateSettings,
+        *,
+        role: str,
+        seed: int,
+        gazetteer: Gazetteer | None = None,
     ) -> None:
         self.constitution = constitution
         self.private = private
         self.role = role
+        # M3-4 verbal layer: with a (non-empty) gazetteer our hints come from the
+        # template×landmark composer and inbound hints feed the belief; without one
+        # the M1 policy bank still plays (empty closed world = no geography talk).
+        self.gazetteer = gazetteer if gazetteer is not None and gazetteer.landmarks() else None
         self.board = constitution.board.make_board()
         self.position = (
             constitution.board.cop_start if role == "police" else constitution.board.thief_start

@@ -15,6 +15,7 @@ from typing import TYPE_CHECKING, Any
 
 from copthief_core.domain.state_machine import GameState
 from copthief_core.peer.sealing import seal_turn
+from copthief_core.strategy.hints import VERDICT_TRUTH, compose_hint
 from copthief_core.wire.turn import TurnMessage
 from copthief_core.wire.validation import WireValidationError
 
@@ -29,6 +30,7 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
     """Pick → seal → deposit scent → build the outbound TurnMessage; nonce withheld."""
     if session.machine.state is GameState.WAITING_FOR_OPPONENT:
         session.machine.advance(GameState.COMPUTING_MOVE)
+    verdict = VERDICT_TRUTH
     if session.caught:  # the mandatory final message: no move, honest answer
         move, hint = "STAY", FINAL_CAUGHT_HINT
     else:
@@ -36,7 +38,17 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
             session.board, session.position, session.constitution.movement.move_set
         )
         session.position = session.board.apply_move(session.position, move)
-        hint = session.policy.next_hint(hint_max_words=session.constitution.world.hint_max_words)
+        max_words = session.constitution.world.hint_max_words
+        if session.gazetteer is None:  # M1 fallback bank (no geography for the area)
+            hint = session.policy.next_hint(hint_max_words=max_words)
+        else:  # M3-4: template×landmark composer; truthful by default (timing = M5)
+            composed = compose_hint(
+                session.gazetteer,
+                position=session.position,
+                max_words=max_words,
+                salt=len(session.records),
+            )
+            hint, verdict = composed.text, composed.verdict
     step = len(session.records) + 1
     sealed = seal_turn(
         step=step,
@@ -44,7 +56,7 @@ def take_turn(session: PeerSession, *, now: float) -> dict[str, Any]:
         position=session.position,
         barriers=session.board.barriers,
         move=move,
-        intent="truth",
+        intent=verdict,
         hint=hint,
     )
     session.records.append(sealed)
@@ -105,6 +117,14 @@ def handle_receive_turn(session: PeerSession, raw: dict[str, Any]) -> dict[str, 
     # PRD_belief §4 pipeline (reference order): predict, then sharpen with the scent.
     session.belief.predict()
     session.belief.update_scent(message.smell_grid)
+    # M3-4: their hint feeds the belief ONLY through the closed-vocabulary parser —
+    # adversarial text maps to a known landmark or to nothing (injection-safe by shape).
+    if session.gazetteer is not None:
+        landmark = session.gazetteer.parse(
+            message.hint, max_words=session.constitution.world.hint_max_words
+        )
+        if landmark is not None:
+            session.belief.update_hint(session.gazetteer.cells_for(landmark))
     # SQ1 receive side: absorb their transmitted trail, then one per-message decay.
     session.known_field.absorb(message.smell_grid)
     session.known_field.decay()
