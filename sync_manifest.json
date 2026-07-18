@@ -128,7 +128,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "0ceeda1",
+  "source_commit": "35377d6",
   "source_repo": "copthief-p2p-cop",
   "tree_hash": "1d9336bcef2d03da31b6282649e7a28225be6f36a3b78f632938d545e6b7a3d6"
 }
