@@ -3,6 +3,29 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #30 — docs/m5-1-police-brain-prd (M5-1 gate — PoliceBrain PRD + ADR-0005)
+
+- **Driver:** Imree (M5 session opening brief: scope M5-1..M5-7, the role-split and
+  reference-heuristic-opponent questions posed as PRD inputs, M3-8 scent internals fenced off)
+  · **Author:** Claude (terminal) · **Reviewer:** Imree (docs gate — merge = the approval).
+- **Context:** memory recalled (project-state, ops gotchas incl. format-gate + portable-pin,
+  Alon coordination), then primary sources re-read: book ch.6 pp.57–68 from the extraction,
+  reference `brains.py`/`belief.py`/`sealing.py`/`own_state.py` @960499fd, M2 SQ2/SQ3, M3
+  arena/belief evidence, the strategy seams, `sync_core.py` MIRRORED list. Recon settled four
+  facts the PRD binds: SQ2 makes claims free per-MOVE probes (claim policy → capture-commit in
+  move scoring); deterministic brains on fixed signed starts degenerate the DoD to 0/100% (→
+  seeded start-scenario suite); `tests/role/` is per-repo while `scripts/`+`tests/integration`
+  are mirrored (→ arena roster/seeds move to per-repo `config/arena.json`, factory gains the
+  book's dotted `package.module:Class` notation); the reference walls its step-cell at an
+  attributed 0.15 coin-flip and a barrier turn moves nothing.
+- **This PR:** `docs/PRD_police_brain.md` (role split · re-derived `ref-*` DoD opponents with
+  perception held fixed on our BeliefFilter, disclosed as the harder-opponent direction ·
+  Decision seam · scenario suite + per-role rosters · expectimax + barrier graph-surgery +
+  capture-commit · weights→config as the M5-4 GA interface) + `docs/adr/0005-strategy-track.md`
+  (belief+search over RL — indexed in PLAN §14 since Phase 2, written as the decision lands).
+  TODO M5-1 ticked in the same change (true at merge). Sibling ThiefBrain PRD: thief repo PR #20,
+  approved together.
+
 ## PR #28 — feat/m4-overlay (M4-4 — belief-vs-truth overlay + error curve)
 
 - **Driver:** Eyal ("continue" directive, same session) · **Author:** Claude (terminal) ·
