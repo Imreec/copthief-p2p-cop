@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #33 — feat/m5-3-core-prereqs (M5-3 core prerequisites)
+
+- **Driver:** Imree ("merge them, then continue" after approving #31/#32) · **Author:**
+  Claude (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **Context:** pre-sync audit caught a PR-#29-rule violation of my own making: the
+  mirrored `test_peer_barriers` fixture matched the cop repo's literal `police_class`
+  value and would have gone red in the thief repo on sync — the sync ritual was held
+  until this fix. The rest is the role-neutral seam PRD_thief_brain §3 binds.
+- **This PR:** RED `tests/unit/peer/test_hint_seam.py` → GREEN: Decision gains
+  `hint_verdict`/`hint_landmark` (validated; `decide()` preserves hint fields through
+  the clamp — the clamp governs actions, not talk) · `compose_hint` accepts an explicit
+  decoy landmark (off-vocabulary falls back — the closed world never leaks) ·
+  peer/turns + referee hand brains the deception construction kit (gazetteer, own
+  transmitted trail so far, signed pheromone params — a self-mirror's inputs, nothing
+  about the opponent's truth) · the fixture now rewrites the `police_class` KEY
+  role-agnostically · split `strategy/referee_setup.py` (150-line rule).
+
 ## PR #32 — feat/m5-2-police-brain (M5-2 — PoliceBrain, the graded core ⚑)
 
 - **Driver:** Imree ("merge them, then continue" after approving the M5-1 PRD pair) ·
