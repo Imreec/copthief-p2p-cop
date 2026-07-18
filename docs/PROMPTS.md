@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #25 — feat/m4-log-schema (workstream L — log schema v1.1)
+
+- **Driver:** Eyal (relayed the M4-1 approval; "continue" directive after the gate
+  merged) · **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model,
+  on the PR).
+- **This PR:** strict RED→GREEN TDD (RED `1f7b87f` → GREEN `bafa662`): `peer/events.py`
+  (schema-v1.1 builders; module docstring carries the honest "verbatim = the parsed
+  dict, losslessly" definition), inbound-verbatim archiving at the `peer/p2p` loop
+  seams incl. rejected inbound (archived BEFORE validation — dispute evidence),
+  `GameStateMachine` observer + trigger annotation (injected callable, domain stays
+  pure; collapse reasons and the turn-deadline timeout travel as triggers), belief
+  snapshot per inbound turn (mass == 1 pinned), decision provenance at seal time
+  (cross-checked vs audited records), logger parent-dir creation (the M3 thief trap).
+  Compat pinned: the committed M3 evidence log still replays Verified. Nothing on
+  the wire — kit CORE untouched. 322 tests, coverage 96%, new modules 100%.
+
 ## PR #24 — docs/m4-prd (M4-1 gate: GUI/replay/observability PRD)
 
 - **Driver:** Eyal (this session's terminal driver; commits authored as @eyalsht for
