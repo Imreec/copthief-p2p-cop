@@ -61,7 +61,7 @@
 - ☑ **M5-1** ⚑ `docs/PRD_police_brain.md` (police repo) / `docs/PRD_thief_brain.md` (thief repo) — C, approved I (police PR #30 + thief PR #20, approved together; merge = the approval; ADR-0005 rides the police PR).
 - ☑ **M5-2** ⚑ PoliceBrain: expectimax over belief + barrier graph-surgery + capture-commit (claim policy per SQ2) — C, review E/AG (PRs #31 core seam + #32 role package). DoD OBSERVED, CI-blocking: 24/32 = **75%** vs `ref-thief` over the 32-scenario suite (floor 60%; `docs/evidence/m5-arena.md`); champion pin dethroned twice with same-PR evidence (ref-police → police-brain).
 - ☐ **M5-3** ⚑ ThiefBrain: region-survival + articulation awareness + deception timing — C, review E. DoD: ≥60% arena vs reference heuristic (thief role).
-- ☐ **M5-4** Genetic tuning runs (HW6 salvage adapted; weights → config) — C. DoD: improving fitness curve artifact committed.
+- ☑ **M5-4** Genetic tuning runs (HW6 salvage adapted; weights → config) — C (PR #35). DoD OBSERVED: improving fitness curve committed (`docs/evidence/m5-ga.md`, 0.938→1.000 best, elitist-monotone by construction; `config/ga_weights.json` artifact). Evolved police weights validated OFF-suite (DoD 75%→**94%**, holdout 78%→97%) and deployed as config; smoke GA = permanent keyless CI. ⚑ thief-side run rides the next sync (its `ga.json` parity + ThiefBrain gene box).
 - ☐ **M5-5** Post-audit opponent profiling (lie-rate, motion priors → next mini-game) — C. DoD: PLAN §13 M5 prior-shift test.
 - ☐ **M5-6** Template-bank A/B in arena (deception efficacy metric) — C. DoD: measured table in notebook; winning bank shipped.
 - ☐ **M5-7** `notebooks/results_analysis.ipynb` (arena + sensitivity + curves; LaTeX + citations) — C, review E. DoD: renders clean, committed with outputs.
