@@ -99,15 +99,24 @@ def play_referee_game(
         police_belief.predict()
         police_belief.update_scent(thief_trail.snapshot())
         outcome = check_end(
-            board, cop_pos=cop, thief_pos=thief, steps_survived=step,
-            survival_threshold=threshold, max_moves=max_moves,
+            board,
+            cop_pos=cop,
+            thief_pos=thief,
+            steps_survived=step,
+            survival_threshold=threshold,
+            max_moves=max_moves,
         )
         if outcome is not None:
             return result(outcome, step)
         decision = police_brain.decide(
             Observation(
-                board=board, position=cop, move_set=move_set, role="police", step=step,
-                barriers_used=len(board.barriers), max_barriers=max_barriers,
+                board=board,
+                position=cop,
+                move_set=move_set,
+                role="police",
+                step=step,
+                barriers_used=len(board.barriers),
+                max_barriers=max_barriers,
             ),
             police_belief,
         )
@@ -122,8 +131,12 @@ def play_referee_game(
         thief_belief.predict()
         thief_belief.update_scent(cop_trail.snapshot())
         outcome = check_end(
-            board, cop_pos=cop, thief_pos=thief, steps_survived=step,
-            survival_threshold=threshold, max_moves=max_moves,
+            board,
+            cop_pos=cop,
+            thief_pos=thief,
+            steps_survived=step,
+            survival_threshold=threshold,
+            max_moves=max_moves,
         )
         if outcome is not None:
             return result(outcome, step)

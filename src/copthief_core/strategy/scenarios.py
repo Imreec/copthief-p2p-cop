@@ -29,7 +29,9 @@ class Scenario:
     thief_start: Coord
 
 
-def _sample_pair(constitution: Constitution, rng: random.Random, min_separation: int) -> tuple[Coord, Coord]:
+def _sample_pair(
+    constitution: Constitution, rng: random.Random, min_separation: int
+) -> tuple[Coord, Coord]:
     """A legal (cop, thief) start pair at ≥ `min_separation` Manhattan distance."""
     origin = constitution.board.axis_start_index
     span = range(origin, origin + constitution.board.grid_size)

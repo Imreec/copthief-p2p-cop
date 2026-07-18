@@ -120,8 +120,7 @@ def test_random_brain_moves_are_byte_identical_through_decide() -> None:
     board = make_board(barriers=frozenset({(2, 3), (3, 2)}))
     belief = make_belief(board, (0, 0))
     via_pick = [
-        RandomBrain(seed=7).pick_move(observation(board, (3, 3), "thief"), belief)
-        for _ in range(1)
+        RandomBrain(seed=7).pick_move(observation(board, (3, 3), "thief"), belief) for _ in range(1)
     ]
     via_decide = [
         RandomBrain(seed=7).decide(observation(board, (3, 3), "thief"), belief).move

@@ -34,9 +34,7 @@ def test_every_configured_dod_series_clears_its_win_rate_floor() -> None:
             police_options=CONFIG.options_for(series.police),
             thief_options=CONFIG.options_for(series.thief),
         )
-        winning = (
-            Outcome.COP_CAPTURE if series.wins_role == "police" else Outcome.THIEF_SURVIVAL
-        )
+        winning = Outcome.COP_CAPTURE if series.wins_role == "police" else Outcome.THIEF_SURVIVAL
         rate = sum(r.outcome is winning for r in results) / len(results)
         assert rate >= series.min_win_rate, (
             f"{series.label}: {series.wins_role} win-rate {rate:.2f} "

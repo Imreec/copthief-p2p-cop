@@ -16,7 +16,7 @@ from copthief_core.peer.match import run_local_minigame
 from copthief_core.peer.replay import replay_from_log
 
 
-@pytest.fixture()
+@pytest.fixture
 def waller_config(tmp_path: Path) -> Path:
     """The shipped config tree with the police brain swapped to an always-wall ref-police."""
     config = tmp_path / "config"
@@ -24,7 +24,7 @@ def waller_config(tmp_path: Path) -> Path:
     toml_path = config / "game.toml"
     text = toml_path.read_text(encoding="utf-8")
     text = text.replace('police_class = "random"', 'police_class = "ref-police"')
-    text += '\n[strategy.police]\nref_police_barrier_chance = 1.0\n'
+    text += "\n[strategy.police]\nref_police_barrier_chance = 1.0\n"
     toml_path.write_text(text, encoding="utf-8")
     return config
 
@@ -34,7 +34,8 @@ def test_walling_police_keeps_mutual_audit_and_replay_green(
 ) -> None:
     log_path = tmp_path / "game.jsonl"
     result = run_local_minigame(waller_config, police_seed=3, thief_seed=4, log_path=log_path)
-    assert result.audit_ok_police_side and result.audit_ok_thief_side
+    assert result.audit_ok_police_side
+    assert result.audit_ok_thief_side
     assert "BARRIER" in result.police_moves  # the wall really played
     walls = [
         event["message"]["barrier_placed"]

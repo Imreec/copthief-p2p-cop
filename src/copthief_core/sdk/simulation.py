@@ -8,12 +8,11 @@ does not passively serve tools.
 
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Any
 
 from copthief_core.peer.match import MatchResult, run_local_minigame
-from copthief_core.peer.p2p import PeerGameResult, run_peer_game
+from copthief_core.peer.p2p import PeerGameResult
 from copthief_core.peer.replay import ReplaySummary, replay_from_log
 from copthief_core.sdk.p2p_match import P2PMatchResult, play_p2p_match
 from copthief_core.shared.config import load_all
@@ -76,7 +75,7 @@ class SimulationSdk:
         *,
         police: str,
         thief: str,
-        scenarios: list[Scenario],
+        scenarios: Sequence[Scenario],
         police_options: Mapping[str, float] | None = None,
         thief_options: Mapping[str, float] | None = None,
     ) -> list[RefereeGameResult]:

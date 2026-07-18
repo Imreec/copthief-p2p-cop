@@ -11,8 +11,8 @@ from pathlib import Path
 
 import pytest
 
-from copthief_core.shared.private_config import ConfigError
 from copthief_core.sdk.arena_config import ArenaConfig, load_arena_config
+from copthief_core.shared.private_config import ConfigError
 
 
 def test_shipped_arena_config_loads_and_names_both_rosters() -> None:

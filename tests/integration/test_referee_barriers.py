@@ -33,12 +33,16 @@ class _BeliefWallerBrain(BrainBase):
         candidates = sorted(
             m
             for m in observation.move_set
-            if not observation.board.is_blocked(observation.board.apply_move(observation.position, m))
+            if not observation.board.is_blocked(
+                observation.board.apply_move(observation.position, m)
+            )
         )
         return min(
             candidates,
-            key=lambda m: abs(observation.board.apply_move(observation.position, m)[0] - target[0])
-            + abs(observation.board.apply_move(observation.position, m)[1] - target[1]),
+            key=lambda m: (
+                abs(observation.board.apply_move(observation.position, m)[0] - target[0])
+                + abs(observation.board.apply_move(observation.position, m)[1] - target[1])
+            ),
         )
 
     def _decide(self, observation: Observation, belief: BeliefFilter) -> Decision:

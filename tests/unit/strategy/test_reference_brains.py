@@ -114,9 +114,7 @@ def test_reference_brains_are_seed_reproducible() -> None:
     def run(seed: int) -> list[str]:
         brain = RefPoliceBrain(seed=seed, options={"ref_police_barrier_chance": 0.5})
         return [
-            brain.decide(
-                observation(board, (3, 3), "police", step=s, max_barriers=14), belief
-            ).move
+            brain.decide(observation(board, (3, 3), "police", step=s, max_barriers=14), belief).move
             for s in range(1, 6)
         ]
 

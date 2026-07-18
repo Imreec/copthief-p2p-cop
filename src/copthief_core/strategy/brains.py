@@ -114,9 +114,7 @@ class GreedyManhattanBrain(BrainBase):
         return max(candidates, key=lambda m: (distance_after(m), [-ord(ch) for ch in m]))
 
 
-def make_brain(
-    name: str, *, seed: int, options: Mapping[str, float] | None = None
-) -> BrainBase:
+def make_brain(name: str, *, seed: int, options: Mapping[str, float] | None = None) -> BrainBase:
     """Config-name factory (`game.toml [strategy]` / `config/arena.json` rosters).
 
     Core names: 'random' | 'greedy-manhattan' | 'ref-police' | 'ref-thief'. A spec with
