@@ -14,6 +14,11 @@
   auto-detect), `gui/export.py` (matplotlib-Agg overlay + curve PNGs, dpi
   config-owned, axis-contract-aware), D2 landed (`viz` dependency group included into
   dev for the keyless PNG smoke), CLI `copthief overlay`. PNG magic bytes pinned.
+  **Follow-up on Eyal's review of the first screenshots** ("looks a bit old"):
+  dark-theme facelift commit `4ab6b1a` — shell-only within D1/D3 (new
+  `gui/windows/theme.py` DRY chrome seam; `[gui]` font+theme knobs config-owned;
+  models untouched; PyQt deliberately declined — new dep + PRD churn for
+  stretch-priority polish). Screenshots retaken from the same audited game.
 
 ## PR #27 — feat/m4-replay (M4-3 — replay verifier + viewer)
 
