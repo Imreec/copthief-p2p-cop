@@ -58,5 +58,6 @@ def load_private_settings(path: Path) -> PrivateSettings:
             cell_px=int(gui["cell_px"]),
             heat_low=str(gui["heat_low"]),
             heat_high=str(gui["heat_high"]),
+            png_dpi=int(gui["png_dpi"]),
         ),
     )

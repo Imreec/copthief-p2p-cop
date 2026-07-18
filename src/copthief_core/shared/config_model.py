@@ -112,6 +112,7 @@ class GuiSettings:
     cell_px: int
     heat_low: str
     heat_high: str
+    png_dpi: int
 
 
 @dataclass(frozen=True)

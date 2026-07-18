@@ -54,6 +54,13 @@ def _parser() -> argparse.ArgumentParser:
     replay.add_argument("--log", type=Path, required=True, help="the JSONL game log to verify")
     replay.add_argument("--config", type=Path, default=Path("config"))
     replay.add_argument("--gui", action="store_true", help="open the step-through viewer")
+    overlay = commands.add_parser(
+        "overlay", help="render belief-vs-truth overlay + error-curve PNGs (post-audit)"
+    )
+    overlay.add_argument("--log", type=Path, required=True, help="an AUDITED JSONL game log")
+    overlay.add_argument("--out", type=Path, required=True, help="overlay PNG path")
+    overlay.add_argument("--role", choices=("police", "thief"), default=None)
+    overlay.add_argument("--config", type=Path, default=Path("config"))
     return parser
 
 
@@ -61,6 +68,10 @@ def main(argv: list[str] | None = None) -> int:
     """Dispatch one CLI invocation; every flow prints one JSON object."""
     args = _parser().parse_args(argv)
     sdk = SimulationSdk(args.config)
+    if args.verb == "overlay":
+        overlay_png, curve_png = sdk.export_overlay(args.log, args.out, role=args.role)
+        print(json.dumps({"overlay": str(overlay_png), "curve": str(curve_png)}))
+        return 0
     if args.verb == "replay":
         from copthief_core.peer.replay import verdict_for
 

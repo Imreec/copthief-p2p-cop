@@ -140,6 +140,18 @@ class SimulationSdk:
             show_replay(log_path, self.constitution, self.private.gui)
         return summary
 
+    def export_overlay(
+        self, log_path: Path, out: Path, *, role: str | None = None
+    ) -> tuple[Path, Path]:
+        """Render the belief-vs-truth overlay + error curve PNGs from an audited log
+        (M4-4; post-audit only). Returns (overlay path, curve path). matplotlib is
+        imported lazily — the viz group is an analysis-time dependency (D2)."""
+        from copthief_core.gui.export import export_overlay_pngs
+
+        return export_overlay_pngs(
+            log_path, out, role=role, constitution=self.constitution, settings=self.private.gui
+        )
+
     def run_p2p_match(
         self, *, police_seed: int, thief_seed: int, thief_port: int, host: str
     ) -> P2PMatchResult:

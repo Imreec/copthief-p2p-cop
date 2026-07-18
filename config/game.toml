@@ -42,6 +42,7 @@ refresh_ms = 200
 cell_px = 64
 heat_low = "#ffffff"
 heat_high = "#c81e1e"
+png_dpi = 150
 
 [network]
 my_port = 8802
