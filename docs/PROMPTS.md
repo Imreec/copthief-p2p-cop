@@ -3,6 +3,47 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #28 — feat/m4-overlay (M4-4 — belief-vs-truth overlay + error curve)
+
+- **Driver:** Eyal ("continue" directive, same session) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** strict RED→GREEN TDD (RED `a6a2f1a` → GREEN `6b39403`):
+  `gui/models/overlay.py` (pure series prep: truth ONLY from revealed audit records —
+  unaudited logs refused loudly; belief from logged snapshots, never recomputed; error
+  = 1 − P(truth), the exact M3-3 metric, test-recomputed from raw events; single-role
+  auto-detect), `gui/export.py` (matplotlib-Agg overlay + curve PNGs, dpi
+  config-owned, axis-contract-aware), D2 landed (`viz` dependency group included into
+  dev for the keyless PNG smoke), CLI `copthief overlay`. PNG magic bytes pinned.
+
+## PR #27 — feat/m4-replay (M4-3 — replay verifier + viewer)
+
+- **Driver:** Eyal ("continue" directive, same session) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** strict RED→GREEN TDD (RED `ce6b77c` → GREEN `1ab6880`): `peer/replay`
+  gains the book's exact banner strings + `verdict_for`; `revealed_records` reads
+  v1.1 `audit_received`, `wire_turns` folds `turn_received` (deduped; malformed
+  pre-validation archives skipped) — a one-sided live log now verifies BOTH sides.
+  `gui/models/replay.ReplayWalk` (audited frames, clamped cursor) + thin viewer
+  window + CLI `copthief replay` (exit 0/1 by verdict). Rule-19 mutation matrix as
+  permanent CI regression: every sealed field + nonce + commit flips a real log to
+  TAMPERED; opponent-audit tampering caught from the verbatim archive. One test bug
+  fixed during GREEN: the one-sided filter had dropped our own audit (its sender
+  lives inside the payload).
+
+## PR #26 — feat/m4-live-gui (M4-2 — live view: heatmap + turn banner)
+
+- **Driver:** Eyal ("continue" directive, same session) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** strict RED→GREEN TDD (RED `ede59f4`/`b41fa75` → GREEN `8f12a8e`):
+  `gui/models/live.py` pure fold over the v1.1 stream (banner per state; config-
+  anchored monotone `heat_color`; folds cross-checked against a real game's audited
+  records; **local truth by construction** — no opponent-position field, no full-info
+  imports, both pinned incl. an AST scan), thin Tk shells lazy-imported (keyless CI
+  touches no display), `[gui]` config section, `--gui` on peer/local-match via the
+  sdk. 150-line splits: `shared/private_config.py`, `sdk/p2p_match.py`. Coverage
+  omit narrowed to `gui/windows/*` (D3): gui/models 100%. Real-game hidden-root
+  smoke render clean.
+
 ## PR #25 — feat/m4-log-schema (workstream L — log schema v1.1)
 
 - **Driver:** Eyal (relayed the M4-1 approval; "continue" directive after the gate
