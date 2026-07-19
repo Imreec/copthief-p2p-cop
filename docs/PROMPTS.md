@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #39 — feat/m5-6-verbal-ab (M5-6 core: banks + referee verbal seam + A/B instrument)
+
+- **Driver:** Imree (session brief: "M5-6 template-bank A/B — deception efficacy metric
+  in referee mode; winning bank shipped; LLM never decides moves") · **Author:** Claude
+  (terminal) · **Reviewer:** Antigravity (cross-model); stacked on #38; the thief-led
+  A/B run rides the thief chain.
+- **This PR:** RED (bank round-trips · verbal-seam trace direction pins · role-blind
+  series determinism) → GREEN: named `BANKS` (bank-less callers keep today's wording
+  byte-for-byte; unknown names never fabricate) · referee verbal seam (gazetteer in,
+  hints feed the police belief in the peer's predict→scent→hint order; truth-anchored
+  efficacy trace, error = 1−P(true cell) — measurable ONLY in referee mode) ·
+  `deception_eval` (per-verdict induced-error summary + config-driven bank series) ·
+  `[strategy] hint_bank` ships the A/B winner to the live verbal layer ·
+  `scripts/deception_ab.py` (per-repo `config/deception_ab.json`; absent = repo opts
+  out). Candid: wording is neutral to OUR closed-vocabulary parser by construction —
+  measured differences come from word-cap parse survival + decoy policy (disclosed in
+  the instrument's own evidence header). Defaults keep every referee pin byte-identical.
+
 ## PR #38 — feat/m5-5-profiling (M5-5 post-audit opponent profiling)
 
 - **Driver:** Imree (session brief: "M5-5 opponent profiling — post-audit lie-rate +
