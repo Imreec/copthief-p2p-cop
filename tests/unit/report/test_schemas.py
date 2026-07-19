@@ -32,7 +32,8 @@ def test_links_block_keeps_literal_gnn_placeholder_for_per_subgame_files() -> No
     assert block["result"] == "result_gid-x.json"
     assert block["config"] == "config_gid-x_g<NN>.json"
     assert block["log"] == "log_gid-x_g<NN>.json"
-    assert isinstance(block["_remark"], str) and block["_remark"]
+    assert isinstance(block["_remark"], str)
+    assert block["_remark"]
 
 
 def test_schema_version_is_the_reference_generation() -> None:

@@ -31,9 +31,11 @@ FILES = {
     "result": f"result_{GAME_ID}.json",
 }
 # Keys build_config_artifact ADDS around the shared terms (everything else is signed).
+# Brute-force-verified vs the fixture: the reference's shared game.json carries
+# `schema_version` AND `_note` UNDER the lock (the writer then overwrites the displayed
+# schema_version with its own constant — they coincide at this generation).
 CONFIG_ADDED = {
     "_schema",
-    "schema_version",
     "game_id",
     "game_uid",
     "sub_game_number",
@@ -84,9 +86,9 @@ def test_sample_artifacts_pass_our_validation(kind: str) -> None:
 
 
 def test_schema_strings_match_the_reference_generation() -> None:
-    assert schema_text.SCHEMA_DECLARATION == load("declaration")["_schema"]
-    assert schema_text.SCHEMA_CONFIG == load("config")["_schema"]
-    assert schema_text.SCHEMA_LOG == load("log")["_schema"]
-    assert schema_text.SCHEMA_RESULT == load("result")["_schema"]
-    assert schema_text.LINKS_REMARK == load("declaration")["links"]["_remark"]
-    assert SCHEMA_VERSION == load("result")["schema_version"]
+    assert load("declaration")["_schema"] == schema_text.SCHEMA_DECLARATION
+    assert load("config")["_schema"] == schema_text.SCHEMA_CONFIG
+    assert load("log")["_schema"] == schema_text.SCHEMA_LOG
+    assert load("result")["_schema"] == schema_text.SCHEMA_RESULT
+    assert load("declaration")["links"]["_remark"] == schema_text.LINKS_REMARK
+    assert load("result")["schema_version"] == SCHEMA_VERSION

@@ -6,10 +6,11 @@ The consensus signature is computed over the report BEFORE the
 
 from __future__ import annotations
 
+from report_fixtures import make_summary
+
 import copthief_core
 from copthief_core.report.consensus import consensus_signature
 from copthief_core.report.hebrew import RESULT_HEBREW, build_report
-from report_fixtures import make_summary
 
 TERMS = {"rules": {"max_steps": 35}, "setting": "New York"}
 

@@ -12,13 +12,13 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from report_fixtures import make_identity, make_summary
 
 from copthief_core.domain.scoring import ScoringTable
 from copthief_core.report.consensus import consensus_signature
 from copthief_core.report.emit import artifact_bytes, emit_series
 from copthief_core.report.schemas import ReportValidationError
 from copthief_core.report.scores import symmetric_outcome
-from report_fixtures import make_identity, make_summary
 
 
 def _emit(tmp_path: Path, table: ScoringTable, shared_terms: dict[str, Any]) -> dict[str, Any]:
