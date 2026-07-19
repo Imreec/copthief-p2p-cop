@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #40 — feat/m5-7-notebook (M5-7 results notebook, executed + pinned)
+
+- **Driver:** Imree (session brief: "M5-7 notebooks/results_analysis.ipynb — arena + GA
+  curves + sensitivity; LaTeX + citations; renders clean, committed with outputs") ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity + Eyal (per TODO); stacked
+  on #39.
+- **This PR:** RED renders-clean pin (exists · every code cell executed · zero error
+  outputs · figures present — caught a real miss: the first build forced the Agg
+  backend and committed ZERO rendered PNGs; the figure assertion now guards it) →
+  GREEN: executed `notebooks/results_analysis.ipynb` — intro with the $e_t = 1-P_t(c^*)$
+  metric identity + GA fitness definition + citations (book ch.6/§6.3.1, ADR-0002/0005,
+  PRD §§) · arena standings + champion gate GREEN · DoD 30/32 = 93.8% PASS (live-
+  computed from committed config, matching the CI gate) · GA curve 0.688→1.000 with
+  default baseline · w_distance/p_commit sensitivity sweeps across the gene boxes.
+  `notebook` dep group (nbformat/nbclient/ipykernel). TODO M5-7 ticked; M5-6 ticked
+  with the thief-led pointer (its table + winner live in the sibling). ⚑ thief
+  notebook rides the thief chain.
+
 ## PR #39 — feat/m5-6-verbal-ab (M5-6 core: banks + referee verbal seam + A/B instrument)
 
 - **Driver:** Imree (session brief: "M5-6 template-bank A/B — deception efficacy metric
