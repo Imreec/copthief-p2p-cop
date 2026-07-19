@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #37 — feat/m5-inbound-final-step (M5-2 friendly + F10/F10b capture-direction fixes)
+
+- **Driver:** Imree (delegated decision: post-M5-2 friendly YES, localhost sufficient;
+  session directive: build, merge nothing) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model); stacked on #36.
+- **This PR:** the PRD_police_brain §7 operator follow-up run for real — our tuned cop
+  vs the reference thief on localhost, our FIRST live outbound barriers (steps 7+11).
+  **The tuned cop captured the reference thief in 13 steps**, and the capture direction
+  (never reachable before — every prior live game ended in survival) exposed the
+  reference's terminal-message step convention twice: F10 (final caught message repeats
+  its CURRENT step → our inbound collapsed at the moment of capture, g1) and F10b (the
+  same repeat in its revealed audit records `[1..13, 13]` → continuity flagged, g2).
+  Both fixed TDD-first as inbound-tolerance-only (terminal caught answer / one trailing
+  repeat; strictness pinned in the other direction); our outbound convention unchanged;
+  kit vectors + rule-19 matrix untouched. g3 clean end-to-end: mutual audit OK both
+  sides (theirs: passed 13/13 incl. barrier turns), shared game_uid, replay Verified OK
+  exit 0, 0 tokens. Evidence: `docs/evidence/m5-friendly.md` + three JSONL logs.
+
 ## PR #36 — feat/m5-observation-signed-clock (core Observation signed clock)
 
 - **Driver:** Imree (decision delegated 2026-07-19: "survival_threshold DOES go into
