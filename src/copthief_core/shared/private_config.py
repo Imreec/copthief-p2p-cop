@@ -56,6 +56,7 @@ def load_private_settings(path: Path) -> PrivateSettings:
         thief_class=str(strategy["thief_class"]),
         police_options={str(k): float(v) for k, v in strategy.get("police", {}).items()},
         thief_options={str(k): float(v) for k, v in strategy.get("thief", {}).items()},
+        hint_bank=str(strategy.get("hint_bank", "")),
         gui=GuiSettings(
             refresh_ms=int(gui["refresh_ms"]),
             cell_px=int(gui["cell_px"]),
