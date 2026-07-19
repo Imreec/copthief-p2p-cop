@@ -26,7 +26,9 @@ class FakeClock:
         self.now += seconds
 
 
-def make_limiter(rpm: int = 3, concurrent: int = 2, depth: int = 4) -> tuple[RateLimiter, FakeClock]:
+def make_limiter(
+    rpm: int = 3, concurrent: int = 2, depth: int = 4
+) -> tuple[RateLimiter, FakeClock]:
     clock = FakeClock()
     limiter = RateLimiter(
         requests_per_minute=rpm,
@@ -53,19 +55,18 @@ def test_grants_up_to_the_window_then_queues_until_the_window_frees() -> None:
 
 def test_concurrency_semaphore_caps_simultaneous_slots() -> None:
     limiter, _clock = make_limiter(rpm=100, concurrent=1)
-    with limiter.slot():
-        with pytest.raises(RateLimitError, match="[Tt]imed out"):
-            with limiter.slot():  # held slot never releases -> queue must time out
-                pass
+    # Contexts enter left-to-right: the held slot never releases, so the second
+    # acquisition (inside the raises context) must time out.
+    with limiter.slot(), pytest.raises(RateLimitError, match="[Tt]imed out"), limiter.slot():
+        pass
 
 
 def test_queue_overflow_refuses_loudly_never_crashes() -> None:
     limiter, _clock = make_limiter(rpm=1, depth=0)
     with limiter.slot():
         pass
-    with pytest.raises(RateLimitError, match="queue full"):
-        with limiter.slot():
-            pass
+    with pytest.raises(RateLimitError, match="queue full"), limiter.slot():
+        pass
 
 
 def test_queue_depth_reports_waiting_callers() -> None:

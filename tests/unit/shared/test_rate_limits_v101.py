@@ -80,6 +80,23 @@ def test_service_override_above_the_global_value_is_refused(tmp_path: Path) -> N
         load_rate_limits(write(tmp_path, raw), SIGNED)
 
 
+def test_build_gatekeeper_wires_the_tightened_override_and_the_email_quota(
+    tmp_path: Path,
+) -> None:
+    from copthief_core.shared.gatekeeper_build import build_gatekeeper
+
+    raw = base_raw()
+    raw["services"] = {"email": {"requests_per_minute": 15}}
+    limits = load_rate_limits(write(tmp_path, raw), SIGNED)
+    keeper = build_gatekeeper("email", limits, quota_units=limits.email_daily_cap)
+    assert keeper.execute(lambda: "ok") == "ok"
+    status = keeper.get_queue_status()
+    assert status["service"] == "email"
+    assert status["quota_spent"] == 1
+    # The override reached the limiter (white-box pin: the wiring, not the math).
+    assert keeper._limiter._rpm == 15  # noqa: SLF001
+
+
 def test_flat_keys_still_honor_the_signed_minimums(tmp_path: Path) -> None:
     raw = base_raw()
     raw["requests_per_minute"] = 5  # below the signed minimum 10
