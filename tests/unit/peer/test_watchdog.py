@@ -8,9 +8,8 @@ the snapshot lands on disk and the shutdown callback fires exactly once.
 from __future__ import annotations
 
 import json
-from pathlib import Path
-
 from dataclasses import replace
+from pathlib import Path
 
 from copthief_core.peer.session import PeerSession
 from copthief_core.peer.watchdog import Watchdog, session_snapshot

@@ -41,8 +41,7 @@ def _honest_walk(positions: list[tuple[int, int]]) -> tuple[list[dict], list[dic
 def test_an_honest_trail_produces_zero_mismatches() -> None:
     records, inbound = _honest_walk([(3, 3), (4, 3), (4, 4)])
     assert (
-        scent_physics_mismatches(records=records, inbound=inbound, constitution=CONSTITUTION)
-        == []
+        scent_physics_mismatches(records=records, inbound=inbound, constitution=CONSTITUTION) == []
     )
 
 
@@ -60,8 +59,7 @@ def test_steps_without_a_transmitted_grid_are_skipped_not_flagged() -> None:
     records, inbound = _honest_walk([(3, 3), (4, 3)])
     del inbound[0]  # we never archived a message for step 1 (e.g. pre-v1.1 log)
     assert (
-        scent_physics_mismatches(records=records, inbound=inbound, constitution=CONSTITUTION)
-        == []
+        scent_physics_mismatches(records=records, inbound=inbound, constitution=CONSTITUTION) == []
     )
 
 
@@ -70,6 +68,5 @@ def test_spec_and_malformed_records_never_crash_the_check() -> None:
     records.insert(0, {"payload": {"step": 0, "type": "system_spec"}})
     records.append({"payload": {"step": 9}})  # no position revealed
     assert (
-        scent_physics_mismatches(records=records, inbound=inbound, constitution=CONSTITUTION)
-        == []
+        scent_physics_mismatches(records=records, inbound=inbound, constitution=CONSTITUTION) == []
     )

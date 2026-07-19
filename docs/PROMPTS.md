@@ -18,6 +18,25 @@
   email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
   the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
 
+## PR #50 — feat/m6-7-chaos (M6-7 watchdog + chaos battery + scent-physics rider)
+
+- **Driver:** Imree (approved PRD_gatekeeper §4–§5 incl. D2: scent-physics rides
+  M6-7 with a TODO amendment) · **Author:** Claude (terminal) · **Reviewer:**
+  Antigravity + Eyal (per TODO); stacked on #49.
+- **This PR:** RED (watchdog fake-clock core + threaded drill · scent-physics
+  unit: honest walk == zero mismatches, fabricated grid flagged per step ·
+  10-drill chaos battery, each asserting its NAMED defense) → GREEN:
+  `peer/watchdog` (beat/check core, persist-then-shutdown-once, daemon thread) ·
+  `peer/scent_check` (revealed-walk re-derivation vs archived grids;
+  settlement emits `scent_physics_mismatch`, evidence-grade only — SQ3) ·
+  `p2p` heartbeat seam + `peer_run` arms the watchdog live (signed timeout,
+  snapshot to logs/, loud exit) · `docs/evidence/m6-chaos.md`. RED-phase finds:
+  my fixture walked an illegal state path (machine rejected it — good) and a
+  3-step "survival" claim tripped the threshold backstop (also good — both
+  defenses caught the test author first). Gotcha #7 struck once (PS round-trip
+  mojibake) — repaired by reverse-decode, edits via file tools only since.
+  TODO M6-7 amended (D2) + ticked.
+
 ## PR #49 — feat/m6-8-cost (M6-8 COST.md + the auditable 0-token pin)
 
 - **Driver:** Imree (approved PRD_reporting §7: "0-token claims doubly backed") ·

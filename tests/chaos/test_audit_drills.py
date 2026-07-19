@@ -30,14 +30,17 @@ def _short_game() -> tuple[PeerSession, PeerSession]:
     for turn in range(3):
         police.handle_receive_turn(thief.take_turn(now=float(turn)))
         thief.handle_receive_turn(police.take_turn(now=float(turn) + 0.5))
+    forward = {
+        GameState.WAITING_FOR_OPPONENT: GameState.COMPUTING_MOVE,
+        GameState.COMPUTING_MOVE: GameState.COMMITTING,
+        GameState.COMMITTING: GameState.AWAITING_REVEAL,
+        GameState.AWAITING_REVEAL: GameState.VERIFYING,
+        GameState.VERIFYING: GameState.GAME_OVER,
+    }
     for session in (police, thief):
-        session.outcome = "thief_survival"
+        session.outcome = "cop_capture"
         while session.machine.state is not GameState.GAME_OVER:
-            session.machine.advance(
-                GameState.VERIFYING
-                if session.machine.state is not GameState.VERIFYING
-                else GameState.GAME_OVER
-            )
+            session.machine.advance(forward[session.machine.state])
     return police, thief
 
 
@@ -64,7 +67,7 @@ def test_drill_fabricated_scent_grid_raises_the_evidence_event_and_nothing_else(
     class _Answer:
         def exchange_audit(self, ours: dict[str, Any]) -> dict[str, Any]:
             sent.append(ours)
-            return build_audit("thief", thief.records, "survival")
+            return build_audit("thief", thief.records, "capture")
 
     emitted: list[dict[str, Any]] = []
     result = settle(police, _Answer(), emitted.append)  # type: ignore[arg-type]
@@ -80,7 +83,7 @@ def test_drill_honest_grids_raise_no_event() -> None:
 
     class _Answer:
         def exchange_audit(self, ours: dict[str, Any]) -> dict[str, Any]:
-            return build_audit("thief", thief.records, "survival")
+            return build_audit("thief", thief.records, "capture")
 
     emitted: list[dict[str, Any]] = []
     settle(police, _Answer(), emitted.append)  # type: ignore[arg-type]
