@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #45 — feat/m6-3-step0-tokens (M6-3 step-0 declaration + sealed tokens)
+
+- **Driver:** Imree (PRD_reporting §4 as the build spec; D3 sealed-key ruling) ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model); stacked
+  on #44.
+- **This PR:** RED (sysinfo degrade-to-unknown + REAL-HEAD pin · step-0 key set w/
+  `github_commit`+`num_games_declared` · seal_turn token defaults · identity.spec
+  fill · settlement prepend w/ step math untouched · matrix extension incl. the
+  unpaired-record gap) → GREEN: `shared/sysinfo` (stdlib probes, process-cached) ·
+  `seal_spec_record`/`live_spec_record` · seal_turn +model/tokens_step/tokens_total/
+  response_seconds · spec_record BESIDE game records, audit prepends · F8b spec
+  closed · replay re-hashes EVERY revealed record (a tampered step-0 previously
+  slipped past the pairing walk — real rule-19 gap) · overlay/moves game-records
+  only. Two mirrored tests updated from index- to step-selection (they predated
+  step-0). Reference gap noted: its log `_schema` promises step-0 github_commit,
+  its code omits it — closed on our side. TODO M6-3 ticked.
+
 ## PR #44 — feat/m6-2-artifacts (M6-2 report writers + consensus signature)
 
 - **Driver:** Imree (approved PRD_reporting as the build spec: "byte-level vs the
