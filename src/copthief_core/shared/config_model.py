@@ -144,6 +144,9 @@ class PrivateSettings:
     # [belief] evidence-trust tuning (PRD_belief §5) — private, never negotiated.
     smell_trust_weight: float
     hint_trust_default: float
+    # M5-5 profiling floor: the shifted hint trust never drops below this
+    # (distrust-but-never-eliminate — SQ3 stance).
+    profile_hint_floor: float
     # [strategy] brain selection per role (PLAN §7) — private, never negotiated.
     # [strategy.<role>] sub-tables carry the brain's numeric knobs (M5 weights etc.):
     # config-owned per CLAUDE.md #5, tuned offline (M5-4), never on the sparring host.
