@@ -18,6 +18,23 @@
   email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
   the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
 
+## PR #47 — feat/m6-4-gmail (M6-4 compose-scope sender + arming interlock)
+
+- **Driver:** Imree (D1=A ruling + dedicated team account; "#46 approved, merge and
+  continue; tell me when I need to create the gmail account") · **Author:** Claude
+  (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** RED (whole-space interlock truth table — exactly one combination
+  sends · compose-scope + MIME UTF-8 round-trip · sender-through-gatekeeper: draft
+  provably never sends, body bytes == artifact file bytes, refusals touch no
+  transport, daily-cap quota · [email] safe defaults on omission) → GREEN:
+  `report/email_interlock` (pure, total) · `infra/gmail` (HW6 salvage, lazy SDK,
+  live paths operator-only) · `infra/email_sender` (byte-faithful, gatekept) ·
+  `[email]` toml (kept LAST for the settings tests) · `email-live` dep group +
+  scoped mypy override · `scripts/gmail_auth.py` · `.env-example` (constraint-#6
+  debt: it was never actually committed) · CLAUDE.md §4 send-only→compose-only
+  (D1=A record). Deferred by design: CLI verb → M6-6; live Gmail-draft evidence →
+  OI-5 account + consent. TODO M6-4 set ◐ (code done, live evidence pending).
+
 ## PR #45 — feat/m6-3-step0-tokens (M6-3 step-0 declaration + sealed tokens)
 
 - **Driver:** Imree (PRD_reporting §4 as the build spec; D3 sealed-key ruling) ·
