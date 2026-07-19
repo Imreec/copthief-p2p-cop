@@ -30,8 +30,9 @@ def _played_thief() -> PeerSession:
     police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=1)
     thief.handle_negotiate(police.negotiate_payload())
     police.handle_negotiate(thief.negotiate_payload())
-    thief.handle_receive_turn(police.take_turn(now=1.0))  # one inbound -> history
-    thief.take_turn(now=2.0)
+    police.handle_receive_turn(thief.take_turn(now=1.0))  # F2: the thief moves first
+    thief.handle_receive_turn(police.take_turn(now=2.0))  # one inbound -> history
+    thief.take_turn(now=3.0)
     return thief
 
 

@@ -8,10 +8,13 @@ without a wire in sight (the full-protocol path lives in tests/integration).
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from typing import Any
 
 from copthief_core.peer.series import opposite_role, run_peer_series
 from copthief_core.peer.settlement import PeerGameResult
+
+LogFn = Callable[[dict[str, Any]], None]
 
 
 def test_opposite_role_is_a_clean_involution() -> None:
@@ -24,10 +27,17 @@ class _SessionStub:
         self.n, self.role, self.hint_trust = n, role, hint_trust
 
 
-def _fake_play(profile_trust: dict[int, float]) -> Any:
+def _fake_play(profile_trust: dict[int, float]) -> Callable[..., PeerGameResult]:
     """A canned run_peer_game: emits a profile event for configured sub-games."""
 
-    def play(session: Any, transport: Any, *, turn_timeout: float, poll_interval: float, log: Any) -> PeerGameResult:  # noqa: ANN401
+    def play(
+        session: _SessionStub,
+        transport: object,
+        *,
+        turn_timeout: float,
+        poll_interval: float,
+        log: LogFn,
+    ) -> PeerGameResult:
         if session.n in profile_trust:
             log(
                 {
@@ -53,12 +63,19 @@ def _fake_play(profile_trust: dict[int, float]) -> Any:
 def _run(num_games: int, profile_trust: dict[int, float]) -> list[_SessionStub]:
     sessions: list[_SessionStub] = []
 
-    def make_session(n: int, role: str, hint_trust: float | None) -> Any:  # noqa: ANN401
+    def make_session(n: int, role: str, hint_trust: float | None) -> _SessionStub:
         session = _SessionStub(n, role, hint_trust)
         sessions.append(session)
         return session
 
-    def summarize(session: Any, result: PeerGameResult, *, sub_game_number: int, started_at: str, duration_seconds: float) -> dict[str, Any]:  # noqa: ANN401
+    def summarize(
+        session: _SessionStub,
+        result: PeerGameResult,
+        *,
+        sub_game_number: int,
+        started_at: str,
+        duration_seconds: float,
+    ) -> dict[str, Any]:
         return {"sub_game_number": sub_game_number, "role": session.role}
 
     run_peer_series(
@@ -88,10 +105,17 @@ def test_profile_event_trust_reaches_the_next_session_only() -> None:
 
 
 def test_series_returns_paired_results_and_numbered_summaries() -> None:
-    def make_session(n: int, role: str, hint_trust: float | None) -> Any:  # noqa: ANN401
+    def make_session(n: int, role: str, hint_trust: float | None) -> _SessionStub:
         return _SessionStub(n, role, hint_trust)
 
-    def summarize(session: Any, result: PeerGameResult, *, sub_game_number: int, started_at: str, duration_seconds: float) -> dict[str, Any]:  # noqa: ANN401
+    def summarize(
+        session: _SessionStub,
+        result: PeerGameResult,
+        *,
+        sub_game_number: int,
+        started_at: str,
+        duration_seconds: float,
+    ) -> dict[str, Any]:
         assert started_at  # a real ISO stamp is always provided
         assert duration_seconds >= 0.0
         return {"sub_game_number": sub_game_number}
