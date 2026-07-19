@@ -34,6 +34,17 @@ included.
   `domain/crypto.py` state format, as pinned byte-for-byte by the kit
   (`SPEC.md` §3 + `vectors/commit_reveal.json`). Transplanted because the byte form, not the
   idea, is the interop constraint.
+- **2026-07-19 · `tests/conformance/sample_run/*.json`** (data, not code) — the four artifact
+  files from the reference's published `docs/sample-run/` @960499fd, copied verbatim
+  (LF-rewritten) as byte-level CI fixtures for the M6-2 report writers (PRD_reporting §9 D4,
+  approved with the PRD). Same posture as the kit vectors: the reference is the byte authority;
+  the fixtures are observed output, never edited.
+- **2026-07-19 · `src/copthief_core/report/schema_text.py`** (schema constants, not code) — the
+  artifact `_schema` prose strings + links `_remark`, EXTRACTED programmatically from the
+  sample-run fixtures (never typed by hand) because they are part of the artifact interface
+  other tooling reads; byte-pinned by `tests/conformance/test_report_sample_run.py`. The
+  surrounding builders/writers are our own implementations of the mirrored interface
+  (Decision §: "we deliberately mirror the reference's contracts").
 
 ## Consequences
 
