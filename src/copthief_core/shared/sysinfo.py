@@ -12,6 +12,7 @@ import ctypes
 import os
 import platform
 import subprocess
+import sys
 from collections.abc import Callable
 from functools import cache
 from typing import Any
@@ -35,7 +36,9 @@ def _os_name() -> str:
 
 
 def _cpu_freq_mhz() -> int | None:
-    if platform.system() == "Windows":
+    # sys.platform (not platform.system()) so mypy checks each branch only on its
+    # own platform — winreg/windll have no stubs elsewhere.
+    if sys.platform == "win32":
         import winreg
 
         key = winreg.OpenKey(
@@ -51,7 +54,7 @@ def _cpu_freq_mhz() -> int | None:
 
 
 def _ram_gb() -> float | None:
-    if platform.system() == "Windows":
+    if sys.platform == "win32":
 
         class _MemoryStatus(ctypes.Structure):
             _fields_ = [
@@ -70,11 +73,13 @@ def _ram_gb() -> float | None:
         status.dwLength = ctypes.sizeof(_MemoryStatus)
         ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status))
         return round(float(status.ullTotalPhys) / 1024**3, 1)
-    # POSIX only; absent from the Windows stdlib (and its typeshed) — resolve lazily.
-    sysconf = getattr(os, "sysconf", None)
-    if sysconf is None:
-        return None
-    return round(int(sysconf("SC_PAGE_SIZE")) * int(sysconf("SC_PHYS_PAGES")) / 1024**3, 1)
+    # POSIX branch: os.sysconf exists only there, so it is reached through an
+    # Any-typed alias — Windows type stubs (mypy local, IDE) omit the attribute.
+    posix_os: Any = os
+    return round(
+        int(posix_os.sysconf("SC_PAGE_SIZE")) * int(posix_os.sysconf("SC_PHYS_PAGES")) / 1024**3,
+        1,
+    )
 
 
 def _gpu_row() -> list[str]:
