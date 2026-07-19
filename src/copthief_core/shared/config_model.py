@@ -154,6 +154,9 @@ class PrivateSettings:
     thief_class: str
     police_options: dict[str, float]
     thief_options: dict[str, float]
+    # M5-6: which named template bank the verbal layer speaks ("" = the default
+    # bank) — the A/B arena run ships its winner here.
+    hint_bank: str
     # [gui] live-view render knobs (PRD_gui_replay §7) — private, display-only.
     gui: GuiSettings
 

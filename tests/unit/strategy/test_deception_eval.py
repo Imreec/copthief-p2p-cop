@@ -55,6 +55,7 @@ def test_bank_series_is_deterministic_and_counts_games() -> None:
             police_brain_name="greedy-manhattan",
             thief_brain_name="greedy-manhattan",
             smell_trust=PRIVATE.smell_trust_weight,
+            hint_trust=PRIVATE.hint_trust_default,
             seeds=[1, 2],
             min_separation=ARENA.scenario_min_separation,
             banks=["classic", "terse"],

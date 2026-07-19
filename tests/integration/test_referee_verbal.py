@@ -40,9 +40,7 @@ class _SittingLiarBrain(BrainBase):
 
     def _decide(self, observation: Observation, belief: BeliefFilter) -> Decision:
         decoy = (
-            observation.gazetteer.farthest(observation.position)
-            if observation.gazetteer
-            else None
+            observation.gazetteer.farthest(observation.position) if observation.gazetteer else None
         )
         return Decision(move="STAY", hint_verdict=VERDICT_LIE, hint_landmark=decoy)
 
@@ -56,6 +54,7 @@ def _trace_for(thief_brain: BrainBase) -> list[HintTraceRow]:
         smell_trust=PRIVATE.smell_trust_weight,
         seed=5,
         gazetteer=GAZETTEER,
+        hint_trust=PRIVATE.hint_trust_default,
         verbal_trace=trace,
     )
     return trace
