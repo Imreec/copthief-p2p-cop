@@ -68,6 +68,47 @@ def test_profiling_shifts_the_second_mini_games_hint_trust() -> None:
     assert game_two.hint_trust >= PRIVATE.profile_hint_floor
 
 
+def test_verified_audit_emits_the_profile_event_in_the_peer_loop() -> None:
+    # The settlement tail: a VERIFIED opponent audit produces a `profile` event
+    # carrying the lie-rate and the config-floored next-game hint trust.
+    import threading
+    from dataclasses import replace
+
+    from copthief_core.peer.p2p import run_peer_game
+    from copthief_core.peer.transport import queue_pair
+
+    pinned = replace(PRIVATE, police_class="random", thief_class="random")
+    police = PeerSession(CONSTITUTION, pinned, role="police", seed=1)
+    thief = PeerSession(CONSTITUTION, pinned, role="thief", seed=2)
+    police_t, thief_t = queue_pair(wait_timeout=PRIVATE.connect_timeout_seconds)
+    police_events: list[dict] = []  # type: ignore[type-arg]
+
+    def play(session: PeerSession, transport, log) -> None:  # noqa: ANN001 - Protocol param
+        run_peer_game(
+            session,
+            transport,
+            turn_timeout=PRIVATE.turn_timeout_seconds,
+            poll_interval=PRIVATE.poll_interval_seconds,
+            log=log,
+        )
+
+    threads = [
+        threading.Thread(target=play, args=(police, police_t, police_events.append)),
+        threading.Thread(target=play, args=(thief, thief_t, lambda e: None)),
+    ]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(timeout=PRIVATE.turn_timeout_seconds)
+    profiles = [e for e in police_events if e["event"] == "profile"]
+    assert len(profiles) == 1
+    payload = profiles[0]["payload"]
+    assert payload["hints"] == payload["games"] * CONSTITUTION.movement.survival_threshold
+    assert 0.0 <= payload["lie_rate"] <= 1.0
+    assert payload["next_hint_trust"] >= PRIVATE.profile_hint_floor
+    assert abs(sum(payload["motion_prior"].values()) - 1.0) < 1e-9
+
+
 def test_final_caught_message_counts_as_a_truthful_hint() -> None:
     _police, thief = _play_capture_series()
     profile = profile_records(build_audit("thief", thief.records, "capture")["records"])

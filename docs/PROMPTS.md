@@ -3,6 +3,21 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #38 — feat/m5-5-profiling (M5-5 post-audit opponent profiling)
+
+- **Driver:** Imree (session brief: "M5-5 opponent profiling — post-audit lie-rate +
+  motion priors → next mini-game's belief trust weights; PLAN §13 prior-shift test") ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model); stacked on #37.
+- **This PR:** RED (pure pins + the prior-shift series test) → GREEN
+  `strategy/profiling.py`: `OpponentProfile` (lie-rate from sealed intent labels,
+  motion prior from revealed moves; step-0 spec records excluded; merge across
+  mini-games) + `shifted_hint_trust` floored by the new `[belief] profile_hint_floor`
+  (distrust-but-never-eliminate — SQ3; scent honesty deliberately NOT profiled: grids
+  are never sealed, no audit ground truth). Seams: `PeerSession(hint_trust=…)` override
+  (the series runner's mini-game-2 injection point) + a `profile` JSONL event on every
+  VERIFIED opponent audit (settlement). peer/p2p split → peer/settlement (150-line
+  rule). Belief math untouched (M3-8 boundary). TODO M5-5 ticked.
+
 ## PR #37 — feat/m5-inbound-final-step (M5-2 friendly + F10/F10b capture-direction fixes)
 
 - **Driver:** Imree (delegated decision: post-M5-2 friendly YES, localhost sufficient;
