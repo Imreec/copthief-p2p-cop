@@ -41,6 +41,14 @@ timestamps, which legitimately differ); (d) each declaration `group_block.signat
 `config_sha256` and ALL wire crypto. Both canonicals coexist deliberately — distinct helper
 names (`canonical_str` vs `consensus_signature`) so one can never silently substitute for the
 other; a `report_consensus_signature` kit vector is proposed at M7-2 (credit Alon by name).
+**Why settlement-critical:** the emailed reports are what the lecturer adjudicates from — each
+team emails its copy separately (book ch.9) and neither sees the other's outbox, so agreement
+is checkable ONLY because both sides independently derive the SAME consensus signature from
+the audited symmetric outcome. An opponent whose emailed report lies breaks that match, and
+the sealed records + verbatim logs adjudicate. Corollary: a friendly **report exchange**
+(each team sends the other its report; both check the signatures match byte-for-byte) is the
+natural pre-counted cross-check of the two implementations — planned with Alon's team,
+sequenced under M7-3 league ops, sends armed per S-5 as always.
 
 **The four artifacts** (English-keyed, `schema_version "1.1"`, long `_schema` prose strings +
 a `links` block with `_remark` — interop-required shape constants, attributed in the ADR-0002
@@ -117,6 +125,10 @@ never constructs a send call (fake-transport truth-table test over all
 enabled×mode×armed combinations — exactly one sends). Sparring hosts hard-pin draft (PLAN §2)
 — asserted at startup. Every email invocation passes through the gatekeeper (`service=
 "email"`, PRD_gatekeeper). **No send ever happens without Imree's explicit per-send word.**
+**The recipient is per-run private config and the interlock is recipient-agnostic:** the
+lecturer for counted series, a peer team for an authorized friendly report exchange (§2),
+ourselves for live tests — arming gates WHETHER anything sends, never WHERE; each armed send
+logs its recipient alongside the retyped game_uid. Nothing pins the rail to one address.
 **D1 — draft semantics (decision):** PLAN §13 says "report lands as Gmail **draft**", but
 CLAUDE.md §4 pins a **send-only** scope — and `gmail.send` cannot create drafts. Options:
 **(A, recommended)** `gmail.compose` scope (create/send drafts; still cannot read the
