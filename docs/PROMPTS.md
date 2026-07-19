@@ -3,6 +3,20 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #36 — feat/m5-observation-signed-clock (core Observation signed clock)
+
+- **Driver:** Imree (decision delegated 2026-07-19: "survival_threshold DOES go into
+  Observation (+ max_moves)"; session directive: build the chain, merge nothing) ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** RED (three pins: field contract, referee wiring, peer wiring) → GREEN:
+  `Observation` gains `survival_threshold` + `max_moves` (defaults 0 — legacy callers
+  and the M1-walk equivalence pins untouched); `play_referee_game` and `peer/turns`
+  populate them from the constitution. Closes the deviation documented in the thief
+  repo's `features.py` since M5-3: time-shaped brain knobs (survival ramp, trap sizing)
+  can now anchor to SIGNED values instead of carrying private copies — the thief-side
+  anchor change rides the post-#35 sync ritual. No wire change; mirrored tests read
+  shared `game.json` keys only (gotcha-#9 clean).
+
 ## PR #35 — feat/m5-4-genetic (M5-4 — genetic tuning, evolved weights deployed)
 
 - **Driver:** Imree (AFK directive: "continue and build what you need for M5; merge
