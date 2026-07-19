@@ -104,7 +104,7 @@
     "src/copthief_core/wire/audit.py": "d98088b5a4f6a7554fc14e8750cbd640d381971161c80c7a34e5df0d84e50906",
     "src/copthief_core/wire/turn.py": "7d2f02285cc07f8d7d984557fc094651e9479ee3bf49e8911b24113c04d79ca4",
     "src/copthief_core/wire/validation.py": "62cd0904c5f5eebb6cf69e7f196cb59f0b037a73053831321d75fee989d8e617",
-    "tests/conformance/SOURCE.md": "6f4f549a7b82b8ba5172e802d1e2318edf7b51db96bd47b26618c0af6494840a",
+    "tests/conformance/SOURCE.md": "37f7a1fa531a4204cb8fc0cfb440dbab69106232f452f1b38c8fc053e6b56032",
     "tests/conformance/sample_run/config_segal-police-team-vs-segal-thief-team_g01.json": "99637d8fac1fda957a69ee2a8da166db254da5717442c5db09349cca88eb0e6a",
     "tests/conformance/sample_run/declaration_segal-police-team-vs-segal-thief-team.json": "6f26e0e0b717c11d9422b7f6cf24afc63c6baff92cb8ec85f2ce4c4225513bed",
     "tests/conformance/sample_run/log_segal-police-team-vs-segal-thief-team_g01.json": "839c3a7a0ebb4615cda742d2c6be39cc866b16d1668126c14722f104e32eac91",
@@ -187,7 +187,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "0696dbd",
+  "source_commit": "0801edf",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "72c4f15a2cdd8df043012d5f379d172a111f6e82ab91aeaa026fee7165e6de25"
+  "tree_hash": "0eed15165190884d5723b62e1b367403447610695b2596518a3916903b13b312"
 }
