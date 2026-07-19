@@ -24,6 +24,20 @@ def test_results_notebook_is_committed_and_fully_executed() -> None:
             assert output.output_type != "error", f"code cell {index} errored: {output}"
 
 
+def test_results_notebook_renders_its_figures() -> None:
+    # "Committed with outputs" includes the CURVES: the GA fitness plot and the
+    # sensitivity sweep must be rendered PNGs inside the committed notebook.
+    nb = nbformat.read(NOTEBOOK, as_version=4)
+    images = sum(
+        1
+        for cell in nb.cells
+        if cell.cell_type == "code"
+        for output in cell.outputs
+        if output.get("output_type") == "display_data" and "image/png" in output.get("data", {})
+    )
+    assert images >= 2, f"expected the GA + sensitivity figures rendered, found {images}"
+
+
 def test_results_notebook_carries_the_analysis_sections() -> None:
     nb = nbformat.read(NOTEBOOK, as_version=4)
     text = "\n".join(c.source for c in nb.cells)
