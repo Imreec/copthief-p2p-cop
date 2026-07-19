@@ -182,7 +182,7 @@
     "tests/unit/shared/test_config.py": "e771702b542fc6083330c04bbb838698d6d4ce5a22949874826addc4267d4b4e",
     "tests/unit/shared/test_gatekeeper.py": "49f4a2432d12fefabf2fdf81a3df9ce2ca96748394a3d82321dce47e0225b567",
     "tests/unit/shared/test_jsonl_logger.py": "a85cb3c8570b7cb67431be171ad4312b7fe9f4053b34928deea55ea629e488aa",
-    "tests/unit/shared/test_rate_limiter.py": "d0a0897dc40a088b7844a896f06465b94133e2ed0bbf8f209a1931c54e5c2b19",
+    "tests/unit/shared/test_rate_limiter.py": "3562c6dcc10a74d8c3edaba9f3d2d1482579ba9fcaf9f2d490dee00926df21d7",
     "tests/unit/shared/test_rate_limits_v101.py": "a9beff3a1f1408c953cdaed5e34274dd7241552fa467b308949211aaaf17500f",
     "tests/unit/shared/test_sysinfo.py": "ff508e3a852785420e442882ef76edda6f2aef14815ebb673a560ef4c85df120",
     "tests/unit/strategy/test_brains.py": "49ee560181fa404a633075a5154bc59d444a125876e96da915cc9ec1fb6e4359",
@@ -197,7 +197,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "998efc7",
+  "source_commit": "3d37be6",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "306717a1745cc649961f1e176a675346f260ce4c8f60a4c3a38164c0cb9e2521"
+  "tree_hash": "33673f74261080a8cde53100c5777772c141283ca21c4f28e1eeb7415a6e6207"
 }
