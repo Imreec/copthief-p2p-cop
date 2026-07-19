@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #44 — feat/m6-2-artifacts (M6-2 report writers + consensus signature)
+
+- **Driver:** Imree (approved PRD_reporting as the build spec: "byte-level vs the
+  reference docs/sample-run; spaced sign-then-insert consensus signature, credit
+  Alon"; merge of #43 = the go) · **Author:** Claude (terminal) · **Reviewer:**
+  Antigravity (cross-model, on the PR).
+- **This PR:** RED (49 tests: consensus spaced-form + cross-guard vs compact ·
+  builder shapes · sign-then-insert for group blocks AND the Hebrew report ·
+  per-group scores + F7 series tie · emit byte discipline · sample-run conformance
+  battery) → GREEN `report/` (consensus, schema_text EXTRACTED from fixtures never
+  typed, schemas/naming/validation, blocks+builders, hebrew, scores, emit).
+  Conformance find while pinning: the reference's config lock covers
+  `schema_version`+`_note` (its shared game.json carries both; the artifact writer
+  overwrites the displayed schema_version) — brute-forced against the fixture,
+  documented in the test. Fixtures attributed (ADR-0002 log + SOURCE.md; PRD D4).
+  No wire change (constraint #13; kit vectors green). TODO M6-2 ticked.
+
 ## PR #43 — docs/m6-1-mechanism-prds (M6-1 gate)
 
 - **Driver:** Imree (M6 session brief: PRDs before any M6 code — hard gate; TODO-routed facts
