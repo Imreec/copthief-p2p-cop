@@ -75,7 +75,7 @@
 - ☑ **M6-5** Gatekeeper (quota → token bucket → DoS lock; `rate_limits.json` ≥ signed minimums asserted) — C (PR #46). DoD OBSERVED: synthetic-load test queues and never crashes (12 threads, fake clock); 429 backoff schedule pinned (`retry_backoff_sec × attempt`); breaker trip/cooldown/reset in CI; v1.01 tighten-only service band asserted.
 - ☑ **M6-6** Series runner (`num_games`, per-game config commit, roles) — C (PR #48). DoD OBSERVED in CI: 2-game local series → all artifacts validate (declaration + per-game configs/logs + result + Hebrew reports), roles alternate (F2), sealed game-count truthful, per-game logs replay Verified OK, M5-5 trust carry wired, email resting state refuses end-to-end. Live alternation-vs-reference stays flagged for the next authorized friendly (M2 §8 gap 4).
 - ☐ **M6-7** Chaos drill harness (PLAN §10 drills) — C, review E. DoD: every drill's defense observed; logs committed.
-- ☐ **M6-8** COST.md + token accounting on every LLM path — C. DoD: 0-token series proven by log **and by the sealed per-step token counts (M6-3) — the 0-token claim becomes cryptographically auditable**.
+- ☑ **M6-8** COST.md + token accounting on every LLM path — C (PR #49, stacked on #48). DoD OBSERVED: `COST.md` double-proof ledger + permanent CI pin `tests/integration/test_zero_tokens.py` (every sealed game record charges 0/0 on a real audited game AND the log replays Verified OK — the claim is tamper-evident, not just logged).
 
 ## Phase M7 — League ops *(nothing announced unless true of the tree)*
 
