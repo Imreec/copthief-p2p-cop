@@ -3,6 +3,21 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #46 — feat/m6-5-gatekeeper (M6-5 quota → token bucket → DoS lock)
+
+- **Driver:** Imree (approved PRD_gatekeeper §2-§3/§6; build order = gatekeeper
+  BEFORE email so M6-4 is born gated) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** RED (window/semaphore/FIFO on a fake clock + the synthetic-load
+  DoD · quota-before-queue · 429 schedule pins · breaker trip/cooldown/reset ·
+  v1.01 parsing + tighten-only band) → GREEN: `shared/rate_limiter` (enforces the
+  signed `concurrent_requests` the reference never does; queue-never-crash) ·
+  `shared/gatekeeper` (three stages, loud JSONL events, auto-reset breaker) ·
+  `shared/gatekeeper_build` (M6-4's seam; per-service overrides) ·
+  `shared/limits_loader` split + `rate_limits.json` **v1.01** (queue/breaker/
+  email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
+  the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
+
 ## PR #45 — feat/m6-3-step0-tokens (M6-3 step-0 declaration + sealed tokens)
 
 - **Driver:** Imree (PRD_reporting §4 as the build spec; D3 sealed-key ruling) ·
