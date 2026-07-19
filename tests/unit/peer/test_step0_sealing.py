@@ -15,7 +15,12 @@ from typing import Any
 import copthief_core
 from copthief_core.domain.crypto import verify
 from copthief_core.domain.state_machine import GameState
-from copthief_core.peer.sealing import live_spec_record, seal_spec_record, seal_turn
+from copthief_core.peer.sealing import (
+    SealedTurn,
+    live_spec_record,
+    seal_spec_record,
+    seal_turn,
+)
 from copthief_core.peer.session import PeerSession
 from copthief_core.peer.settlement import settle
 from copthief_core.shared.config import load_all
@@ -27,7 +32,7 @@ PRIVATE = replace(_SHIPPED, police_class="random", thief_class="random")
 SPEC = {"os": "TestOS", "cpu_type": "TestCPU"}
 
 
-def _spec_record() -> Any:
+def _spec_record() -> SealedTurn:
     return seal_spec_record(
         spec=SPEC,
         model="none",
@@ -110,9 +115,7 @@ def test_session_spec_record_fills_the_identity_spec_gap() -> None:
 
 
 def test_settlement_audit_prepends_the_spec_record_and_keeps_step_math() -> None:
-    session = PeerSession(
-        CONSTITUTION, PRIVATE, role="thief", seed=2, spec_record=_spec_record()
-    )
+    session = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=2, spec_record=_spec_record())
     police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=1)
     session.handle_negotiate(police.negotiate_payload())
     session.take_turn(now=0.0)
