@@ -24,7 +24,7 @@ def test_shipped_toml_defaults_to_disabled_draft() -> None:
 def test_toml_without_an_email_section_gets_the_safe_defaults(tmp_path: Path) -> None:
     # The shipped file keeps [email] as its LAST section, so "absent" is a clean cut.
     text = SHIPPED.read_text(encoding="utf-8").split("\n[email]")[0]
-    assert "[email]" not in text
+    assert "\n[email]" not in text  # no section HEADER left (a comment may mention it)
     path = tmp_path / "game.toml"
     path.write_text(text, encoding="utf-8")
     private = load_private_settings(path)
