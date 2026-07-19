@@ -3,6 +3,25 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #43 — docs/m6-1-mechanism-prds (M6-1 gate)
+
+- **Driver:** Imree (M6 session brief: PRDs before any M6 code — hard gate; TODO-routed facts
+  honored: spaced-separator sign-then-insert consensus signature credited to Alon, sealed
+  per-step tokens, draft default + arming interlock, doubly-proven 0-token COST claims) ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **Context:** memory recall + TODO M6 + PLAN §4/§9/§10 + M2 spike notes re-read; M6-2 primary
+  sources read in full — reference `report/` package (`report_writer`/`artifacts`/`emit`/
+  `artifact_helpers`) + all four `docs/sample-run/` artifacts @960499fd (oracle, ADR-0002);
+  HW6 `email/gmail.py` + `gmail_auth.py` mined; current seams surveyed (sealing, settlement,
+  config loaders, no watchdog yet).
+- **This PR:** `docs/PRD_reporting.md` (M6-2/3/4/6/8 — four artifacts byte-pinned vs
+  sample-run, third canonical variant mapped to its four usage sites, step-0 commit hash +
+  sealed tokens, Gmail interlock truth-table, series runner, COST.md) and
+  `docs/PRD_gatekeeper.md` (M6-5/7 — quota→bucket→DoS doorway, watchdog+persistence, chaos
+  battery, FR-11 scent-physics rider + TODO amendment proposal). Five decision points routed
+  to Imree on the PR (Gmail scope conflict PLAN-vs-CLAUDE.md chief among them). TODO M6-1
+  ticked in the same change.
+
 ## PR #41 — feat/wire-shape-balance (wire-shape balance instrument + evidence)
 
 - **Driver:** Imree (league-coordination brief: "referee-mode full-info balance sim
