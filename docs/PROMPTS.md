@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #41 — feat/wire-shape-balance (wire-shape balance instrument + evidence)
+
+- **Driver:** Imree (league-coordination brief: "referee-mode full-info balance sim
+  using the existing rules module + arena machinery — decides whether adapting to
+  bookletter-v3 is a concession or a trap, BEFORE the reply to Alon is drafted") ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** RED (TruthFeed certainty-delta pins · ScentFeed == legacy seam ·
+  mirror-feed plumb-through proof — an early draft asserted hidden ≠ full-info
+  outcomes and FAILED because they coincide for scent-honest core brains; replaced
+  with an adversarial mirror-feed probe) → GREEN: `strategy/info_feed.py` (BeliefFeed
+  protocol; ScentFeed = reference-v3 hidden positions, TruthFeed = bookletter-v3
+  common knowledge) threaded referee → scenarios → sdk → arena as an optional
+  default-None seam; `scripts/balance_run.py` + `config/balance.json` (32 seeds) →
+  `docs/evidence/wire-shape-balance.md`. Finding: common knowledge favors the
+  EVADER on the shipped config (cop 45.8% → 26.6%; police-brain vs evading thieves
+  31/30 → 0 of 32) — perfect rival tracking erases the belief error pursuit exploits.
+
 ## PR #40 — feat/m5-7-notebook (M5-7 results notebook, executed + pinned)
 
 - **Driver:** Imree (session brief: "M5-7 notebooks/results_analysis.ipynb — arena + GA
