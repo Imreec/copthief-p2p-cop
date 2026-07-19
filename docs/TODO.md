@@ -68,7 +68,7 @@
 
 ## Phase M6 — Reporting & fairness rail
 
-- ☐ **M6-1** `docs/PRD_reporting.md` + `docs/PRD_gatekeeper.md` — C, approve I.
+- ☑ **M6-1** `docs/PRD_reporting.md` + `docs/PRD_gatekeeper.md` — C, approved I (PR #43; merge = the approval; D-decisions ruled on the PR thread).
 - ☐ **M6-2** Four artifact schemas + writers (game_uid naming; canonical bytes = emailed bytes) — C, review AG. DoD: validated against reference `docs/sample-run/` shapes, **byte-level**. ⚠ Consensus signature (settlement-critical; credit Alon, verified vs reference `report_writer.py` @960499fd lines 22-25/81): SHA256 over `json.dumps(data, sort_keys=True, ensure_ascii=False)` with **DEFAULT (spaced) separators** — a third canonical variant, NOT our compact form — computed over the report **BEFORE** the `חתימת_קונסנזוס_משותפת` key is inserted (sign-then-insert); report schema is Hebrew-keyed per book §8.
 - ☐ **M6-3** Step-0 declaration builder (hardware, model, tokens, commit hash, game-count) + signing — C. DoD: real commit hash asserted in test. Per-step token counts (`tokens_step`/`tokens_total`) go **INSIDE the sealed record** (`peer/sealing`) — the reference's own sealed schema does this (SQ3 list; league coordination re-confirmed).
 - ☐ **M6-4** Gmail sender (send-only OAuth per App A; HW6 flow) + **draft default + arming interlock** — C, operate I. DoD: PLAN §13 M6 — report lands as draft; send path provably requires arming.
