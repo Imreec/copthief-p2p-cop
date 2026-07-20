@@ -18,6 +18,20 @@
   email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
   the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
 
+## PR #49 — feat/m6-8-cost (M6-8 COST.md + the auditable 0-token pin)
+
+- **Driver:** Imree (approved PRD_reporting §7: "0-token claims doubly backed") ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model); stacked
+  on #48.
+- **This PR:** `COST.md` (honest-disclosure triad member: the double proof — JSONL
+  evidence logs AND the sealed per-step counts; match-time posture table; infra
+  costs incl. credits earmarked for the Stage-B VPS; dev-time AI tooling disclosed;
+  keep-honest rules) + permanent CI pin `test_zero_tokens.py` (real audited game:
+  every sealed game record charges 0/0 and the log replays Verified OK — forging a
+  count flips TAMPERED via the rule-19 matrix, so the claim is tamper-evident).
+  Evidence pin over existing M6-3 behavior — no new logic, doc + test only.
+  TODO M6-8 ticked.
+
 ## PR #48 — feat/m6-6-series (M6-6 series runner)
 
 - **Driver:** Imree ("#47 approved, merge and continue") · **Author:** Claude

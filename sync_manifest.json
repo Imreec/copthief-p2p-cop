@@ -149,6 +149,7 @@
     "tests/integration/test_replay_verdict.py": "583181841165487d944aa82ec700a71ffc91cca9616527261a94e0726ed3ee29",
     "tests/integration/test_scent_transmission.py": "6e8c42444a267a94aa1eea012dbc137ecab7a29b0d950e99894dada13e8c5c70",
     "tests/integration/test_symmetric_loop.py": "adf645b5dd91992fc1a6f2d5dd076c3ff39ae7b3100a0d2848bff80ab7ec2bb5",
+    "tests/integration/test_zero_tokens.py": "b6aae707210b81360ea245a24ae981c8ed2983c30a450cf95a6dc05dfdcf789e",
     "tests/unit/domain/test_belief.py": "17087c3b784d6aba049360c4a2607bf32b52b9d7ed7d376b6f5814861a30c8cf",
     "tests/unit/domain/test_belief_scent.py": "4a9314e25ce9ffd4dbc2c9606c7e163a0f9d94d2c4a00523ea9d5fc616286430",
     "tests/unit/domain/test_board.py": "66edf4f238671ffc513957acc689d7ec13ad8b5e263e0bfa29625faa2a6927b6",
@@ -212,7 +213,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "7d27396",
+  "source_commit": "4ac81c0",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "99d80ef5fe49cbbb67b95e92b4706ff32c15646ae33626083675dd5a45fc4934"
+  "tree_hash": "08935e8abfe2ad28a5adf2d8f2b17d678bb6a268f7566b0ff8d5bba34e7ad20d"
 }
