@@ -17,9 +17,12 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from copthief_core.domain.crypto import canonical_hash
+
+if TYPE_CHECKING:  # annotation-only: config_model imports THIS module at runtime
+    from copthief_core.shared.config_model import PheromoneParams
 
 SCENT_MODEL = "scent_model"
 DEFAULT_SCENT_MODEL = "subtractive_chebyshev_v1"
@@ -82,7 +85,7 @@ def load_locked_models(path: Path) -> LockedModelRegistry:
     return LockedModelRegistry(version=version, docs=docs)
 
 
-def assert_agrees_with(doc: dict[str, Any], pheromones: Any) -> None:
+def assert_agrees_with(doc: dict[str, Any], pheromones: PheromoneParams) -> None:
     """Refuse a registration whose params contradict the signed pheromone terms.
 
     Input: a locked-model doc + the constitution's `PheromoneParams`; Output: None;

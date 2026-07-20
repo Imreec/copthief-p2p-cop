@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from copthief_core.domain.scent import ScentField
+from copthief_core.domain.scent_book import MultiplicativeBookV1
 from copthief_core.domain.scent_models import make_scent_model
 
 VECTORS = Path(__file__).parent / "vectors"
@@ -26,8 +27,10 @@ def _load(name: str) -> dict[str, Any]:
 BOOK = _load("scent_book_v3.json")
 
 
-def _model() -> Any:
-    return make_scent_model("multiplicative_book_v1", params=BOOK["model"]["params"])
+def _model() -> MultiplicativeBookV1:
+    model = make_scent_model("multiplicative_book_v1", params=BOOK["model"]["params"])
+    assert isinstance(model, MultiplicativeBookV1)
+    return model
 
 
 def _field(board_size: int) -> ScentField:

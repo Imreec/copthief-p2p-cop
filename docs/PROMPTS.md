@@ -3,6 +3,43 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #58 — feat/m3-8-named-scent-models (M3-8 build: named models, locked, sealed)
+
+- **Driver:** Imree (gave the build order explicitly and said "do not reorder") ·
+  **Author:** Claude (terminal) · **Reviewer:** pending.
+- **What was asked:** build M3-8 in ADR-0004 v2's order, with the kit's PROMOTED fixtures
+  as the spec, the default model byte-identical, and the per-model belief-eval rerun
+  treated as mandatory rather than optional.
+- **The instruction that shaped the output:** "per-model belief-eval rerun — MANDATORY
+  before any M3-3 number is quoted for the book model." Left to my own judgement I would
+  have wired the second model, watched the existing suite stay green, and reported M3-8
+  done — the M3-3 numbers were never *asserted* of the book model, so nothing would have
+  looked wrong. Actually running it is what produced the session's biggest finding: under
+  `multiplicative_book_v1` the filter's argmax hit-rate collapses from 98% to 17%. The
+  gate item existed precisely because a silence is easy to mistake for a pass.
+- **Two things I checked rather than assumed, both of which changed what shipped:**
+  1. *Why* the book number is bad. A wrong `age_of` would look identical to a genuine
+     result, so I probed the field instead of narrating a theory: additive kernel + upper
+     clamp pins 12 of 49 cells at 0.9 by turn 4 (inherent to the registration), and our
+     voucher heuristic reads a fresh ring-2 cell as 14 turns old (our machinery, not the
+     book's). The evidence doc states both, so the number cannot be read as a verdict on
+     the book's physics.
+  2. The negotiate bytes. Kit SPEC §7 says the doc never crosses the wire — only
+     `<family>_sha256` — while our M3-2 code shipped the whole document under
+     `scent_model`. That is a wire-visible change on the DEFAULT path, contradicting
+     PRD_scent §9.5's literal "byte-identical wire output". I took the ADR decision as
+     controlling (it is the specific, later-reasoned instruction, and hash-comparability
+     with the partner team is the entire point of M3-8), amended §9.5's wording to say
+     "game bytes", and flagged it rather than letting a doc line quietly go stale.
+- **A regression the existing pins caught, worth recording:** routing the belief filter's
+  observation model through the scent model exposed that the legacy `ScentField`
+  constructor never carried `emit_intensity` — harmless while only `deposit` used it,
+  fatal once `fresh_center` did, since the anchor became `-decay`. The M3-3 per-seed
+  test went red immediately. The pin earned its keep.
+- **Scope discipline:** nothing posted, sent, or co-signed. The kit fixture's mojibake'd
+  `kernel_source` em dash was left ALONE — it is inside the PROMOTED hash the partner
+  team already matched byte-exact, so "fixing" it would break the agreed lock.
+
 ## PR #57 — docs/m7-0-verification-green (counterparty verification of the cited game)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending.

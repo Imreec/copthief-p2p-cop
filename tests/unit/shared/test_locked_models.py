@@ -23,28 +23,12 @@ from copthief_core.shared.locked_models import (
 )
 
 REGISTRY = load_locked_models(Path("config/locked_models.json"))
-KIT = json.loads(
-    (Path("tests/conformance/vectors/locked_model.json")).read_text(encoding="utf-8")
-)
+KIT = json.loads((Path("tests/conformance/vectors/locked_model.json")).read_text(encoding="utf-8"))
 SHIPPED = PheromoneParams(center_intensity=0.9, decay=0.1, grid_size=5, min_center_intensity=0.5)
 
 
 def _kit_entry(name: str) -> dict[str, Any]:
     return next(r for r in KIT["registered"] if r["doc"]["name"] == name)
-
-
-def test_every_committed_registration_hashes_to_the_kit_pin() -> None:
-    """The whole point: our bytes and the kit's bytes are the same bytes."""
-    for entry in KIT["registered"]:
-        doc = entry["doc"]
-        assert REGISTRY.hash(doc["family"], doc["name"]) == entry["sha256"], doc["name"]
-
-
-def test_alons_re_emitted_lock_hash_is_the_one_we_declare() -> None:
-    """Cross-team pin: anrbj666's re-emitted `934c220d…` == the kit registry pin."""
-    assert REGISTRY.hash(SCENT_MODEL, "multiplicative_book_v1") == _kit_entry(
-        "multiplicative_book_v1"
-    )["sha256"]
 
 
 def test_the_declared_key_is_the_family_suffixed_form() -> None:
@@ -76,12 +60,6 @@ def test_a_registration_that_contradicts_the_signed_terms_is_refused() -> None:
     )
     with pytest.raises(LockedModelError, match="disagrees with the signed constitution"):
         assert_agrees_with(REGISTRY.doc(SCENT_MODEL, "subtractive_chebyshev_v1"), drifted)
-
-
-def test_the_refusal_rule_reproduces_the_kit_truth_table() -> None:
-    """Five rows, and only ONE of them refuses (kit SPEC §7; ADR-0004 v2 decision 3)."""
-    for row in KIT["refusal_rule"]:
-        assert lock_decision(row["ours"], row["theirs"]) == row["decision"], row["note"]
 
 
 def test_omission_is_never_refusal_in_either_direction() -> None:

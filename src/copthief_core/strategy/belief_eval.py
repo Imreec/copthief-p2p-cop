@@ -15,6 +15,7 @@ from dataclasses import dataclass
 from copthief_core.domain.belief import BeliefFilter, LastKnownTracker
 from copthief_core.domain.rules import legal_moves
 from copthief_core.domain.scent import ScentField
+from copthief_core.domain.scent_models import ScentModel
 from copthief_core.shared.config_model import Constitution
 
 
@@ -31,12 +32,22 @@ class TrialResult:
 
 
 def run_belief_trial(
-    constitution: Constitution, *, smell_trust: float, seed: int, steps: int
+    constitution: Constitution,
+    *,
+    smell_trust: float,
+    seed: int,
+    steps: int,
+    scent_model: ScentModel | None = None,
 ) -> TrialResult:
     """Walk a seeded legal opponent for `steps` turns and score both trackers.
 
-    Input: the signed constitution + the private trust weight + seed/length;
+    Input: the signed constitution + the private trust weight + seed/length + the named
+    scent model (omitted = the reference form, so every M3-3 number stands);
     Output: per-trial mean belief-errors and argmax-hit rates. Deterministic per seed.
+
+    M3-8: the trail AND the filter's observation model are the SAME model — quoting an
+    M3-3 result for a model it was not measured under is exactly what ADR-0004 v2's
+    consequences section forbids.
     """
     board = constitution.board.make_board()
     pheromones = constitution.pheromones
@@ -48,7 +59,9 @@ def run_belief_trial(
         window=pheromones.grid_size,
         decay=pheromones.decay,
         min_center_intensity=pheromones.min_center_intensity,
+        emit_intensity=pheromones.center_intensity,
         origin=constitution.board.axis_start_index,
+        model=scent_model,
     )
     bayes = BeliefFilter(
         board=board,
@@ -58,6 +71,7 @@ def run_belief_trial(
         decay=pheromones.decay,
         smell_trust=smell_trust,
         hint_trust=0.0,  # no hints in this trial: scent-only evaluation (M3-3 scope)
+        scent_model=trail.model,
     )
     baseline = LastKnownTracker(board=board, start=truth)
     filter_errors: list[float] = []

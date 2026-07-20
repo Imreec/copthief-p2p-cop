@@ -15,6 +15,7 @@ model registry (`config/locked_models.json`), never from source (CLAUDE.md §1 #
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from typing import Any, Protocol
 
 from copthief_core.domain.board import Coord
@@ -33,6 +34,7 @@ class ScentModel(Protocol):
     window: int
     receiver_side_decay: bool
     transmitted: bool
+    rounds: bool  # whether the model quantizes — decides byte-wise vs tolerant compare
 
     def deposit(self, cells: Cells, center: Coord, intensity: float, ok: InBounds) -> None:
         """Emit at `center` into `cells`, clipped to the board."""
@@ -64,12 +66,14 @@ class SubtractiveChebyshevV1:
     name = "subtractive_chebyshev_v1"
     receiver_side_decay = True
     transmitted = True
+    rounds = True  # round-3 quantizes every value, so the audit compares byte-wise
 
     def __init__(self, params: dict[str, Any]) -> None:
         self.window = int(params["field_size"])
         self._half = self.window // 2
-        # Declaration-only: emission strength arrives per deposit, from the constitution.
-        self.emit_intensity = float(params.get("emit_intensity", 0.0))
+        # Emission strength: `deposit` takes it per call, but `fresh_center` — the
+        # belief filter's age-zero anchor — needs the signed value.
+        self.emit_intensity = float(params.get("emit_intensity") or 0.0)
         self.min_center_intensity = float(params["min_center_intensity"])
         self._decay = float(params["decay_per_step"])
         self._digits = int(params["rounding_decimals"])
@@ -106,7 +110,7 @@ class SubtractiveChebyshevV1:
         return max(0, round((self.fresh_center() - value) / self._decay))
 
 
-_MODELS = {
+_MODELS: dict[str, Callable[[dict[str, Any]], ScentModel]] = {
     SubtractiveChebyshevV1.name: SubtractiveChebyshevV1,
     MultiplicativeBookV1.name: MultiplicativeBookV1,
 }

@@ -15,8 +15,8 @@ from collections.abc import Iterable
 
 from copthief_core.domain.belief_baseline import LastKnownTracker
 from copthief_core.domain.board import Board, Coord
-from copthief_core.domain.scent_models import ScentModel, SubtractiveChebyshevV1
 from copthief_core.domain.rules import legal_moves
+from copthief_core.domain.scent_models import ScentModel, SubtractiveChebyshevV1
 
 __all__ = ["BeliefFilter", "LastKnownTracker"]
 

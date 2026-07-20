@@ -30,6 +30,10 @@ class MultiplicativeBookV1:
     name = "multiplicative_book_v1"
     receiver_side_decay = False  # each side RECOMPUTES the rival's field; none is received
     transmitted = False
+    # No rounding, and each side RECOMPUTES rather than receives, so two honest peers
+    # differ in the last IEEE-754 bit on ~14% of inputs. Byte-wise comparison would
+    # manufacture evidence against an honest opponent (ADR-0004 v2).
+    rounds = False
 
     def __init__(self, params: dict[str, Any]) -> None:
         self.window = int(params["field_size"])

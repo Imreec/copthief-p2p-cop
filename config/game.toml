@@ -50,6 +50,13 @@ w_region = 0.1143
 #                              agreed to lock it - a peer that declares a different model
 #                              refuses the game (both-declare-and-differ, rule s7).
 model = "subtractive_chebyshev_v1"
+# M6-7 audit sensitivity: how far a re-derived cell may sit from the transmitted one
+# before the scent-physics check calls it a mismatch. IGNORED for a model that rounds
+# (the reference form is round-3 exact, so any difference is a difference). It binds
+# only for a no-rounding model like multiplicative_book_v1, where two HONEST peers
+# differ in the last IEEE-754 bit because each side recomputes rather than receives.
+# Private, evidence-grade only (SQ3) - never negotiated, never flips a result.
+physics_tolerance = 1e-9
 
 [belief]
 # Private evidence-trust tuning (PRD_belief s5): how sharply the scent/hint likelihoods

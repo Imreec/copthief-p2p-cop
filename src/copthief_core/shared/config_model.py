@@ -181,6 +181,8 @@ class PrivateSettings:
     # handshake declares its HASH; the default is the reference form, so a peer that
     # never touches this section plays exactly what M3-2 shipped.
     scent_model: str
+    # M6-7 audit slack, binding only for a model that does not round (M3-8).
+    scent_physics_tolerance: float
     # The committed locked-model registrations (config/locked_models.json, kit SPEC §7):
     # verbatim kit docs, because the declared value is a hash over their bytes.
     locked_models: LockedModelRegistry

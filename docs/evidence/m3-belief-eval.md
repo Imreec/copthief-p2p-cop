@@ -9,6 +9,32 @@
 > start) - scent grids are unauthenticated (SQ3) and a naive tracker trusting
 > them would be trivially spoofable.
 
+> **M3-8: measured PER NAMED MODEL.** The trail and the filter's observation
+> model are the same model in each run, so no number here is quoted for a model
+> it was not measured under (ADR-0004 v2). Caveat for `multiplicative_book_v1`:
+> this is a REFEREE-MODE instrument that feeds the tracker the emitted grid
+> directly. Its registration sets `transmitted: false`, so in a live game a peer
+> honouring that would put no grid on the wire at all and the scent channel
+> would carry nothing - see KNOWN_LIMITATIONS.
+
+> **Why the book model scores so much worse, mechanistically** (probed, not
+> assumed - two separable causes, and only the first is inherent to the model):
+> **(1) Saturation.** Its deposit is ADDITIVE with an upper clamp at
+> `center_intensity`, so on the signed 7x7 board with a 5x5 kernel a cell
+> revisited within ring 1 reaches `0.9*0.9 + 0.62 = 1.43` and pins at 0.9. A
+> sample walk puts 12 of 49 cells at the ceiling by turn 4, so 'the freshest
+> cell' stops identifying the current position. That is the registered model's
+> own arithmetic - the same clamp case the kit fixture pins.
+> **(2) Ring/age conflation, which is OUR machinery, not the book's.** The
+> voucher heuristic reads an intensity as an AGE. Inverting logarithmically, a
+> FRESH ring-1 cell (0.62) reads as age 4 and a fresh ring-2 cell (0.20) as age
+> 14, spreading vouchers over huge Manhattan balls. A filter designed for this
+> model would treat the kernel as a spatial likelihood rather than an age.
+> So this table is an honest re-measurement of the CURRENT filter under both
+> models - it is not evidence that the book's physics is unusable in principle.
+
+## `subtractive_chebyshev_v1`
+
 | seed | steps | filter mean error | baseline mean error | filter hit-rate | baseline hit-rate |
 |---|---|---|---|---|---|
 | 1 | 35 | 0.7076 | 0.9714 | 1.000 | 0.029 |
@@ -23,4 +49,22 @@
 | 10 | 35 | 0.7189 | 0.8286 | 1.000 | 0.171 |
 | **mean** | | **0.7314** | **0.9429** | **0.977** | **0.057** |
 
-**Verdict:** the filter wins the primary metric on every seed and on the mean (0.7314 vs 0.9429); its argmax finds the true cell 98% of steps vs the baseline's 6%. CI enforces the same claim in `tests/integration/test_belief_vs_baseline.py`.
+**Verdict (`subtractive_chebyshev_v1`):** filter mean error 0.7314 vs baseline 0.9429, winning the primary metric on 10/10 seeds; its argmax finds the true cell 98% of steps vs the baseline's 6%. CI enforces the SHIPPED model's claim in `tests/integration/test_belief_vs_baseline.py`.
+
+## `multiplicative_book_v1`
+
+| seed | steps | filter mean error | baseline mean error | filter hit-rate | baseline hit-rate |
+|---|---|---|---|---|---|
+| 1 | 35 | 0.8896 | 0.9714 | 0.286 | 0.029 |
+| 2 | 35 | 0.9190 | 1.0000 | 0.029 | 0.000 |
+| 3 | 35 | 0.8938 | 1.0000 | 0.200 | 0.000 |
+| 4 | 35 | 0.9057 | 0.9429 | 0.143 | 0.057 |
+| 5 | 35 | 0.9066 | 0.9143 | 0.143 | 0.086 |
+| 6 | 35 | 0.8989 | 0.9429 | 0.143 | 0.057 |
+| 7 | 35 | 0.8874 | 0.9429 | 0.171 | 0.057 |
+| 8 | 35 | 0.8955 | 0.9429 | 0.143 | 0.057 |
+| 9 | 35 | 0.9103 | 0.9429 | 0.114 | 0.057 |
+| 10 | 35 | 0.8944 | 0.8286 | 0.343 | 0.171 |
+| **mean** | | **0.9001** | **0.9429** | **0.171** | **0.057** |
+
+**Verdict (`multiplicative_book_v1`):** filter mean error 0.9001 vs baseline 0.9429, winning the primary metric on 9/10 seeds; its argmax finds the true cell 17% of steps vs the baseline's 6%. CI enforces the SHIPPED model's claim in `tests/integration/test_belief_vs_baseline.py`.

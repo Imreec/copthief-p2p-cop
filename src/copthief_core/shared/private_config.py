@@ -89,6 +89,7 @@ def load_private_settings(
         # heard of named models plays exactly what M3-2 shipped. The registry lives
         # beside the TOML because its docs are hashed, not interpreted.
         scent_model=str(scent.get("model", DEFAULT_SCENT_MODEL)),
+        scent_physics_tolerance=float(scent.get("physics_tolerance", 0.0)),
         locked_models=locked_models,
         gui=GuiSettings(
             refresh_ms=int(gui["refresh_ms"]),

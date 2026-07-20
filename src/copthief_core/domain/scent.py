@@ -42,6 +42,7 @@ class ScentField:
         window: int | None = None,
         decay: float | None = None,
         min_center_intensity: float | None = None,
+        emit_intensity: float | None = None,
         origin: int = 0,
         model: ScentModel | None = None,
     ) -> None:
@@ -52,6 +53,12 @@ class ScentField:
             model = SubtractiveChebyshevV1(
                 {
                     "field_size": window,
+                    # The signed emission strength. It never affects `deposit` (which
+                    # takes the intensity per call) but it IS the belief filter's
+                    # age-zero anchor, so a field built without it would hand the
+                    # observation model a fresh-centre of `-decay` (M3-8 regression,
+                    # caught by the M3-3 per-seed pin).
+                    "emit_intensity": emit_intensity,
                     "decay_per_step": decay,
                     "min_center_intensity": min_center_intensity,
                     "rounding_decimals": _ROUND_DIGITS,

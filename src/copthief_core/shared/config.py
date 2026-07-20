@@ -29,7 +29,6 @@ from copthief_core.shared.gazetteer_loader import load_gazetteer as load_gazette
 from copthief_core.shared.limits_loader import load_rate_limits as load_rate_limits
 from copthief_core.shared.locked_models import load_locked_models
 from copthief_core.shared.private_config import ConfigError as ConfigError
-from copthief_core.shared.locked_models import load_locked_models
 from copthief_core.shared.private_config import load_private_settings as load_private_settings
 
 
