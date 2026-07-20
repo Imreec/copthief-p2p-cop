@@ -167,8 +167,8 @@
     "tests/unit/gui/test_overlay.py": "7e96b6491c957537406f19ba7d3f2631528ca6b1d10249533cc3a060cc74e574",
     "tests/unit/gui/test_replay_walk.py": "b4d921aab60e7112b77bef0257802cedfb5a929259f18c5acc3b1d76d149cd0e",
     "tests/unit/infra/email_fixtures.py": "e64ba0215d44ab83a6336f03543ec45eca3de828f1d566f248a1aab320025d19",
-    "tests/unit/infra/test_email_refusals.py": "2aaf95aa4792fc2555593a4f11416f5cf90b6e3075197f59e096341e9600537a",
-    "tests/unit/infra/test_email_sender.py": "997e404729978b94fc8fc319251fe98c256fc5cc3e5c1988a8db4f473778dd09",
+    "tests/unit/infra/test_email_refusals.py": "676d5c91bd8027384ba9743502c627df95cec84a43914a834cb76da33b7c9abb",
+    "tests/unit/infra/test_email_sender.py": "44e8661fc6224f345c6ed1d6d1f94a94b60f2ee80b96eed50129337e05593567",
     "tests/unit/infra/test_gmail.py": "b946712d124226994471a18b64858077b20a7ef9dee6146c95d5557c298828bd",
     "tests/unit/peer/test_audit_flow.py": "b8c08045914cbd39734fe5e90aee24aa237b2e7f07781dfd661d8f0d0b25a1f9",
     "tests/unit/peer/test_claims.py": "c753f2d83264a72d70c2eec8fb3477e5687de54c34011059cd57d5b0dab5c34c",
@@ -219,7 +219,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "03c0ccf",
+  "source_commit": "2f33e16",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "64922f5d72f5ff0603cd6adece6212ff2626f1e34b1be6194191202148203d52"
+  "tree_hash": "6bcdcaaeb338f553d26e97bb02b42e13c3efe99ac860d893e7a7c320cb1837b2"
 }
