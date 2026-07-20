@@ -45,7 +45,7 @@ class SendFails:
     def __getattr__(self, name: str) -> Any:  # noqa: ANN401 - transparent proxy
         return getattr(self._inner, name)
 
-    def send_turn(self, message: dict[str, Any]) -> None:
+    def send_turn(self, _message: dict[str, Any]) -> None:
         raise self._kind("receive_turn: opponent unreachable")
 
 
@@ -108,7 +108,7 @@ def test_the_push_loss_names_the_push_distinctly_from_the_inbound_deadline() -> 
     assert any(e.get("event") == "transport_error" for e in events)
 
 
-def test_the_thiefs_undeliverable_OPENING_turn_is_also_classified() -> None:
+def test_the_thiefs_undeliverable_opening_turn_is_also_classified() -> None:
     """The first push happens before the loop — it must classify too, not crash."""
     police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=1)
     thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=2)
@@ -121,9 +121,7 @@ def test_the_thiefs_undeliverable_OPENING_turn_is_also_classified() -> None:
 
     runner = threading.Thread(target=quiet_police, name="quiet-police")
     runner.start()
-    result = run_peer_game(
-        thief, SendFails(thief_transport), turn_timeout=1.0, poll_interval=0.05
-    )
+    result = run_peer_game(thief, SendFails(thief_transport), turn_timeout=1.0, poll_interval=0.05)
     runner.join(timeout=5)
     assert result.outcome == "timeout"
     assert thief.machine.state is GameState.TECHNICAL_LOSS
@@ -136,17 +134,18 @@ def test_a_non_transport_error_still_propagates() -> None:
     thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=2)
     police_transport, thief_transport = queue_pair(wait_timeout=2.0)
     runner = _opening_thief(thief, thief_transport)
-    with pytest.raises(ValueError, match="not a transport failure"):
+    with pytest.raises(_BoomError, match="not a transport failure"):
         run_peer_game(
             police,
-            SendFails(police_transport, kind=_boom),
+            SendFails(police_transport, kind=_BoomError),
             turn_timeout=2.0,
             poll_interval=0.05,
         )
     runner.join(timeout=5)
+    assert police.machine.state is not GameState.TECHNICAL_LOSS  # not swallowed as a loss
 
 
-class _boom(Exception):
+class _BoomError(Exception):
     def __init__(self, _msg: str) -> None:
         super().__init__("not a transport failure")
 
@@ -158,7 +157,9 @@ def test_the_audit_path_after_a_push_loss_matches_the_inbound_deadline() -> None
     thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=2)
     police_transport, thief_transport = queue_pair(wait_timeout=2.0)
     runner = _opening_thief(thief, thief_transport)
-    result = run_peer_game(police, SendFails(police_transport), turn_timeout=2.0, poll_interval=0.05)
+    result = run_peer_game(
+        police, SendFails(police_transport), turn_timeout=2.0, poll_interval=0.05
+    )
     runner.join(timeout=5)
     assert result.audit_ok is False
     assert result.opponent_records == 0

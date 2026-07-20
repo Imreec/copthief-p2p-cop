@@ -55,9 +55,9 @@ def make_transport(client: RecordingClient) -> tuple[McpTransport, list[tuple[st
 def test_the_shared_transport_error_lives_at_the_protocol_seam() -> None:
     # Importable from the protocol module (the peer loop's import), and infra re-exports
     # the SAME type so nothing that already caught it breaks.
-    from copthief_core.infra.p2p_transport import TransportError as infra_error
+    from copthief_core.infra import p2p_transport
 
-    assert infra_error is TransportError
+    assert p2p_transport.TransportError is TransportError
 
 
 def test_send_turn_retries_on_the_turn_budget() -> None:
