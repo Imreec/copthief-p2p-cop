@@ -10,12 +10,19 @@ established at the handshake, so the `negotiated` event is the source.
 Rider (the more dangerous half): `verified = not problems` is TRUE when nothing was
 checked, so a truncated or empty log printed "Verified OK". A replay that verified zero
 records now says TAMPERED — fail-closed, like every other rule-19 surface.
+
+This test is MIRRORED, so it names no role-specific evidence file (portable-pin lesson,
+PR #29): it globs THIS repo's own committed live-peer log — the cop's M5 friendly, the
+thief's M3 full-pairing, both Verified OK. The cop's exact-number pin lives in the
+non-mirrored `tests/role/`.
 """
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
+
+import pytest
 
 from copthief_core.peer.match import run_local_minigame
 from copthief_core.peer.replay import (
@@ -26,31 +33,38 @@ from copthief_core.peer.replay import (
 )
 from copthief_core.shared.jsonl_logger import read_events
 
-# The committed M5 friendly: our tuned cop captured the reference thief in 13 steps.
-M5_FRIENDLY = Path("docs/evidence/m5-friendly-g3.jsonl")
+EVIDENCE = Path("docs/evidence")
+
+
+def a_live_peer_log() -> Path:
+    """A committed live-peer log for THIS repo — one carrying `peer_result` AND its own
+    revealed audit (a settled standalone peer game, not a local two-sided match, and not
+    a pre-v1.1 log). Globbed so the mirrored test is repo-agnostic — the cop has the M5
+    friendly, the thief its M3 full-pairing; skips if a repo has none yet."""
+    for path in sorted(EVIDENCE.glob("*.jsonl")):
+        kinds = {
+            json.loads(line).get("event") for line in path.read_text(encoding="utf-8").splitlines()
+        }
+        if {"peer_result", "audit"} <= kinds:
+            return path
+    pytest.skip("no committed live-peer log in this repo")
 
 
 def test_a_live_peer_log_populates_the_banner() -> None:
-    summary = replay_from_log(M5_FRIENDLY)
+    summary = replay_from_log(a_live_peer_log())
     assert verdict_for(summary) == VERDICT_OK
-    assert summary.steps == 13
-    assert summary.outcome == "cop_capture"
+    assert summary.steps > 0  # NOT the old vacuous 0
+    assert summary.outcome not in ("", "unknown")
     assert len(summary.game_uid) > 0  # from the handshake, not from the result payload
+    assert summary.records_verified >= 1  # NOT vacuously verified over zero records
+    # (a repo's own live log may be one-sided — the exact per-side moves are pinned in
+    # the non-mirrored cop role test, where the opponent's audit is archived too.)
 
 
 def test_the_live_game_uid_is_the_negotiated_one() -> None:
-    events = [json.loads(line) for line in M5_FRIENDLY.read_text(encoding="utf-8").splitlines()]
-    negotiated = next(e for e in events if e["event"] == "negotiated")
-    assert replay_from_log(M5_FRIENDLY).game_uid == negotiated["game_uid"]
-
-
-def test_the_verdict_still_rests_on_real_re_hashing() -> None:
-    """The M5 evidence claim was always sound — the display was the bug. Pin the work
-    the verdict actually did so a future 'fix' cannot hollow it out."""
-    summary = replay_from_log(M5_FRIENDLY)
-    assert summary.records_verified >= 1
-    assert summary.problems == []
-    assert set(summary.moves) == {"police", "thief"}
+    log = a_live_peer_log()
+    negotiated = next(e for e in read_events(log) if e["event"] == "negotiated")
+    assert replay_from_log(log).game_uid == negotiated["game_uid"]
 
 
 def test_the_two_sided_result_outranks_a_single_sides_peer_result(tmp_path: Path) -> None:
@@ -75,7 +89,7 @@ def test_an_empty_log_is_tampered_not_vacuously_verified(tmp_path: Path) -> None
 def test_a_log_truncated_before_the_audit_is_tampered(tmp_path: Path) -> None:
     """The aborted-game shape (kept fail-closed and disclosed): turns traveled, no
     record was ever revealed, so there is nothing to verify and nothing to trust."""
-    lines = M5_FRIENDLY.read_text(encoding="utf-8").splitlines()
+    lines = a_live_peer_log().read_text(encoding="utf-8").splitlines()
     kept = [
         line
         for line in lines
