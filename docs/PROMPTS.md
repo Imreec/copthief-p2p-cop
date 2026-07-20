@@ -3,6 +3,34 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #55 — feat/m7-6b-lecturer-guard (the lecturer is addressable only from a counted run)
+
+- **Driver:** Imree (the gap and the mechanism are both his) · **Author:** Claude
+  (terminal) · **Reviewer:** Antigravity (cross-model).
+- **What he caught:** asked whether the code now stops mail reaching the lecturer unless
+  said explicitly, I had to answer **no** — the M7-6 interlock refused a run with *no*
+  recipient but had no idea which address was the lecturer's, so a friendly naming him
+  would have mailed him automatically. His standing rule was still policy in a document.
+- **What he then fixed in my proposal:** I offered a separate named config key for the
+  counted recipient; he pointed out the recipient is *already* stated before the run, so
+  that is just a second place to type the same address — the ceremony we deleted with the
+  arming flag, wearing a different hat. The real distinction is **whether the run is
+  initiated as a real game**. That concept already exists as `counted`, and it already has
+  teeth: it arms the App F counted rows, so a counted constitution refuses to load unless
+  it is a genuine six-mini-game match. Tying the lecturer to it adds no new switch.
+- **This PR:** RED (friendly naming the lecturer refuses · he cannot hide in a list beside
+  friendly recipients · counted run sends normally · friendlies untouched · case/whitespace
+  variants all caught · refusal names the gate · unconfigured lecturer disables the guard,
+  not the rail · end-to-end through the sender, where `counted` defaults to False so a
+  caller that forgets cannot reach him) → GREEN: `decide_email_action(..., counted,
+  lecturer)` · `EmailSettings.lecturer` · `[email] lecturer` in game.toml (config-owned,
+  constraint #5) · `EmailSender(counted=...)` · `series_run` passes `counted=False`
+  explicitly. ADR-0008 amendment 9b records the gap, the fix, and the rejected alternative.
+- **I also pushed back and was wrong:** I argued the guard should wait for M7-4, since no
+  `counted=True` caller exists yet. He said build it now so the first real game inherits
+  it. He is right — it is a pure function, fully testable today, and safety built at the
+  moment it is first needed is safety built under pressure.
+
 ## PR #54 — feat/m7-6-auto-send (M7-6 build: automatic, recipient-authorized reporting)
 
 - **Driver:** Imree (ADR-0008 approved by merging #53) · **Author:** Claude (terminal) ·
