@@ -3,6 +3,37 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #54 — feat/m7-6-auto-send (M7-6 build: automatic, recipient-authorized reporting)
+
+- **Driver:** Imree (ADR-0008 approved by merging #53) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model).
+- **This PR:** RED (interlock truth table re-enumerated over (enabled × mode ×
+  **recipients**) with every no-recipient combination refusing · send-only SCOPES pin ·
+  multi-recipient `To` · rule-34 attachment round-trip · settings: list, bare string,
+  blanks dropped) → GREEN: `report/email_interlock` (arming retype removed; authorization
+  is the configured recipient) · `infra/gmail` (`gmail.send` scope; MIMEMultipart body +
+  attached JSON artifact) · `infra/email_sender` (no `armed` argument; logs `recipients`;
+  passes `attachment_name`) · `shared/config_model` + `private_config._recipients`
+  (`recipient: tuple[str, ...]`, list or bare string, blanks dropped) · `config/game.toml`
+  resting state `enabled=false` + `recipient=[]` · CLAUDE.md #16 + §4 + §9 + anti-patterns
+  · PRD FR-9 · PLAN §2/§4 · `scripts/gmail_auth.py`.
+- **Two bugs my own tests caught before CI did:** `_recipients` treated the default `()`
+  as a scalar, so the empty tuple became the literal string `"()"` — a recipient that
+  looks like authorization (`isinstance(raw, list | tuple)` fixed it); and the split test
+  module imported `tests.unit.infra.email_fixtures`, which does not resolve — the repo's
+  convention is the bare `from email_fixtures import …` (as `report_fixtures` does).
+- **150-line rule:** the sender suite hit 154 lines. Split per constraint #1 rather than
+  compressed — fixtures extracted to `email_fixtures.py`, refusal paths to
+  `test_email_refusals.py`, so neither file duplicates setup (constraint #11).
+- **ADR correction shipped with the build:** ADR-0008 decision 6 claimed the sparring-host
+  pin was "asserted at startup". It is not — no sparring runner exists yet, and with draft
+  dropped, "pin draft" no longer bites. Corrected in place: the pin becomes
+  `enabled = false` and the assertion lands with the host at M7-1. Status moved
+  PROPOSED → ACCEPTED.
+- **Not done here, and M7-6 stays ◐ for it:** the live token is still the M6-4
+  **compose** one, so nothing can actually send until Imree re-runs `gmail_auth.py` for a
+  send-only token; the thief sync and the parent-workspace standing rule also remain.
+
 ## PR #53 — docs/m7-6-email-posture-gate (M7-6 PRD/ADR gate — approval blocks the code)
 
 - **Driver:** Imree (both design rulings are his) · **Author:** Claude (terminal) ·

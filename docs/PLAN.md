@@ -17,7 +17,7 @@ graph LR
     end
     OPP["Opponent team's peer<br/>(their implementation)"]
     REF["Reference peer<br/>(lecturer's repo — oracle)"]
-    GMAIL["Gmail API<br/>(send-only, draft default)"]
+    GMAIL["Gmail API<br/>(send-only scope,<br/>recipient-authorized)"]
     LECT["Lecturer inbox<br/>result JSONs"]
     KIT["Conformance kit<br/>(public repo)"]
 
@@ -39,7 +39,7 @@ Per role, one **peer process** (mandated separation): FastMCP server (inbound to
 at these seams; locks/queues per guidelines §15). Counted matches: operator machine, one process
 per role actually playing, named tunnel (Cloudflare named / ngrok reserved — OI-3) exposing the
 local port. Sparring: small always-on host running cop + thief peers with the generic brain,
-`email.mode` hard-pinned to `draft`. CI (both repos): keyless, mock LLM, in-process MCP fake.
+`[email]` hard-pinned to `enabled = false` with no recipient (ADR-0008: draft is no longer a posture, so non-sending is pinned directly; the startup assertion lands with the host at M7-1). CI (both repos): keyless, mock LLM, in-process MCP fake.
 
 ## 3. Packages & dependency rules (C4 level 3 — approved layering)
 
@@ -93,8 +93,9 @@ model; diff vs the grids they transmitted; evidence-grade log) → agree result 
 opponent lie-rate/motion stats for next mini-game.
 
 **Reporting (per legal game):** build 4 artifacts named by `game_uid` → result JSON canonical
-bytes = emailed bytes → gatekeeper (quota → token bucket → DoS detector) → **draft mode unless
-operator armed the counted series** → both teams send separately.
+bytes = emailed bytes (+ the same bytes attached as a JSON file, App E rule 34) → gatekeeper
+(quota → token bucket → DoS detector) → **automatic send to the recipient configured for that
+run; none configured = nothing leaves** (ADR-0008) → both teams send separately.
 
 ## 5. Game state machine (per mini-game, both roles symmetric)
 
