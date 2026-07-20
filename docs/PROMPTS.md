@@ -3,6 +3,33 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #53 — docs/m7-6-email-posture-gate (M7-6 PRD/ADR gate — approval blocks the code)
+
+- **Driver:** Imree (both design rulings are his) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model). **Gate PR: merge = the approval; no M7-6
+  production code until then** (CLAUDE.md §2).
+- **This PR:** `docs/adr/0008-email-posture.md` + `docs/PRD_reporting.md` §5a amendment
+  + PRD §9 ledger entry + TODO M7-6 rewritten to the decided design. Docs only.
+- **Imree's two rulings, both of which simplified my proposal:**
+  (1) I offered an `--authorize-send` flag; he pointed out we had already settled that
+  we always send and that what varies is **who receives it**. Adopted, and his framing
+  is stronger than mine: a boolean says "sending is allowed", a recipient says *who* —
+  and nobody types the lecturer's address by accident. No flag.
+  (2) I offered "two tokens" vs "argue the compose case"; he asked **"do we even need
+  draft?"** — and we don't. Draft's only unique property was reviewing bytes before
+  they leave, which sending **to ourselves** does while exercising more of the path.
+  Dropping draft removes the need for `gmail.compose`, which resolves App E rule 30
+  **literally instead of by argument**. CLAUDE.md §4 reverts to send-only with the
+  rule-30 citation it should have carried at PR #43.
+- **Two facts verified against Google's API reference before writing them down**, since
+  both are load-bearing: `users.drafts.create` is authorized only by `mail.google.com` /
+  `gmail.modify` / `gmail.compose` — `gmail.send` genuinely **cannot** create a draft, so
+  the book's own App B `mode="draft"` listing is impossible under its own rule 30; and
+  `users.messages.send` carries recipients as RFC-822 headers, so **scope does not
+  constrain recipient count** and multi-recipient friendly reports work send-only.
+- **Numbering catch:** I first wrote this as ADR-0007, but PRD §9 already reserves 0007
+  for the (unwritten) zero-token verbal layer — renumbered to **0008** before commit.
+
 ## PR #52 — docs/m6-7-tunnel-drill (M6-7 residual closed: real-tunnel kill drill)
 
 - **Driver:** Imree ("continue as you suggested" — the drill authorized in the same
