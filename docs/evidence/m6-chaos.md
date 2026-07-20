@@ -15,6 +15,7 @@
 | fabricated scent grid | `scent_physics_mismatch` evidence event (per-step cell counts); verdict/result UNTOUCHED (SQ3) |
 | stalled loop (watchdog) | snapshot persisted + shutdown callback fired exactly ONCE; a beating loop is never disturbed |
 | blocked outbound call (M7-7) | a live loop inside a declared I/O window is NEVER self-terminated — and a wedged loop, or an I/O wait past even the I/O budget, still fires |
+| undeliverable outbound turn (M7-7) | an exhausted in-game push is OUR technical loss (App E symmetry), never a crash and never a unilateral claim; the retry runs on the turn budget; a non-transport error still propagates |
 
 ## Battery output (verbatim)
 
@@ -227,13 +228,32 @@ artifact landed in a tracked directory.
 **What this run does NOT cover:** the kill landed while we were *receiving*, so the loop
 was polling, not pushing. The outbound-push case is the residual below.
 
-**Residual raised by the fix, not closed by it (for the record):** with the watchdog no
-longer firing at 60 s, a flap longer than `connect_timeout_seconds` (60) that catches us
-**mid-push** now surfaces as a `TransportError` from `_push_with_retry` instead. That is
-loud and logged rather than a silent freeze, but it is still our process ending rather
-than the turn deadline classifying the opponent — so for the *pushing* half of the loop
-the practical tolerance is still 60 s, not 180 s. The open question is whether the
-in-game outbound retry budget should be the **turn** budget (`connect_timeout_seconds`
-is private and unsigned, so unlike the watchdog it *may* legitimately move), and whether
-an exhausted push should classify rather than raise. Flagged for Imree; deliberately not
-widened into this fix, which was scoped to the heartbeat semantics and the reconciliation.
+**Residual raised by the #59 fix — now CLOSED (2026-07-21, Imree approved, PR #60).**
+With the watchdog no longer firing at 60 s, a flap that caught us **mid-push** surfaced
+as a `TransportError` from `_push_with_retry` — loud and logged, not a silent freeze, but
+still our process ending rather than a classified loss, and the *pushing* half tolerated
+only `connect_timeout_seconds` (60) where the receiving half tolerated 180. Both halves
+of that gap are closed, scoped exactly to Imree's ruling (in-game pushes only,
+transport-exhaustion only, no unilateral outcome claims, audit path verified):
+
+- **The in-game push now retries on the TURN budget.** `McpTransport` gains
+  `turn_push_timeout` (= `turn_timeout_seconds`); `send_turn` uses it while the handshake
+  (`negotiate`) and the best-effort audit (`submit_audit`) keep `connect_timeout_seconds`.
+  A mid-push flap now tolerates as long as a silent-opponent flap — the asymmetry is
+  gone. (`connect_timeout_seconds` is private and unsigned, so unlike the signed watchdog
+  budget this was a legitimate value change, not a semantics-only fix.)
+- **An exhausted in-game push is OUR technical loss, not a crash.** `TransportError` moved
+  to the protocol seam (`peer/transport`), so `run_peer_game` classifies transport-blind:
+  on exhaustion the session takes `outcome="timeout"` → `TECHNICAL_LOSS`, trigger
+  `outbound turn undeliverable past the turn budget` (distinct from the inbound
+  `turn deadline exhausted`), and settles down the identical audit-skipped path. **No
+  unilateral outcome claim** — we take our own loss (the 0/0 technical-loss row), never a
+  declaration that the opponent lost. The thief's opening push, which happens before the
+  loop, classifies the same way. A NON-transport error still propagates — only a real
+  delivery failure is absorbed. Permanent keyless CI:
+  `tests/integration/test_push_exhaustion.py` + `tests/unit/infra/test_transport_budgets.py`.
+
+**Practical tolerance is now 180 s in both directions.** The one thing neither drill nor
+this fix exercises live is a real mid-push tunnel death (the re-drill's kill landed while
+receiving); the push path is proven over the in-process transport in CI, and a live
+mid-push kill can ride a future authorized session if Imree wants belt-and-braces.
