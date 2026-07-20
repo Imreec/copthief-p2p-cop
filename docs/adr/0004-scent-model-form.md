@@ -1,7 +1,8 @@
 # ADR-0004 — Scent model form: one pinned form (v1) → two named, pair-locked models (v2)
 
-**Status:** v2 **PROPOSED — awaiting Imree's approval (M3-8 gate); no build code until approved.**
-v1 Accepted at M3-2 (PR #16), superseded in part by this revision.
+**Status:** v2 **ACCEPTED** — approved by Imree at the M3-8 gate (PR #56, main `ee8a78a`);
+built in the ADR's own order at M3-8. v1 Accepted at M3-2 (PR #16), superseded in part by
+this revision.
 **Deciders:** Imree + Claude · **Revision trigger:** M3-7 decision "REVISE" (Imree, 2026-07-18)
 
 ---
@@ -150,6 +151,14 @@ the earlier phrasing counted events across two fields.
   alter the resting posture.
 - **The wire shape is a separate lock on the same schema** (M7-0, ADR-0006): registering
   the schema here is what lets that ADR pin its choice without inventing a second envelope.
+- **The negotiate extras change shape for BOTH models.** Kit SPEC §7 is explicit that the
+  doc never crosses the wire — only `<family>_sha256` does — so the pre-M3-8 `scent_model`
+  key carrying the whole document is gone, and the hash is now over the kit's four-key
+  envelope rather than our M3-2 ad-hoc dict. This is a wire-visible change on the default
+  path; it is what makes our declaration comparable with the partner team's at all. The
+  reference peer is unaffected (`verify_peer` indexes only its four terms keys). The
+  *game* bytes — turn messages, smell grids, sealed records — are unchanged, and that is
+  what `PRD_scent` §9.5's byte-identity criterion means (its wording is amended to say so).
 
 ### Alternatives
 

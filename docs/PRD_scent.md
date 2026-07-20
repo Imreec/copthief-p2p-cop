@@ -105,8 +105,8 @@ values · determinism (no RNG). Coverage ≥ 90%, files ≤ 150 lines, `mypy --s
 
 ## 9. Amendment — named scent models (M3-8)
 
-> **Status: PROPOSED — awaiting Imree's approval. No M3-8 build code until this section and
-> `docs/adr/0004-scent-model-form.md` v2 are approved.** Sections 1–8 describe the shipped M3-2
+> **Status: APPROVED and BUILT** (gate PR #56, main `ee8a78a` = Imree's approval; built at
+> M3-8 in ADR-0004 v2's order). Sections 1–8 describe the shipped M3-2
 > layer and remain accurate for the default model. Trigger: M3-7 decision "REVISE"
 > (Imree, 2026-07-18). Interop counterpart: kit PR #7 (SPEC §5.1 + §7).
 
@@ -180,10 +180,20 @@ hash. Coverage ≥ 90% on the model code, files ≤ 150 lines, `mypy --strict`, 
 ### 9.5 Acceptance criteria (binary)
 
 - Kit `locked_model.json` + `scent_book_v3.json` vectors green in keyless CI, both repos.
-- Default path unchanged: a full game against a peer that declares nothing produces
-  byte-identical wire output to the pre-M3-8 tree (regression-pinned).
+- Default path unchanged **in game bytes**: against a peer that declares nothing, every
+  turn message, smell grid and sealed game record is byte-identical to the pre-M3-8 tree
+  (regression-pinned). The **negotiate extras deliberately do change** — kit SPEC §7 puts
+  only `scent_model_sha256` on the wire, never the document — because a declaration the
+  partner team cannot compare is not a lock. See ADR-0004 v2's consequences.
 - Both-declare-and-differ refuses at handshake; every other combination plays.
 - Step-0 sealed record carries the model hash; replay verifies it.
-- **Per-model belief eval rerun and committed** — the M3-3 result was measured under the
-  subtractive model only and is not quoted for the book model until re-measured.
+- **Per-model belief eval rerun and committed** — `docs/evidence/m3-belief-eval.md` now
+  carries a table per registered model. **Re-measured result: the book model costs most of
+  the filter's edge** (mean belief error 0.9001 vs the reference form's 0.7314, against a
+  0.9429 baseline; argmax hit-rate 17% vs 98%). Two separable causes, probed not assumed:
+  its ADDITIVE kernel with an upper clamp saturates 12 of 49 cells at 0.9 by turn 4 on the
+  signed 7×7 board (inherent to the registration), and our voucher heuristic reads
+  intensity as age, so a fresh ring-2 cell inverts to age 14 (our machinery, improvable).
+  This is a live input to the counted-series negotiation, not a settled verdict on the
+  book's physics.
 - ADR-0004 v2 committed.
