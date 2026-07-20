@@ -17,12 +17,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from copthief_core.peer.match import run_local_minigame
 from copthief_core.peer.replay import (
     VERDICT_OK,
     VERDICT_TAMPERED,
     replay_from_log,
     verdict_for,
 )
+from copthief_core.shared.jsonl_logger import read_events
 
 # The committed M5 friendly: our tuned cop captured the reference thief in 13 steps.
 M5_FRIENDLY = Path("docs/evidence/m5-friendly-g3.jsonl")
@@ -49,6 +51,17 @@ def test_the_verdict_still_rests_on_real_re_hashing() -> None:
     assert summary.records_verified >= 1
     assert summary.problems == []
     assert set(summary.moves) == {"police", "thief"}
+
+
+def test_the_two_sided_result_outranks_a_single_sides_peer_result(tmp_path: Path) -> None:
+    """Precedence, not preference (caught by the M1 replay pin when this fix landed): a
+    LOCAL log carries the two-sided `result` and both sides' `peer_result`, and a
+    `peer_result` counts only its own side's steps — 4 where the match played 5."""
+    log_path = tmp_path / "local.jsonl"
+    match = run_local_minigame(Path("config"), police_seed=11, thief_seed=22, log_path=log_path)
+    events = read_events(log_path)
+    assert {e["event"] for e in events} >= {"result", "peer_result"}  # both present
+    assert replay_from_log(log_path).steps == match.steps
 
 
 def test_an_empty_log_is_tampered_not_vacuously_verified(tmp_path: Path) -> None:

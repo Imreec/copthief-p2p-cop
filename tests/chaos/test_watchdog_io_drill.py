@@ -18,7 +18,8 @@ from typing import Any
 from copthief_core.peer.p2p import run_peer_game
 from copthief_core.peer.session import PeerSession
 from copthief_core.peer.transport import PeerTransport, queue_pair
-from copthief_core.peer.watchdog import Watchdog, watched
+from copthief_core.peer.watchdog import Watchdog
+from copthief_core.peer.watchdog_transport import watched
 from copthief_core.shared.config import load_all
 
 CONSTITUTION, _SHIPPED, _LIMITS = load_all(Path("config"), counted=False)

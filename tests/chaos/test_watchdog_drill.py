@@ -18,6 +18,7 @@ def test_drill_stalled_loop_persists_and_shuts_down(tmp_path: Path) -> None:
     stalls: list[str] = []
     dog = Watchdog(
         timeout_sec=0.15,
+        io_timeout_sec=3.0,
         snapshot=lambda: {"role": "police", "steps_sealed": 4},
         persist_path=tmp_path / "state_uid.json",
         on_stall=stalls.append,
@@ -42,6 +43,7 @@ def test_drill_beating_loop_is_never_disturbed(tmp_path: Path) -> None:
     stalls: list[str] = []
     dog = Watchdog(
         timeout_sec=0.2,
+        io_timeout_sec=3.0,
         snapshot=dict,
         persist_path=tmp_path / "state_uid.json",
         on_stall=stalls.append,

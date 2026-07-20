@@ -27,9 +27,14 @@ def test_the_snapshot_is_pinned_to_the_gitignored_logs_dir() -> None:
 
 def test_the_snapshot_path_never_follows_the_log_path() -> None:
     """The regression itself: logging into a tracked directory must write no artifact
-    there. The path is role-derived, so no log path can steer it."""
-    source = PEER_RUN_SOURCE.read_text(encoding="utf-8")
-    assert "log_path.parent" not in source
+    there. The path is role-derived, so no log path can steer it. Comment lines are
+    stripped — the fix is DESCRIBED in a comment naming the old expression."""
+    code = [
+        line
+        for line in PEER_RUN_SOURCE.read_text(encoding="utf-8").splitlines()
+        if not line.strip().startswith("#")
+    ]
+    assert "log_path.parent" not in "\n".join(code)
 
 
 def test_a_stray_snapshot_anywhere_is_still_git_ignored() -> None:
@@ -53,7 +58,9 @@ class FlushCounting(io.StringIO):
 def test_the_stall_reaches_the_console_and_is_flushed() -> None:
     stream = FlushCounting()
     events: list[dict[str, object]] = []
-    announce_stall("loop stall: no heartbeat for 60.34s", role="police", sink=events.append, stream=stream)
+    announce_stall(
+        "loop stall: no heartbeat for 60.34s", role="police", sink=events.append, stream=stream
+    )
     printed = stream.getvalue()
     assert "loop stall" in printed
     assert "60.34s" in printed
@@ -70,6 +77,8 @@ def test_the_stall_reaches_the_console_and_is_flushed() -> None:
 def test_the_stall_still_logs_when_there_is_no_jsonl_sink() -> None:
     """A live peer may run without `--log`; the console must still say what happened."""
     stream = FlushCounting()
-    announce_stall("transport stall: blocked in I/O for 241.0s", role="thief", sink=None, stream=stream)
+    announce_stall(
+        "transport stall: blocked in I/O for 241.0s", role="thief", sink=None, stream=stream
+    )
     assert "transport stall" in stream.getvalue()
     assert stream.flushes >= 1
