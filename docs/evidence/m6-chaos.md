@@ -253,7 +253,66 @@ transport-exhaustion only, no unilateral outcome claims, audit path verified):
   delivery failure is absorbed. Permanent keyless CI:
   `tests/integration/test_push_exhaustion.py` + `tests/unit/infra/test_transport_budgets.py`.
 
-**Practical tolerance is now 180 s in both directions.** The one thing neither drill nor
-this fix exercises live is a real mid-push tunnel death (the re-drill's kill landed while
-receiving); the push path is proven over the in-process transport in CI, and a live
-mid-push kill can ride a future authorized session if Imree wants belt-and-braces.
+**Practical tolerance is now 180 s in both directions.**
+
+### Live mid-push tunnel drills — the push path proven over the real edge (2026-07-21)
+
+The residual note above said the push path was CI-only because the #59 re-drill's kill
+landed while *receiving*. Imree authorized the mid-push drill; both variants were run
+end-to-end over the real Cloudflare tunnel (our cop vs the reference thief, gotcha #11
+both directions — the reference configs were already on the tunnel and were left
+untouched). The reference thief moves first, so our cop's reply to its opening turn is our
+first **outbound** push; the tunnel was killed the instant that inbound turn arrived
+(`turn_received`), front-running our push into a dead edge.
+
+**(a) heal-within-budget** — killed at the first `turn_received`, edge dead 90 s, then
+`cloudflared` restarted. Log: `docs/evidence/m7-7-push-heal-g1.jsonl`.
+
+| | |
+|---|---|
+| During the 90 s outage | our reply push retried; `watchdog_stall` count **0**; no classification |
+| On restart | the retrying push **delivered**, the game resumed and ran to completion |
+| Outcome | `cop_capture` in **13 steps**, mutual audit `audit_ok: true`, `problems: []`, 15 opponent records |
+| Replay | **Verified OK** (exit 0), 29 records re-hashed |
+| Process | exit 0; no snapshot; `git status` clean |
+
+A network flap **inside** the budget costs nothing — the push waited it out and the game
+finished normally. (Console noise, disclosed: the MCP client library's background
+`post_writer` logged the dead-window `502`/`530` and a "Session termination failed"
+during teardown; it is a library-level log, not our code — the game completed
+`cop_capture` and exited 0 after it.)
+
+**(b) budget-exhausted** — killed at the first `turn_received`, edge left dead past the
+180 s push budget. Log: `docs/evidence/m7-7-push-exhaust-g1.jsonl`.
+
+```
+transport_error | receive_turn: opponent unreachable: Server error '530 <none>'
+                  for url 'https://thief.imreeyal.com/mcp'
+transition      | awaiting_reveal -> technical_loss,
+                  trigger "outbound turn undeliverable past the turn budget"
+```
+
+console result:
+
+```json
+{"role": "police", "outcome": "timeout", "steps": 1,
+ "game_uid": "f757f50d-d4f4-17e7-06cf-755905739b16", "audit_ok": false,
+ "opponent_claim": "", "problems": ["audit skipped: timeout"], "opponent_records": 0}
+```
+
+Every item of the classified terminal, observed:
+
+| Expectation | Observed |
+|---|---|
+| orderly shutdown | classified `TECHNICAL_LOSS`; process **exit 0**, no raw `TransportError` traceback |
+| artifacts persisted | the JSONL log written; replays **TAMPERED (exit 1)** — the aborted-game convention, fail-closed and disclosed |
+| dispute-evidenced "unreachable" | the `transport_error` event names the edge failure (`530`, opponent unreachable) — a committed record of *why* we lost |
+| no unilateral outcome claim | `outcome: timeout` (our own technical-loss row, 0/0), `opponent_claim: ""` |
+| report rail fires per posture | `decide_email_action` over the loaded resting `[email]` → `refuse: email disabled (email.enabled=false)`; nothing sent |
+| no snapshot escape | no `state_*.json`; `git status` clean |
+
+The distinction from the #59 re-drill is exactly the point: that kill landed while
+receiving and classified via `turn deadline exhausted` (the inbound path); this one landed
+mid-push and classified via `outbound turn undeliverable past the turn budget` (the #60
+path). Both are our own technical loss by rule — neither is a crash, and neither claims
+the opponent lost.
