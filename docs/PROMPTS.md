@@ -3,6 +3,39 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #60 — m7-7-push-exhaustion (M7-7 residual: undeliverable outbound turn)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** close the residual PR #59 raised and I flagged rather than fixed
+  unasked — "both approved as scoped above — in-game pushes only, transport-exhaustion
+  only, no unilateral outcome claims, audit path verified."
+- **Why the scope line did the heavy lifting.** The naive read of "classify a failed
+  push" is to reuse whatever ends the game. Two of those would have been wrong, and the
+  scope named both: (a) **no unilateral outcome claims** — an undeliverable push must NOT
+  become "we captured them" or "they forfeited"; it is symmetric with a silent opponent,
+  i.e. *our own* technical loss (the 0/0 row). (b) **transport-exhaustion only** — a
+  blanket `except Exception` around the push would have silently turned a genuine bug in
+  the seal/serialize path into a technical loss; only `TransportError` is absorbed, every
+  other error still propagates. I wrote the test for that propagation first, because it is
+  exactly the kind of over-broad catch that looks fine until it hides a real defect.
+- **What I checked rather than assumed:**
+  1. **Where `TransportError` should live.** The loop must classify a delivery failure
+     without knowing which transport it holds (PLAN §12), so catching the infra type in
+     the peer loop would have inverted the layering. Moved it to the protocol seam
+     (`peer/transport`) and re-exported from infra, verified nothing that already caught
+     it breaks (`p2p_transport.TransportError is transport.TransportError`).
+  2. **The turn-budget change is a *value* change, and that is only OK because the value
+     is unsigned.** `connect_timeout_seconds` is private (App B), unlike the signed
+     `watchdog_timeout_sec` I was explicitly forbidden to touch in #59 — so raising the
+     in-game push budget to the turn budget is legitimate, not an App F breach. I stated
+     that distinction in the evidence so the two "budget" fixes are not conflated.
+  3. **"Audit path verified" meant running it, not asserting it.** The test settles a
+     push-classified loss and checks it lands on the exact inbound-deadline path — audit
+     skipped, zero opponent records, `problems == ("audit skipped: timeout",)`.
+- **Outcome:** 663 keyless tests (9 new); the push path proven over the in-process
+  transport. Candid limit stated in the evidence: no live mid-push tunnel kill was run
+  (the #59 re-drill's kill landed while receiving); offered as a future authorized drill.
+
 ## PR #59 — m7-7-live-path-defects (M7-7: four live-path defects from the kill drill)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).

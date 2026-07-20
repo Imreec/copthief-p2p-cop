@@ -56,6 +56,8 @@ def run_peer_flow(
         inboxes,
         connect_timeout=sdk.private.connect_timeout_seconds,
         retry_interval=sdk.private.poll_interval_seconds,
+        # M7-7: an in-game turn push tolerates a flap as long as a silent-opponent flap.
+        turn_push_timeout=sdk.private.turn_timeout_seconds,
     )
     gazetteer = load_gazetteer(
         sdk.config_dir / "gazetteer.json",
