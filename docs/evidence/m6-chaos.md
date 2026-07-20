@@ -190,9 +190,50 @@ deliberate. The shared `game_uid` across all three is not a bug: it is derived f
 signed terms, which are identical across these games (kit §4, deterministic by
 construction).
 
+### Live re-drill — the blocker proven closed over the real tunnel (2026-07-20)
+
+Same rig as the original drill (named tunnel `copthief`, reference thief on the public
+edge), branch code, `cloudflared` killed the moment the handshake landed — so the tunnel
+was dead for the whole game rather than for a few seconds. Log:
+`docs/evidence/m7-7-redrill-g1.jsonl`.
+
+| Elapsed since the kill | Observed |
+|---|---|
+| 0–178 s | cop **alive**, `watchdog_stall` count **0** — the old code fired at ~60 s |
+| 183 s | process exits on **its own turn budget** |
+
+The transition the log records — this is the whole point of the fix:
+
+```json
+{"event": "transition", "payload": {"from": "waiting_for_opponent",
+ "to": "technical_loss", "trigger": "turn deadline exhausted"}, "sender": "police"}
+```
+
+and the console result:
+
+```json
+{"role": "police", "outcome": "timeout", "steps": 0,
+ "game_uid": "f757f50d-d4f4-17e7-06cf-755905739b16", "audit_ok": false,
+ "problems": ["audit skipped: timeout"], "opponent_records": 0}
+```
+
+**Lost by rule, not by suicide.** Under `a23d7ce` this exact scenario produced
+`watchdog_stall` at ~60 s and `os._exit(1)`; here the watchdog stayed silent through
+183 s of dead edge and our own `turn_timeout_seconds` classified the silent opponent,
+which is what App E entitles us to. Defect (2) verified live in the same run: no snapshot
+was written (the watchdog never fired) and `git status` stayed clean — no operational
+artifact landed in a tracked directory.
+
+**What this run does NOT cover:** the kill landed while we were *receiving*, so the loop
+was polling, not pushing. The outbound-push case is the residual below.
+
 **Residual raised by the fix, not closed by it (for the record):** with the watchdog no
-longer firing at 60 s, a flap longer than `connect_timeout_seconds` now surfaces as a
-`TransportError` from `_push_with_retry` instead. That is loud and logged rather than a
-silent freeze, but it is still our process ending rather than the turn deadline
-classifying the opponent — a separate question about whether the outbound retry budget
-should be the *turn* budget. Flagged for Imree; deliberately not widened into this fix.
+longer firing at 60 s, a flap longer than `connect_timeout_seconds` (60) that catches us
+**mid-push** now surfaces as a `TransportError` from `_push_with_retry` instead. That is
+loud and logged rather than a silent freeze, but it is still our process ending rather
+than the turn deadline classifying the opponent — so for the *pushing* half of the loop
+the practical tolerance is still 60 s, not 180 s. The open question is whether the
+in-game outbound retry budget should be the **turn** budget (`connect_timeout_seconds`
+is private and unsigned, so unlike the watchdog it *may* legitimately move), and whether
+an exhausted push should classify rather than raise. Flagged for Imree; deliberately not
+widened into this fix, which was scoped to the heartbeat semantics and the reconciliation.
