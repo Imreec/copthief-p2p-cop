@@ -97,6 +97,22 @@ so multi-recipient friendly reports work on a send-only token.
    becomes "**no email is ever sent to an address Imree has not configured for that run**".
    Imree still authorizes every send — by setting the recipient and launching the run — but
    authorization happens **before** the match, never inside it.
+9b. **AMENDMENT (2026-07-20, same day): the lecturer guard — policy became mechanism.**
+   As first written, decisions 2 and 9 left Imree's standing rule ("no email to the lecturer
+   without my explicit word") as *documentation*: the interlock refused a run with **no**
+   recipient, but had no idea which address was the lecturer's, so a friendly that named him
+   would have mailed him automatically. Imree caught this and pointed out that the real
+   distinction is not the address but **whether the run is initiated as a real game** — a
+   concept the codebase already has. `counted` arms the App F counted-series rows, so a
+   counted constitution **refuses to load** unless it is a genuine six-mini-game match
+   (PRD_engine §6.1); it cannot be set by accident. **Decision:** the lecturer's address is
+   config-owned (`[email] lecturer`, constraint #5) and the interlock **refuses it whenever
+   `counted` is false**, matching case- and whitespace-insensitively, including when it hides
+   in a list beside friendly recipients. Friendlies pay no ceremony. A rejected alternative
+   (mine) was a separate named config key for the counted recipient — Imree correctly called
+   it a second place to type the same address, i.e. the ceremony we removed with the arming
+   flag, wearing a different hat.
+
 9. **Sequencing is the risk control** (Imree's standing intent, adopted as policy): the
    lecturer is addressed only after friendlies to ourselves and to a peer team have shown
    the format is correct on both sides. Rule 35 penalises *contradictory* reports as harshly

@@ -91,3 +91,9 @@ mode = "send"
 recipient = []
 sender = ""
 token_path = "token.json"
+# The book's sole binding reporting address (s9.3). Naming it here is what lets the
+# interlock REFUSE it outside a counted series: `counted` arms the App F counted rows,
+# so a counted constitution will not even load unless it is a genuine six-mini-game
+# match - the flag cannot be set by accident, which makes it the honest gate for
+# "no email to the lecturer without Imree's explicit word". Friendlies are unaffected.
+lecturer = "rmisegal+uoh26finalgame@gmail.com"
