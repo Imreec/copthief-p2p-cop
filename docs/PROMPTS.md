@@ -3,20 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR #46 — feat/m6-5-gatekeeper (M6-5 quota → token bucket → DoS lock)
+## PR #50 — feat/m6-7-chaos (M6-7 watchdog + chaos battery + scent-physics rider)
 
-- **Driver:** Imree (approved PRD_gatekeeper §2-§3/§6; build order = gatekeeper
-  BEFORE email so M6-4 is born gated) · **Author:** Claude (terminal) ·
-  **Reviewer:** Antigravity (cross-model, on the PR).
-- **This PR:** RED (window/semaphore/FIFO on a fake clock + the synthetic-load
-  DoD · quota-before-queue · 429 schedule pins · breaker trip/cooldown/reset ·
-  v1.01 parsing + tighten-only band) → GREEN: `shared/rate_limiter` (enforces the
-  signed `concurrent_requests` the reference never does; queue-never-crash) ·
-  `shared/gatekeeper` (three stages, loud JSONL events, auto-reset breaker) ·
-  `shared/gatekeeper_build` (M6-4's seam; per-service overrides) ·
-  `shared/limits_loader` split + `rate_limits.json` **v1.01** (queue/breaker/
-  email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
-  the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
+- **Driver:** Imree (approved PRD_gatekeeper §4–§5 incl. D2: scent-physics rides
+  M6-7 with a TODO amendment) · **Author:** Claude (terminal) · **Reviewer:**
+  Antigravity + Eyal (per TODO); stacked on #49.
+- **This PR:** RED (watchdog fake-clock core + threaded drill · scent-physics
+  unit: honest walk == zero mismatches, fabricated grid flagged per step ·
+  10-drill chaos battery, each asserting its NAMED defense) → GREEN:
+  `peer/watchdog` (beat/check core, persist-then-shutdown-once, daemon thread) ·
+  `peer/scent_check` (revealed-walk re-derivation vs archived grids;
+  settlement emits `scent_physics_mismatch`, evidence-grade only — SQ3) ·
+  `p2p` heartbeat seam + `peer_run` arms the watchdog live (signed timeout,
+  snapshot to logs/, loud exit) · `docs/evidence/m6-chaos.md`. RED-phase finds:
+  my fixture walked an illegal state path (machine rejected it — good) and a
+  3-step "survival" claim tripped the threshold backstop (also good — both
+  defenses caught the test author first). Gotcha #7 struck once (PS round-trip
+  mojibake) — repaired by reverse-decode, edits via file tools only since.
+  TODO M6-7 amended (D2) + ticked.
 
 ## PR #49 — feat/m6-8-cost (M6-8 COST.md + the auditable 0-token pin)
 
@@ -62,6 +66,21 @@
   debt: it was never actually committed) · CLAUDE.md §4 send-only→compose-only
   (D1=A record). Deferred by design: CLI verb → M6-6; live Gmail-draft evidence →
   OI-5 account + consent. TODO M6-4 set ◐ (code done, live evidence pending).
+
+## PR #46 — feat/m6-5-gatekeeper (M6-5 quota → token bucket → DoS lock)
+
+- **Driver:** Imree (approved PRD_gatekeeper §2-§3/§6; build order = gatekeeper
+  BEFORE email so M6-4 is born gated) · **Author:** Claude (terminal) ·
+  **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** RED (window/semaphore/FIFO on a fake clock + the synthetic-load
+  DoD · quota-before-queue · 429 schedule pins · breaker trip/cooldown/reset ·
+  v1.01 parsing + tighten-only band) → GREEN: `shared/rate_limiter` (enforces the
+  signed `concurrent_requests` the reference never does; queue-never-crash) ·
+  `shared/gatekeeper` (three stages, loud JSONL events, auto-reset breaker) ·
+  `shared/gatekeeper_build` (M6-4's seam; per-service overrides) ·
+  `shared/limits_loader` split + `rate_limits.json` **v1.01** (queue/breaker/
+  email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
+  the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
 
 ## PR #45 — feat/m6-3-step0-tokens (M6-3 step-0 declaration + sealed tokens)
 
