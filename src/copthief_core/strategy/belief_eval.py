@@ -67,9 +67,9 @@ def run_belief_trial(
     for _ in range(steps):
         move = rng.choice(sorted(legal_moves(board, truth, move_set)))
         truth = board.apply_move(truth, move)
-        # SQ1 honest emission: deposit at the NEW position, decay once, transmit.
-        trail.deposit(truth, pheromones.center_intensity)
-        trail.decay()
+        # SQ1 honest emission: ONE full-turn update at the NEW position, then transmit
+        # (the order is the selected model's — M3-8 cadence policy).
+        trail.advance(truth, pheromones.center_intensity)
         grid = trail.snapshot()
         for tracker in (bayes, baseline):
             tracker.predict()

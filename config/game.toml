@@ -40,6 +40,17 @@ w_distance = 3.8875
 w_mobility = 3.6061
 w_region = 0.1143
 
+[scent]
+# Which NAMED scent model we play (M3-8, ADR-0004 v2; registrations in
+# config/locked_models.json, kit SPEC s7). Private until the handshake, which declares
+# only the model's HASH - the doc itself never crosses the wire.
+#   subtractive_chebyshev_v1 = the reference form, our default. Byte-identical to what
+#                              M3-2 shipped; this is what plays against the reference peer.
+#   multiplicative_book_v1   = the book ch.4 model. Set this ONLY for a pair that has
+#                              agreed to lock it - a peer that declares a different model
+#                              refuses the game (both-declare-and-differ, rule s7).
+model = "subtractive_chebyshev_v1"
+
 [belief]
 # Private evidence-trust tuning (PRD_belief s5): how sharply the scent/hint likelihoods
 # multiply into the Bayes filter. Never signed, never crosses the wire (SQ3 stance:
