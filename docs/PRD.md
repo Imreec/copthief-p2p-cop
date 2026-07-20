@@ -88,7 +88,7 @@ watchdog (`watchdog_timeout_sec`) with state persistence + controlled shutdown; 
 proving each pattern with committed evidence.
 **FR-9 Reporting rail (book ch.9/App A; App E rules 28–34, 51–54):** four artifacts
 (declaration/config/log/result) named by `game_uid`; step-0 declaration (hardware, model, tokens,
-commit hash) signed; Gmail API send-only OAuth, **draft-mode default + human arming interlock**;
+commit hash) signed; Gmail API **send-only OAuth (`gmail.send`, App E rule 30)**; reporting is **automatic** (rule 32; rule 35 zeroes both teams on a missing report) and **authorized by the configured recipient** — resting state disabled with none (ADR-0008, superseding the M6-4 draft-default + arming interlock); the report also rides as an **attached JSON file** (rule 34);
 gatekeeper (token-bucket + quota manager + DoS detector). **Config precedence:** the binding
 gatekeeper minimums live in the signed `game.json` `rate_limiter_gatekeeper` block (App F table
 19); the per-peer operational file `rate_limits.json` (guidelines §5.2 / reference layout) may

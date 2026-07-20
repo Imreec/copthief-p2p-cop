@@ -5,7 +5,8 @@
 
 ## Status
 
-**PROPOSED** (2026-07-20) — supersedes the D1=A ruling recorded on PR #43 and the
+**ACCEPTED** (2026-07-20, PR #53 merged = Imree's approval; built in the M7-6 PR, which also
+carries the decision-6 correction below) — supersedes the D1=A ruling recorded on PR #43 and the
 CLAUDE.md §4 "compose-only" amendment that rode M6-4. Approval by Imree is the gate for
 M7-6 code; **no production code until this ADR and the PRD_reporting §5 amendment are
 approved** (CLAUDE.md §2).
@@ -83,9 +84,13 @@ so multi-recipient friendly reports work on a send-only token.
 5. **The result artifact is attached as a JSON file** (rule 34) **in addition to** the body,
    whose bytes remain byte-identical to the artifact on disk (the reference-mirrored
    behaviour proven at M6-4 and pinned by test).
-6. **The sparring host stays hard-pinned to non-sending** (PLAN §2), asserted at startup. It
-   runs unattended with a copy of our configuration and must be incapable of emailing anyone
-   regardless of what that configuration says.
+6. **The sparring host stays hard-pinned to non-sending.** PLAN §2 pins `email.mode = "draft"`
+   there; with draft dropped as a posture that wording no longer bites, so the pin becomes
+   **`enabled = false` with no recipient**, which under decision 2 makes sending impossible.
+   **Correction to the first draft of this ADR:** it said "asserted at startup" as though the
+   assertion existed — it does not. No sparring runner exists yet (M7-1), so the assertion has
+   no home; it is recorded here and in TODO M7-1 as work that lands *with* the sparring host,
+   not as a guarantee already held. Until then the host does not exist and cannot email.
 7. **Runaway protection remains the gatekeeper** (rule 28 / M6-5), not human review.
 8. **CLAUDE.md constraint #16 is amended in both repos, and the parent-workspace standing
    rule with it:** "no email is ever sent without Imree's explicit **per-send** word"
