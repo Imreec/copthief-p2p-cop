@@ -3,6 +3,43 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #59 — m7-7-live-path-defects (M7-7: four live-path defects from the kill drill)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** fix all four defects the real-tunnel kill drill exposed at
+  `a23d7ce`, with (1) — the watchdog outrunning our own turn deadline — named as THE
+  pre-series blocker, then re-run the scripted battery and re-drill live.
+- **The instruction that shaped the output, and the one I would have got wrong:**
+  *"watchdog_timeout_sec is a SIGNED value — the fix is semantics, never a config bump."*
+  The obvious repair is to raise the watchdog budget above the turn budget, and it would
+  have passed every test I would have thought to write. It is also an App F violation
+  dressed as a bugfix. Being told the constraint up front is what forced the actual
+  design: the budget stays signed and untouched, and the *derived* I/O budget
+  (`turn + watchdog`) carries the ordering instead.
+- **The second instruction that did real work:** *"the two budgets must be reconciled
+  EXPLICITLY (loader-asserted relationship, documented)."* The heartbeat fix alone would
+  have closed the observed failure. But the deeper defect was that two budgets governing
+  the same question had never been related to each other *anywhere* — they met for the
+  first time at runtime, in a live game, and the wrong one won. `shared/budgets` states
+  the ordering once and refuses a config that violates it. That is the part that stops
+  the *next* instance, not just this one.
+- **What I checked instead of assuming (each changed what shipped):**
+  1. **`peer_result` alone was not the whole of defect (4).** Adding it to the read broke
+     the M1 replay pin: a local log carries the two-sided `result` *and* both sides'
+     `peer_result`, and a per-side payload counts only its own steps — 4 reported where
+     the match played 5. The event order is now documented as **precedence**, and the
+     regression is pinned. A test I already had caught a bug my fix introduced.
+  2. **The manifest was wrong before I noticed the warning.** Two mirrored files rewritten
+     by a Python helper came out CRLF (ops gotcha #6), so `--write-manifest` hashed
+     CRLF while CI checks out LF. Committed tree `74a5235…` vs the correct `e019a3d…` —
+     a red mirror check, caught only by reading the `git commit` warning line rather than
+     scrolling past it.
+- **Outcome:** all four closed; 654 keyless tests (13 chaos drills, three new); coverage
+  96.16%, new modules 100%. Deliberately NOT widened: the flap now surfaces as a
+  `TransportError` rather than a self-terminating watchdog, which is a real improvement
+  but leaves open whether the outbound retry budget should be the turn budget — raised
+  for Imree rather than fixed unasked.
+
 ## PR #58 — feat/m3-8-named-scent-models (M3-8 build: named models, locked, sealed)
 
 - **Driver:** Imree (gave the build order explicitly and said "do not reorder") ·

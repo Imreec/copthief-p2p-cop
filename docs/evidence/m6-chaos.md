@@ -14,6 +14,7 @@
 | audit with tampered record | re-hash mismatch fails the WHOLE audit (rule 19, "no almost-match") |
 | fabricated scent grid | `scent_physics_mismatch` evidence event (per-step cell counts); verdict/result UNTOUCHED (SQ3) |
 | stalled loop (watchdog) | snapshot persisted + shutdown callback fired exactly ONCE; a beating loop is never disturbed |
+| blocked outbound call (M7-7) | a live loop inside a declared I/O window is NEVER self-terminated — and a wedged loop, or an I/O wait past even the I/O budget, still fires |
 
 ## Battery output (verbatim)
 
@@ -28,9 +29,15 @@ tests/chaos/test_inbound_drills.py::test_drill_replayed_turn_hits_the_step_conti
 tests/chaos/test_inbound_drills.py::test_drill_oversized_hostile_hint_is_neutralized_and_play_continues PASSED
 tests/chaos/test_watchdog_drill.py::test_drill_stalled_loop_persists_and_shuts_down PASSED
 tests/chaos/test_watchdog_drill.py::test_drill_beating_loop_is_never_disturbed PASSED
+tests/chaos/test_watchdog_io_drill.py::test_drill_a_blocked_outbound_call_never_fires_the_watchdog PASSED
+tests/chaos/test_watchdog_io_drill.py::test_drill_a_genuinely_dead_loop_still_persists_and_shuts_down PASSED
+tests/chaos/test_watchdog_io_drill.py::test_drill_a_transport_that_never_returns_still_fires PASSED
 
-============================= 10 passed in 1.70s ==============================
+============================= 13 passed in 3.22s ==============================
 ```
+
+> Re-run 2026-07-20 after the M7-7 fixes; the three new drills are the ones the live
+> kill run should have had.
 
 ## Live wiring
 
@@ -122,3 +129,111 @@ than papered over.
    records — its "Verified OK" claim is sound; only the display was empty. Related
    hardening: `verified = not problems` is vacuously true when nothing is checked, so an
    empty log would also print "Verified OK".
+
+## M7-7 — all four closed (2026-07-20)
+
+Fixed on branch `m7-7-live-path-defects`, TDD RED→GREEN, keyless CI throughout.
+
+**(1) The heartbeat now measures loop liveness, not I/O duration.** A blocking wire call
+is a *deliberate, bounded* wait, not a wedge, so the loop declares it: `WatchedTransport`
+(`peer/watchdog_transport`) wraps all four `PeerTransport` calls in an I/O window, and
+inside a window the watchdog measures against the I/O budget instead of the loop budget.
+Wrapping at the transport rather than beating inside the loop keeps `run_peer_game`
+transport-blind (PLAN §12) and means a future transport cannot forget to declare a wait.
+
+The **signed `watchdog_timeout_sec` is untouched** — the I/O budget is *derived*
+(`turn_timeout_seconds + watchdog_timeout_sec`), so the fix is semantics, not a config
+bump, and the App F guard is intact. `shared/budgets.reconcile_budgets` now asserts the
+ordering **at config load**, which is the part that was missing entirely: the two budgets
+had never been related to each other anywhere, and at runtime the wrong one won.
+
+| Rule | Why |
+|---|---|
+| `watchdog_timeout_sec > 0` | an armed watchdog with no budget is not armed |
+| `poll_interval_seconds < watchdog_timeout_sec` | an idle loop beats once per poll — a longer poll self-terminates a healthy waiting peer |
+| `connect_timeout_seconds <= turn_timeout_seconds` | an outbound give-up must not outlast our own rule budget |
+| I/O budget `> turn_timeout_seconds` | **the blocker**: our own deadline always expires first, so a silent opponent is lost by rule, never by suicide |
+
+Shipped values satisfy all four: 60 / 0.5 / 60 / 180, I/O budget 240.
+
+**(2)** The snapshot is role-derived into the git-ignored `logs/` (`sdk/peer_run.
+snapshot_path`) and can no longer follow the log path; `state_*.json` is additionally
+git-ignored repo-wide, so a future escape is still not committable.
+
+**(3)** `peer/watchdog.announce_stall` writes the reason to stdout **and flushes** before
+`os._exit(1)` — the flush is the whole point, since `os._exit` skips interpreter
+shutdown and an unflushed buffer dies with the process.
+
+**(4)** Replay reads `peer_result` as well as `result`. `RESULT_EVENTS` order is
+**precedence, not preference**: a local log carries both, and a per-side `peer_result`
+counts only its own side's steps — the M1 replay pin caught this the moment the fix
+landed (4 steps reported where the match played 5). `game_uid` falls back to the
+`negotiated` event, because a live result payload has none — it is settled at the
+handshake. The rider is closed too: `ReplaySummary.records_verified` is now on the
+summary and on the CLI banner, and **a verdict over zero records is TAMPERED**, not
+"Verified OK". Re-replayed, banner now populated:
+
+```
+$ uv run copthief replay --log docs/evidence/m5-friendly-g3.jsonl
+{"verdict": "Verified OK", "problems": [], "steps": 13, "outcome": "cop_capture",
+ "game_uid": "f757f50d-d4f4-17e7-06cf-755905739b16", "records_verified": 28}
+exit=0
+
+$ uv run copthief replay --log docs/evidence/m6-tunnel-g1-capture.jsonl
+{"verdict": "Verified OK", "problems": [], "steps": 13, "outcome": "cop_capture",
+ "game_uid": "f757f50d-d4f4-17e7-06cf-755905739b16", "records_verified": 29}
+exit=0
+```
+
+The aborted kill-drill log still replays **TAMPERED (exit 1)** — unchanged and
+deliberate. The shared `game_uid` across all three is not a bug: it is derived from the
+signed terms, which are identical across these games (kit §4, deterministic by
+construction).
+
+### Live re-drill — the blocker proven closed over the real tunnel (2026-07-20)
+
+Same rig as the original drill (named tunnel `copthief`, reference thief on the public
+edge), branch code, `cloudflared` killed the moment the handshake landed — so the tunnel
+was dead for the whole game rather than for a few seconds. Log:
+`docs/evidence/m7-7-redrill-g1.jsonl`.
+
+| Elapsed since the kill | Observed |
+|---|---|
+| 0–178 s | cop **alive**, `watchdog_stall` count **0** — the old code fired at ~60 s |
+| 183 s | process exits on **its own turn budget** |
+
+The transition the log records — this is the whole point of the fix:
+
+```json
+{"event": "transition", "payload": {"from": "waiting_for_opponent",
+ "to": "technical_loss", "trigger": "turn deadline exhausted"}, "sender": "police"}
+```
+
+and the console result:
+
+```json
+{"role": "police", "outcome": "timeout", "steps": 0,
+ "game_uid": "f757f50d-d4f4-17e7-06cf-755905739b16", "audit_ok": false,
+ "problems": ["audit skipped: timeout"], "opponent_records": 0}
+```
+
+**Lost by rule, not by suicide.** Under `a23d7ce` this exact scenario produced
+`watchdog_stall` at ~60 s and `os._exit(1)`; here the watchdog stayed silent through
+183 s of dead edge and our own `turn_timeout_seconds` classified the silent opponent,
+which is what App E entitles us to. Defect (2) verified live in the same run: no snapshot
+was written (the watchdog never fired) and `git status` stayed clean — no operational
+artifact landed in a tracked directory.
+
+**What this run does NOT cover:** the kill landed while we were *receiving*, so the loop
+was polling, not pushing. The outbound-push case is the residual below.
+
+**Residual raised by the fix, not closed by it (for the record):** with the watchdog no
+longer firing at 60 s, a flap longer than `connect_timeout_seconds` (60) that catches us
+**mid-push** now surfaces as a `TransportError` from `_push_with_retry` instead. That is
+loud and logged rather than a silent freeze, but it is still our process ending rather
+than the turn deadline classifying the opponent — so for the *pushing* half of the loop
+the practical tolerance is still 60 s, not 180 s. The open question is whether the
+in-game outbound retry budget should be the **turn** budget (`connect_timeout_seconds`
+is private and unsigned, so unlike the watchdog it *may* legitimately move), and whether
+an exhausted push should classify rather than raise. Flagged for Imree; deliberately not
+widened into this fix, which was scoped to the heartbeat semantics and the reconciliation.
