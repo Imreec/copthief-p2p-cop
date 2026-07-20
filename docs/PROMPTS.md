@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #57 — docs/m7-0-verification-green (counterparty verification of the cited game)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending.
+- **What was asked:** a small ride-along docs PR recording that the Alon/Renat team's
+  independent verification of our full-pairing game came back green.
+- **Why it is worth its own entry:** M7-0's argument cites six demo-interop games as
+  corroboration, and until now that citation rested on *our* logs verified by *our*
+  tooling — exactly the weakness the partner team warned about when they asked us to
+  demote demo evidence to corroboration in the first place. Their re-verification of
+  game `deee14f6…` with their own from-scratch implementation (35 commit-reveals,
+  byte-identical `smell_grid`s, barrier growth 0→7, and our `game_uid` re-derived by
+  them from our committed config) upgrades it to corroboration the counterparty
+  confirmed. That is a stronger claim in the joint ADR, so the TODO line should say so.
+- **Scope discipline:** TODO wording only. The ADR skeleton itself lives in private
+  notes and was updated there; nothing was posted, sent, or co-signed.
+
 ## PR #55 — feat/m7-6b-lecturer-guard (the lecturer is addressable only from a counted run)
 
 - **Driver:** Imree (the gap and the mechanism are both his) · **Author:** Claude
