@@ -3,6 +3,34 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #62 — M7-7 live mid-push tunnel drills (evidence)
+
+- **Driver:** Imree (authorized the mid-push drill, "run it end-to-end yourself, I'm
+  reachable if something wedges") · **Author:** Claude (terminal) · **Reviewer:** pending.
+- **What was asked:** two live tunnel games — (a) heal-within-budget, (b) budget-exhausted
+  — with an exact list of observables for the classified terminal, gotcha #11 both
+  directions, evidence committed before ticking M7-7.
+- **The judgment call that made (b) real.** The #60 push-exhaustion path only fires when
+  OUR outbound push is the one that exhausts, and every in-game push immediately follows a
+  receive — so a mid-game tunnel kill usually leaves us *receiving*, which classifies via
+  the #59 inbound path, not #60. The reference thief moves first, so our cop's reply to
+  its opening turn is our first outbound push; killing the edge the instant that inbound
+  turn arrived (`turn_received`) front-ran our push into a dead edge. It caught the push on
+  the first try in both variants — the log proves it (`transport_error` on `receive_turn`,
+  then the `outbound turn undeliverable` trigger, distinct from the inbound
+  `turn deadline exhausted`).
+- **What I verified rather than asserted:** the reference thief's own turn budget (180 s,
+  from its config) — (a)'s 90 s outage only "continues the game" if the *opponent* also
+  waits it out; a shorter reference budget would have broken it. And "report rail fires per
+  posture" was evaluated over the actually-loaded `[email]` settings, not a hand-picked
+  posture: `refuse: email disabled`.
+- **Disclosed, not hidden:** in (a) the MCP client library's background `post_writer`
+  logged the dead-window `502`/`530` and a "Session termination failed" during teardown —
+  library-level noise, not our code; the game still finished `cop_capture` and exited 0. It
+  is quoted in the evidence rather than filtered out.
+- **Outcome:** both observations in the tree; the residual note that said the push path was
+  CI-only is now retired — proven over the real edge.
+
 ## PR #60 — m7-7-push-exhaustion (M7-7 residual: undeliverable outbound turn)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
