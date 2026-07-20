@@ -3,6 +3,42 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #56 — docs/m3-8-scent-gate (M3-8 approval gate: PRD_scent §9 + ADR-0004 v2)
+
+- **Driver:** Imree (ordered the gates first, kit before repo, and "settle the
+  `min_center_intensity` provenance THERE, inherit neither side's assertion") ·
+  **Author:** Claude (terminal) · **Reviewer:** pending.
+- **What was asked:** land the kit lock-schema first, then bring the M3-8 gate docs for
+  explicit approval before any build code — a hard stop, not a formality.
+- **The instruction that changed the output:** "inherit neither side's assertion." I would
+  otherwise have taken `min_center_intensity: 0.5` as a book default, because both teams
+  and our own PRD had been treating it as one. Reading the primary sources instead: the
+  book never mentions it in any spelling — its own App B `game.json` listing and the App F
+  table 16 pheromone block each carry exactly **three** keys — while the reference
+  introduces it and then seals it into the 14-key signed terms. So App F does not bind it,
+  it stays in the terms for signature compatibility, and under the book model it is inert.
+  Three consequences that would each have been wrong under the inherited assumption.
+- **Verify-before-accept paid twice more.** Re-deriving the partner team's relayed spec
+  against the book rather than transcribing it: every number reproduced exactly (the
+  `1.43→0.9` clamp, the `0.62→0.758→0.8822/0.8222` chain), which turns the fixture into
+  independent confirmation instead of a copy. And the long-open "exact Gaussian" (theirs)
+  vs "matches no clean formula" (ours) disagreement resolved in **both** directions: the
+  kernel is an exact Gaussian at printed precision, but only inside a σ² window the book
+  never prints, and the round-to-2dp window is disjoint from the truncation one — so their
+  reading of the shape and our reading of the reproducibility both hold, and both argue
+  for pinning the 25 printed values verbatim.
+- **A finding nobody had raised:** the book model rounds nothing *and* each side recomputes
+  the rival's field rather than receiving it, so evaluation order is interop-load-bearing —
+  `(1−ρ)τ+Δτ` and `τ−ρτ+Δτ` differ in the last IEEE-754 bit for 75 of 534 probed inputs.
+  A byte-comparison of two recomputed fields false-flags; the M6-7 scent-physics check
+  needs a tolerance under this model. Pinned in the kit as `ordering_probe`.
+- **Own error caught by the gate ritual:** the first cut of the kit generator built its
+  cell set from a Python `set`, so fixture key order varied per interpreter run. Values
+  were right and hashes unaffected (canonicalization sorts), but CI's regenerate-and-diff
+  would have gone red on a clean checkout. Found by running the full CI sequence locally
+  across three fresh interpreters rather than trusting one green run.
+- **Deliberately NOT in this PR:** any M3-8 build code. The gate is the point.
+
 ## PR #55 — feat/m7-6b-lecturer-guard (the lecturer is addressable only from a counted run)
 
 - **Driver:** Imree (the gap and the mechanism are both his) · **Author:** Claude
