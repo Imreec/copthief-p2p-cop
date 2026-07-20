@@ -18,6 +18,20 @@
   email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
   the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
 
+## PR #48 — feat/m6-6-series (M6-6 series runner)
+
+- **Driver:** Imree ("#47 approved, merge and continue") · **Author:** Claude
+  (terminal) · **Reviewer:** Antigravity (cross-model, on the PR).
+- **This PR:** RED (summary shape/vocabulary/audit-block pins · injectable-runner
+  driver pins: F2 alternation, M5-5 trust carry, numbering · integration DoD over
+  a num_games=2 tmp config) → GREEN: `peer/summary_build` · `peer/series` (one
+  transport, signed num_games, profile-event carry) · `sdk/series_run` (honest
+  "-mirror" self-play identity; emits everything; email rail attempted, resting
+  state observed refusing) · `sdk/identity` split · PeerGameResult.opponent_records.
+  Two RED-phase finds: test module name collision (integration file renamed
+  test_local_series) and a protocol-order bug in my own fixture (a fresh thief
+  must move first — F2 enforced by the state machine, good). TODO M6-6 ticked.
+
 ## PR #47 — feat/m6-4-gmail (M6-4 compose-scope sender + arming interlock)
 
 - **Driver:** Imree (D1=A ruling + dedicated team account; "#46 approved, merge and

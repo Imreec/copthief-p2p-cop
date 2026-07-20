@@ -34,6 +34,9 @@ class PeerGameResult:
     audit_ok: bool
     opponent_claim: str
     problems: tuple[str, ...]
+    # M6-6: how many revealed records the opponent's audit carried (their steps +
+    # step-0) — the summary's `verified_steps` when the verification passed.
+    opponent_records: int = 0
 
 
 def validate_opponent_audit(
@@ -74,7 +77,9 @@ def settle(session: PeerSession, transport: PeerTransport, emit: LogFn) -> PeerG
     steps = len(session.records)
     uid = session.game_uid or ""
 
-    def result(*, audit_ok: bool, claim: str, problems: tuple[str, ...]) -> PeerGameResult:
+    def result(
+        *, audit_ok: bool, claim: str, problems: tuple[str, ...], opponent_records: int = 0
+    ) -> PeerGameResult:
         return PeerGameResult(
             role=session.role,
             outcome=outcome,
@@ -83,6 +88,7 @@ def settle(session: PeerSession, transport: PeerTransport, emit: LogFn) -> PeerG
             audit_ok=audit_ok,
             opponent_claim=claim,
             problems=problems,
+            opponent_records=opponent_records,
         )
 
     if session.machine.state is not GameState.GAME_OVER:
@@ -128,4 +134,10 @@ def settle(session: PeerSession, transport: PeerTransport, emit: LogFn) -> PeerG
             "payload": {"outcome": outcome, "steps": steps, "audit_ok": not problems},
         }
     )
-    return result(audit_ok=not problems, claim=claim, problems=tuple(problems))
+    theirs_records = theirs.get("records")
+    return result(
+        audit_ok=not problems,
+        claim=claim,
+        problems=tuple(problems),
+        opponent_records=len(theirs_records) if isinstance(theirs_records, list) else 0,
+    )
