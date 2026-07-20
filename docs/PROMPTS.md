@@ -18,7 +18,6 @@
   email blocks; FR-9 band [signed_min, global] asserted). Sync note recorded on
   the PR: thief needs a rate_limits.json v1.01 parity commit. TODO M6-5 ticked.
 
-<<<<<<< HEAD
 ## PR #50 — feat/m6-7-chaos (M6-7 watchdog + chaos battery + scent-physics rider)
 
 - **Driver:** Imree (approved PRD_gatekeeper §4–§5 incl. D2: scent-physics rides
@@ -38,8 +37,6 @@
   mojibake) — repaired by reverse-decode, edits via file tools only since.
   TODO M6-7 amended (D2) + ticked.
 
-=======
->>>>>>> main
 ## PR #49 — feat/m6-8-cost (M6-8 COST.md + the auditable 0-token pin)
 
 - **Driver:** Imree (approved PRD_reporting §7: "0-token claims doubly backed") ·
