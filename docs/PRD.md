@@ -175,8 +175,10 @@ deviation from the book's stage 6 · ADR-0004 scent model: kit-pinned reference 
 (academic-freedom documentation) · ADR-0005 strategy track: belief+search over RL (arena evidence
 attached when available) · ADR-0006 deploy split: matches from operator machine + named tunnel;
 sparring on always-on host · ADR-0007 zero-token verbal layer (template + gazetteer; injection
-defense). More as decisions arise; format: Context / Decision / Status / Consequences /
-Alternatives.
+defense) · **ADR-0008 email posture: automatic send, recipient-authorized, `gmail.send`-only
+scope (supersedes the D1=A compose ruling; App E rules 30/32/34/35 + book §9.3 vs App B's own
+`mode="draft"` listing — academic-freedom documentation)**. More as decisions arise; format:
+Context / Decision / Status / Consequences / Alternatives.
 
 ## 10. Risk register (top; full tracking in TODO)
 

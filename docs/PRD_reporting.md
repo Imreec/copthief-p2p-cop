@@ -22,7 +22,9 @@ COST.md + token accounting on every LLM path.
 **Non-goals:** gatekeeper/chaos/watchdog — `docs/PRD_gatekeeper.md` (M6-5/M6-7; the email
 sender CALLS the gatekeeper, built there) · M3-8 named scent models (own thread, still gated)
 · M7-0 wire-shape ADR · kit posts (M7-2 carries the consensus-signature vector, credited) ·
-any email actually sent (constraint #16: draft-only until Imree's per-send word) · no change
+any email actually sent (constraint #16: draft-only until Imree's per-send word — **superseded
+for real runs by §5a / ADR-0008, which makes automatic send the posture; this line records the
+M6-4 scope as built**) · no change
 to wire format, canonicalization of existing constructions, or commit hashing (constraint #13:
 kit CORE vectors stay untouched and green; the sealed-payload key-set grows, §4).
 
@@ -137,6 +139,57 @@ reference, and Imree reviews the literal bytes in Gmail before anything leaves; 
 one-line CLAUDE.md §4 amendment ("compose-scope: least privilege that supports the draft
 rail"). **(B)** strict `gmail.send` + a local outbox directory as "draft" — stronger least
 privilege, but deviates from PLAN's observable wording. Imree picks at this gate.
+
+### 5a. AMENDMENT (M7-6, 2026-07-20) — automatic send supersedes the draft-first posture
+
+> **Status: PROPOSED — approval gates M7-6 code.** Full reasoning, citations and rejected
+> alternatives in **`docs/adr/0008-email-posture.md`**. This amendment states what changes in
+> §5 above; §5's description of the *shipped M6-4 behaviour* remains an accurate record of
+> what was built and evidenced (`docs/evidence/m6-email.md`).
+
+**Why §5 changes.** The book requires **automatic** reporting: App E **rule 32** (absence of
+reporting voids that game's points), **rule 35** (one team's non-report — or contradictory
+reports — disqualifies the game for **BOTH** teams, score 0), and **§9.3** (*"אין עוד מקום
+להתערבות אנושית"*, lecturer address = *"הכתובת היחידה והמחייבת"*). A post-game arming step is
+therefore not merely risky for us; it zeroes the opponent's game too. The book's own answer to
+the runaway-email scenario it raises in §9.3 is the **Gatekeeper** (rule 28), already built at
+M6-5 — that is the real protection, and it stays.
+
+**What changes:**
+
+| §5 as built (M6-4) | Amended (M7-6) |
+|---|---|
+| Resting state `enabled=false, mode="draft"` | Automatic send is the operating posture for real runs |
+| Per-send arming: retype the `game_uid` | **No arming step.** Authorization = the configured **recipient** for that run (a boolean says "sending is allowed"; the recipient says *who*) |
+| Scope `gmail.compose` (D1=A) | **`gmail.send` only** — rule 30 + App A satisfied literally |
+| `mode="draft"` a first-class posture | **Draft dropped as a mode.** Reviewing the bytes is done by sending **to ourselves**, which exercises more of the path. Draft code retained + tested, unreachable on a send-only token |
+| `recipient`: single string | **List.** Friendly = ourselves + the opponent team; counted = the lecturer **only** (a peer cross-check is its own run, never a CC on a counted report) |
+| Body = artifact bytes | Body unchanged **plus** the artifact **attached as a JSON file** (rule 34: non-JSON is refused → score zero) |
+
+**Unchanged by this amendment:** the emitted bytes remain byte-identical to the artifact file
+(proven at M6-4); every invocation still passes through the email gatekeeper; the **sparring
+host stays hard-pinned to non-sending** (PLAN §2, asserted at startup) because it runs
+unattended with a copy of our config.
+
+**Constraint #16 is amended in both repos** (and the parent-workspace standing rule with it):
+"no email is ever sent without Imree's explicit **per-send** word" → "**no email is ever sent
+to an address Imree has not configured for that run**". Imree still authorizes every send — by
+setting the recipient and launching — but before the match, never inside it.
+
+**Sequencing is the risk control:** the lecturer is addressed only after friendlies to
+ourselves and to a peer team have shown the format correct on both sides. Rule 35 punishes
+*contradictory* reports as harshly as missing ones, so agreeing the format with Alon's team
+first protects both teams' scores.
+
+**Verified against Google's API reference (2026-07-20), because both are load-bearing:**
+`users.drafts.create` is authorized only by `mail.google.com` / `gmail.modify` /
+`gmail.compose` — **`gmail.send` genuinely cannot create a draft**, so the book's App B
+listing (`mode = "draft"`) is impossible under its own rule 30. And `users.messages.send` is
+authorized by `gmail.send` with recipients carried as RFC-822 headers — **scope does not
+constrain recipient count**, so multi-recipient friendly reports work on a send-only token.
+
+**Operational note:** the send-only consent is a fresh `scripts/gmail_auth.py` run, and the
+**7-day Testing-mode refresh-token expiry** applies to it — re-run before any counted series.
 
 ## 6. M6-6 — series runner
 
