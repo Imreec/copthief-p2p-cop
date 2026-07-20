@@ -3,6 +3,36 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #52 — docs/m6-7-tunnel-drill (M6-7 residual closed: real-tunnel kill drill)
+
+- **Driver:** Imree ("continue as you suggested" — the drill authorized in the same
+  session as the M6-4 close-out) · **Author:** Claude (terminal, ran the drill
+  end-to-end) · **Reviewer:** Antigravity (cross-model).
+- **This PR:** closes the M6-7 residual — the tunnel-kill variant against a real
+  cloudflared edge — plus the two live logs. No production code changed; the four
+  defects it surfaced are logged as TODO M7-7 rather than fixed here, so the
+  evidence PR stays an observation record.
+- **What actually happened, versus what I predicted:** I expected the loop to keep
+  beating and the 180 s turn deadline to fire. Instead the outbound call blocked on
+  the dead edge, the heartbeat stopped, and the **watchdog** fired at 60.34 s —
+  persisting state and exiting cleanly. FR-8 proven live, but it exposed that the
+  signed 60 s watchdog budget outruns our own 180 s turn deadline, so a network flap
+  would lose a counted game by self-termination (M7-7 item 1, pre-series blocker).
+- **Unplanned bonus:** the first game finished before the kill could land — our tuned
+  cop CAPTURED the reference thief in 13 steps over the public edge, mutual audit
+  clean, replay Verified OK. First tunnel-borne full pairing since M2, kept as
+  evidence. It also produced the **first live firing of the M6-7 scent-physics
+  check**: 1 cell at the capture step, consistent with the known F10/F10b terminal-step
+  convention — recorded as evidence-grade only (SQ3), explicitly not alleged as
+  fabrication.
+- **Method discipline:** three claims were checked before being written down rather
+  than after. A `steps: 0` replay summary looked like a vacuous "Verified OK" over
+  committed M5 evidence — instrumenting the replay showed 26 turns and 29 records
+  genuinely re-hashed, so the M5 claim stands and only the display key was wrong. A
+  `replay exit=0` on a TAMPERED verdict looked like a broken exit code — it was my
+  own shell reading `tail`'s status through a pipe. A repeated `game_uid` across two
+  runs looked like a uniqueness bug — it is deterministic by construction (kit §4).
+
 ## PR #51 — docs/m6-4-email-evidence (M6-4 live Gmail-draft evidence; OI-5 closed)
 
 - **Driver:** Imree (interactive, at the keyboard: created the team Gmail account,
