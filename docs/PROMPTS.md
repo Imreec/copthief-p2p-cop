@@ -3,6 +3,37 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #51 — docs/m6-4-email-evidence (M6-4 live Gmail-draft evidence; OI-5 closed)
+
+- **Driver:** Imree (interactive, at the keyboard: created the team Gmail account,
+  the GCP project + Desktop OAuth client, ran the consent, took the screenshot) ·
+  **Author:** Claude (terminal) · **Reviewer:** Antigravity (cross-model).
+- **This PR:** the live evidence closing M6-4 — `docs/evidence/m6-email.md` +
+  `assets/m6-email-draft.png`; TODO M6-4 ☑. Asked for click-by-click guidance
+  through OI-5 (account → GCP project → consent screen + test user → Desktop
+  client → `gmail_auth.py`) and then one live draft run. No production code changed.
+- **Method note:** the committed `config/` tree was never edited — the run used a
+  scratchpad COPY with only `[email]` flipped, so `enabled = false` could not reach
+  a commit (constraint #16 made mechanical rather than remembered). The runner stays
+  uncommitted (a committed entry point = a public function without a test,
+  constraint #10) and is quoted verbatim in the evidence doc instead.
+- **Corrections I made and disclosed:** my console-navigation instructions were
+  stale (the OAuth consent screen is now "Google Auth Platform") — Imree pushed back
+  and was right; the client secret does still exist, which he confirmed. My first
+  runner printed the wrong config section (split on the bare `[email]`, which also
+  appears in a comment); fixed and re-run so the recorded transcript matches what
+  the doc claims. A `game_uid` I flagged as suspiciously repeatable turned out to be
+  deterministic by construction (kit §4) — checked before reporting it as a defect.
+- **Finding that outgrew the PR (→ new TODO M7-6, pre-series blocker):** asked to
+  verify rather than hedge on whether counted games must auto-send, I read the book:
+  App E rules 30/32/34/35 + §9.3 require **automatic** reporting (rule 35 zeroes
+  **both** teams if one fails to report), which makes our per-send arming interlock
+  wrong as the counted posture — while App B's own listing ships `mode = "draft"`
+  and rule 30 mandates a `gmail.send` scope that cannot create drafts. Imree's
+  standing intent (auto-send; friendlies to ourselves + the opponent, counted to the
+  lecturer) matches the book; the redesign amends CLAUDE.md #16 and is its own gated
+  PR. Evidence doc records the draft observation only — it makes no posture claim.
+
 ## PR #50 — feat/m6-7-chaos (M6-7 watchdog + chaos battery + scent-physics rider)
 
 - **Driver:** Imree (approved PRD_gatekeeper §4–§5 incl. D2: scent-physics rides
