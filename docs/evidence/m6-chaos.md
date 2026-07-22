@@ -391,3 +391,83 @@ technical loss.
 tunnel that duplicates *every* push in both directions). **The live version — duplicate
 delivery and reorder over the real edge, proven in both directions — is a warm-up item
 with Alon/Renat's team, not yet run.**
+
+### Live duplicate-delivery drill — a redelivery absorbed over the real edge (2026-07-22)
+
+The M7-8 section above said the fix was keyless-CI only and that the live half was owed.
+**Half of it is now paid: the them → us direction, over the public Cloudflare edge,
+against the live reference thief.** Log: `docs/evidence/m7-8-dup-live-g1.jsonl`.
+
+**Why a proxy and not a tunnel kill.** The M7-7 technique (kill `cloudflared` at
+`turn_received`) front-runs OUR push into a dead edge — it proves the outbound path, not
+this one. To make the opponent redeliver, the failure has to land in the window between
+*their push being delivered* and *their ack coming back*, which is a race measured in
+milliseconds against a session teardown. Rather than coin-flip it, the ack was dropped
+deliberately at our own edge:
+
+```
+cloudflared (cop.imreeyal.com) -> 127.0.0.1:8802 [lossy proxy] -> 127.0.0.1:8812 [our cop]
+```
+
+The proxy (uncommitted instrument, ~110 lines of stdlib socket relay, quoted in the PR)
+relays every byte untouched except once: on the first request carrying `receive_turn` it
+forwards the request to our peer, waits 0.6 s for the MCP server to enqueue it, then tears
+the connection down **without relaying the response**. That is precisely a delivered push
+with a lost ack — the at-least-once failure, made deterministic. Everything else is real:
+the reference client, the public edge, our real server, our real dedup. **Stated plainly
+because it matters: the loss was induced by us, not by a random flap. What is NOT
+simulated is the opponent's reaction — the retry is the reference's own code.**
+
+**Feasibility was checked before the rig was built** (`infra/mcp_client.py:42-55`): the
+reference retries `receive_turn` on ANY exception until its connect budget, and its
+`_call` wraps the tool call in `async with Client(...)`, so a failure during session
+teardown retries too. Without that, the drill would have been impossible and the honest
+answer would have been "not inducible".
+
+Observed:
+
+```
+[proxy] receive_turn FORWARDED to the peer -- dropping its ack
+[proxy] swallowed 371 response bytes (the lost ack)
+```
+
+```
+inbound_tolerated | {"disposition": "duplicate", "step": 1}
+peer_result       | {"outcome": "cop_capture", "steps": 13, "audit_ok": true}
+```
+
+| Expectation | Observed |
+|---|---|
+| the message really did arrive twice | `turn_received` **15** against **13** of our own turns — 14 accepted, 1 tolerated |
+| nothing was applied twice | `belief` events **14**, one per ACCEPTED message — the duplicate produced no second predict/update/decay |
+| no collapse | no `technical_loss` transition; the machine never left the normal cycle |
+| the game was unaffected | `cop_capture` in 13 steps, mutual audit `audit_ok: true`, `problems: []`, 15 opponent records |
+| the log still verifies | `copthief replay` → **Verified OK**, exit 0, **29 records** re-hashed |
+| clean exit | exit 0; no snapshot; `git status` clean; reference configs untouched (gotcha #11, mtimes predate the run) |
+
+**At `dfab03e` this same run would have been a technical loss** — the duplicate carries
+step 1 while the session expects step 2, which is exactly the collapse M7-8 removed.
+
+#### Finding: the reference implementation does not refuse a duplicate — it applies it twice
+
+Read from the oracle, not drilled (`peer/turn_handler.py:41-48`): its `process()` has **no
+step-continuity check at all**. A redelivered message is appended to `history` and then
+fully applied a second time — belief diffuse, smell observe, field absorb, field decay.
+So the vanilla reference fails **silently** where we used to fail **loudly**:
+
+| | on a redelivered turn |
+|---|---|
+| our code at `dfab03e` | technical loss + raised `ProtocolViolationError` (loud, fatal) |
+| the reference | applied twice — belief and scent field corrupted, replay history duplicated (silent) |
+| our code at M7-8 | absorbed; no state change; deadline unrenewed |
+
+**Interop consequence worth carrying into any counted game against a reference-based
+opponent:** since our own push retries to the full turn budget (M7-7), a flap can make
+*their* peer decay its scent field twice, so **a `scent_physics_mismatch` we raise against
+them may be caused by a duplicate we sent, not by dishonesty.** Our design already
+contains the blast radius — the check is evidence-grade only (SQ3) and never flips a
+verdict — but it is now a known, named cause and belongs in any dispute write-up.
+
+**Still owed: the us → them direction against a peer that dedups** (Alon/Renat's client
+does; the reference, per the above, does not — so it cannot demonstrate this half). That
+runs at the warm-ups, and M7-8 stays **◐** until it does.

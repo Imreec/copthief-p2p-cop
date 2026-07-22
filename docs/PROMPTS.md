@@ -3,6 +3,39 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #64 — m7-8-live-duplicate-drill (the them-to-us half, over the real edge)
+
+- **Driver:** Imree ("sure, let's try it") · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What was asked:** try to convert half the M7-8 evidence debt before the warm-ups by
+  inducing a live redelivery against the reference implementation, with the caveat
+  agreed up front that it is a race and might simply not reproduce.
+- **The instrument changed the odds, and that was the whole call.** The M7-7 technique
+  (kill `cloudflared` at `turn_received`) front-runs OUR push — it cannot produce an
+  inbound duplicate. Making the opponent redeliver needs the failure to land between
+  their push being delivered and their ack returning: milliseconds, against a session
+  teardown. Instead of coin-flipping it, I put a lossy relay in front of our own peer
+  that forwards their push and drops exactly that one response. Deterministic, and the
+  tunnel never goes down. **First run, first turn, it fired.**
+- **Checked before building the rig, not after:** whether the reference retries at all
+  (`infra/mcp_client.py:42-55` — it retries any exception, and its `_call` wraps the tool
+  call in `async with Client(...)`, so a teardown failure retries too). If it had not,
+  the honest answer would have been "not inducible" and no rig would have been built.
+- **What I did NOT claim.** The loss was induced by us, not by a random flap — that
+  sentence is in the evidence, unhedged. What is not simulated is the reaction: the retry
+  is the reference's own code, the second delivery crossed the public edge, and our dedup
+  saw a real duplicate. The us-to-them half is still owed and the TODO still says ◐.
+- **The finding I went looking for afterwards, by reading the oracle rather than
+  guessing:** the reference has no step-continuity check at all — a duplicate is applied
+  TWICE (belief diffuse, smell observe, absorb, decay). It fails silently where we failed
+  loudly. That flips into a real interop note: our own retried push can make a
+  reference-based opponent decay its scent field twice, so a `scent_physics_mismatch` we
+  raise against them may be caused by a duplicate *we* sent. Evidence-grade only (SQ3),
+  so it cannot flip a verdict — but it is now a named cause for a dispute write-up.
+- **Ops hygiene:** reference configs were already on the tunnel and were left untouched
+  (gotcha #11; verified by mtime, both predating the run), `cloudflared` stopped after,
+  `git status` clean.
+
 ## PR #63 — m7-8-duplicate-reorder-tolerance (at-least-once delivery)
 
 - **Driver:** Imree ("audit our inbound path, then TDD-fix any gap") · **Author:** Claude
