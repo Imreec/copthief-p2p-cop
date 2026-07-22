@@ -91,6 +91,13 @@ so multi-recipient friendly reports work on a send-only token.
    assertion existed — it does not. No sparring runner exists yet (M7-1), so the assertion has
    no home; it is recorded here and in TODO M7-1 as work that lands *with* the sparring host,
    not as a guarantee already held. Until then the host does not exist and cannot email.
+   **DISCHARGED 2026-07-22 (M7-1, ahead of the host itself):** the assertion now exists as
+   `shared/sparring.assert_sparring_safe` and is enforced at the moment of use by
+   `copthief run peer --sparring`, which refuses a config whose `[email]` is enabled or
+   carries any recipient — and, per CLAUDE.md §9, one carrying tuned strategy weights.
+   `scripts/make_sparring_config.py` derives a config that passes it and validates its own
+   output, so the posture is mechanical rather than remembered. The host deployment (OI-4)
+   is still open; the guarantee no longer waits on it.
 7. **Runaway protection remains the gatekeeper** (rule 28 / M6-5), not human review.
 8. **CLAUDE.md constraint #16 is amended in both repos, and the parent-workspace standing
    rule with it:** "no email is ever sent without Imree's explicit **per-send** word"

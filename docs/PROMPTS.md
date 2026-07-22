@@ -3,6 +3,34 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #65 — m7-1-sparring-guard (the standing-host rules, made mechanical)
+
+- **Driver:** Imree (chose "build it now, TDD + committed" over hand-rolling it at the
+  window) · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **Why now, ahead of its milestone:** the Alon/Renat team asked for a peer window within
+  hours. Standing a peer up for an opponent to practise against is exactly the hurried
+  path where "the sparring host runs the generic brain only" gets broken — so the rule
+  stopped being something to remember and became something the CLI refuses to run without.
+- **The design point: validate the OUTPUT, not the edits.** The script strips
+  `[strategy.<role>]` tables textually, but TOML expresses the same table inline under
+  `[strategy]`, which the loader reads identically and no text transform can see. So the
+  derivation loads what it just wrote and puts it through the same guard the CLI uses.
+  That gap is pinned as a test with the reasoning attached — it is a real hole in the
+  transform, not a contrived one.
+- **A test premise that was wrong, and what it taught.** My first "hostile source" case
+  assumed an inline `recipient = [...] # comment` would slip past `rest_email`. It did
+  not — the transform is line-prefix based and caught it. Rather than keep a test that
+  passed for the wrong reason, I replaced it with the inline-table case above, which
+  actually escapes. A drill that cannot fail proves nothing.
+- **Left behind rather than ignored:** `ga_weights.json`, `arena*.json` and friends carry
+  the very numbers that may not deploy. The peer never reads them, but a config directory
+  holding them is one `--config` away from being played, so the derivation drops them.
+- **Refusal shape:** JSON + exit 2, not a traceback. This is an expected answer to a wrong
+  config and it has to be readable in an ops window at speed.
+- **Honest scope:** this is the safety half of M7-1. No host is deployed, the 24h
+  reachability DoD is untouched, and M7-1 stays ◐. What it buys today is that the peer
+  window Alon asked for cannot quietly ship our GA weights.
+
 ## PR #64 — m7-8-live-duplicate-drill (the them-to-us half, over the real edge)
 
 - **Driver:** Imree ("sure, let's try it") · **Author:** Claude (terminal) ·
