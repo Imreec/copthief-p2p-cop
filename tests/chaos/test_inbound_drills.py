@@ -39,13 +39,26 @@ def test_drill_malformed_turn_collapses_before_any_state_change() -> None:
     assert police.inbound == []
 
 
-def test_drill_replayed_turn_hits_the_step_continuity_wall() -> None:
+def test_drill_replayed_turn_is_absorbed_and_the_continuity_wall_moves_to_the_commit() -> None:
+    """AMENDED AT M7-8 (was: a replay hits the step-continuity wall).
+
+    An identical replay is now indistinguishable from an at-least-once retry of a push
+    whose ack was lost — and we are a duplicate sender ourselves since the M7-7 push
+    fix — so refusing it would cost a game to a flaky tunnel, not to a cheat. The wall
+    did not come down: it moved to the COMMIT, which is what a replay cannot vary and
+    an attack must (see tests/chaos/test_redelivery_drills.py drill C).
+    """
     police, thief = _pair()
     first = thief.take_turn(now=1.0)
     police.handle_receive_turn(first)
     police.take_turn(now=2.0)
+    answer = police.handle_receive_turn(first)  # the same message, replayed
+    assert answer["disposition"] == "duplicate"
+    assert police.machine.state is not GameState.TECHNICAL_LOSS
+    assert len(police.inbound) == 1  # absorbed, never applied twice
+    forged = dict(first) | {"commit": "d" * 64}  # a NEW sealed move for a played step
     with pytest.raises(ProtocolViolationError, match="discontinuity"):
-        police.handle_receive_turn(first)  # the same message, replayed
+        police.handle_receive_turn(forged)
     assert police.machine.state is GameState.TECHNICAL_LOSS
 
 

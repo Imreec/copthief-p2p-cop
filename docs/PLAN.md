@@ -167,6 +167,13 @@ sdk-driven): kill tunnel mid-commit · delay to deadline edge · malformed/dupli
 TurnMessage · oversized hint · audit with tampered record. Each drill asserts the specific
 defense fires; logs committed as README evidence.
 
+**At-least-once delivery (M7-8).** The transport is at-least-once, so a retried push
+arrives twice and two pushes can race: `peer/inbox_order` absorbs redeliveries and holds
+early steps in a bounded window IN FRONT of the state machine, which stays strict —
+equivocation (a second commit for a played step) and a step past the window still
+collapse. One clock per EXPECTED message: tolerated traffic never renews the turn
+deadline, and the deadline is judged on every loop lap so a junk flood cannot outlast it.
+
 ## 11. Sync-core mechanism (ADR-0001)
 
 `scripts/sync_core.py` (police=lead → thief): refuses if sibling has uncommitted changes in

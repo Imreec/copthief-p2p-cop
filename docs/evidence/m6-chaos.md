@@ -9,13 +9,19 @@
 | dead peer mid-game | deadline → `timeout` outcome, TECHNICAL_LOSS, transition trigger names `turn deadline exhausted` |
 | delay to the deadline edge | game FINISHES — a slow-but-alive opponent costs nothing |
 | malformed TurnMessage | wire validation collapses the machine BEFORE any state change (board/inbox untouched) |
-| duplicate / replayed turn | step-continuity wall → collapse |
+| duplicate / replayed turn | **AMENDED AT M7-8** — absorbed as a redelivery (never applied twice, never a violation); the wall moved to the commit |
 | oversized hostile hint | closed-vocabulary parser neutralizes it; message archived; play continues |
 | audit with tampered record | re-hash mismatch fails the WHOLE audit (rule 19, "no almost-match") |
 | fabricated scent grid | `scent_physics_mismatch` evidence event (per-step cell counts); verdict/result UNTOUCHED (SQ3) |
 | stalled loop (watchdog) | snapshot persisted + shutdown callback fired exactly ONCE; a beating loop is never disturbed |
 | blocked outbound call (M7-7) | a live loop inside a declared I/O window is NEVER self-terminated — and a wedged loop, or an I/O wait past even the I/O budget, still fires |
 | undeliverable outbound turn (M7-7) | an exhausted in-game push is OUR technical loss (App E symmetry), never a crash and never a unilateral claim; the retry runs on the turn budget; a non-transport error still propagates |
+| redelivered turn (M7-8) | absorbed as a `duplicate`: archived once, belief and scent unchanged, machine untouched, play continues |
+| out-of-order turn (M7-8) | held in the bounded window and replayed in order once its predecessor lands |
+| equivocation at a played step (M7-8) | a *different* commit for a step already played still collapses — dedup is transport tolerance, never rules tolerance |
+| early-turn flood (M7-8) | past the buffer window it is a violation, not a tunnel artifact |
+| redelivery storm (M7-8) | one clock per EXPECTED message: junk never renews the turn deadline, and the deadline is judged even while junk keeps arriving |
+| tunnel that duplicates every push (M7-8) | a full mini-game finishes both sides with mutual audit clean |
 
 ## Battery output (verbatim)
 
@@ -26,19 +32,26 @@ tests/chaos/test_audit_drills.py::test_drill_honest_grids_raise_no_event PASSED
 tests/chaos/test_comm_drills.py::test_drill_dead_peer_mid_game_is_a_clean_timeout_technical_loss PASSED
 tests/chaos/test_comm_drills.py::test_drill_delay_to_the_deadline_edge_never_costs_a_false_loss PASSED
 tests/chaos/test_inbound_drills.py::test_drill_malformed_turn_collapses_before_any_state_change PASSED
-tests/chaos/test_inbound_drills.py::test_drill_replayed_turn_hits_the_step_continuity_wall PASSED
+tests/chaos/test_inbound_drills.py::test_drill_replayed_turn_is_absorbed_and_the_continuity_wall_moves_to_the_commit PASSED
 tests/chaos/test_inbound_drills.py::test_drill_oversized_hostile_hint_is_neutralized_and_play_continues PASSED
+tests/chaos/test_redelivery_drills.py::test_drill_a_redelivered_turn_is_dropped_and_play_continues PASSED
+tests/chaos/test_redelivery_drills.py::test_drill_b_an_early_turn_is_buffered_then_released_in_order PASSED
+tests/chaos/test_redelivery_drills.py::test_drill_c_equivocation_at_a_played_step_still_collapses PASSED
+tests/chaos/test_redelivery_drills.py::test_drill_d_a_flood_of_early_turns_is_refused_at_the_window PASSED
+tests/chaos/test_redelivery_loop_drills.py::test_drill_e_redelivered_junk_never_renews_our_turn_deadline PASSED
+tests/chaos/test_redelivery_loop_drills.py::test_drill_f_a_full_game_survives_a_tunnel_that_duplicates_every_push PASSED
 tests/chaos/test_watchdog_drill.py::test_drill_stalled_loop_persists_and_shuts_down PASSED
 tests/chaos/test_watchdog_drill.py::test_drill_beating_loop_is_never_disturbed PASSED
 tests/chaos/test_watchdog_io_drill.py::test_drill_a_blocked_outbound_call_never_fires_the_watchdog PASSED
 tests/chaos/test_watchdog_io_drill.py::test_drill_a_genuinely_dead_loop_still_persists_and_shuts_down PASSED
 tests/chaos/test_watchdog_io_drill.py::test_drill_a_transport_that_never_returns_still_fires PASSED
 
-============================= 13 passed in 3.22s ==============================
+============================= 19 passed in 3.53s ==============================
 ```
 
 > Re-run 2026-07-20 after the M7-7 fixes; the three new drills are the ones the live
-> kill run should have had.
+> kill run should have had. Re-run again 2026-07-22 with the six M7-8 redelivery
+> drills (§M7-8 below).
 
 ## Live wiring
 
@@ -316,3 +329,65 @@ receiving and classified via `turn deadline exhausted` (the inbound path); this 
 mid-push and classified via `outbound turn undeliverable past the turn budget` (the #60
 path). Both are our own technical loss by rule — neither is a crash, and neither claims
 the opponent lost.
+
+## M7-8 — at-least-once delivery: duplicate and reorder tolerance (2026-07-22)
+
+**Where it came from.** Not from our own drill: the Alon/Renat team raised it in
+round 7 of the wire-shape coordination, as a threat to BOTH teams' scores rather than
+to either side's. Their receiver already dedups repeated `(kind, step)`, buffers
+reordered deliveries and never lets junk reset its deadline; they asked whether ours
+did, because under App E rule 35 one side's technical loss and the resulting
+contradictory reports cost the other side too. Credit theirs; the audit below and
+everything it found is ours.
+
+**The threat, precisely.** MCP-over-HTTP is at-least-once, not exactly-once: a push
+that is delivered but whose ack is lost gets RETRIED, so the same bytes arrive twice.
+Since M7-7 our own in-game push retries to the full turn budget, so **we are a
+duplicate sender by design** — the exposure is symmetric and it is on the path every
+counted game runs.
+
+**Audit result — three real gaps, all on the live path:**
+
+| # | Gap (at `dfab03e`) | Consequence |
+|---|---|---|
+| a | `peer/inbound` computed `expected = len(inbound)+1` and collapsed the session on any other step | a retried push (step `expected-1`) = TECHNICAL_LOSS **and** a raised `ProtocolViolationError` out of `run_peer_game` — a flaky tunnel, not a cheat, loses the game |
+| b | no buffering: a step *ahead* of the awaited one collapsed identically | a retry race that puts two of their pushes in flight loses the game |
+| c | `peer/p2p` renewed `deadline` on ANY inbound message, before it was judged | redelivered junk kept our clock alive indefinitely — the opponent's stall cost us our budget instead of theirs |
+
+**Found while fixing (drill E), a fourth:** the deadline was only ever evaluated on an
+EMPTY poll, so a tunnel delivering junk continuously meant the deadline was never
+checked at all — the loop would have run past its own budget forever. The deadline is
+now judged on every lap.
+
+**The fix.** `peer/inbox_order.InboundSequencer` — pure, no game state — classifies
+every inbound message BEFORE anything is applied, exactly like wire validation:
+
+- **duplicate** — a commit we have already consumed (or already hold). Dropped: archived
+  once, no second `predict`/`update_scent`/decay, machine untouched, deadline unrenewed.
+  The dedup key is the **commit**, not `(kind, step)`: it is unique per message and it is
+  the thing a redelivery cannot vary.
+- **buffered** — a step inside the `inbound_buffer_limit` window ahead of the awaited
+  one. Held and replayed in order once its predecessor lands (`release_buffered`).
+- **illegal** — a *different* commit for a step we already played (**equivocation** — the
+  exact fraud the commit scheme exists to catch), or a step past the window (**flood**).
+  Both still collapse. The buffer window IS the flood rule: one threshold, not two.
+
+**What did NOT change.** The strict state machine (PLAN §5): an illegal transition still
+raises, malformed wire input still collapses before any state change, and the M5 live
+F10 exemption for the reference's mandatory caught final message survives untouched.
+Dedup is transport-layer tolerance, never rules tolerance — the wall moved to the commit,
+it did not come down. Nothing on the wire changed (constraint #13 untriggered): the ack
+still answers `status: "ok"` for a redelivery, because an honest retry is not an error to
+report back; the caller reads the added `disposition` field. A tolerated message is
+logged as `inbound_tolerated`, so a warm-up drill can SHOW that the duplicates arrived
+and that none of them advanced the game.
+
+**Config.** `[network] inbound_buffer_limit = 1` (private, unsigned — App B; game.toml
+to `version = "1.01"`), asserted `>= 1` by `shared/budgets.reconcile_budgets` as its
+fifth rule: a receiver with no reorder window is not "stricter", it is a self-inflicted
+technical loss.
+
+**Status: keyless CI only.** Six permanent drills (above, and the full-game one runs a
+tunnel that duplicates *every* push in both directions). **The live version — duplicate
+delivery and reorder over the real edge, proven in both directions — is a warm-up item
+with Alon/Renat's team, not yet run.**

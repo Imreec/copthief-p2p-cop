@@ -3,6 +3,37 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #63 — m7-8-duplicate-reorder-tolerance (at-least-once delivery)
+
+- **Driver:** Imree ("audit our inbound path, then TDD-fix any gap") · **Author:** Claude
+  (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** audit the inbound path against the round-7 threat the Alon/Renat team
+  raised — repeated `(kind, step)` delivery, reordered delivery, junk resetting the turn
+  deadline — and fix what the audit found, keeping the strict state machine strict.
+- **The audit was the work; the fix followed from it.** Three gaps were real and all on the
+  live path (details in `docs/evidence/m6-chaos.md` §M7-8). The one that mattered most was
+  not on the asked list: the deadline was only ever evaluated on an EMPTY poll, so a tunnel
+  delivering junk continuously meant it was never evaluated at all. **A drill caught it, not
+  a review** — drill E hung the test run instead of passing, which is exactly what a drill
+  written against the real loop is for.
+- **The design decision worth recording: dedup keys on the COMMIT, not on `(kind, step)`.**
+  The proposal on the table was `(kind, step)`. A commit is unique per message and is the
+  one field a redelivery cannot vary — so keying on it buys a property the step-keyed
+  version cannot have: a *second, different* commit for a step already played is
+  distinguishable from a retry, and stays a collapse. That is equivocation, which is the
+  precise fraud the commit-reveal scheme exists to catch. Tolerance at the transport layer,
+  nothing given away at the rules layer.
+- **One threshold, not two.** The proposal also had a separate "raise on flooded buffer"
+  rule beside the reorder window. Implemented that way, the flood branch is unreachable —
+  the window and the capacity are the same number — so it collapsed into one rule whose
+  message names the window. Dead code that looks like a defense is worse than no defense.
+- **What this changed in the existing battery, deliberately:** the M6-7 drill
+  `test_drill_replayed_turn_hits_the_step_continuity_wall` asserted the defect. It is
+  amended in place (not deleted) with the reasoning, and paired with the equivocation drill
+  that now holds that ground.
+- **Honest status:** keyless CI only. The live both-directions duplicate drill is a warm-up
+  item with their team and is NOT claimed here; M7-8 is ◐, not ☑.
+
 ## PR #62 — M7-7 live mid-push tunnel drills (evidence)
 
 - **Driver:** Imree (authorized the mid-push drill, "run it end-to-end yourself, I'm
