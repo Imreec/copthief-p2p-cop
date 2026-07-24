@@ -31,6 +31,43 @@
   reachability DoD is untouched, and M7-1 stays ◐. What it buys today is that the peer
   window Alon asked for cannot quietly ship our GA weights.
 
+## PR #66 — m7-4-series-artifact-and-subgame-seal (found mid-rehearsal)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** make a friendly that looks exactly like a counted game. Imree's
+  framing settled it: *"in football, friendlies don't change the rules — they play the
+  full two halves; the only difference is it isn't counted."* I had been leaning on
+  CLAUDE.md §9's "friendlies: format-free" to justify a lightweight report, which reads
+  that clause exactly backwards — the sentence continues *"the format is proven on both
+  sides before any counted game."* A lightweight report proves nothing about the format.
+- **What that reframing immediately found.** Loading the constitution with `counted=True`
+  arms the App F fixed rows, and the guard refused: *"num_games: fixed at 6 by App F, got
+  1"*. So our config would have played six sub-games while every step-0 record declared a
+  ONE-game match. Alon accepted it in one line (*"our own truth-duty argument decides
+  it"*) and flipped his side too.
+- **Then the same class of defect turned out to be ours, and deeper.** `sdk/peer_run`
+  never passed `sub_game_number`, so it fell back to the static TOML value: every
+  sub-game sealed `sub_game_number: 1`. `series_run` (self-play) always passed the real
+  index — the LIVE rolling protocol, one process per sub-game, never did. **The index is
+  inside the step-0 commit**, so unlike a report field it cannot be corrected afterwards:
+  index 1 seals `9237f54c…`, index 4 seals `2337737826…`. Two already-played sub-games
+  were unusable as artifacts no matter how cleanly they played.
+- **The design choice in (b): rebuild summaries from the LOG, not from live memory.** The
+  obvious fix was to hand the session out of `run_peer_flow`. Deriving from the committed
+  log is better for a reason that has nothing to do with convenience — **what we report is
+  then exactly what we archived**, and a third party can re-derive the artifact from the
+  same bytes. `series_from_logs` refuses the whole series if any sub-game never settled,
+  because a report that quietly drops a game is the contradictory report rule 35 punishes.
+- **Honesty detail worth keeping:** the opponent's declaration block is copied from their
+  archived `agreement_received`, and keys they never sent are recorded **blank rather than
+  filled in**. A declaration block records what a team *stated* about itself; inventing a
+  plausible `group_name` there would be fabricating a signed record.
+- **A vacuous test I caught on myself:** `assert len(result["sub_games"]) == 6 if
+  "sub_games" in result else True` passes when the key is absent. Replaced with real
+  assertions including the scoring arithmetic (six survivals, alternating roles ⇒ 3–3
+  tie) and the on-disk artifact set. Also rebuilt a fixture through the real
+  `TurnMessage` after hand-listing its keys drifted twice.
+
 ## PR #64 — m7-8-live-duplicate-drill (the them-to-us half, over the real edge)
 
 - **Driver:** Imree ("sure, let's try it") · **Author:** Claude (terminal) ·
