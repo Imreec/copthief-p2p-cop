@@ -100,10 +100,33 @@ sg6 thief  cop_capture    steps=6   audit_ok=True
 - The lecturer guard was live throughout: `[email] lecturer` was configured in that run's
   config, the run was `--rehearsal`, and he is not in the recipients — `RunMode` makes him
   unreachable regardless (M7-9 / ADR-0009).
-- Two earlier runs of the identical rig, kept because they pin the other two postures: the
-  resting `[email]` gave the same 6/6 with `refuse: email disabled`, and an enabled rail
-  with `token_path` pointed at a non-existent file gave `{"action": "failed", …}` and CLI
-  exit 3 — the artifact written, the delivery recorded as not having happened.
+- Two earlier runs of the identical rig pinned the other outcomes: a resting `[email]` gave
+  the same 6/6 with `refuse: email disabled` at the end, and an enabled rail with
+  `token_path` pointed at a non-existent file gave `{"action": "failed", …}` and CLI exit 3.
+  **Both of those are now caught at preflight instead — see the M7-10b note below.**
+
+## M7-10b addendum — a report-owing run refuses to START if it cannot report
+
+The runs above exposed the last gap in the "friendly = a real match minus the counting"
+requirement: the mail rail was consulted only *after* the sixth sub-game settled, so a
+disabled rail, an empty recipient, or a stale OAuth token was discovered after six games had
+been played — the moment App E rule 35 makes most expensive. `EmailSender.preflight()` now
+runs at the top of the series whenever the run owes a report (`RunMode.strict_rules` —
+rehearsal or counted): the same interlock the send runs, plus a credential probe that
+refreshes the OAuth token without sending. Live proof, both refusing with **zero sub-game
+logs written**, exit 2:
+
+```
+# --rehearsal, committed resting [email] (disabled)
+{"refused": "the report cannot be delivered …", "problems": ["email disabled (email.enabled=false)"], "sub_games": []}
+
+# --rehearsal, enabled + recipient set, but token_path absent
+{"refused": "the report cannot be delivered …", "problems": ["the report transport is not ready: FileNotFoundError: … 'no_such_token_deliberately.json'"], "sub_games": []}
+```
+
+The real send-only token passes the same probe (`GmailTransport.verify_ready()` refreshed it,
+no email sent), so a correctly-configured run is not blocked. **Consequence, stated plainly:
+a `--rehearsal` can no longer be played with the mail disabled** — which is the whole point.
 
 ## What this does NOT yet prove
 

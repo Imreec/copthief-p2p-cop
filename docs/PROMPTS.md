@@ -3,6 +3,34 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #70 — m7-10b-report-preflight (decide before the series, and the mail we actually sent)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What he pushed on, and he was right:** the report send was something I *decided after*
+  the series (I had pointed the token at a missing file to prove the rail was *reached*
+  rather than *worked*). His standing demand — stated across several sessions — is that a
+  friendly is a real match minus the counting, and *what must be decided is decided BEFORE
+  the series*. This makes that mechanical: a run that owes a report (`RunMode.strict_rules`)
+  now calls `EmailSender.preflight()` before the first sub-game — the interlock plus a
+  credential probe that refreshes the OAuth token without sending — and refuses to start,
+  zero games played, if it cannot deliver. **A `--rehearsal` can no longer run with mail
+  disabled.**
+- **And the mail was actually SENT** (his authorization of the recipients being the
+  authorization, constraint #16): the six-sub-game series fired its report to the team
+  account + his personal address, body and attachment both the artifact, exit 0. The first
+  email the project has sent.
+- **Two book checks he asked for, both verified against primary sources, not memory:**
+  (1) the subject is the reference's byte-exact string (`sdk/sdk.py`), and the book mandates
+  none — so matching the reference is the interoperable choice. (2) Rule 34 says "ONLY as an
+  attachment", but the book's own App A listing AND the reference send body-only — a
+  book-vs-reference contradiction. We send **both**, which is the one form safe under a
+  strict reading of the rule *and* under his grader's actual parser. Recorded in ADR-0008
+  decision 5 per the academic-freedom clause.
+- **Honest note:** the preflight changed what an earlier evidence run showed (a `--rehearsal`
+  with disabled mail used to play 6/6 then refuse at the end; it now refuses at the top). I
+  corrected the `m7-10-series-completes.md` sentence rather than leave it describing behaviour
+  the code no longer has — the doc↔repo gap is the one fatal failure mode.
+
 ## PR #69 — m7-10-handshake-pairing (which game, which side, and who is still listening)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
