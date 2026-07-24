@@ -31,6 +31,32 @@
   reachability DoD is untouched, and M7-1 stays ◐. What it buys today is that the peer
   window Alon asked for cannot quietly ship our GA weights.
 
+## PR #67 — m7-9-rehearsal-mode (splitting one overloaded flag)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** *"of course it isn't counted, it's a friendly game"* — Imree hit the
+  naming confusion directly. He was right, and his confusion WAS the bug: `counted` did
+  not mean "this scores league points", it meant two unrelated things at once, and one of
+  them (arm the App F rulebook) is something a friendly very much wants.
+- **The design question I brought back rather than deciding.** A naive split into two
+  independent booleans would have made the lecturer *easier* to reach than today —
+  ADR-0008's guard is strong precisely because `counted` cannot be set casually. So the
+  split welds them back in the one direction that matters: `counted_series` without
+  `strict_rules` raises at construction and cannot exist. Imree chose that option
+  explicitly. The guarantee's strength is unchanged; only its spelling moved.
+- **Why the email parameter got renamed too.** `decide_email_action(counted=…)` invited
+  exactly the mistake being removed — a caller with a rules flag in hand and a parameter
+  named for the run type. It now takes `lecturer_addressable`, named for what it permits,
+  defaulting closed at both layers.
+- **The finding that fell out of writing the ADR, and it is not flattering.** Because
+  `counted=True` was unsafe to pass, *nothing in the codebase ever passed it*. Every live
+  game — including the rehearsal series played against Alon/Renat's team that same day —
+  ran with the App F rows **disarmed**. The constitution was counted-shaped only because
+  someone set it by hand. Rules were being followed rather than enforced, and it looked
+  identical from the outside. Recorded in the ADR's Context rather than quietly fixed.
+- **Scope held deliberately:** `counted` is NOT renamed across its 146 mentions. The
+  confusion that actually bites is at the email seam, and that is the one renamed.
+
 ## PR #66 — m7-4-series-artifact-and-subgame-seal (found mid-rehearsal)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
