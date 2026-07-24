@@ -3,6 +3,34 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #69 — m7-10-handshake-pairing (which game, which side, and who is still listening)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **Why it exists:** building #68 made two live-path defects visible by running the thing
+  rather than reasoning about it. Neither was caused by the series driver; the driver is
+  what made them observable. Imree's instruction was to build it before naming a T with
+  the opponent team, because *"the difference between a rehearsal and another burned
+  window"* is exactly this.
+- **The question he asked first, and it sharpened the work:** *"part of the things we are
+  doing in M7-10 should be addressed by him on his side, no?"* Yes — for one of the three
+  pieces. Answering it honestly forced me to correct something I had implied: I first
+  thought the swallowed-handshake fix needed the opponent, because our re-push only
+  protects OUR greeting reaching THEIR new peer. It doesn't need them — the other
+  direction is closed by refusing inbound traffic after our own settlement, so their
+  existing retry delivers to our next peer. Two unilateral halves, not one.
+- **What genuinely needs the counterparty** is the negotiate declaration: we can *send*
+  `sub_game_number` + `role` alone (unknown fields are tolerated, the reference ignores
+  them), but we can only *refuse on mismatch* once they send them too. Stated plainly in
+  the TODO and in the staged reply rather than left as an assumption.
+- **The draft was sharpened before sending on a concrete lesson:** the rehearsal lost a
+  window to `payload` vs `message` and to a bookletter handshake arriving on a
+  reference-v3 wire. So the reply carries the exact field shape and the exact refusal
+  rule, instead of "declare the index" and a second round of interop discovery.
+- **Result, and the reason to run things:** before these fixes a six-sub-game series had
+  never completed — the sides desynchronised at sub-game 2. After them, 6/6 settle with a
+  mutual audit on every one, one shared `game_uid`, the full artifact set, and the report
+  rail firing at the end. Evidence `docs/evidence/m7-10-series-completes.md`.
+
 ## PR #68 — m7-4-live-series-report (the series-end email, and the thing that fires it)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
