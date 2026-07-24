@@ -234,8 +234,15 @@ flawless six-sub-game friendly would have produced six logs and mailed nothing.
   useless without the path of the artifact that still has to reach the opponent.
 - The run's governance (`RunMode`, §5a / ADR-0009) is passed to every CHILD, because the
   child loads the config tree itself.
+- **Preflight (M7-10b):** a run that owes a report (`RunMode.strict_rules`) calls
+  `EmailSender.preflight()` BEFORE the first sub-game — the same interlock the send runs,
+  plus a credential probe (`GmailTransport.verify_ready` refreshes the OAuth token without
+  sending). A refusal returns a `refused` record with zero sub-games played, so an empty
+  recipient, a disabled rail, or a stale token is caught before six games are, never after.
+  A `--rehearsal` can no longer be played with the mail disabled: a rehearsal that would not
+  fire its report is not a rehearsal.
 
-DoD observed live: `docs/evidence/m7-4-live-series.md`.
+DoD observed live: `docs/evidence/m7-4-live-series.md` + `docs/evidence/m7-10-series-completes.md`.
 
 ## 7. M6-8 — COST.md + token accounting
 

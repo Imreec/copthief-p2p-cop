@@ -59,6 +59,28 @@ nothing was enforcing it. Rules were being *followed*, not *enforced*.
 - The email layer can no longer be handed the wrong boolean without it reading wrongly at
   the call site.
 
+## Amendment (M7-10b, 2026-07-24) — a rehearsal proves its report can be delivered before it plays
+
+The split above made a rehearsal *owe* a report (App E rule 32) while leaving the lecturer
+unreachable. It did not yet make the rehearsal **refuse to start** when that report could
+not be delivered — so a rehearsal with the mail rail at rest, or a stale OAuth token, would
+play all six sub-games and only then discover it could not report. Under rule 35 that is the
+costliest possible moment: a missing report zeroes both teams.
+
+`EmailSender.preflight()` runs at the top of `sdk/live_series.run_live_series` whenever
+`RunMode.strict_rules` holds (rehearsal or counted). It runs the same interlock the send
+runs — so an empty recipient, a disabled rail, or a rehearsal addressed to the lecturer all
+refuse here — and then probes the transport's credentials (`GmailTransport.verify_ready`
+refreshes the OAuth token against the token endpoint, exercising the 7-day refresh token
+without touching any Gmail scope). A failure raises `ReportUndeliverableError`, and the
+driver returns a `refused` record having played **zero** sub-games.
+
+This is the mechanical form of Imree's standing requirement: *what must be decided is decided
+before the series.* A dev run (`RunMode()`) owes no report and is exempt, so it may still run
+without configuring mail. Consequence worth stating plainly: **a `--rehearsal` run can no
+longer be played with the mail disabled** — a rehearsal is a counted game minus the counting,
+and a rehearsal that would not fire its report is not one.
+
 ## Alternatives considered
 
 - **Two independent booleans.** Rejected: it would make the lecturer easier to reach than
