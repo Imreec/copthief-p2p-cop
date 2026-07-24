@@ -1,0 +1,75 @@
+{
+  "_schema": "Summary and final result for the WHOLE game (all sub-games) between two teams. It condenses the per-sub-game logs into a per-group score for every sub-game plus the aggregate outcome the lecturer needs to build the league standings. Static team metadata (identity, members, repos, MCP, hardware, model) is NOT repeated here — it lives in 1-pre-game-declaration.json and is referenced via game_id / group_id. Both teams must agree on this result and each sends its own copy to the lecturer (book ch9).",
+  "schema_version": "1.1",
+  "report_type": "final_game_result",
+  "game_id": "imreeyal-vs-imreeyal-mirror",
+  "game_uid": "2ff4b20b-3a12-b7ad-f18c-de5245e8c813",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are examples for game_id=S01R02-team07-vs-team13.",
+    "declaration": "declaration_imreeyal-vs-imreeyal-mirror.json",
+    "config": "config_imreeyal-vs-imreeyal-mirror_g<NN>.json",
+    "log": "log_imreeyal-vs-imreeyal-mirror_g<NN>.json",
+    "result": "result_imreeyal-vs-imreeyal-mirror.json"
+  },
+  "timezone": "Asia/Jerusalem",
+  "groups": [
+    "imreeyal",
+    "imreeyal-mirror"
+  ],
+  "num_sub_games": 1,
+  "sub_games": [
+    {
+      "sub_game_number": 1,
+      "roles": {
+        "imreeyal": "police",
+        "imreeyal-mirror": "thief"
+      },
+      "started_at": "2026-07-24T16:46:44.177181+00:00",
+      "ended_at": "2026-07-24T16:46:46.977181+00:00",
+      "result": "capture",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "unknown",
+        "imreeyal-mirror": "unknown"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "imreeyal-mirror": 0
+      },
+      "score": {
+        "imreeyal": 20,
+        "imreeyal-mirror": 5
+      },
+      "log_files": {
+        "imreeyal": "imreeyal/log_imreeyal-vs-imreeyal-mirror_g01.json",
+        "imreeyal-mirror": "imreeyal-mirror/log_imreeyal-vs-imreeyal-mirror_g01.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    }
+  ],
+  "final_result": {
+    "total_score": {
+      "imreeyal": 20,
+      "imreeyal-mirror": 5
+    },
+    "sub_games_won": {
+      "imreeyal": 1,
+      "imreeyal-mirror": 0
+    },
+    "ties": 0,
+    "winner_group": "imreeyal",
+    "series_tie": false,
+    "tokens_total_series": {
+      "imreeyal": 0,
+      "imreeyal-mirror": 0
+    }
+  },
+  "mutual_agreement": {
+    "sha256": "1e6cd744502ea4d8d1d4ec76bd105f908b998d568012a08f2ae62b64e3657df8",
+    "confirmed": true
+  }
+}

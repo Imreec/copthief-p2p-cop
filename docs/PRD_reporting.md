@@ -204,6 +204,39 @@ four artifacts and the per-game Hebrew reports. Role alternation live-vs-referen
 two-process localhost series as committed evidence); a reference cross-check rides the next
 friendly Imree authorizes.
 
+### 6a. AMENDMENT (M7-4c, 2026-07-24) — the LIVE series needs its own owner
+
+§6 describes the SELF-PLAY series: one process, one transport, sessions in memory. A live
+series against another team inverts the one assumption that makes it work — under the
+rolling-window protocol **each sub-game is its own process**, so the transport is not built
+once, no `PeerSession` survives to be summarised, and, decisively, **no process spans the
+series**. Every artifact in §3–§5 existed and was tested, and nothing fired them: a
+flawless six-sub-game friendly would have produced six logs and mailed nothing.
+
+`sdk/live_series.run_live_series` is the missing owner, exposed as `copthief series`:
+
+- Sub-game count from the SIGNED constitution (never from the operator); roles alternate on
+  the same F2 rule as §6; each sub-game gets its own seed.
+- Each sub-game is played by `sdk/subgame_process` as its own `copthief run peer` child.
+  The driver spawning and reaping its own children is deliberate: the orphaned peer that
+  mis-attributed the 2026-07-24 rehearsal's sub-game 6 outlived the shell that started it.
+- No series-side timeout is imposed. The child bounds itself by its own turn deadline and
+  watchdog, both config-owned; a second budget invented in the driver would be a
+  quantitative value with no home in the config tree (CLAUDE.md §1 #5).
+- At series end the archived logs go through `summary_from_log` → `series_from_logs` →
+  `emit_series`, and the ONE report is sent through the §5a rail. Measured durations are
+  passed in, so each sub-game entry carries a real `ended_at`.
+- **Refusal is part of the contract:** one sub-game that never settled emits no artifact
+  and sends no mail (rule 35 punishes a report that quietly drops a game). CLI exit **2**.
+- **An undelivered report is recorded, not raised:** the run record carries
+  `{"action": "failed", "reason": …}` beside the artifact path, CLI exit **3**. Under rule
+  32 a report that did not go out is the most important thing the operator can be told, and
+  useless without the path of the artifact that still has to reach the opponent.
+- The run's governance (`RunMode`, §5a / ADR-0009) is passed to every CHILD, because the
+  child loads the config tree itself.
+
+DoD observed live: `docs/evidence/m7-4-live-series.md`.
+
 ## 7. M6-8 — COST.md + token accounting
 
 `COST.md` (honest-disclosure triad): per-series token spend table where **every 0-token claim

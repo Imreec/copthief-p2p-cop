@@ -27,5 +27,8 @@ uv sync          # install (dev tooling only at M0; keyless)
 make grade       # every quality gate, same as CI
 ```
 
-Process: branch → PR → cross-model review → squash-merge (`docs/REVIEW_PROCESS.md`). No email is
-ever sent by tooling without an explicit human arming step.
+Process: branch → PR → cross-model review → squash-merge (`docs/REVIEW_PROCESS.md`). Reporting is
+**automatic** at the end of a series (App E rule 32; rule 35 zeroes both teams for a missing
+report) — what is gated is the ADDRESS: no email is ever sent to a recipient that was not
+configured for that run, and the lecturer is reachable only from a counted series (ADR-0008,
+ADR-0009). The previous wording here described the per-send arming step ADR-0008 removed.

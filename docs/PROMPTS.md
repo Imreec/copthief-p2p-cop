@@ -3,6 +3,41 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #68 — m7-4-live-series-report (the series-end email, and the thing that fires it)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked, in his words:** a friendly is a counted game in every respect except
+  that it is not counted and the lecturer is not the recipient — *"in football they are
+  playing the full two halves; the only difference is that it isn't counted."* So: all six
+  sub-games, real rules, the full artifact set, and **one email auto-fired at series end**.
+  The instruction was explicit that this comes first, because the previous session kept
+  deferring it to chase live scheduling windows.
+- **The gap turned out to be narrower and worse than "the email is missing":** every
+  piece existed and was tested — `summary_from_log`, `series_from_logs`, `email_sender`,
+  `email_interlock` — but a live series plays each sub-game in its own process, so **no
+  process spanned the series** and nothing owned the moment it ended. A perfect 6/6 would
+  have mailed nothing. What was missing was an owner, not a feature.
+- **`RunMode` was merged and passed by nothing**, so every live game so far — including
+  the 2026-07-24 rehearsal — ran with the App F rows disarmed. It is now a real CLI flag
+  and, importantly, is carried into each sub-game CHILD: the child loads the config tree
+  itself, so arming the rows only in the driver would have relocated the defect.
+- **Running it live was the whole value.** Three defects fell out of the first two real
+  runs, none of which any test I would have written had caught: a sub-game that left no
+  log crashed the aggregation with a bare `FileNotFoundError`; a child that died left no
+  trace of *why*; and a failed send took the entire run record with it, so the operator
+  saw a traceback instead of "here is the artifact that did not reach the opponent."
+  Each is now a test written from the observed failure, quoted in its docstring.
+- **Two findings deliberately NOT fixed here** (`docs/evidence/m7-4-live-series.md`, new
+  TODO M7-10): the `negotiate` payload names neither the sub-game nor the role — observed
+  as two *thief* peers completing a handshake and deadlocking, which is the same hole that
+  produced the rehearsal's phantom sub-game 6 — and a handshake can be swallowed by the
+  opponent's previous sub-game peer, which desynchronises the series permanently. Both are
+  interop work, mutual with the opponent team; the driver did not cause them, it exposed
+  them. Saying so rather than folding a half-fix into this PR is the point.
+- **One decision was Imree's and was asked for, not assumed:** committed `game.json`
+  `num_games` 1 → 6. His reasoning went further than the question — better league evidence
+  is coming from the real friendly, so ship the constitution we actually play under.
+
 ## PR #65 — m7-1-sparring-guard (the standing-host rules, made mechanical)
 
 - **Driver:** Imree (chose "build it now, TDD + committed" over hand-rolling it at the
