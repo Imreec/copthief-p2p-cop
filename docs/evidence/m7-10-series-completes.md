@@ -81,21 +81,38 @@ sg6 thief  cop_capture    steps=6   audit_ok=True
   `game_uid` (`2befc104…`) shared by all six on **both** sides.
 - The full artifact set for the series is on disk — 20 JSON files across the two sides —
   and the series result is committed here as `m7-10-series-result.json`.
-- The report rail was invoked automatically at series end: the interlock **allowed** the
-  send, and the Gmail backend failed on a token path deliberately pointed at a file that
-  does not exist, so nothing could leave the machine. Recorded as
-  `{"action": "failed", …}` beside the artifact path, CLI exit 3 — the M7-4c behaviour,
-  now exercised from a full six-sub-game series.
-- Immediately before this, the identical rig with the resting `[email]` produced the same
-  6/6 with `refuse: email disabled` — the shipped posture, observed end to end.
+- **The report was REALLY SENT.** On Imree's explicit authorization of the recipients
+  (constraint #16: the recipient *is* the authorization), the series fired its own report
+  at the end through the live Gmail rail:
+
+  ```json
+  {"action": "send", "reason": "", "game_uid": "2befc104-ee4c-afd0-98ac-d2eb7f2b9f17",
+   "recipients": ["imreeyal.copthief@gmail.com", "imree.c@gmail.com"]}
+  ```
+
+  Subject `Police-Thief series result: winner imreeyal (reported by police)`; body and
+  attachment both the 7095-byte `result_<game_id>.json` — the same bytes committed here as
+  `m7-10-series-result.json`. **This is the first email the project has ever actually
+  sent**, and it closes the last unproven inch of the report path: the 2026-07-20
+  send-only token works, the multi-recipient form works (a friendly needs it — us + the
+  opponent team), and no step between the sixth sub-game settling and the mail leaving
+  involved a human. Exit 0 on both sides.
+- The lecturer guard was live throughout: `[email] lecturer` was configured in that run's
+  config, the run was `--rehearsal`, and he is not in the recipients — `RunMode` makes him
+  unreachable regardless (M7-9 / ADR-0009).
+- Two earlier runs of the identical rig, kept because they pin the other two postures: the
+  resting `[email]` gave the same 6/6 with `refuse: email disabled`, and an enabled rail
+  with `token_path` pointed at a non-existent file gave `{"action": "failed", …}` and CLI
+  exit 3 — the artifact written, the delivery recorded as not having happened.
 
 ## What this does NOT yet prove
 
 - **The opponent's half.** Our refusal is inert until they declare `sub_game_number` and
   `role` too; a mispairing is only detectable if both sides say what they are doing. The
   exact field shape has been staged for them so the two sides cannot spell it differently.
-- **A real send.** The Gmail token has still never been used. One live send to ourselves
-  closes that, and it is the last unproven inch of the friendly.
+- **A send to the OPPONENT.** The rail is proven, but a friendly's recipient list is us +
+  their team, and their address has never been configured for a run. That is Imree's to
+  set, before the match and never inside it.
 - **Their swallowed greetings.** Our peer no longer eats theirs, and our re-push covers
   ours being eaten — but a peer of theirs that keeps accepting after settlement will still
   swallow ours until they close their own inboxes. Our re-push is what makes that
