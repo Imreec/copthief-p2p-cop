@@ -71,10 +71,9 @@ def test_a_bystanders_agreement_is_refused_and_the_real_game_still_plays() -> No
     assert "agreement_refused" in kinds, "the bystander must be refused ON THE RECORD"
     assert kinds.index("agreement_refused") < kinds.index("negotiated")
     assert result.audit_ok is True  # the REAL game played to a clean mutual audit
-    assert counterpart_result and counterpart_result[0].audit_ok is True
-    reasons = [
-        e["payload"]["reason"] for e in events if e.get("event") == "agreement_refused"
-    ]
+    assert counterpart_result, "the counterpart must have finished its game"
+    assert counterpart_result[0].audit_ok is True
+    reasons = [e["payload"]["reason"] for e in events if e.get("event") == "agreement_refused"]
     assert any("sub-game" in r or "role" in r for r in reasons)
 
 

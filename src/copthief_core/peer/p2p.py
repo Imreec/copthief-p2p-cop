@@ -13,7 +13,7 @@ import time
 
 from copthief_core.domain.state_machine import GameState
 from copthief_core.peer import events, inbox_order
-from copthief_core.peer.handshake import PairingRefusal
+from copthief_core.peer.handshake import PairingRefusalError
 from copthief_core.peer.session import NegotiationError, PeerSession
 from copthief_core.peer.settlement import (
     LogFn,
@@ -88,7 +88,7 @@ def run_peer_game(
         events.inbound(emit, "agreement_received", session.role, theirs)
         try:
             session.handle_negotiate(theirs)
-        except PairingRefusal as refusal:
+        except PairingRefusalError as refusal:
             emit(
                 {
                     "event": "agreement_refused",
