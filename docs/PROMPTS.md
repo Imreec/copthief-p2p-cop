@@ -3,6 +3,31 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #71 — m7-11-series-endpoints (dial the opponent service that plays THIS sub-game)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What he asked, and the correction behind it:** "what do you mean? something that we need
+  to fix on our end? If so do it" — plus the standing demand that playing other teams *cannot
+  be this complicated each time*. The answer had just come from primary source: he told us to
+  read the opponent team's shared repo instead of waiting to ask them, and their committed
+  `league_series.py` runs a series as TWO role-split services (police repo owns the odd
+  windows, thief repo the even ones), while the reference runs it as ONE process at ONE
+  address. Both topologies are real; our driver dialed one URL for all six sub-games, which
+  is wrong half the time against the first shape.
+- **Built (three red→green cycles):** `sdk/series_endpoints` (one address or a split pair,
+  every ambiguous combination refused; the config default yields to explicit flags),
+  per-role dialing in `subgame_player`, `--opponent-police-url`/`--opponent-thief-url` on
+  `copthief series`. Wire untouched — this is dialing, not protocol.
+- **The generality point, honored:** after this, ANY opponent topology is the same one
+  command — one URL for a reference-shaped team, two flags for a role-split one. No
+  per-team code.
+- **Validation over trust:** the 2026-07-25 predecessor rig had deadlocked at sub-game 2 and
+  the work was discarded rather than diagnosed. This one was rebuilt against a FAITHFUL
+  opponent simulator (two independent sequential window-runners, started together, handshake
+  re-push as the only barrier, the opponent's own 180s patience) — six windows settled
+  strictly in order, roles alternating, one game_uid, exit 0. The M7-10 pairing refusals are
+  what changed: the early window's pushes are refused by index instead of swallowed.
+
 ## PR #70 — m7-10b-report-preflight (decide before the series, and the mail we actually sent)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
