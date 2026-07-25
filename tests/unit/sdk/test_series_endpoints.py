@@ -57,3 +57,44 @@ def test_an_unknown_role_is_refused() -> None:
     endpoints = SeriesEndpoints(police_url=POLICE_URL, thief_url=THIEF_URL)
     with pytest.raises(ValueError, match="unknown role"):
         endpoints.for_opponent_role("cop")
+
+
+def test_split_flags_beat_the_config_default_without_a_mixing_refusal() -> None:
+    """`[network] opponent_url` may sit in the config while the operator types a split
+    pair for THIS opponent — the default must yield, not count as a third address."""
+    from copthief_core.sdk.series_endpoints import endpoints_from_flags
+
+    endpoints = endpoints_from_flags(
+        single=None, police_url=POLICE_URL, thief_url=THIEF_URL, config_default=ONE_URL
+    )
+    assert endpoints.for_opponent_role("police") == POLICE_URL
+    assert endpoints.for_opponent_role("thief") == THIEF_URL
+
+
+def test_the_config_default_applies_only_when_no_flag_is_given() -> None:
+    from copthief_core.sdk.series_endpoints import endpoints_from_flags
+
+    endpoints = endpoints_from_flags(
+        single=None, police_url=None, thief_url=None, config_default=ONE_URL
+    )
+    assert endpoints.for_opponent_role("police") == ONE_URL
+
+
+def test_series_parser_accepts_a_role_split_opponent() -> None:
+    from copthief_core.sdk.cli_args import build_parser
+
+    args = build_parser().parse_args(
+        [
+            "series",
+            "--role",
+            "thief",
+            "--opponent-group",
+            "anrbj666",
+            "--opponent-police-url",
+            POLICE_URL,
+            "--opponent-thief-url",
+            THIEF_URL,
+        ]
+    )
+    assert args.opponent_police_url == POLICE_URL
+    assert args.opponent_thief_url == THIEF_URL
