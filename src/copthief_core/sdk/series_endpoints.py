@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-__all__ = ["SeriesEndpoints", "resolve_endpoints"]
+__all__ = ["SeriesEndpoints", "endpoints_from_flags", "resolve_endpoints"]
 
 
 @dataclass(frozen=True)
@@ -69,3 +69,22 @@ def resolve_endpoints(
         "no opponent address: give --opponent-url, or --opponent-police-url "
         "with --opponent-thief-url for a role-split opponent"
     )
+
+
+def endpoints_from_flags(
+    *,
+    single: str | None,
+    police_url: str | None,
+    thief_url: str | None,
+    config_default: str,
+) -> SeriesEndpoints:
+    """Resolve the CLI's address flags against the config fallback (Input: the three
+    flags as typed plus `[network] opponent_url`; Output: the endpoints).
+
+    The config default applies ONLY when no address flag was typed at all: it may
+    name last week's opponent, and letting it collide with an explicit split pair
+    would refuse a correctly-typed command for a stale reason.
+    """
+    if not (single or police_url or thief_url):
+        single = config_default or None
+    return resolve_endpoints(single=single, police_url=police_url, thief_url=thief_url)
