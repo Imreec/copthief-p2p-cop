@@ -27,6 +27,17 @@
   re-push as the only barrier, the opponent's own 180s patience) — six windows settled
   strictly in order, roles alternating, one game_uid, exit 0. The M7-10 pairing refusals are
   what changed: the early window's pushes are refused by index instead of swallowed.
+- **M7-11b, and the correction that found it:** Imree rejected the rig's dev-mode/no-email
+  posture — *"a friendly is EXACTLY a real counted game... sending mail is also part of a
+  real game"* — so the rig was rerun FULL-DRESS (`--rehearsal` both sides, tuned brains,
+  real send to ourselves at the close). That run failed, informatively: a bystander's
+  agreement (the opponent's other window pushing early — identical terms, valid signature,
+  wrong only in WHICH game) raised the M7-10 pairing refusal out of `run_peer_game` and
+  killed every window where we moved second; the dev-mode run had escaped by winning the
+  arrival race. The driver honestly refused to mail an unsettled series (rule 35 behaving).
+  Fix (TDD): `PairingRefusal` is refused on the record and outwaited, bounded by the turn
+  budget; terms drift and bad signatures stay first-offense fatal. His methodological point
+  stands proven: the defect was only reachable with the FULL format running.
 
 ## PR #70 — m7-10b-report-preflight (decide before the series, and the mail we actually sent)
 
