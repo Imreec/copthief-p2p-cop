@@ -15,7 +15,7 @@ def test_canonical_bytes_are_key_order_invariant() -> None:
 
 
 def test_series_game_id_is_the_sorted_pair_from_either_side() -> None:
-    """M7-16: the reference DERIVES game_id by sorting the pair (`domain/game_ids.py`:
+    """M7-17: the reference DERIVES game_id by sorting the pair (`domain/game_ids.py`:
     `pair = sorted([group_a, group_b])`), so both peers get one string with no
     convention to settle — kit SPEC §4 pins it beside game_uid. Our self-first form is
     what produced the friendly's cosmetic report mismatch (2026-07-26 diff)."""

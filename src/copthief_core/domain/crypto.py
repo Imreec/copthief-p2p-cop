@@ -90,7 +90,7 @@ def game_uid(terms: object, group_a: str, group_b: str) -> str:
 
 
 def series_game_id(group_a: str, group_b: str) -> str:
-    """The human-readable series id, order-stable from either side (M7-16).
+    """The human-readable series id, order-stable from either side (M7-17).
 
     The reference DERIVES it — `derive_game_ids` sorts the pair exactly as `game_uid`
     does — so both peers name the match identically with no convention to settle (kit
