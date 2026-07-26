@@ -4,18 +4,19 @@
 > (deterministic; regenerate, never hand-edit). Per-role rosters over the
 > seeded start-scenario suite; games run headless through the sdk scenario
 > series.
-> Police roster: ref-police, police-brain. Thief roster: ref-thief, evader-nofix, evader-fix, evader-lag1.
+> Police roster: ref-police, police-brain, police-brain-bookv1. Thief roster: ref-thief, evader-nofix, evader-fix, evader-lag1.
 > Seeds: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 (scenario #1 = signed starts).
 > Scent model: multiplicative_book_v1.
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
 | ref-police | police | 128 | 63 | 1585 |
+| police-brain-bookv1 | police | 128 | 42 | 1270 |
 | police-brain | police | 128 | 27 | 1045 |
-| evader-lag1 | thief | 64 | 48 | 560 |
-| ref-thief | thief | 64 | 42 | 530 |
-| evader-nofix | thief | 64 | 41 | 525 |
-| evader-fix | thief | 64 | 35 | 495 |
+| evader-nofix | thief | 96 | 65 | 805 |
+| evader-lag1 | thief | 96 | 64 | 800 |
+| ref-thief | thief | 96 | 64 | 800 |
+| evader-fix | thief | 96 | 59 | 775 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
 
@@ -33,3 +34,7 @@ Per-pairing outcomes:
 | police-brain | evader-nofix | 4 | 28 |
 | police-brain | evader-fix | 8 | 24 |
 | police-brain | evader-lag1 | 11 | 21 |
+| police-brain-bookv1 | ref-thief | 10 | 22 |
+| police-brain-bookv1 | evader-nofix | 8 | 24 |
+| police-brain-bookv1 | evader-fix | 8 | 24 |
+| police-brain-bookv1 | evader-lag1 | 16 | 16 |

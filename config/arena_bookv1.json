@@ -6,6 +6,10 @@
     {
       "name": "police-brain",
       "spec": "copthief_police.brain:PoliceBrain"
+    },
+    {
+      "name": "police-brain-bookv1",
+      "spec": "copthief_police.brain:PoliceBrain"
     }
   ],
   "thief_roster": [
@@ -47,6 +51,14 @@
       "stay_penalty": 0.0,
       "w_mobility": 0.0,
       "w_region": 0.0
+    },
+    "police-brain-bookv1": {
+      "barrier_gain_threshold": 5.066698057042099,
+      "p_commit": 0.3230079059055142,
+      "w_budget": 0.0,
+      "w_distance": 4.678778807781908,
+      "w_mobility": 4.841830974563671,
+      "w_region": 0.5184398658126486
     }
   },
   "dod_series": [],
