@@ -18,10 +18,15 @@ from copthief_core.shared.private_config import ConfigError, validated_version
 
 @dataclass(frozen=True)
 class RosterEntry:
-    """One arena brain: display alias + factory spec (core name or dotted path)."""
+    """One arena brain: display alias + factory spec (core name or dotted path).
+
+    `feed` optionally names this entry's information structure (M7-14 —
+    `strategy/info_feed.make_feed` names); None keeps the run's default (hidden).
+    """
 
     name: str
     spec: str
+    feed: str | None = None
 
 
 @dataclass(frozen=True)
@@ -48,6 +53,8 @@ class ArenaConfig:
     brain_options: dict[str, dict[str, float]]
     dod_series: tuple[DodSeries, ...]
     evidence_out: str
+    # M7-14: named scent model for the WHOLE run (None = the shipped reference form).
+    scent_model: str | None = None
 
     def options_for(self, name: str) -> dict[str, float]:
         """The per-brain options block for `name` (empty when none is configured)."""
@@ -64,7 +71,10 @@ class ArenaConfig:
 def _entry(raw: str | dict[str, Any]) -> RosterEntry:
     if isinstance(raw, str):
         return RosterEntry(name=raw, spec=raw)
-    return RosterEntry(name=str(raw["name"]), spec=str(raw["spec"]))
+    feed = raw.get("feed")
+    return RosterEntry(
+        name=str(raw["name"]), spec=str(raw["spec"]), feed=None if feed is None else str(feed)
+    )
 
 
 def _dod(raw: dict[str, Any]) -> DodSeries:
@@ -94,6 +104,9 @@ def load_arena_config(path: Path) -> ArenaConfig:
             },
             dod_series=tuple(_dod(d) for d in raw.get("dod_series", [])),
             evidence_out=str(raw["evidence_out"]),
+            scent_model=(
+                None if raw.get("scent_model") is None else str(raw["scent_model"])
+            ),
         )
     except (KeyError, TypeError, ValueError) as error:
         raise ConfigError(f"{path.name}: malformed arena config — {error}") from error

@@ -94,3 +94,24 @@ class LagTruthFeed(TruthFeed):
         if len(self._history) <= self._lag:
             return belief
         return self._delta_at(self._history[-1 - self._lag], board)
+
+
+_LAG_PREFIX = "truth-lag"
+
+
+def make_feed(name: str, constitution: Constitution, *, smell_trust: float) -> BeliefFeed:
+    """Config-name factory for information feeds (arena roster `feed` entries).
+
+    Names: 'hidden' (reference-v3, the default wire) | 'truth' (bookletter-v3 common
+    knowledge) | 'truth-lag<K>' (delayed common knowledge — the claim-reading
+    counter). Built per GAME by callers: a lagged feed carries history, so a shared
+    instance would leak one game's trajectory into the next.
+    """
+    if name == "hidden":
+        return ScentFeed()
+    if name == "truth":
+        return TruthFeed(constitution, smell_trust=smell_trust)
+    if name.startswith(_LAG_PREFIX) and name[len(_LAG_PREFIX) :].isdigit():
+        lag = int(name[len(_LAG_PREFIX) :])
+        return LagTruthFeed(constitution, smell_trust=smell_trust, lag=lag)
+    raise ValueError(f"unknown feed: {name!r}")
