@@ -89,9 +89,7 @@ def test_round_robin_threads_the_config_model_and_per_entry_feeds() -> None:
     config = ArenaConfig(
         version="1.00",
         police_roster=(RosterEntry(name="greedy-manhattan", spec="greedy-manhattan"),),
-        thief_roster=(
-            RosterEntry(name="evader-lag1", spec="belief-evader", feed="truth-lag1"),
-        ),
+        thief_roster=(RosterEntry(name="evader-lag1", spec="belief-evader", feed="truth-lag1"),),
         seeds=(1, 2),
         scenario_min_separation=4,
         brain_options={},

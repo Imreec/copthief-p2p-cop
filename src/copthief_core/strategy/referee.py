@@ -121,9 +121,7 @@ def play_referee_game(
         if outcome is not None:
             return result(outcome, step)
         decision = police_brain.decide(
-            police_observation(
-                constitution, board=board, position=cop, step=step, trail=cop_trail
-            ),
+            police_observation(constitution, board=board, position=cop, step=step, trail=cop_trail),
             police_belief,
         )
         if decision.barrier is not None:  # the cop walls instead of stepping

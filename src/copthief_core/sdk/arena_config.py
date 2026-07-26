@@ -104,9 +104,7 @@ def load_arena_config(path: Path) -> ArenaConfig:
             },
             dod_series=tuple(_dod(d) for d in raw.get("dod_series", [])),
             evidence_out=str(raw["evidence_out"]),
-            scent_model=(
-                None if raw.get("scent_model") is None else str(raw["scent_model"])
-            ),
+            scent_model=(None if raw.get("scent_model") is None else str(raw["scent_model"])),
         )
     except (KeyError, TypeError, ValueError) as error:
         raise ConfigError(f"{path.name}: malformed arena config — {error}") from error

@@ -17,9 +17,7 @@ from copthief_core.strategy.referee import play_referee_game
 from copthief_core.strategy.scenarios import scenario_suite
 
 CONSTITUTION, PRIVATE, _ = load_all(Path("config"), counted=False)
-BOOK = build_scent_model(
-    PRIVATE.locked_models, "multiplicative_book_v1", CONSTITUTION.pheromones
-)
+BOOK = build_scent_model(PRIVATE.locked_models, "multiplicative_book_v1", CONSTITUTION.pheromones)
 SCENARIOS = scenario_suite(CONSTITUTION, seeds=range(1, 9), min_separation=4)
 
 

@@ -15,9 +15,7 @@ from copthief_core.shared.locked_models import build_scent_model
 from copthief_core.strategy.referee_setup import referee_belief, referee_trail
 
 CONSTITUTION, PRIVATE, _ = load_all(Path("config"), counted=False)
-BOOK = build_scent_model(
-    PRIVATE.locked_models, "multiplicative_book_v1", CONSTITUTION.pheromones
-)
+BOOK = build_scent_model(PRIVATE.locked_models, "multiplicative_book_v1", CONSTITUTION.pheromones)
 
 
 def test_a_passed_model_reaches_the_trail_physics() -> None:
@@ -26,12 +24,11 @@ def test_a_passed_model_reaches_the_trail_physics() -> None:
 
 
 def test_a_passed_model_reaches_the_belief_observation_model() -> None:
-    belief = referee_belief(
-        CONSTITUTION, start=(3, 3), smell_trust=1.0, scent_model=BOOK
-    )
+    belief = referee_belief(CONSTITUTION, start=(3, 3), smell_trust=1.0, scent_model=BOOK)
     # The filter has no public model accessor by design (PRD_belief §7); the wiring
     # pin reads the private slot rather than adding surface for a test.
     assert belief._scent is BOOK  # noqa: SLF001
+
 
 def test_omission_keeps_the_reference_construction() -> None:
     trail = referee_trail(CONSTITUTION)

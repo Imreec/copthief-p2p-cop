@@ -30,9 +30,8 @@ def _observation(board: object, position: tuple[int, int]) -> object:
     )
 
 
-def _delta_belief(cell: tuple[int, int], board: object = None) -> object:
-    belief = referee_belief(CONSTITUTION, start=cell, smell_trust=TRUST)
-    return belief
+def _delta_belief(cell: tuple[int, int]) -> object:
+    return referee_belief(CONSTITUTION, start=cell, smell_trust=TRUST)
 
 
 def test_the_evader_flees_the_believed_cop() -> None:
@@ -67,7 +66,9 @@ def test_without_the_penalty_the_corner_camp_is_the_distance_optimum() -> None:
     """The control arm: zeroing the anti-camp knob reproduces the opponent's current
     behavior (camping is DISTANCE-OPTIMAL in corner geometry — that is the finding)."""
     board = CONSTITUTION.board.make_board()
-    brain = BeliefEvaderBrain(seed=1, options={"stay_penalty": 0.0, "w_mobility": 0.0, "w_region": 0.0})
+    brain = BeliefEvaderBrain(
+        seed=1, options={"stay_penalty": 0.0, "w_mobility": 0.0, "w_region": 0.0}
+    )
     move = brain.pick_move(_observation(board, (0, 0)), _delta_belief((2, 2)))  # type: ignore[arg-type]
     assert move == "STAY"
 
