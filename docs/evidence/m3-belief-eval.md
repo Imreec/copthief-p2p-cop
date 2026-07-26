@@ -15,23 +15,23 @@
 > this is a REFEREE-MODE instrument that feeds the tracker the emitted grid
 > directly. Its registration sets `transmitted: false`, so in a live game a peer
 > honouring that would put no grid on the wire at all and the scent channel
-> would carry nothing - see KNOWN_LIMITATIONS.
+> would carry nothing (open item: PRD_scent s9.3, TODO M3-8).
 
-> **Why the book model scores so much worse, mechanistically** (probed, not
-> assumed - two separable causes, and only the first is inherent to the model):
-> **(1) Saturation.** Its deposit is ADDITIVE with an upper clamp at
-> `center_intensity`, so on the signed 7x7 board with a 5x5 kernel a cell
-> revisited within ring 1 reaches `0.9*0.9 + 0.62 = 1.43` and pins at 0.9. A
-> sample walk puts 12 of 49 cells at the ceiling by turn 4, so 'the freshest
-> cell' stops identifying the current position. That is the registered model's
-> own arithmetic - the same clamp case the kit fixture pins.
-> **(2) Ring/age conflation, which is OUR machinery, not the book's.** The
-> voucher heuristic reads an intensity as an AGE. Inverting logarithmically, a
-> FRESH ring-1 cell (0.62) reads as age 4 and a fresh ring-2 cell (0.20) as age
-> 14, spreading vouchers over huge Manhattan balls. A filter designed for this
-> model would treat the kernel as a spatial likelihood rather than an age.
-> So this table is an honest re-measurement of the CURRENT filter under both
-> models - it is not evidence that the book's physics is unusable in principle.
+> **Why the book model scored so much worse originally, and what changed
+> (M7-14).** The M3-8 probe separated two causes. **(1) Saturation** - the
+> registered model's own arithmetic: an ADDITIVE deposit with an upper clamp at
+> `center_intensity` pins a revisited neighbourhood flat at the ceiling (a
+> sample walk put 12 of 49 cells there by turn 4), so 'the freshest cell' stops
+> identifying the current position. Inherent; untouched. **(2) Ring/age
+> conflation - OUR machinery, fixed at M7-14.** The old voucher heuristic read
+> intensity as AGE (a fresh ring-1 cell inverted to 'age 4' and whispered over
+> a huge Manhattan ball). The filter now follows the M3-8 prescription for this
+> model: it shape-matches the observation INNOVATION - observed field minus the
+> decay-predicted previous field, which the model's own arithmetic makes (up to
+> clamping) exactly one fresh kernel at the current cell - and scores each
+> hypothesis `sum(min)/sum(max)` against the kernel template, so flat saturated
+> blobs read as mismatch, not youth (`domain/belief_observation.py`). The
+> reference-form voucher path is byte-identical to M3-3; its numbers stand.
 
 ## `subtractive_chebyshev_v1`
 
@@ -55,16 +55,16 @@
 
 | seed | steps | filter mean error | baseline mean error | filter hit-rate | baseline hit-rate |
 |---|---|---|---|---|---|
-| 1 | 35 | 0.8896 | 0.9714 | 0.286 | 0.029 |
-| 2 | 35 | 0.9190 | 1.0000 | 0.029 | 0.000 |
-| 3 | 35 | 0.8938 | 1.0000 | 0.200 | 0.000 |
-| 4 | 35 | 0.9057 | 0.9429 | 0.143 | 0.057 |
-| 5 | 35 | 0.9066 | 0.9143 | 0.143 | 0.086 |
-| 6 | 35 | 0.8989 | 0.9429 | 0.143 | 0.057 |
-| 7 | 35 | 0.8874 | 0.9429 | 0.171 | 0.057 |
-| 8 | 35 | 0.8955 | 0.9429 | 0.143 | 0.057 |
-| 9 | 35 | 0.9103 | 0.9429 | 0.114 | 0.057 |
-| 10 | 35 | 0.8944 | 0.8286 | 0.343 | 0.171 |
-| **mean** | | **0.9001** | **0.9429** | **0.171** | **0.057** |
+| 1 | 35 | 0.8969 | 0.9714 | 0.629 | 0.029 |
+| 2 | 35 | 0.9172 | 1.0000 | 0.429 | 0.000 |
+| 3 | 35 | 0.8993 | 1.0000 | 0.571 | 0.000 |
+| 4 | 35 | 0.9097 | 0.9429 | 0.600 | 0.057 |
+| 5 | 35 | 0.9148 | 0.9143 | 0.743 | 0.086 |
+| 6 | 35 | 0.8995 | 0.9429 | 0.571 | 0.057 |
+| 7 | 35 | 0.8996 | 0.9429 | 0.857 | 0.057 |
+| 8 | 35 | 0.8990 | 0.9429 | 0.457 | 0.057 |
+| 9 | 35 | 0.9161 | 0.9429 | 0.543 | 0.057 |
+| 10 | 35 | 0.9095 | 0.8286 | 0.686 | 0.171 |
+| **mean** | | **0.9062** | **0.9429** | **0.609** | **0.057** |
 
-**Verdict (`multiplicative_book_v1`):** filter mean error 0.9001 vs baseline 0.9429, winning the primary metric on 9/10 seeds; its argmax finds the true cell 17% of steps vs the baseline's 6%. CI enforces the SHIPPED model's claim in `tests/integration/test_belief_vs_baseline.py`.
+**Verdict (`multiplicative_book_v1`):** filter mean error 0.9062 vs baseline 0.9429, winning the primary metric on 8/10 seeds; its argmax finds the true cell 61% of steps vs the baseline's 6%. CI enforces the SHIPPED model's claim in `tests/integration/test_belief_vs_baseline.py`.

@@ -1,0 +1,86 @@
+{
+  "version": "1.00",
+  "role": "police",
+  "brain": "copthief_police.brain:PoliceBrain",
+  "opponent": "belief-evader",
+  "opponent_feed": "truth-lag1",
+  "scent_model": "multiplicative_book_v1",
+  "fitness_seeds": [
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    411,
+    412,
+    413,
+    414,
+    415,
+    416,
+    417,
+    418,
+    419,
+    420,
+    421,
+    422,
+    423,
+    424,
+    425,
+    426,
+    427,
+    428,
+    429,
+    430,
+    431,
+    432
+  ],
+  "default_fitness": 0.40625,
+  "evolved_fitness": 0.53125,
+  "evolved_options": {
+    "barrier_gain_threshold": 5.066698057042099,
+    "p_commit": 0.3230079059055142,
+    "w_budget": 0.0,
+    "w_distance": 4.678778807781908,
+    "w_mobility": 4.841830974563671,
+    "w_region": 0.5184398658126486
+  },
+  "history": [
+    {
+      "best": 0.5,
+      "mean": 0.44375
+    },
+    {
+      "best": 0.5,
+      "mean": 0.453125
+    },
+    {
+      "best": 0.5,
+      "mean": 0.475
+    },
+    {
+      "best": 0.53125,
+      "mean": 0.46875
+    },
+    {
+      "best": 0.53125,
+      "mean": 0.46875
+    },
+    {
+      "best": 0.53125,
+      "mean": 0.475
+    },
+    {
+      "best": 0.53125,
+      "mean": 0.48125
+    },
+    {
+      "best": 0.53125,
+      "mean": 0.496875
+    }
+  ]
+}

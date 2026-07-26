@@ -3,6 +3,27 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #75 — feat/m7-14-bookv1-arena (strategy under the counted physics)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** the strategy-session brief, deliverables 2–5 — a trap-aware
+  evader opponent model approximating the opponent team's announced rematch
+  counters, a seeded measurement of the champion cop's edge against it under
+  book-v1, a GA retune under the counted physics through the champion-regression
+  gate, and the belief filter's age-voucher weakness revisited.
+- **What landed (12 TDD red→green cycles):** the scent-model doors through the
+  whole referee/arena/GA path (one registry→model builder shared with the peer
+  session), per-side information feeds incl. `LagTruthFeed` (the claim-reading
+  counter as lag-1 truth), `BeliefEvaderBrain` with config-expressed ablation arms,
+  the kernel-innovation belief observation (book-v1 argmax 17% → 61%, reference
+  path byte-identical), two committed measurement arenas + the book-v1 GA config,
+  and the three-cop champion comparison under both physics. Both weight vectors
+  committed, nothing deployed — game.toml untouched.
+- **Honesty notes:** the first arena tables were generated before the belief fix
+  and regenerated after (both states in history, the doc quotes the final ones);
+  raw-shape matching was tried, measured worse than the voucher baseline, and
+  replaced by the innovation — the dead end is disclosed in the evidence doc; the
+  GA's lag-1 specialization cost against naive evaders is stated, not smoothed.
 ## PR #74 — docs/m7-13-capture-postmortem (how the g02/g06 cops actually won)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
