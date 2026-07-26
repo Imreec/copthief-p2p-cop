@@ -3,6 +3,14 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #72 — m7-12-terms-absent-refusal (name the absence, not just the disagreement)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **Why:** during the 2026-07-25 friendly campaign, window T3 refused every handshake with
+  `terms mismatch` when the truth was `terms ABSENT` — the opponent's bookletter greeting
+  under a reference wire. The diagnosis took reading the raw inbound log; the refusal
+  should have named it. One RED→GREEN cycle; both diagnoses pinned.
+
 ## PR #71 — m7-11-series-endpoints (dial the opponent service that plays THIS sub-game)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
