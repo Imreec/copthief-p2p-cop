@@ -4,19 +4,21 @@
 > (deterministic; regenerate, never hand-edit). Per-role rosters over the
 > seeded start-scenario suite; games run headless through the sdk scenario
 > series.
-> Police roster: ref-police, police-brain, police-brain-bookv1. Thief roster: ref-thief, evader-nofix, evader-fix, evader-lag1.
+> Police roster: ref-police, police-brain, police-brain-lag1spec, police-brain-bookv1. Thief roster: random, ref-thief, evader-nofix, evader-fix, evader-lag1.
 > Seeds: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 (scenario #1 = signed starts).
 > Scent model: subtractive_chebyshev_v1 (shipped default).
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-brain | police | 128 | 119 | 2425 |
-| police-brain-bookv1 | police | 128 | 98 | 2110 |
-| ref-police | police | 128 | 57 | 1495 |
-| evader-lag1 | thief | 96 | 34 | 650 |
-| ref-thief | thief | 96 | 27 | 615 |
-| evader-fix | thief | 96 | 25 | 605 |
-| evader-nofix | thief | 96 | 24 | 600 |
+| police-brain-bookv1 | police | 160 | 152 | 3080 |
+| police-brain | police | 160 | 150 | 3050 |
+| police-brain-lag1spec | police | 160 | 127 | 2705 |
+| ref-police | police | 160 | 85 | 2075 |
+| evader-lag1 | thief | 128 | 39 | 835 |
+| ref-thief | thief | 128 | 30 | 790 |
+| evader-fix | thief | 128 | 25 | 765 |
+| evader-nofix | thief | 128 | 24 | 760 |
+| random | thief | 128 | 8 | 680 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
 
@@ -26,15 +28,23 @@ Per-pairing outcomes:
 
 | police brain | thief brain | captures | survivals |
 |---|---|---|---|
+| ref-police | random | 28 | 4 |
 | ref-police | ref-thief | 10 | 22 |
 | ref-police | evader-nofix | 21 | 11 |
 | ref-police | evader-fix | 20 | 12 |
 | ref-police | evader-lag1 | 6 | 26 |
+| police-brain | random | 31 | 1 |
 | police-brain | ref-thief | 30 | 2 |
 | police-brain | evader-nofix | 31 | 1 |
 | police-brain | evader-fix | 31 | 1 |
 | police-brain | evader-lag1 | 27 | 5 |
+| police-brain-lag1spec | random | 29 | 3 |
+| police-brain-lag1spec | ref-thief | 29 | 3 |
+| police-brain-lag1spec | evader-nofix | 20 | 12 |
+| police-brain-lag1spec | evader-fix | 20 | 12 |
+| police-brain-lag1spec | evader-lag1 | 29 | 3 |
+| police-brain-bookv1 | random | 32 | 0 |
 | police-brain-bookv1 | ref-thief | 29 | 3 |
-| police-brain-bookv1 | evader-nofix | 20 | 12 |
-| police-brain-bookv1 | evader-fix | 20 | 12 |
-| police-brain-bookv1 | evader-lag1 | 29 | 3 |
+| police-brain-bookv1 | evader-nofix | 32 | 0 |
+| police-brain-bookv1 | evader-fix | 32 | 0 |
+| police-brain-bookv1 | evader-lag1 | 27 | 5 |
