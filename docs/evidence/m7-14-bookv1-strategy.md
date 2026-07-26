@@ -159,6 +159,32 @@ actual implementation will differ — the arms bracket the plausible range
   unpriced risk the moment his cop learns to convert beacons) needs these same doors
   and rides the core sync after this branch merges; it is not started here.
 
+## 7. Peer-path validation (the live loop, not just the referee)
+
+Everything above is referee-mode. Because the belief fix is live on the peer path
+(`peer/session` hands the selected model to the filter), two full local mini-games
+were played through the REAL peer loop — both sides in-process, handshake, commits,
+mutual audit, replay — from a scratchpad config copy flipped to
+`multiplicative_book_v1` (committed `config/` untouched, resting `[email]` at rest,
+dev mode owes no report):
+
+- **Deployed (reference-tuned) vector:** `cop_capture` in 13 steps, both audits OK,
+  replay **Verified OK, 27 records**.
+- **Same seeds, retuned vector:** `thief_survival` 35 — the cop spent five barriers
+  then chose STAY for the rest of the game. **A passivity mode exists** in the
+  evolved vector against a diffuse (random-walk) belief from the canonical corner
+  start. Quantified immediately over 16 varied scenario starts vs `random` under
+  book-v1: old 11/16 captures, new 10/16 — statistically equal, so the stall is a
+  one-seed mode, not dominant behavior; both audits and replays were clean in both
+  runs (**the new observation model changes nothing on the wire**). Recorded here
+  because the deployment review should know the mode exists; the mixed-opponent
+  fitness follow-up is the structural fix.
+
+Not run: a full six-sub-game `copthief series` under book-v1 — the series driver
+itself is proven (M7-3 live, M7-11 rig) and adds no new coverage of the
+belief/physics path beyond the per-game peer loop exercised above; the counted
+rehearsal remains the place that composition is re-proven end-to-end.
+
 ## Reproduction
 
 ```
