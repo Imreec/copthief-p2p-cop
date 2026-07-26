@@ -22,7 +22,7 @@ from copthief_core.shared.run_mode import RunMode
 CONFIG = Path("config")
 OPPONENT = "anrbj666"
 FRIENDLY = ("us@example.test", "them@example.test")
-# M7-13: derived the same way the driver derives it (sorted pair, kit SPEC §4) — the
+# M7-16: derived the same way the driver derives it (sorted pair, kit SPEC §4) — the
 # harness must never re-encode a naming convention the code has moved past.
 GAME_ID = series_game_id(SimulationSdk(CONFIG).private.group_id, OPPONENT)
 
