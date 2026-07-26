@@ -14,7 +14,7 @@ from copthief_core.shared.config import load_all
 from copthief_core.shared.locked_models import build_scent_model
 from copthief_core.strategy.referee_setup import referee_belief, referee_trail
 
-CONSTITUTION, PRIVATE, _ = load_all(Path("config"))
+CONSTITUTION, PRIVATE, _ = load_all(Path("config"), counted=False)
 BOOK = build_scent_model(
     PRIVATE.locked_models, "multiplicative_book_v1", CONSTITUTION.pheromones
 )
