@@ -55,6 +55,9 @@ class ArenaConfig:
     evidence_out: str
     # M7-14: named scent model for the WHOLE run (None = the shipped reference form).
     scent_model: str | None = None
+    # The champion-gate pin this config is judged against; explicit null opts a
+    # measurement config out of the gate (the shipped default keeps CI blocking).
+    champion_pin: str | None = "config/arena_champion.json"
 
     def options_for(self, name: str) -> dict[str, float]:
         """The per-brain options block for `name` (empty when none is configured)."""
@@ -105,6 +108,11 @@ def load_arena_config(path: Path) -> ArenaConfig:
             dod_series=tuple(_dod(d) for d in raw.get("dod_series", [])),
             evidence_out=str(raw["evidence_out"]),
             scent_model=(None if raw.get("scent_model") is None else str(raw["scent_model"])),
+            champion_pin=(
+                (None if raw["champion_pin"] is None else str(raw["champion_pin"]))
+                if "champion_pin" in raw
+                else "config/arena_champion.json"
+            ),
         )
     except (KeyError, TypeError, ValueError) as error:
         raise ConfigError(f"{path.name}: malformed arena config — {error}") from error
