@@ -87,3 +87,17 @@ def test_lag_truth_feed_builds_on_the_current_board() -> None:
     assert belief.probs() == {(2, 3): 1.0}
     belief.predict()
     assert (3, 4) not in belief.probs()
+
+
+def test_make_feed_resolves_the_config_names() -> None:
+    """Roster entries name their feed in config; the factory is the one resolver."""
+    import pytest
+
+    from copthief_core.strategy.info_feed import LagTruthFeed, make_feed
+
+    assert isinstance(make_feed("hidden", CONSTITUTION, smell_trust=TRUST), ScentFeed)
+    assert isinstance(make_feed("truth", CONSTITUTION, smell_trust=TRUST), TruthFeed)
+    lagged = make_feed("truth-lag1", CONSTITUTION, smell_trust=TRUST)
+    assert isinstance(lagged, LagTruthFeed)
+    with pytest.raises(ValueError, match="unknown feed"):
+        make_feed("psychic", CONSTITUTION, smell_trust=TRUST)
