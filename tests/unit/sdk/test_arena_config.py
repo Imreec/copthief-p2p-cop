@@ -74,3 +74,15 @@ def test_scent_model_and_roster_feeds_parse_with_safe_defaults(tmp_path: Path) -
     assert config.thief_roster[1].feed == "truth-lag1"
     shipped = load_arena_config(Path("config") / "arena.json")
     assert shipped.scent_model is None
+
+
+def test_champion_pin_defaults_to_the_shipped_gate_and_can_opt_out(tmp_path: Path) -> None:
+    """Measurement configs (M7-14) skip the champion gate by pinning null; the
+    shipped arena.json keeps the CI gate without naming it."""
+    shipped = load_arena_config(Path("config") / "arena.json")
+    assert shipped.champion_pin == "config/arena_champion.json"
+    raw = json.loads((Path("config") / "arena.json").read_text(encoding="utf-8"))
+    raw["champion_pin"] = None
+    path = tmp_path / "arena.json"
+    path.write_text(json.dumps(raw), encoding="utf-8")
+    assert load_arena_config(path).champion_pin is None
