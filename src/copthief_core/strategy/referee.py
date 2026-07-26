@@ -16,6 +16,7 @@ from dataclasses import dataclass
 from copthief_core.domain.board import Coord
 from copthief_core.domain.gazetteer import Gazetteer
 from copthief_core.domain.rules import Outcome, check_end
+from copthief_core.domain.scent_models import ScentModel
 from copthief_core.shared.config_model import Constitution
 from copthief_core.strategy.brains import BrainBase
 from copthief_core.strategy.info_feed import BeliefFeed, ScentFeed
@@ -48,10 +49,15 @@ def play_referee_game(
     hint_trust: float = 0.0,
     verbal_trace: list[HintTraceRow] | None = None,
     belief_feed: BeliefFeed | None = None,
+    thief_belief_feed: BeliefFeed | None = None,
+    scent_model: ScentModel | None = None,
 ) -> RefereeGameResult:
     """One full-information-resolved, belief-driven mini-game (Input: constitution +
     two brains + trust + the bookkeeping seed + optional scenario starts; Output: the
-    observed ending)."""
+    observed ending). `scent_model` switches the WHOLE world's physics (both trails +
+    both observation models, M7-14); `thief_belief_feed` lets the thief's information
+    structure differ from the cop's (defaults to `belief_feed` — the balance study's
+    symmetric shape unchanged)."""
     board = constitution.board.make_board()
     threshold = constitution.movement.survival_threshold
     max_moves = constitution.movement.max_moves
@@ -59,11 +65,19 @@ def play_referee_game(
     cop = constitution.board.cop_start if cop_start is None else cop_start
     thief = constitution.board.thief_start if thief_start is None else thief_start
     police_belief = referee_belief(
-        constitution, start=thief, smell_trust=smell_trust, hint_trust=hint_trust
+        constitution,
+        start=thief,
+        smell_trust=smell_trust,
+        hint_trust=hint_trust,
+        scent_model=scent_model,
     )
-    thief_belief = referee_belief(constitution, start=cop, smell_trust=smell_trust)
-    thief_trail, cop_trail = referee_trail(constitution), referee_trail(constitution)
+    thief_belief = referee_belief(
+        constitution, start=cop, smell_trust=smell_trust, scent_model=scent_model
+    )
+    thief_trail = referee_trail(constitution, model=scent_model)
+    cop_trail = referee_trail(constitution, model=scent_model)
     feed = ScentFeed() if belief_feed is None else belief_feed  # wire-shape seam
+    thief_feed = feed if thief_belief_feed is None else thief_belief_feed
 
     def result(outcome: Outcome, steps: int) -> RefereeGameResult:
         return RefereeGameResult(
@@ -119,7 +133,7 @@ def play_referee_game(
         else:
             cop = board.apply_move(cop, decision.move)
         cop_trail.advance(cop, intensity)
-        thief_belief = feed.observe(thief_belief, trail=cop_trail, truth=cop, board=board)
+        thief_belief = thief_feed.observe(thief_belief, trail=cop_trail, truth=cop, board=board)
         outcome = check_end(
             board,
             cop_pos=cop,
