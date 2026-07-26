@@ -10,12 +10,12 @@
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-brain | police | 128 | 28 | 1060 |
-| ref-police | police | 128 | 22 | 970 |
-| ref-thief | thief | 64 | 55 | 595 |
-| evader-nofix | thief | 64 | 54 | 590 |
-| evader-lag1 | thief | 64 | 53 | 585 |
-| evader-fix | thief | 64 | 44 | 540 |
+| ref-police | police | 128 | 63 | 1585 |
+| police-brain | police | 128 | 27 | 1045 |
+| evader-lag1 | thief | 64 | 48 | 560 |
+| ref-thief | thief | 64 | 42 | 530 |
+| evader-nofix | thief | 64 | 41 | 525 |
+| evader-fix | thief | 64 | 35 | 495 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
 
@@ -25,11 +25,11 @@ Per-pairing outcomes:
 
 | police brain | thief brain | captures | survivals |
 |---|---|---|---|
-| ref-police | ref-thief | 3 | 29 |
-| ref-police | evader-nofix | 3 | 29 |
-| ref-police | evader-fix | 8 | 24 |
-| ref-police | evader-lag1 | 8 | 24 |
-| police-brain | ref-thief | 6 | 26 |
-| police-brain | evader-nofix | 7 | 25 |
-| police-brain | evader-fix | 12 | 20 |
-| police-brain | evader-lag1 | 3 | 29 |
+| ref-police | ref-thief | 18 | 14 |
+| ref-police | evader-nofix | 19 | 13 |
+| ref-police | evader-fix | 21 | 11 |
+| ref-police | evader-lag1 | 5 | 27 |
+| police-brain | ref-thief | 4 | 28 |
+| police-brain | evader-nofix | 4 | 28 |
+| police-brain | evader-fix | 8 | 24 |
+| police-brain | evader-lag1 | 11 | 21 |
