@@ -89,10 +89,14 @@ class SimulationSdk:
         police_options: Mapping[str, float] | None = None,
         thief_options: Mapping[str, float] | None = None,
         belief_feed: BeliefFeed | None = None,
+        thief_feed: str | None = None,
+        scent_model: str | None = None,
     ) -> list[RefereeGameResult]:
         """Referee-mode series over a start-scenario suite (M5-2) — the arena's and
         the DoD floors' game source; options carry per-brain config knobs, and
-        `belief_feed` selects the wire-shape information structure (default hidden)."""
+        `belief_feed` selects the wire-shape information structure (default hidden).
+        M7-14: `scent_model` names the run's physics (resolved against the committed
+        registry); `thief_feed` names the thief side's information structure."""
         return play_scenario_series(
             self.constitution,
             police_brain_name=police,
@@ -102,6 +106,9 @@ class SimulationSdk:
             police_options=police_options,
             thief_options=thief_options,
             belief_feed=belief_feed,
+            thief_feed_name=thief_feed,
+            scent_model_name=scent_model,
+            locked_models=self.private.locked_models,
         )
 
     def run_peer(
