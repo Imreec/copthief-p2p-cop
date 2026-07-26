@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #74 — docs/m7-13-capture-postmortem (how the g02/g06 cops actually won)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** the strategy-session brief — a capture postmortem of the friendly's
+  two cop wins as the first counted-series-prep deliverable, with the opponent known to
+  be running the same analysis on his side.
+- **What landed:** `docs/evidence/m7-13-capture-postmortem.md` — full per-step
+  reconstruction of g02/g04/g06 from the committed logs (their thief's audited moves,
+  our audit positions, claim/response cross-checks), the mechanism findings (beacon
+  camping, pursuit-lane collision, the g04 clock-saved contrast), and the two
+  intelligence items that redirect the arena work: the evader counter-model needs
+  cop-tracking and claim-reading before wall-forecasting, and our claim-per-step habit
+  is a free position feed we may want to stop volunteering. Analysis only — no source
+  changed; the reconstruction script is quoted in the doc, uncommitted by the M6
+  evidence precedent.
+
 ## PR #73 — docs/m7-3-friendly-evidence (the first external friendly, on the record)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
