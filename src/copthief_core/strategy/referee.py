@@ -17,8 +17,9 @@ from copthief_core.domain.board import Coord
 from copthief_core.domain.gazetteer import Gazetteer
 from copthief_core.domain.rules import Outcome, check_end
 from copthief_core.shared.config_model import Constitution
-from copthief_core.strategy.brains import BrainBase, Observation
+from copthief_core.strategy.brains import BrainBase
 from copthief_core.strategy.info_feed import BeliefFeed, ScentFeed
+from copthief_core.strategy.referee_obs import police_observation, thief_observation
 from copthief_core.strategy.referee_setup import referee_belief, referee_trail
 from copthief_core.strategy.verbal import HintTraceRow, apply_thief_hint
 
@@ -52,10 +53,8 @@ def play_referee_game(
     two brains + trust + the bookkeeping seed + optional scenario starts; Output: the
     observed ending)."""
     board = constitution.board.make_board()
-    move_set = constitution.movement.move_set
     threshold = constitution.movement.survival_threshold
     max_moves = constitution.movement.max_moves
-    max_barriers = constitution.movement.max_barriers
     intensity = constitution.pheromones.center_intensity
     cop = constitution.board.cop_start if cop_start is None else cop_start
     thief = constitution.board.thief_start if thief_start is None else thief_start
@@ -73,17 +72,13 @@ def play_referee_game(
 
     for step in range(1, min(threshold, max_moves) + 1):
         thief_decision = thief_brain.decide(
-            Observation(
+            thief_observation(
+                constitution,
                 board=board,
                 position=thief,
-                move_set=move_set,
-                role="thief",
                 step=step,
-                survival_threshold=threshold,
-                max_moves=max_moves,
+                trail=thief_trail,
                 gazetteer=gazetteer,
-                own_smell=thief_trail.snapshot(),
-                pheromones=constitution.pheromones,
             ),
             thief_belief,
         )
@@ -112,18 +107,8 @@ def play_referee_game(
         if outcome is not None:
             return result(outcome, step)
         decision = police_brain.decide(
-            Observation(
-                board=board,
-                position=cop,
-                move_set=move_set,
-                role="police",
-                step=step,
-                barriers_used=len(board.barriers),
-                max_barriers=max_barriers,
-                survival_threshold=threshold,
-                max_moves=max_moves,
-                own_smell=cop_trail.snapshot(),
-                pheromones=constitution.pheromones,
+            police_observation(
+                constitution, board=board, position=cop, step=step, trail=cop_trail
             ),
             police_belief,
         )
