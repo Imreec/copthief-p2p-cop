@@ -3,6 +3,16 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #73 — docs/m7-3-friendly-evidence (the first external friendly, on the record)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What landed:** the M7-3 evidence — six committed logs (all replay Verified OK), the
+  20-file artifact set under `reports/imreeyal/`, the evidence doc with the result
+  (75–35), the cross-team report diff (every game value agrees; their minted `game_uid`
+  vs the wire-locked one raised as the rule-35-relevant finding), and the seven-window
+  campaign ledger with the hardening each burn produced. TODO M7-3 ticked on observed
+  DoD. Nothing in the doc exceeds what the tree and the logs prove.
+
 ## PR #71 — m7-11-series-endpoints (dial the opponent service that plays THIS sub-game)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
