@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #76 — feat/m7-15-mixed-ga (the generalist retune + per-model deployment)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** his direct challenge on the M7-14 follow-ups — "why are we
+  leaving them open, whose responsibility is it?" Answer: ours; closed here.
+- **What landed (2 TDD cycles):** the mixed-opponent GA pool (fitness = mean across
+  members, pinned against the single runs it is built from) and the
+  `[strategy.<role>.<scent_model>]` overlay mechanism, plus the rerun retune, the
+  four-cop/five-thief gate tables in both physics, and the deployment itself — the
+  pool vector on the book-v1 overlay, base table untouched (the merge is the
+  deployment approval; the base-swap alternative is stated in the PR).
+- **Honesty notes:** the pool vector loses the book-v1 aggregate to the plain
+  chaser (which still collapses vs claim-reading, 5/32 — the aggregate is not the
+  expected opponent distribution); the lag-1 specialist's single-arm superiority is
+  stated, not smoothed; the peer-path validation's single-seed survival flip is
+  disclosed next to the 32-seed tables that carry the claim.
+
 ## PR #75 — feat/m7-14-bookv1-arena (strategy under the counted physics)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).

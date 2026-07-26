@@ -40,6 +40,18 @@ w_distance = 3.8875
 w_mobility = 3.6061
 w_region = 0.1143
 
+[strategy.police.multiplicative_book_v1]
+# M7-15 per-model overlay: applies ONLY when [scent] model selects this name
+# (tuned vectors are physics-specific - the M7-14/15 gate comparisons). This is
+# the mixed-pool book-v1 vector (config/ga_weights_bookv1.json): beats the old
+# champion in BOTH physics tables, balanced across all five thief arms.
+barrier_gain_threshold = 4.692992169904358
+p_commit = 0.5526774858901863
+w_budget = 1.829321347518278
+w_distance = 6.0
+w_mobility = 3.707966311991116
+w_region = 0.03057885641327504
+
 [scent]
 # Which NAMED scent model we play (M3-8, ADR-0004 v2; registrations in
 # config/locked_models.json, kit SPEC s7). Private until the handshake, which declares

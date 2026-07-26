@@ -1,10 +1,16 @@
 {
   "version": "1.00",
-  "_comment": "M7-14 counted-series retune: evolve the police brain UNDER THE PAIR-LOCKED PHYSICS (multiplicative_book_v1) against the hardest measured counter (belief-evader reading lag-1 cop truth - the claim-reading model, 3/32 captures for the reference-tuned champion in the m7-14 book-v1 arena). Fitness seeds 401..432 are disjoint from the DoD seeds (1..32), the reference-GA seeds (201..216) and the arena measurement itself. Weights land in ga_weights_bookv1.json and deploy ONLY via config review - never to the sparring host, never automatically.",
+  "_comment": "M7-15 counted-series retune: evolve the police brain UNDER THE PAIR-LOCKED PHYSICS (multiplicative_book_v1) against a POOL of the four measured worlds - the claim-reading evader (his cheapest counter), his announced fix, the reference heuristic, and a random walker (the M7-14 single-opponent retune overfit to the claim-reader and stalled against randomness; the pool is the structural fix). Fitness = mean capture rate across the pool, seeds 401..416, disjoint from the DoD seeds (1..32), the reference-GA seeds (201..216) and the arena measurement (1..32). Weights land in ga_weights_bookv1.json and deploy ONLY via config review - never to the sparring host, never automatically.",
   "role": "police",
   "brain": "copthief_police.brain:PoliceBrain",
   "opponent": "belief-evader",
   "opponent_feed": "truth-lag1",
+  "opponent_pool": [
+    {"spec": "belief-evader", "feed": "truth-lag1"},
+    {"spec": "belief-evader"},
+    {"spec": "ref-thief"},
+    {"spec": "random"}
+  ],
   "scent_model": "multiplicative_book_v1",
   "genes": {
     "w_distance": [0.5, 6.0],
@@ -24,8 +30,7 @@
     "mutation_sigma": 0.15,
     "mutation_rate": 0.35,
     "fitness_seeds": [
-      401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416,
-      417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432
+      401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416
     ],
     "scenario_min_separation": 4
   },
