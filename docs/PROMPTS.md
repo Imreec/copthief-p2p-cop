@@ -48,7 +48,7 @@
   (collapse-vs-trust-weight, whether the adaptive policy is built at all, deployment
   posture) rather than taken silently.
 
-## PR #79 — docs-uid-wording (the opponent's correction, honored in our evidence)
+## PR #80 — docs-uid-wording (the opponent's correction, honored in our evidence)
 
 - **Driver:** Imree · **Author:** Claude (terminal, in a worktree — the claim-policy
   session held the main checkout) · **Reviewer:** pending (AG).
