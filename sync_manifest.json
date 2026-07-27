@@ -14,7 +14,7 @@
     "scripts/check_file_sizes.py": "abb028552d232724e76437625cdd01b401071d0291d62d4421288ca81fb941f2",
     "scripts/check_no_hardcoded.py": "921cd11e5f6f56ce2883a0feeebbfc77cf9a55c70563fbf5d34c7041608102f2",
     "scripts/check_submission.py": "c6499a3591e79abf79a7a1aac483fd16609cfa2b3447300cdc8821e895b6c3ef",
-    "scripts/claim_probe.py": "8ea9a12526de0b3e2d75fe3c420798f577f27a3d9e767972e9c54fe5db0813c5",
+    "scripts/claim_probe.py": "11977955896285db879d4ca9dd916656fcacbf7a9f46d50c40908dd480d9af34",
     "scripts/deception_ab.py": "06087ef032df61ca8f5981e037b6e6a85f7803d561aa8ab371ad367db9b2c302",
     "scripts/ga_run.py": "ee80b9452d47181477299ac65c48c0609d0d54a5923a68fc6f10552a9ea51bf3",
     "scripts/gmail_auth.py": "7ce3a74688983dfaaf824a4c80445fb7095b2e9fa440b181e364744476ee3e45",
@@ -285,7 +285,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "a0c73ef",
+  "source_commit": "0c6c2d5",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "7e1e7ea57b1ffd1506e6558138d044daf1fd29142f57f892b1c996c43fa77afb"
+  "tree_hash": "7bd4eda9ae44e99b9fc22d6004c3db4dfe4ed2a2fe6562c5082484cb2f5a48d9"
 }

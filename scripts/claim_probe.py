@@ -165,7 +165,9 @@ def main() -> int:
     )
     text = render(totals, config_dir=args.config, model=model, games=args.games)
     if args.out is not None:
-        args.out.write_text(text, encoding="utf-8")
+        # LF explicitly: a CRLF artifact hashes differently from git's stored bytes and
+        # silently reddens the mirror check (ops gotcha #7b).
+        args.out.write_text(text, encoding="utf-8", newline="\n")
         print(f"wrote {args.out}")
     print(f"exact-tracking {totals.exact}/{totals.decisions} = {totals.exact_rate:.3f}")
     return 0
