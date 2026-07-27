@@ -94,6 +94,16 @@ def test_police_claim_threshold_parses_and_defaults_to_unmodelled(tmp_path: Path
     assert config.police_roster[2].claim_threshold == 0.0  # modelled, and always claims
     assert config.claim_threshold_for("quiet-cop") == 0.25
     assert config.claim_threshold_for("ref-police") is None
+    # The claim feed is PER THIEF ENTRY: the sweep's whole point is a mixture where some
+    # opponents read our claims and others ignore them.
+    raw["thief_roster"] = [
+        "ref-thief",
+        {"name": "claim-reader", "spec": "belief-evader", "claim_feed": "truth"},
+    ]
+    path.write_text(json.dumps(raw), encoding="utf-8")
+    mixed = load_arena_config(path)
+    assert mixed.thief_roster[0].claim_feed is None
+    assert mixed.thief_roster[1].claim_feed == "truth"
     shipped = load_arena_config(Path("config") / "arena.json")
     assert all(entry.claim_threshold is None for entry in shipped.police_roster)
 

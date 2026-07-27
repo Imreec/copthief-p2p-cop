@@ -3,6 +3,27 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #80 — m7-19-quiet-cop (the other half of the channel)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** build half 2 on the approved PRD — model the claim channel inside the
+  referee, then sweep a threshold on series points across an opponent mixture.
+- **Outcome:** three RED→GREEN cycles, then the sweep. The result that mattered came from
+  refusing to accept a suspicious table: three of the four opponent columns were IDENTICAL
+  at every threshold, including a cop that never declares at all. That looked like the
+  gate not reaching the arena path. Two probes settled it — a barrier-free chaser goes
+  32/32 → 0/32 when silenced (so the gate works), and our deployed vector's captures are
+  loud-equals-silent against every non-reading opponent (so it has NO landing captures to
+  forfeit). Our cop wins by walling, which the book never lets a cop withhold, so the claim
+  channel is pure downside for it.
+- **Discipline note:** the contrast case is COMMITTED in the instrument rather than written
+  up as a caveat — a plain chasing cop is destroyed by the same silence, which is what
+  proves the comfortable result belongs to our weight vector and not to the game. The g06
+  capture (which any positive threshold forfeits) is a passing regression test rather than
+  a disclosed limitation. Nothing is deployed: merging changes no play.
+- **Recommendation offered on Imree's open decision 2:** do not build the in-series adaptive
+  policy — a dominant static threshold leaves it nothing to discover.
+
 ## PR #79 — m7-18-evader-reads-claims (the discarded certainty, collected)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).

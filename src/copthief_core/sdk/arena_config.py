@@ -27,12 +27,18 @@ class RosterEntry:
     this cop and sets the belief confidence at which it declares. None leaves claims
     UNMODELLED — the historical physics every committed table was measured under. 0.0 is
     the faithful model of today's emitter: declare on every moving turn.
+
+    `claim_feed` (M7-19, thief entries) is what THIS opponent learns on turns the cop did
+    declare. Per entry, not per run, because the point of the sweep is a MIXTURE: a
+    threshold tuned only against opponents who all read claims would donate points
+    against the ones who do not.
     """
 
     name: str
     spec: str
     feed: str | None = None
     claim_threshold: float | None = None
+    claim_feed: str | None = None
 
 
 @dataclass(frozen=True)
@@ -59,9 +65,6 @@ class ArenaConfig:
     brain_options: dict[str, dict[str, float]]
     dod_series: tuple[DodSeries, ...]
     evidence_out: str
-    # M7-19: what the thief learns on turns the cop DID declare (an info_feed name);
-    # None keeps the thief on its ordinary channel even when claims are modelled.
-    thief_claim_feed: str | None = None
     # M7-14: named scent model for the WHOLE run (None = the shipped reference form).
     scent_model: str | None = None
     # The champion-gate pin this config is judged against; explicit null opts a
@@ -97,6 +100,7 @@ def _entry(raw: str | dict[str, Any]) -> RosterEntry:
         spec=str(raw["spec"]),
         feed=None if feed is None else str(feed),
         claim_threshold=None if threshold is None else float(threshold),
+        claim_feed=None if raw.get("claim_feed") is None else str(raw["claim_feed"]),
     )
 
 
@@ -126,9 +130,6 @@ def load_arena_config(path: Path) -> ArenaConfig:
                 for name, opts in raw.get("brain_options", {}).items()
             },
             dod_series=tuple(_dod(d) for d in raw.get("dod_series", [])),
-            thief_claim_feed=(
-                None if raw.get("thief_claim_feed") is None else str(raw["thief_claim_feed"])
-            ),
             evidence_out=str(raw["evidence_out"]),
             scent_model=(None if raw.get("scent_model") is None else str(raw["scent_model"])),
             champion_pin=(
