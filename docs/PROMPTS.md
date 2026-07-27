@@ -3,6 +3,26 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #83 — docs/m7-20-clarify-not-a-physics-argument (a wrong inference, caught by Imree)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** in conversation I extrapolated M7-20's `ref-police` finding into "the
+  biggest lever is renegotiating the scent model away from `multiplicative_book_v1`". Imree
+  asked the obvious question — that is the model we played him under, why replace it? — and
+  the inference does not survive it. We **won** that friendly 75–35 under book-v1, both cop
+  captures in cross-team history happened under it, and (verified from git) the cop was then
+  running the reference-tuned BASE table because the book-v1 overlay did not exist until
+  `5d9a2ff`, after the friendly. The cross-physics gap is also confounded by tuning
+  maturity: our reference vector has had far more GA investment than the book-v1 overlay's
+  two attempts.
+- **Outcome:** the wrong framing had **never been committed** — the M7-20 evidence, TODO and
+  PR #82 all state only the narrow tuning reading. This PR hardens that doc against the
+  misreading anyway: an explicit "this is a statement about our TUNING, not an argument
+  against the physics", and the tuning-maturity confound added to *What is NOT claimed*.
+- **Lesson worth keeping:** a measurement that a heuristic beats our tuned brain supports
+  "our tuning is weak", not "the rules are wrong". Two readings, very different actions; I
+  took the expensive one first.
+
 ## PR #82 — m7-20-ga-under-the-claim-policy (a null result, reported as one)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
