@@ -1,0 +1,103 @@
+{
+  "version": "1.00",
+  "_comment": "M7-20 champion gate under the COUNTED physics, played the way we would actually play it: both cops carry the DEPLOYED claim_threshold 0.1, and the claim-reading thief arm is modelled correctly (base-hidden + claim_feed truth = lag 0, only on turns we declared). Held-out seeds 1..32, disjoint from the GA's 401..432. champion_pin null: a measurement, the CI gate is arena_champion.json. ref-police carries claim_threshold 0.0 - the reference's OWN faithful policy (declare on every moving turn) - so no cop in the table gets the historical 'every same-cell ending resolves' physics for free. Its column is CONTEXT, not a ranking: it plays a different claim policy from our two candidates by construction.",
+  "police_roster": [
+    {
+      "name": "ref-police",
+      "spec": "ref-police",
+      "claim_threshold": 0.0
+    },
+    {
+      "name": "cop-champion",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "claim_threshold": 0.1
+    },
+    {
+      "name": "cop-m7-20",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "claim_threshold": 0.1
+    }
+  ],
+  "thief_roster": [
+    "random",
+    "ref-thief",
+    {
+      "name": "evader-blind",
+      "spec": "belief-evader"
+    },
+    {
+      "name": "evader-claim",
+      "spec": "belief-evader",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "camper",
+      "spec": "belief-evader"
+    }
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "ref-police": {
+      "ref_police_barrier_chance": 0.15
+    },
+    "cop-champion": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "cop-m7-20": {
+      "barrier_gain_threshold": 4.815796213426601,
+      "p_commit": 0.7261425177577971,
+      "w_budget": 0.0,
+      "w_distance": 1.7542280034544457,
+      "w_mobility": 0.7993673554039391,
+      "w_region": 0.9300254102722967
+    },
+    "camper": {
+      "stay_penalty": 0.0,
+      "w_mobility": 0.0,
+      "w_region": 0.0
+    }
+  },
+  "evidence_out": "docs/evidence/m7-20-gate-bookv1.md",
+  "scent_model": "multiplicative_book_v1"
+}
