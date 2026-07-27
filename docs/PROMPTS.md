@@ -3,6 +3,19 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #84 — worktree-m7-22-uid-declare (say your uid at the door)
+
+- **Driver:** Imree ("do you want to do it now?" — yes) · **Author:** Claude (terminal,
+  in a worktree; the strategy sessions owned the main checkout this weekend) ·
+  **Reviewer:** pending (AG).
+- **Why:** the opponent team's uid bug survived an entire six-sub-game series because
+  the uid never crosses the wire — each side derives it independently and nothing
+  compares them until the two reports meet, the morning after. The M7-10 pattern
+  closes it at the handshake: declare the derived uid when the opponent is known a
+  priori, refuse a comparable mismatch with the diagnosis in the message, omission
+  never refuses. Milestone claimed as M7-22 in memory BEFORE building — the rule the
+  M7-17 double-renumber bought.
+
 ## PR #83 — docs/m7-20-clarify-not-a-physics-argument (a wrong inference, caught by Imree)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
@@ -49,7 +62,7 @@
   M7-14 evidence pointed readers at the wrong file. Fixed and regenerated; the regeneration
   doubled as proof that the new GA knobs are inert on old configs (same md5, same curve).
 
-## PR #80 — m7-19-quiet-cop (the other half of the channel)
+## PR #81 — m7-19-quiet-cop (the other half of the channel; heading corrected — #80 was the parallel session's docs PR)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
 - **What was asked:** build half 2 on the approved PRD — model the claim channel inside the
