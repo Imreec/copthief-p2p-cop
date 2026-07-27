@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #85 — adr-0010-wire-shape (the joint ADR, finally in the tree)
+
+- **Driver:** Imree ("ok sure, but maybe just make sure before that what's in there is
+  actually what we and Alon ended up doing?") · **Author:** Claude (terminal, worktree)
+  · **Reviewer:** pending (AG).
+- **What happened:** the wire-shape joint ADR — final text since 2026-07-22, staged in
+  notes, displaced by live windows for five days — verified line-by-line against what
+  the two teams actually did, then landed as `docs/adr/0010-wire-shape.md` (0006 was
+  taken; 0007 stays reserved). The core survived verification untouched; four stale
+  peripherals were reconciled in a dated finalization note: decision 6 was confirmed
+  by adoption and the live series rather than the planned call; the corroboration of
+  record is now the 2026-07-25 series, not demo games; the hosting consequence is
+  discharged history; the negotiate-extras family (pairing / scent hash / uid) is
+  recorded as shared practice on the same truth table. Status PROPOSED; M7-0 moves
+  ☐→◐ and ticks only when both signatures are recorded (anrbj666's ask rides the
+  warm-up exchange).
+
 ## PR #84 — worktree-m7-22-uid-declare (say your uid at the door)
 
 - **Driver:** Imree ("do you want to do it now?" — yes) · **Author:** Claude (terminal,
