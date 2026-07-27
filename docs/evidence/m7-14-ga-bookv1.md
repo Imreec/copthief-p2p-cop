@@ -22,5 +22,5 @@
 **Default-weights fitness on the same suite:** 0.641.
 **Evolved fitness:** 0.688 - curve IMPROVING (0.672 -> 0.688).
 
-Evolved weights are committed in `config/ga_weights.json`; they deploy only
+Evolved weights are committed in `config/ga_weights_bookv1.json`; they deploy only
 via config review (never to the sparring host - CLAUDE.md s9).

@@ -1,0 +1,114 @@
+{
+  "version": "1.00",
+  "_comment": "M7-20 retune UNDER THE CLAIM POLICY. Two corrections to the M7-15 pool, both from the claim-channel work: (a) the claim-reading member was modelled as an UNCONDITIONAL lag-1 truth feed, but M7-18 measured the real channel at LAG 0 (the cop claims the cell it is standing on when the thief decides) - and under M7-19's policy the reader only learns on turns we actually declared, so the faithful model is base-hidden + claim_feed truth, not feed truth-lag1; (b) the candidate now evolves WITH claim_threshold 0.1 - the policy we deployed - so fitness scores the captures it can actually convert (a landing it never declares is forfeit, book scoring table 2). Same seeds 401..416 as M7-15 so the two runs are comparable; the gate seeds (1..32) stay disjoint. Weights land in a SEPARATE artifact and deploy only via config review - never automatically, never to the sparring host. SEEDS 401..432 (32, not M7-15's 16): a first attempt at 16 seeds produced a COMPLETELY FLAT curve - default, deployed and evolved vectors all scored exactly 0.6406 - because 64 games cannot resolve vectors whose true separation is ~0.03-0.25 per member. The run was under-powered, not the landscape empty. Diagnosed by measuring per-member spread across four deliberately spread-out vectors (default / deployed / chase-max / wall-max) at 32 seeds before rerunning.",
+  "role": "police",
+  "brain": "copthief_police.brain:PoliceBrain",
+  "opponent": "belief-evader",
+  "opponent_feed": null,
+  "opponent_pool": [
+    {
+      "spec": "belief-evader",
+      "claim_feed": "truth"
+    },
+    {
+      "spec": "belief-evader"
+    },
+    {
+      "spec": "ref-thief"
+    },
+    {
+      "spec": "random"
+    }
+  ],
+  "scent_model": "multiplicative_book_v1",
+  "genes": {
+    "w_distance": [
+      0.5,
+      6.0
+    ],
+    "w_mobility": [
+      0.0,
+      5.0
+    ],
+    "w_region": [
+      0.0,
+      3.0
+    ],
+    "w_budget": [
+      0.0,
+      3.0
+    ],
+    "barrier_gain_threshold": [
+      0.5,
+      6.0
+    ],
+    "p_commit": [
+      0.2,
+      0.8
+    ]
+  },
+  "run": {
+    "seed": 42,
+    "population": 10,
+    "generations": 8,
+    "elite_count": 2,
+    "tournament_size": 3,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.15,
+    "mutation_rate": 0.35,
+    "fitness_seeds": [
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413,
+      414,
+      415,
+      416,
+      417,
+      418,
+      419,
+      420,
+      421,
+      422,
+      423,
+      424,
+      425,
+      426,
+      427,
+      428,
+      429,
+      430,
+      431,
+      432
+    ],
+    "scenario_min_separation": 4
+  },
+  "smoke": {
+    "seed": 7,
+    "population": 4,
+    "generations": 3,
+    "elite_count": 1,
+    "tournament_size": 2,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.15,
+    "mutation_rate": 0.35,
+    "fitness_seeds": [
+      501,
+      502,
+      503
+    ],
+    "scenario_min_separation": 4
+  },
+  "artifact_out": "config/ga_weights_bookv1_claims.json",
+  "evidence_out": "docs/evidence/m7-20-ga-claims.md",
+  "claim_threshold": 0.1
+}

@@ -3,6 +3,32 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #82 — m7-20-ga-under-the-claim-policy (a null result, reported as one)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** he asked whether the three named follow-ups could share one session
+  and why I had not started them. Answer: 1 and 2 are co-evolutionary and 3 depends on 1,
+  so the honest shape is "cop retune + re-sweep" as one session. Then I started item 1.
+- **Outcome: the retune FAILED its gate in both physics and is not deployed.** The value
+  of the session is what refusing to accept two suspicious results produced.
+  (1) The first GA run came back perfectly flat — default, deployed and evolved all scoring
+  exactly 0.6406 while their weights differed by an order of magnitude. Rather than write
+  that up as "no improvement available", I measured per-member spread across deliberately
+  extreme vectors and found the run was simply under-powered at 16 seeds. Rerunning at 32
+  gave a real curve.
+  (2) That diagnostic then produced the structural finding: **our own claim policy flattens
+  the pool member that was providing the selection pressure** (claim-reader spread
+  0.094 → 0.031). Blinding the opponent blinds the tuner.
+- **Discipline notes:** the gate's `ref-police` row was initially unfair — it ran unmodelled
+  while both candidates were claim-gated, so it got the historical "every same-cell ending
+  resolves" physics for free; pinned to its own faithful policy and rerun before the table
+  was committed. And the losing weights are committed as a *labelled* negative-result
+  artifact rather than discarded, so the run stays reproducible.
+- **Defect found in passing:** `scripts/ga_run.py` hardcoded `config/ga_weights.json` into
+  every generated evidence doc regardless of the config's `artifact_out` — so the committed
+  M7-14 evidence pointed readers at the wrong file. Fixed and regenerated; the regeneration
+  doubled as proof that the new GA knobs are inert on old configs (same md5, same curve).
+
 ## PR #80 — m7-19-quiet-cop (the other half of the channel)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
