@@ -287,12 +287,34 @@ Protocol does not change, and neither `ScentFeed` nor `TruthFeed` learns about c
   canonicalization, or hashing. `capture_claim` is an existing optional field
   (`wire/turn.py:38,56,75,83-92,112`); half 2 changes only *how often we populate it*, and
   half 1 changes only what we do with a received one. This will be stated in the PR body.
-- **Verify-first, before any policy ships (M7-19 blocker).** Claim-less cop turns already
-  occur today — `STAY` and `BARRIER` send `null`, and those turns played clean through the
-  opponent's client in the 2026-07-25 friendly — but that is inference from logs, not a
-  test. Before half 2's policy lands, run claim-less cop turns against the **live reference
-  oracle on localhost** (no tunnel, no opponent, no report owed) and confirm the reference
-  peer accepts a `MOVE` turn carrying `capture_claim: null`. Verify, don't infer.
+- **Wire legality of a claim-less MOVE turn — VERIFIED against the oracle's source
+  (2026-07-27), and the answer is structural.** Three independent reasons the reference
+  cannot reject one:
+  1. `domain/protocol.py:27` declares `capture_claim: list | None = None`. `from_dict`
+     computes `required` as the fields *without* defaults, so an absent-or-null claim is
+     never a parse error.
+  2. `peer/turn_handler.py:57` guards `if message.capture_claim:` — a falsy claim skips the
+     block. There is no `else`, and no validation anywhere else in the receive path.
+  3. Decisive: **the true move is not on the wire at all.** `domain/protocol.py`'s own
+     docstring — *"True position/move/verdict are NOT here in the clear; they are sealed
+     inside `commit` and only proven at the end-of-game audit"* — means a receiving peer
+     cannot know whether the sender moved, and therefore *cannot* condition anything on
+     "a MOVE turn must carry a claim". The check is not merely absent; it is impossible at
+     receive time. A claim-less MOVE turn is indistinguishable at the receiver from the
+     claim-less `STAY`/`BARRIER` turns we already send today.
+
+  This supersedes the plan's "run a live localhost oracle game first". That run was scoped
+  to *discover* the answer; reading the primary artifact answers it, and the live run
+  cannot even be performed without the half-2 policy it was meant to gate (our cop sends
+  claim-ful MOVE turns today, so exercising a claim-less MOVE needs either the gated build
+  code or a bespoke peer). **Demoted to a confirmation that rides the half-2 build**, where
+  it costs nothing: play one local game with a threshold high enough to silence the cop and
+  confirm clean audits + Verified-OK replay. Recorded in the M7-19 evidence doc.
+- **The real residual is the opponent's client, not the reference.** His is an independent
+  implementation; no localhost run against the reference tests it. That residual is
+  discharged where the PRD already puts it — **both halves meet a friendly before any
+  counted game** — and it is small, because his client has already accepted our claim-less
+  `STAY`/`BARRIER` turns throughout the 2026-07-25 friendly.
 - **Response duty untouched.** `peer/inbound.py`'s honest answer is unchanged by both
   halves; half 1 only *adds* a belief update beside it.
 
@@ -341,7 +363,8 @@ No new quantitative value enters source (constraint #5). Both configs bump `vers
 - [ ] Half 2: `claim_threshold=0.0` reproduces the committed arena tables exactly.
 - [ ] Half 2: the g06 forfeiture case is a passing regression test, not a caveat.
 - [ ] Sweep reports **per-opponent-type** optima on series points across the mixture.
-- [ ] Localhost reference-oracle check for claim-less turns recorded before any policy ships.
+- [ ] Claim-less-MOVE wire legality recorded: oracle source-verified (§6, done), plus the
+      live confirmation riding the half-2 build.
 - [ ] Kit CORE vectors untouched; PR body states why #13 is not triggered.
 - [ ] Nothing deployed to any sparring config; no league operation performed.
 
