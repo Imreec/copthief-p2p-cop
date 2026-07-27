@@ -3,6 +3,83 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #83 — docs/m7-20-clarify-not-a-physics-argument (a wrong inference, caught by Imree)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** in conversation I extrapolated M7-20's `ref-police` finding into "the
+  biggest lever is renegotiating the scent model away from `multiplicative_book_v1`". Imree
+  asked the obvious question — that is the model we played him under, why replace it? — and
+  the inference does not survive it. We **won** that friendly 75–35 under book-v1, both cop
+  captures in cross-team history happened under it, and (verified from git) the cop was then
+  running the reference-tuned BASE table because the book-v1 overlay did not exist until
+  `5d9a2ff`, after the friendly. The cross-physics gap is also confounded by tuning
+  maturity: our reference vector has had far more GA investment than the book-v1 overlay's
+  two attempts.
+- **Outcome:** the wrong framing had **never been committed** — the M7-20 evidence, TODO and
+  PR #82 all state only the narrow tuning reading. This PR hardens that doc against the
+  misreading anyway: an explicit "this is a statement about our TUNING, not an argument
+  against the physics", and the tuning-maturity confound added to *What is NOT claimed*.
+- **Lesson worth keeping:** a measurement that a heuristic beats our tuned brain supports
+  "our tuning is weak", not "the rules are wrong". Two readings, very different actions; I
+  took the expensive one first.
+
+## PR #82 — m7-20-ga-under-the-claim-policy (a null result, reported as one)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** he asked whether the three named follow-ups could share one session
+  and why I had not started them. Answer: 1 and 2 are co-evolutionary and 3 depends on 1,
+  so the honest shape is "cop retune + re-sweep" as one session. Then I started item 1.
+- **Outcome: the retune FAILED its gate in both physics and is not deployed.** The value
+  of the session is what refusing to accept two suspicious results produced.
+  (1) The first GA run came back perfectly flat — default, deployed and evolved all scoring
+  exactly 0.6406 while their weights differed by an order of magnitude. Rather than write
+  that up as "no improvement available", I measured per-member spread across deliberately
+  extreme vectors and found the run was simply under-powered at 16 seeds. Rerunning at 32
+  gave a real curve.
+  (2) That diagnostic then produced the structural finding: **our own claim policy flattens
+  the pool member that was providing the selection pressure** (claim-reader spread
+  0.094 → 0.031). Blinding the opponent blinds the tuner.
+- **Discipline notes:** the gate's `ref-police` row was initially unfair — it ran unmodelled
+  while both candidates were claim-gated, so it got the historical "every same-cell ending
+  resolves" physics for free; pinned to its own faithful policy and rerun before the table
+  was committed. And the losing weights are committed as a *labelled* negative-result
+  artifact rather than discarded, so the run stays reproducible.
+- **Defect found in passing:** `scripts/ga_run.py` hardcoded `config/ga_weights.json` into
+  every generated evidence doc regardless of the config's `artifact_out` — so the committed
+  M7-14 evidence pointed readers at the wrong file. Fixed and regenerated; the regeneration
+  doubled as proof that the new GA knobs are inert on old configs (same md5, same curve).
+
+## PR #80 — m7-19-quiet-cop (the other half of the channel)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** build half 2 on the approved PRD — model the claim channel inside the
+  referee, then sweep a threshold on series points across an opponent mixture.
+- **Outcome:** three RED→GREEN cycles, then the sweep. The result that mattered came from
+  refusing to accept a suspicious table: three of the four opponent columns were IDENTICAL
+  at every threshold, including a cop that never declares at all. That looked like the
+  gate not reaching the arena path. Two probes settled it — a barrier-free chaser goes
+  32/32 → 0/32 when silenced (so the gate works), and our deployed vector's captures are
+  loud-equals-silent against every non-reading opponent (so it has NO landing captures to
+  forfeit). Our cop wins by walling, which the book never lets a cop withhold, so the claim
+  channel is pure downside for it.
+- **Discipline note:** the contrast case is COMMITTED in the instrument rather than written
+  up as a caveat — a plain chasing cop is destroyed by the same silence, which is what
+  proves the comfortable result belongs to our weight vector and not to the game. The g06
+  capture (which any positive threshold forfeits) is a passing regression test rather than
+  a disclosed limitation. Nothing is deployed: merging changes no play.
+- **Recommendation offered on Imree's open decision 2:** do not build the in-series adaptive
+  policy — a dominant static threshold leaves it nothing to discover.
+- **Corrected mid-PR on Imree's pushback.** My first write-up led with "his current thief
+  ignores claims, so this is worth nothing against him today", which conflated *adds
+  nothing* with *costs something* and buried the actual result. He was right: the point was
+  always to handle thieves that DO read claims, the EX06 team has announced exactly that
+  for the rematch, and we play several teams we have no intel on. The sweep's real finding
+  is the robustness one — 0.1 is best-or-tied against readers AND non-readers, so one
+  standing setting covers both and needs no guess about who we draw. The same pushback
+  surfaced a bigger gap: I had built the referee model but NOT the live emitter, so the
+  capability did not exist on the wire. Wired it (`PeerSession.claim_policy`) and deployed
+  0.1 on the book-v1 overlay, with peer-path validation.
+
 ## PR #79 — m7-18-evader-reads-claims (the discarded certainty, collected)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
