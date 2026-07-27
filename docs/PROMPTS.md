@@ -125,6 +125,18 @@
   (collapse-vs-trust-weight, whether the adaptive policy is built at all, deployment
   posture) rather than taken silently.
 
+## PR #80 — docs-uid-wording (the opponent's correction, honored in our evidence)
+
+- **Driver:** Imree · **Author:** Claude (terminal, in a worktree — the claim-policy
+  session held the main checkout) · **Reviewer:** pending (AG).
+- **Why:** anrbj666's 2026-07-26 reply corrected our uid diagnosis — not a minted id but
+  a deterministic derivation over the WRONG INPUT (their whole game.json vs the flat
+  negotiated terms), with their bundle internally self-consistent — the sneakier class.
+  Amended the evidence doc and the TODO M7-3 line to the corrected mechanism, recorded
+  their fix's three-way verification, the game_id resolution (M7-17), and the residual
+  mutual finding (uid divergence is silent during play; declare-at-negotiate proposed).
+  PROMPTS history above stays as written — the log records what each PR knew at its time.
+
 ## PR #77 — m7-17-sorted-game-id (one match, one name, from either side)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).

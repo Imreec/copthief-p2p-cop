@@ -41,18 +41,26 @@ every game value**: winner, totals 75–35, sub-games won 5–1, per-sub-game sc
 outcomes, zero tokens both sides. Two discrepancies, both evidence-grade and raised
 with the opponent team:
 
-1. **`game_uid` mismatch (substantive):** their report carries a freshly minted
-   `2f0c25a9…` instead of the wire-locked `e351176a…`; the wire uid appears nowhere in
-   their artifact, so their report cannot be joined to the sealed logs by its own key.
+1. **`game_uid` mismatch (substantive):** their report carries `2f0c25a9…` instead of
+   the flat-terms-derived `e351176a…`. *(Diagnosis corrected 2026-07-26 by the opponent
+   team, whose account supersedes our first read: NOT a freshly minted id — their
+   derivation was exactly as deterministic as ours but hashed the WRONG INPUT, their
+   whole `game.json` rather than the reference's flat negotiated terms. Their four
+   artifacts were internally consistent on `2f0c25a9…` — the sneakier failure class,
+   since a self-joining bundle looks healthy and only the CROSS-TEAM join breaks.)*
    Under App E rule 35 two counted reports with different uids would read as
-   contradictory. Likely a side effect of their same-night fix that mints "fresh unique
-   ids" to keep discarded evidence out of aggregation — correct goal, wrong field to
-   spend it on. Ours provably carries the wire uid (all six logs + audits + replays).
-2. **`game_id` order (cosmetic, convention unsettled):** each side names itself first
-   (`imreeyal-vs-anrbj666` vs `anrbj666-vs-imreeyal`). The reference sample orders by
-   role, which has no single answer in a role-alternating series — the pair should fix
-   a convention before a counted game, or accept uid-only joining (which makes item 1
-   load-bearing).
+   contradictory. Ours provably carries the flat-terms uid (all six logs + audits +
+   replays). Fixed on their side same day, verified three ways (their emitted uid now
+   equals `e351176a…` to the digit, pinned by test, reproduced in a live two-peer run).
+   **Residual mutual finding:** the uid never crosses the wire — each side derives it
+   independently — so this divergence was SILENT for the entire series and surfaced
+   only at the report diff; a declare-at-negotiate check (the M7-10 pattern) is the
+   proposed closure.
+2. **`game_id` order (cosmetic, convention settled next day):** each side named itself
+   first (`imreeyal-vs-anrbj666` vs `anrbj666-vs-imreeyal`). Resolved 2026-07-26: the
+   reference *derives* the id by sorting the pair (`derive_game_ids`), the kit pinned
+   it (SPEC §4), and our impl adopted the sorted form as M7-17 — their naming already
+   matched it.
 
 ## The seven windows (the campaign ledger)
 
