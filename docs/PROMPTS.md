@@ -3,6 +3,30 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #78 — m7-18-claim-channel-prd (the mechanism PRD for the claim channel)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** open the last open strategy item — the claim channel — in two
+  halves, evader-reads-claims first, and gate it behind a mechanism PRD whose book
+  citations are **re-derived, not inherited** from the prior session's memory.
+- **Outcome:** docs-only PRD. The re-derivation changed the argument's shape twice.
+  (1) The legality case is stronger than "the book is silent on frequency": one sentence
+  after the capture clause, in the same p.38 iron-rules paragraph, the book mandates that
+  the cop declare **every** barrier placement and forbids placing one in secret. It wrote
+  both halves for barriers and only the truthfulness half for claims — argument by
+  contrast, not from silence. (2) Scoring table 2 (p.38) makes the claim **constitutive**
+  of the landing capture, which prices silence from the book itself (forfeit the capture)
+  and hands the referee model in §5.1 its rule rather than leaving it a modeling choice.
+  (3) Reading the tree rather than the notes sharpened the leak: the opponent's start is
+  signed constitution and claim *absence* is equally informative under the reference
+  policy, so a claim-reading thief has the cop's exact cell every turn — full
+  observability, not a strong observation. That in turn is why half 1 deliberately does
+  **not** read absence: present-claim reading is sound against every opponent, absence
+  only against an unconditional claimer.
+- **Gate:** no build code until Imree approves. Three decisions left open for him
+  (collapse-vs-trust-weight, whether the adaptive policy is built at all, deployment
+  posture) rather than taken silently.
+
 ## PR #77 — m7-17-sorted-game-id (one match, one name, from either side)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
