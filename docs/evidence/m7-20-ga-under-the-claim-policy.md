@@ -105,6 +105,15 @@ but it is now sharper: **our GA appears to be optimising toward flat mediocrity,
 counted series runs on the physics where that costs most.** That is a bigger open question
 than any single retune, and it should be answered before the counted games, not after.
 
+**This is a statement about our TUNING, not an argument against the physics.** The
+distinction matters enough to write down, because it is easy to slide from one to the other:
+we **won** the 2026-07-25 friendly 75–35 under `multiplicative_book_v1`, and both of our cop
+captures — the only cop wins in cross-team history — happened under it, with a cop that was
+running the *reference-tuned base table* because the book-v1 overlay did not exist yet
+(introduced by `5d9a2ff`, after the friendly). The number below says a plain heuristic beats
+our tuned vector on our own roster; it does not say the model is bad for us, and nothing here
+supports reopening the pair-locked scent model.
+
 Under reference physics the picture inverts completely (`cop-champion` 2900 vs `ref-police`
 1985), which is the same physics-specificity M7-14/15 recorded.
 
@@ -115,6 +124,11 @@ Under reference physics the picture inverts completely (`cop-champion` 2900 vs `
 - §4's comparison puts two different claim policies side by side (0.0 vs 0.1) by
   construction — each cop plays its own. If anything this understates `ref-police`, whose
   always-claiming is what the reader punishes.
+- **§4's cross-physics gap is confounded by TUNING MATURITY.** Our reference-physics vector
+  has had far more GA investment behind it (M5-4 onward); the book-v1 overlay has had two
+  attempts — M7-14/15 and this failed one. So the difference between our standing in the two
+  physics is partly the difference in how long each has been tuned, and must not be read as
+  a property of the models themselves.
 - Nothing here re-opens M7-19's threshold: 0.1 was measured against the *deployed* vector
   and that vector is unchanged, so the deployment stands. Had this retune shipped, the
   threshold would have had to be re-swept alongside it — §3.2 is exactly why the two cannot
