@@ -17,7 +17,8 @@ Role-blind: nothing here names this repo's brain or its shipped values.
 from pathlib import Path
 
 from copthief_core.shared.config import load_all
-from copthief_core.strategy.genetic.runs import GaConfig, load_ga_config, opponent_fitness
+from copthief_core.strategy.genetic.fitness import opponent_fitness
+from copthief_core.strategy.genetic.runs import GaConfig, load_ga_config
 from copthief_core.strategy.scenarios import scenario_suite
 
 CONSTITUTION, PRIVATE, _LIMITS = load_all(Path("config"), counted=False)
