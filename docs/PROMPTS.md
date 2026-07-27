@@ -3,6 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #77 — m7-17-sorted-game-id (one match, one name, from either side)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **Why:** the cross-team report diff (2026-07-26) found each side naming the match
+  self-first — the last cosmetic divergence between two otherwise field-identical
+  reports. Verified against the oracle before changing anything: the reference DERIVES
+  `game_id` sorted (`domain/game_ids.py`), the kit pinned it the same day (SPEC §4,
+  swapped-order vector), and the opponent's naming already matched — ours was the
+  divergent side. One RED→GREEN cycle: pure `domain/crypto.series_game_id` beside
+  `game_uid`, three call sites derive through it, the test harness derives rather than
+  re-encodes. Committed friendly evidence keeps its as-played names — evidence is
+  never renamed. (Milestone renumbered twice mid-PR, M7-13→M7-16→M7-17: the parallel
+  strategy session claimed M7-13..15 in this repo and then M7-16 in the sibling's TODO
+  while this branch was open — the cost of two live sessions numbering from one
+  sequence, worth a claim-the-number-in-memory-first habit.)
+
 ## PR #76 — feat/m7-15-mixed-ga (the generalist retune + per-model deployment)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
