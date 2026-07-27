@@ -23,6 +23,16 @@
   a disclosed limitation. Nothing is deployed: merging changes no play.
 - **Recommendation offered on Imree's open decision 2:** do not build the in-series adaptive
   policy — a dominant static threshold leaves it nothing to discover.
+- **Corrected mid-PR on Imree's pushback.** My first write-up led with "his current thief
+  ignores claims, so this is worth nothing against him today", which conflated *adds
+  nothing* with *costs something* and buried the actual result. He was right: the point was
+  always to handle thieves that DO read claims, the EX06 team has announced exactly that
+  for the rematch, and we play several teams we have no intel on. The sweep's real finding
+  is the robustness one — 0.1 is best-or-tied against readers AND non-readers, so one
+  standing setting covers both and needs no guess about who we draw. The same pushback
+  surfaced a bigger gap: I had built the referee model but NOT the live emitter, so the
+  capability did not exist on the wire. Wired it (`PeerSession.claim_policy`) and deployed
+  0.1 on the book-v1 overlay, with peer-path validation.
 
 ## PR #79 — m7-18-evader-reads-claims (the discarded certainty, collected)
 

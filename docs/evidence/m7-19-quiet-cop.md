@@ -44,6 +44,51 @@ table (capture 20 / survival 5), 32 seeds, `multiplicative_book_v1`.
 a trade-off. It is worth **+1.88 points/game against a claim-reader** (7.81 → 9.69, +24%
 over what we ship today) and costs exactly nothing against the other three.
 
+### 2.1 Deployment: one standing setting — a stronger answer than the PRD asked for
+
+The PRD anticipated a per-opponent decision and asked for "per-opponent-type optima, not one
+number". **The measurement came back and said one number IS the answer:**
+
+- against a thief that **reads** our claims, 0.1 is the best row (+24%);
+- against a thief that **ignores** them, 0.1 **ties** the best row — no cost.
+
+So the posture is a **single standing threshold of 0.1**, not a per-match choice. That is
+what matters for a league rather than a duel: we play several teams, we will have no intel
+on most of them, and a setting that is best-or-tied everywhere **needs no guess about which
+kind of thief shows up** and cannot be wrong-footed by one we have never seen. A
+per-opponent policy would have required knowing the answer in advance; this one does not.
+
+This supersedes the PRD's provisional default ("always claim; the burden of proof is on
+going quiet"). The burden is met. And note what 0.1 actually is: not silence, but
+**declare when a capture is plausible, stay quiet when it is not** — which beats
+unconditional claiming against a reader and matches it against everyone else.
+
+### 2.2 Wired into the live emitter, and DEPLOYED on the book-v1 overlay
+
+The sweep would be academic if the policy only existed in the referee, so `peer/turns.py`
+now consults it too: `PeerSession.claim_policy` reads `claim_threshold` from
+`[strategy.<role>]` with the M7-15 per-scent-model overlay, so the claim policy follows the
+physics exactly the way the weight vector does. Absent ⇒ `0.0` ⇒ the historical emitter,
+unchanged.
+
+**Deployed** at `[strategy.police.multiplicative_book_v1] claim_threshold = 0.1`
+(`game.toml` v1.02). It is **inert under the shipped default model** — the same posture
+M7-15/16 used — because book-v1 is the only physics the sweep measured. Verified:
+
+| selected model | resolved `claim_threshold` |
+|---|---|
+| `subtractive_chebyshev_v1` (shipped default) | absent ⇒ 0.0, historical emitter |
+| `multiplicative_book_v1` (what a counted pair locks) | **0.1** |
+
+**Live peer-path validation** (paired `PeerSession`s under the book-v1 config):
+
+- A claim-reading opponent's exact tracking of our cop falls from **0.936** (M7-18's
+  always-claim measurement) to **0.433** — the mirror of half 1, measured on the same
+  instrument. We now deny most of what we taught our own thief to collect.
+- Full local mini-game: `thief_survival` at 35 steps, **mutual audits OK on both sides**,
+  replay **Verified OK, 71 records**. The policy is wire-silent — it changes what we
+  populate, never the shape of anything.
+
 ## 3. Why silence is nearly free — and why that is a fact about our vector, not the game
 
 The claim-blind, camper and ref-thief columns are **identical at every threshold**, including
@@ -76,22 +121,35 @@ sweep's comfortable answer belongs to our herding vector alone.
 
 ## 4. Regression posture
 
-`claim_threshold` is absent from every shipped config, which leaves claims **unmodelled** —
-the historical physics. All four committed arena instruments (`m5-arena.md`,
+`claim_threshold` is absent from every **arena** config, which leaves claims **unmodelled**
+there — the historical physics. All four committed arena instruments (`m5-arena.md`,
 `m7-14-bookv1-arena.md`, `m7-14-reference-arena.md`, `m7-18-claim-channel-arena.md`)
-regenerate **byte-identical**.
+regenerate **byte-identical** after both the referee change and the emitter change.
+
+The one config that *does* set it is `game.toml`'s book-v1 police overlay (§2.2), which the
+arena never reads — arena rosters carry their own options. So the deployment cannot
+retroactively move a committed measurement, and the two live on separate rails by
+construction.
 
 `simulation.py` crossed the 150-line limit when the claim door was added and was **split**
 into `sdk/simulation_referee.RefereeSeriesMixin` — never compressed.
 
 ## 5. What is NOT claimed
 
-- **Nothing is deployed.** No `claim_threshold` is set in `game.toml`. Merging this PR does
-  not change how our cop plays; deployment is a separate, per-opponent decision.
-- The mixture is a **model** of opponents, not the opponent's build. The honest prior from
-  the friendly logs is that his current thief ignores our claims entirely — against that
-  opponent the sweep says the threshold is worth **nothing**, and the whole value sits in the
-  claim-reader column, i.e. in his announced rematch counter.
+- **What IS deployed:** `claim_threshold = 0.1` on the **book-v1 police overlay only**
+  (§2.2). Under the shipped default scent model the setting is absent and our cop plays
+  exactly as before, so nothing changes until a pair locks book-v1 — which is what a
+  counted series does. Merging is the deployment decision, as with the M7-15/16 vectors.
+- The mixture is a **model** of opponents — four arms, not a proof over all thieves. It
+  brackets the axis that matters (reads claims / does not), which is why the dominance
+  result is usable, but a thief unlike all four could sit outside the bracket.
+- **What the "his thief ignores claims today" fact does and does not mean.** It sets where
+  the *gain* comes from, not whether to deploy: against a non-reader 0.1 ties, so nothing is
+  risked, and the +24% arrives the moment any opponent reads claims. The EX06 team has
+  announced claim-reading for the rematch, and the league has several other teams we know
+  nothing about — so the reading arm is the one to plan for, and the non-reading arm is the
+  one we must not pay for. 0.1 satisfies both, which is the whole point of sweeping a
+  mixture rather than a single opponent.
 - The referee models the claim channel faithfully enough to price it, but it is a model: a
   standing claim covers the cop's cell until it moves again, which approximates the peer
   protocol's claim/response exchange rather than reproducing it turn-for-turn.
