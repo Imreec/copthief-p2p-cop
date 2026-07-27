@@ -3,6 +3,27 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #79 — m7-18-evader-reads-claims (the discarded certainty, collected)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** build half 1 on the approved PRD, with the recommendations he
+  endorsed (hard collapse; adaptive policy deferred until the static sweep reports).
+- **Outcome:** two RED→GREEN cycles, then measurement — and the measurement is where the
+  work actually happened. Three things only came out of running it rather than reasoning:
+  (1) the **counted physics is the whole story** — exact cop-tracking 0.311 → 0.936 under
+  `multiplicative_book_v1` but only 0.822 → 1.000 under the shipped reference model, where
+  the age-voucher belief was already near-perfect. Probing one physics would have produced
+  a confident and misleading number either way. (2) **The committed instrument understated
+  the channel**: M7-14 modeled claim-reading as lag-1, but the cop claims the cell it is
+  *standing on* when our thief decides — lag 0. Read correctly, a result that had looked
+  neutral-to-harmful against our tuned cops becomes a gain against every cop in the roster.
+  (3) The first generated artifact **leaked a scratchpad path** (banned anti-pattern) and
+  was unreproducible from committed config; fixed by giving the probe an in-memory
+  `--scent-model` override rather than by editing the shipped config.
+- **Discipline note:** the lag-1 correction is a finding *against our own prior work*, so
+  it is recorded as a named follow-up (the cop's GA pool should retune against the lag-0
+  arm) rather than quietly folded in. No cop weights changed here.
+
 ## PR #78 — m7-18-claim-channel-prd (the mechanism PRD for the claim channel)
 
 - **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** pending (AG).

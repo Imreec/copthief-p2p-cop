@@ -1,0 +1,91 @@
+{
+  "version": "1.00",
+  "_comment": "M7-18 claim-channel A/B (NOT the CI-gated arena): what reading the opponent cop's capture claims is worth to an evader, under the counted physics. The three thief arms are the SAME brain with the SAME options - only the information feed differs, so the columns isolate the channel. evader-fix = hidden (the pre-M7-18 thief); evader-lag1 = truth-lag1 (the arm the M7-14 instrument used to model claim-reading); evader-claim = truth (lag 0 - what the peer path ACTUALLY delivers, measured 159/161 exact at decision time under this model). The police arms span the adaptation axis: ref-police has never met a claim-reader, police-brain-bookv1 is our deployed generalist (pool included the claim-reader), police-brain-lag1spec was tuned against it directly. champion_pin null: this measures an information channel, it does not gate our champion.",
+  "police_roster": [
+    "ref-police",
+    {
+      "name": "police-brain-bookv1",
+      "spec": "copthief_police.brain:PoliceBrain"
+    },
+    {
+      "name": "police-brain-lag1spec",
+      "spec": "copthief_police.brain:PoliceBrain"
+    }
+  ],
+  "thief_roster": [
+    {
+      "name": "evader-fix",
+      "spec": "belief-evader"
+    },
+    {
+      "name": "evader-lag1",
+      "spec": "belief-evader",
+      "feed": "truth-lag1"
+    },
+    {
+      "name": "evader-claim",
+      "spec": "belief-evader",
+      "feed": "truth"
+    }
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "scenario_min_separation": 4,
+  "scent_model": "multiplicative_book_v1",
+  "champion_pin": null,
+  "brain_options": {
+    "ref-police": {
+      "ref_police_barrier_chance": 0.15
+    },
+    "police-brain-bookv1": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "police-brain-lag1spec": {
+      "barrier_gain_threshold": 5.066698057042099,
+      "p_commit": 0.3230079059055142,
+      "w_budget": 0.0,
+      "w_distance": 4.678778807781908,
+      "w_mobility": 4.841830974563671,
+      "w_region": 0.5184398658126486
+    }
+  },
+  "dod_series": [],
+  "evidence_out": "docs/evidence/m7-18-claim-channel-arena.md"
+}
