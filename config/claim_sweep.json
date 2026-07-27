@@ -1,0 +1,155 @@
+{
+  "version": "1.00",
+  "_comment": "M7-19 claim-threshold sweep (NOT the CI-gated arena): our DEPLOYED book-v1 cop vector repeated at several claim thresholds against a MIXTURE of opponents - one that reads our claims, one that ignores them, a trap-naive camper, and the reference thief. Scored on the cop's SERIES POINTS under the signed table, not capture rate, because silence trades landing captures for information denial and only the points table prices that trade. 'cop-unmodelled' is the historical physics (every same-cell ending resolves); 'cop-t0' is today's emitter (declare on every moving turn); 'cop-t2' can never meet its threshold, so it is the totally silent cop. Read PER OPPONENT: the threshold is private config and counted series are one per opponent, so deployment is a per-match choice. champion_pin null: a measurement instrument, not a gate. Two CONTRAST entries (chaser-loud / chaser-silent) carry a plain chasing cop, whose captures are all landing-form: silencing it is catastrophic, which is what proves the deployed vector's immunity is a property of THAT vector and not of the game. A claim policy can never be deployed independently of the weight vector it runs under.",
+  "police_roster": [
+    {
+      "name": "cop-unmodelled",
+      "spec": "copthief_police.brain:PoliceBrain"
+    },
+    {
+      "name": "cop-t0",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "claim_threshold": 0.0
+    },
+    {
+      "name": "cop-t0p1",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "claim_threshold": 0.1
+    },
+    {
+      "name": "cop-t0p25",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "claim_threshold": 0.25
+    },
+    {
+      "name": "cop-t0p5",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "claim_threshold": 0.5
+    },
+    {
+      "name": "cop-t2",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "claim_threshold": 2.0
+    },
+    {
+      "name": "chaser-loud",
+      "spec": "greedy-manhattan",
+      "claim_threshold": 0.0
+    },
+    {
+      "name": "chaser-silent",
+      "spec": "greedy-manhattan",
+      "claim_threshold": 2.0
+    }
+  ],
+  "thief_roster": [
+    {
+      "name": "claim-reader",
+      "spec": "belief-evader",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "claim-blind",
+      "spec": "belief-evader"
+    },
+    {
+      "name": "camper",
+      "spec": "belief-evader"
+    },
+    "ref-thief"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "scenario_min_separation": 4,
+  "scent_model": "multiplicative_book_v1",
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "cop-unmodelled": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "cop-t0": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "cop-t0p1": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "cop-t0p25": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "cop-t0p5": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "cop-t2": {
+      "barrier_gain_threshold": 4.692992169904358,
+      "p_commit": 0.5526774858901863,
+      "w_budget": 1.829321347518278,
+      "w_distance": 6.0,
+      "w_mobility": 3.707966311991116,
+      "w_region": 0.03057885641327504
+    },
+    "camper": {
+      "stay_penalty": 0.0,
+      "w_mobility": 0.0,
+      "w_region": 0.0
+    }
+  },
+  "evidence_out": "docs/evidence/m7-19-claim-sweep.md"
+}
