@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #87 — m7-23-frame-check (the validator built, and a probe corrects the plan)
+
+- **Driver:** Imree ("the PR has been reviewed and approved, you can merge... let's go
+  with your recommendations") · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** M7-23 built in five RED→GREEN cycles on the approved PRD_scent §10
+  (Imree's §10.6 calls: gate ON / no escalation / tally rides settlement) —
+  `domain/scent_frame.frame_explained` (verdict-only surface, firewall pinned by test),
+  the `peer/inbound.py` call site, `[scent] frame_check` ON by omission, the
+  `scent_frame_refused` loop event, the settlement tally, and an injection acceptance
+  test (decoy refused, refusals [1,2] with the documented baseline-poisoning cascade,
+  both audits clean). **The build corrected the plan once, on evidence:** a probe showed
+  our sender transmits unconditionally under a book-v1 lock (the locked doc's
+  `transmitted: false` is honored on receive only) and belief consumes the grid — so the
+  gate follows the arriving grid, not the model flag, and the sender-side doc↔behavior
+  mismatch became open decision M7-24 (wire-visible; Imree's, likely joint). It also
+  likely answers whose frames the opponent team's memo analyzed: ours, from the friendly.
+
 ## PR #86 — m7-23-frame-check-prd (the inversion memo becomes a gated PRD)
 
 - **Driver:** Imree ("Do you want to start working on the things you said we should

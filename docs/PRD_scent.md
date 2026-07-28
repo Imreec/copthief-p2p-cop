@@ -202,7 +202,16 @@ hash. Coverage ≥ 90% on the model code, files ≤ 150 lines, `mypy --strict`, 
 
 ## 10. Amendment — the in-play frame validity check (M7-23)
 
-> **Status: DRAFT (gate — awaiting Imree's approval; no build code until then).**
+> **Status: APPROVED (PR #86 merge = the gate, 2026-07-28; §10.6 decisions taken by Imree:
+> gate ON / no escalation / tally rides settlement) and BUILT (M7-23), with ONE correction
+> discovered during the build — see the gating bullet in §10.2.** In short: the plan
+> assumed the check is structurally inert under a book-v1 lock (`transmitted: false` ⇒ no
+> inbound grid). Probing the tree showed otherwise: our SENDER transmits unconditionally
+> (`peer/turns.py` mirrors the reference's unconditional send()) — the locked doc's
+> `transmitted: false` is honored on receive only — and belief consumes the arriving grid
+> (`peer/inbound.py`). So under the counted physics, grids ARE on the wire and the check
+> matters most there; the shipped gate follows the ARRIVING grid, not the model flag. The
+> sender-side doc↔behavior mismatch itself is a separate open decision (TODO M7-24).
 > Trigger: the opponent team's (anrbj666) 2026-07-27 scent-inversion memo, which shipped
 > the defensive half of this check on their side and raised the rest with us rather than
 > using it. Every claim in it was re-derived here before adoption (verify-before-accept):
@@ -244,8 +253,10 @@ probabilistic belief layer, no deterministic inversion pin — binds our own bui
   tolerance ⇒ **accept**, stop scanning. Zero candidates ⇒ **refuse**.
 - **Compare mode dispatched on `model.rounds`, exactly as M6-7:** slack 0 for the
   rounding reference form; `scent_physics_tolerance` for `multiplicative_book_v1` (75/534
-  last-bit finding, ADR-0004 v2). Under book-v1 the gate mirrors `absorb`'s
-  (`transmitted: false` ⇒ no inbound grid ⇒ the check is structurally inert).
+  last-bit finding, ADR-0004 v2). **[CORRECTED AT BUILD, 2026-07-28]** the gate follows
+  the ARRIVING grid (`frame_check` AND a non-empty `smell_grid` AND not the terminal
+  message) — NOT the model's `transmitted` flag as first planned, because the probe
+  showed grids on the wire and in the belief under a book-v1 lock (see the status note).
 - **Refusal refuses the WHOLE frame** (their §4.3, adopted): `absorb` and `update_scent`
   are both skipped — half-believing an impossible field is how a bad one steers you.
   `known_field` still decays (time passed); predict/claim/hint evidence is untouched
@@ -285,9 +296,11 @@ event and completes normally. Coverage ≥ 90%, ≤ 150-line files, `mypy --stri
 - Injection game: refusal logged, game completes, outcome unchanged.
 - Check-ON default series byte-identical on the wire to check-OFF.
 - Firewall pinned: no candidate cell on any public surface or log line.
-- `KNOWN_LIMITATIONS.md` updated: the check proves impossibility only to us (unchanged
-  SQ3 stance — the commit-binding amendment that would upgrade it is a joint wire matter,
-  tracked with the opponent team, not this milestone).
+- Disclosure: the check proves impossibility only to us (unchanged SQ3 stance — the
+  commit-binding amendment that would upgrade it is a joint wire matter, tracked with the
+  opponent team, not this milestone). `KNOWN_LIMITATIONS.md` is the M8 triad deliverable
+  and does not exist yet; this entry and the M7-24 sender-side mismatch are queued for it
+  here, where the M8 session will collect them.
 
 ### 10.6 Open decisions (Imree's, not taken silently)
 
