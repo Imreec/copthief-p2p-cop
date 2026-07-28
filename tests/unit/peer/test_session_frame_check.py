@@ -37,7 +37,9 @@ def _far_phantom(sender: PeerSession) -> str:
         key=lambda c: max(abs(c[0] - row), abs(c[1] - col)),
     )
     distance = max(abs(corner[0] - row), abs(corner[1] - col))
-    assert distance >= 5, "fixture assumption: a corner beyond two turns' window reach"
+    # A fresh window reaches Chebyshev 2, so an unvisited cell at >= 3 can never
+    # legitimately read 0.5 (on a 7x7 board the farthest corner is always >= 3).
+    assert distance >= 3, "fixture assumption: a corner beyond the deposit window"
     return f"{corner[0]},{corner[1]}"
 
 
