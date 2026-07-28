@@ -75,9 +75,7 @@ def handle_receive_turn(session: PeerSession, raw: dict[str, Any]) -> dict[str, 
             tolerance=session.private.scent_physics_tolerance,
         )
         if not scent_ok:
-            session.scent_refusals.append(
-                {"step": message.step, "cells": len(message.smell_grid)}
-            )
+            session.scent_refusals.append({"step": message.step, "cells": len(message.smell_grid)})
     # F9: a declared barrier is sealed/audited evidence — it constrains OUR OWN move
     # legality (the M2 gap) and the belief motion model, before anything else reads it.
     if message.barrier_placed is not None:
@@ -104,10 +102,10 @@ def handle_receive_turn(session: PeerSession, raw: dict[str, Any]) -> dict[str, 
         if landmark is not None:
             session.belief.update_hint(session.gazetteer.cells_for(landmark))
     # SQ1 receive side, M3-8 cadence policy: absorb their transmitted trail, then one
-    # per-message decay — BOTH gated on the named model. Under the book model nothing is
-    # transmitted (each side recomputes the rival's field) and there is no received copy
-    # to decay, so this whole pass is skipped (kit SPEC §7 `transmitted` /
-    # `receiver_side_decay`; ADR-0004 v2's side-by-side table).
+    # per-message decay — both gated on the named model's RECEIVE contract (kit SPEC §7
+    # `transmitted` / `receiver_side_decay`; ADR-0004 v2). NB the M7-23 probe: that
+    # contract is honored HERE only — the send path transmits unconditionally (open
+    # decision M7-24), which is why the frame check above never consults the flag.
     if session.known_field.transmitted and scent_ok:
         session.known_field.absorb(message.smell_grid)
     if session.known_field.receiver_side_decay:

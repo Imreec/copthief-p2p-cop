@@ -60,7 +60,7 @@
     "src/copthief_core/peer/audit_flow.py": "24c40482c10c287002180736276d3b0e53a1e7d93e11b16a07424757a779ab17",
     "src/copthief_core/peer/events.py": "da9501359b6412b777f7238308b9aab39418614eb506c3a02fb43c56d1f1cc45",
     "src/copthief_core/peer/handshake.py": "620301e19c6266e06f9cce663050223d9a2c46af04ba6edbc7caa00976387ddd",
-    "src/copthief_core/peer/inbound.py": "01379b103cf31c1a627b326f6832f5d56763102d514517532bae5bfb9727fb40",
+    "src/copthief_core/peer/inbound.py": "f4f41275e0e6f4c64b4ca2c77e88f77e86fff0a5edbdc423e968e1b076729e58",
     "src/copthief_core/peer/inbox_order.py": "806abba1cbe6c5f19285c83227a22af36343a77ddf587d8dd9c5e48c5d825f37",
     "src/copthief_core/peer/match.py": "89c719224436d9fd206c461090ff6c11e11181dddc1090418c98bfff2a092968",
     "src/copthief_core/peer/p2p.py": "471d8ea59a9d99e2408ac584e924d394199707ce1879693210056fbc84c907ba",
@@ -172,7 +172,7 @@
     "tests/integration/test_arena_harness.py": "282d004808716380fa5c4ba41e3d93439659e0dab45e7315af6f7ccf23ce3e62",
     "tests/integration/test_belief_vs_baseline.py": "2c903c162ae38687d86aefd7d7aebb9b4dd3a77c9a0abe5841f706a73d1df8c3",
     "tests/integration/test_bookv1_referee.py": "657119edba6119b2ecce8b6f8c19d993e1374b7fadba1f0c0bfc747ab980c0ff",
-    "tests/integration/test_frame_check_injection.py": "bbe24683aa2438ee87ee80b1202b014c3ba6c0363ece14858cc525ffae7bf9f6",
+    "tests/integration/test_frame_check_injection.py": "592644de96724e76abd50f55fd3a0e479f48989c06894b22d56e7c964842970c",
     "tests/integration/test_fullinfo_referee.py": "bfd0db9fe0c595864710f04fc4a8bd99047e81645409af5e3d2707c48d80dd08",
     "tests/integration/test_handshake_bystanders.py": "2311c1f5c8d25fbb18f99f0e3b41c786cf0c1a3a1136bf1b7e002a539575ae28",
     "tests/integration/test_headless_series.py": "08a2be275c9ac50cfd902cf007ec76183ab9719117ee53e1202f6f6dff99bcb3",
@@ -298,7 +298,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "f556835",
+  "source_commit": "12a8e99",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "1feb24b52175065fce7caf3d06eb24b3c5d7af53522dda84feb662f1df33640e"
+  "tree_hash": "fb381bf683428a7fdf287241ceef3bb199bc752d17ca77d8831065e745a1837e"
 }

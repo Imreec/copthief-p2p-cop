@@ -55,9 +55,7 @@ def _far_corner_from(cell: tuple[int, int]) -> str:
 def test_injected_decoy_is_refused_and_the_game_still_settles_clean() -> None:
     police = PeerSession(CONSTITUTION, PRIVATE, role="police", seed=11)
     thief = PeerSession(CONSTITUTION, PRIVATE, role="thief", seed=22)
-    police_transport, thief_transport = queue_pair(
-        wait_timeout=PRIVATE.connect_timeout_seconds
-    )
+    police_transport, thief_transport = queue_pair(wait_timeout=PRIVATE.connect_timeout_seconds)
     tampered = _TamperFirstGrid(police_transport, _far_corner_from(thief.position))
     events: list[dict[str, Any]] = []
     lock = threading.Lock()
@@ -101,5 +99,6 @@ def test_injected_decoy_is_refused_and_the_game_still_settles_clean() -> None:
     assert thief.machine.state is GameState.GAME_OVER
     assert results["police"].outcome in ("cop_capture", "thief_survival")
     assert results["police"].outcome == results["thief"].outcome
-    assert results["police"].audit_ok and results["thief"].audit_ok
+    assert results["police"].audit_ok
+    assert results["thief"].audit_ok
     assert thief.scent_refusals == []  # the untampered direction stayed silent
