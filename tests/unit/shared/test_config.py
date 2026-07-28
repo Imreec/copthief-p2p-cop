@@ -145,8 +145,9 @@ def test_frame_check_disables_from_the_scent_section(tmp_path: Path) -> None:
     clone = copy_config(tmp_path)
     toml_path = clone / "game.toml"
     text = toml_path.read_text(encoding="utf-8")
+    # Anchor on the section HEADER line — a comment on line 44 also says "[scent]".
     toml_path.write_text(
-        text.replace("[scent]", "[scent]\nframe_check = false", 1), encoding="utf-8"
+        text.replace("\n[scent]\n", "\n[scent]\nframe_check = false\n", 1), encoding="utf-8"
     )
     _constitution, private, _limits = load_all(clone, counted=False)
     assert private.frame_check is False
