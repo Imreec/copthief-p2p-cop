@@ -101,6 +101,28 @@ def test_disabled_gate_absorbs_even_a_forged_frame() -> None:
     assert police.known_field.cells() != {}  # absorbed, exactly the pre-M7-23 behavior
 
 
+def test_refusal_event_emitted_only_for_the_just_accepted_step() -> None:
+    """The loop's JSONL surface (§10.2): loud for a refused frame, silent otherwise —
+    refusals must reach the log the mutual audit reads, not only a console."""
+    from copthief_core.peer import events
+
+    police, thief = _pair(PRIVATE)
+    message = _forged(thief, thief.take_turn(now=1.0))
+    ack = police.handle_receive_turn(message)
+    sink: list[dict] = []
+    events.scent_refusal(sink.append, police, ack["step"])
+    assert sink == [
+        {
+            "event": "scent_frame_refused",
+            "receiver": police.role,
+            "payload": {"step": 1, "cells": len(message["smell_grid"])},
+        }
+    ]
+    events.scent_refusal(sink.append, thief, 1)  # no refusals recorded -> silent
+    events.scent_refusal(sink.append, police, 2)  # stale step -> silent
+    assert len(sink) == 1
+
+
 def test_bookv1_transmitted_frames_are_checked_too() -> None:
     """The counted physics is NOT exempt: the sender transmits unconditionally and
     belief reads the grid (the 2026-07-28 probe), so the gate follows the ARRIVING
