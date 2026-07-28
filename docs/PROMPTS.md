@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #86 — m7-23-frame-check-prd (the inversion memo becomes a gated PRD)
+
+- **Driver:** Imree ("Do you want to start working on the things you said we should
+  implement based off that?") · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** the opponent team's 2026-07-27 scent-inversion memo was verified
+  before anything was adopted from it — their transition inversion re-run here as a
+  simulation under BOTH registered models (224/224 frame pairs invert to exactly one
+  emitter, including 30-turn saturated dwells; the leak is model-independent, which
+  extends their own claim), kernel arithmetic confirmed against the locked registry.
+  The defensive half then became `PRD_scent` §10 + gated TODO M7-23: an in-play
+  frame validity check in front of `absorb`, whole-frame refusal, evidence-grade only
+  (SQ3/M6-7 class), with an explicit firewall — the validator never returns, logs, or
+  feeds the candidate cell it matched, because the `info_mode: belief` posture offered
+  to the opponent team binds our own build first. Docs-only; the build waits for the
+  §10 gate. The other two memo items (commit-binding the grid, the info_mode lock for
+  the counted series) are joint wire matters awaiting the opponent team's answer.
+
 ## PR #85 — adr-0010-wire-shape (the joint ADR, finally in the tree)
 
 - **Driver:** Imree ("ok sure, but maybe just make sure before that what's in there is
