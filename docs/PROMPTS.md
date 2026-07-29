@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #88 — m7-25-info-mode-lock (the posture becomes a handshake artifact)
+
+- **Driver:** Imree ("sure i approve what you say, so i'll send the message to Alon and
+  you'll start working on the follow-ups?") · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What happened:** the Round-16 settlement with the opponent team (options 1+2 for
+  the counted series, option 3 registry-first) executed on the code side: the handshake
+  now declares `info_mode_sha256` beside `scent_model_sha256` — same kit §7 family
+  machinery, both-declare-and-differ refuses, omission never — turning the
+  `info_mode: belief` honor term into a both-declared lock backed by each side's
+  firewall test. Rode along: the Round-16 empty-grid pin (`{}` is absence of data —
+  the trap the opponent team's checker had and ours must never grow), the M7-24
+  decision recorded (no wire change; registry question staged for co-sign), and the
+  negotiate key-set pin updated. Their reply's technical claims were verified first:
+  the recovery-cost axis is transient-vs-persistent (2 vs 1, both models, sign never
+  matters — a measured 2×2 correcting their additive/subtractive split), and the
+  `{}`-not-absent-key convention checks out on both wire schemas.
+
 ## PR #87 — m7-23-frame-check (the validator built, and a probe corrects the plan)
 
 - **Driver:** Imree ("the PR has been reviewed and approved, you can merge... let's go
