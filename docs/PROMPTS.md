@@ -3,6 +3,20 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #89 — m7-26-concede-pin (their bug, our probe, an explicit pin)
+
+- **Driver:** Imree (relaying the opponent team's Round-17 letter: "check your
+  receiver") · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** their letter claimed every capture ending logs a false refusal
+  unless the receiver exempts the caught final. Probed before answering: ours has
+  exempted it since the first M7-23 build (`final_caught` guard, PRD §10.2), for both
+  concede shapes — theirs re-sends the last grid unchanged, ours advances the trail —
+  and the committed integration fixture turned out to be a cop_capture game, so the
+  ending was already inside the pinned evidence. This PR adds the explicit
+  two-shape pin they asked for. Their zero-step-re-send convention is accepted into
+  the held kit co-sign text (one rule: `{}` and the unchanged final are the two forms
+  of nothing-to-rely-on).
+
 ## PR #88 — m7-25-info-mode-lock (the posture becomes a handshake artifact)
 
 - **Driver:** Imree ("sure i approve what you say, so i'll send the message to Alon and
