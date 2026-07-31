@@ -1,7 +1,8 @@
 # ADR-0010: Wire shape — resolving the book's Ω_i self-contradiction
 
-> Joint ADR, co-signed with Alon/Renat's team (their round-2 commitment) and mirrored
-> in both our repos + referenced from the kit's shared registrations (kit issue #6).
+> Joint ADR, co-signed with Alon/Renat's team (their round-2 commitment); lives in the
+> cop (lead) repo — the thief repo references it rather than carrying a copy (docs are
+> not core-synced) — and is referenced from the kit's shared registrations (kit issue #6).
 > Numbers in [brackets] = our extraction's PDF pages; printed pages differ
 > (App D §4 = printed p.125).
 
@@ -207,10 +208,63 @@ just architecturally — a pair locking `bookletter-v3` should know this.
   clause makes shape per-pair; the kit's job is to make both shapes verifiable, not to
   legislate one league-wide.
 
+## Addendum (2026-08-01) — the concealment claim, refined by Rounds 15–19
+
+The text above is preserved as finalized on 2026-07-22/27; this addendum records what the
+scent-inversion exchange (league Rounds 15–19, 2026-07-27..31) established afterwards,
+because the signatures below are collected over the ADR *including* it, and because the
+Context's decisive argument claims a property that turned out to be stronger than the
+physics allows.
+
+**What changed.** anrbj666's 2026-07-27 memo — independently verified by us before
+adoption (224 of 224 consecutive frame pairs invert to exactly one emitter cell, under
+BOTH registered scent models, saturated dwells included) — showed that wherever the scent
+field crosses the wire under deterministic public physics, **the rival's position IS on
+the wire to be looked at**: recoverable by arithmetic from two consecutive honest frames.
+The Context's sentence "it is simply not on the wire to be looked at" and the shape
+table's "positions genuinely hidden" are therefore overstated **for the scent channel**;
+both teams' 2026-07-25 friendly transmitted such fields throughout.
+
+**What survives, refined.** The binary of the original argument (hidden by wire vs hidden
+by promise) resolves into three tiers, and the resolution this ADR records is unchanged —
+`reference-v3` remains the shape that implements the formal model, and the finding weakens
+`bookletter-v3` strictly more (there, positions are common knowledge by design):
+
+1. **Wire-structural — the MOVE channel.** Moves stay sealed until the audit boundary;
+   the capture-claim truth-duty keeps its meaning. This tier is exactly as the Context
+   describes, and it is the tier that decides between the two registered shapes.
+2. **Declared and firewalled — the SCENT channel under a transmitted field.** Both teams
+   declare the registered `info_mode:belief` document at negotiate (`info_mode_sha256`,
+   both sides `020947da…`; refusal on a comparable mismatch), and each side's frame
+   validator is verdict-only by module contract, pinned by a test — the inversion is
+   walled out of play, not absent from the wire. In anrbj666's Round-16 words: *an honor
+   term with an artifact behind it on both sides.* The co-signed kit SPEC §7 (the
+   `transmitted` rely-on reading, the pair-vouching clause, the `{}` and zero-step-final
+   conventions) is the registry-level record of this tier; the registered `smell_binding`
+   family (PROPOSED) is its future authenticity upgrade.
+3. **Bare promise** — the tier the original argument rightly rejects, unchanged.
+
+Where the Context says the `info_mode: "belief"` term is one "the kit reserves" and an
+honor term whose violation is not artifact-provable: the enforceability half stands, but
+the term is no longer reserved or promise-only — it is registered, mutually declared, and
+handshake-refused on mismatch (our M7-25; their commits `554f4e4`/`0cad616`-family). The
+finalization note's negotiate-extras list gains `info_mode_sha256` on the same truth
+table. Decision 5(c)'s "physics verification … evidence-grade" likewise gains the in-play
+frame validity check both teams now ship (whole-frame refusal, three shared exemptions:
+empty field, zero-step final, never-judge-the-final) and the `smell_binding` path that
+would upgrade its refusals to audit-grade.
+
+The 224/224 measurement is published in the kit anchored to the fence it sizes, at
+anrbj666's request — "the measured size of the oracle the `info_mode:belief` declaration
+exists to fence … not a capability in use" — and this addendum cites it under the same
+framing.
+
 ## Signatures
 
 Recorded here verbatim when given; the ADR flips to ACCEPTED (and TODO M7-0 ticks)
-only when both lines are filled.
+only when both lines are filled. **Signatures cover the full text including the
+2026-08-01 addendum** — collected that way deliberately, so nobody signs the
+pre-refinement concealment claim bare.
 
 - [ ] Imree (copthief-p2p-cop / copthief-p2p-thief) — pending
 - [ ] Alon/Renat (anrbj666) — pending; the ask rides the warm-up exchange

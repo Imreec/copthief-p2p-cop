@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #90 — adr-0010-addendum (nobody signs the pre-refinement claim bare)
+
+- **Driver:** Imree ("check if the work in M7-0 the Wire-shape mutual ADR actually
+  represent what we came up to and agreed to ... sure, go ahead") · **Author:** Claude
+  (terminal) · **Reviewer:** pending (AG).
+- **What happened:** a drift check of ADR-0010 against the Rounds-15–19 outcomes found
+  one load-bearing overstatement — the Context's "structural concealment / positions
+  genuinely hidden" claim, disproved for the scent channel by the very inversion memo
+  the co-signatory wrote (224/224, both models, verified by both teams). Fixed by ADR
+  discipline: the original text stands as finalized, a dated addendum refines the
+  binary into three tiers (wire-structural moves / declared-and-firewalled scent /
+  bare promise), records that the resolution is unchanged and bookletter is weakened
+  strictly more, updates the info_mode wording (registered + mutually declared, no
+  longer "reserved"), and pins that signatures cover the addendum. Header mirror-claim
+  corrected (the thief repo references, not carries, the ADR). TODO M7-0 notes the
+  same for the warm-up co-sign ask.
+
 ## PR #89 — m7-26-concede-pin (their bug, our probe, an explicit pin)
 
 - **Driver:** Imree (relaying the opponent team's Round-17 letter: "check your
