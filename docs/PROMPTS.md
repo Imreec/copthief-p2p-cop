@@ -3,6 +3,20 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #93 — m7-29-rule47-self-concession (their finding, our verification, the fix)
+
+- **Driver:** Imree (forwarded the opponent team's two Round-20 letters, then "let's
+  build that fix") · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** their claim — three warm-up survivals were rule-47 captures —
+  was verified before acceptance on all three prongs: the rule re-derived from App E
+  p.149 (source ch.3), the code asymmetry confirmed (cop + referee consume
+  `is_imprisoned`, the peer thief never self-checked), the game facts read from our
+  own sealed records (s1/s3/s5: sealed at (6,6) from step 13, 23 further turns,
+  identical). Fix TDD (RED→GREEN, 6 pins incl. the exact bug shape): the thief
+  adjudicates rules 46/47 against itself at the moment an inbound barrier lands and
+  concedes through the existing caught-final shape. Corrected warm-up score recorded
+  honestly (45–85 to them). Their `i_am_captured` design credited in the code.
+
 ## PR #92 — m7-28-result-conformance (the book's commit mandate, honored)
 
 - **Driver:** Imree ("are there things that need to be included in the email and we
