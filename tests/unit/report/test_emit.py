@@ -100,7 +100,10 @@ def test_emit_series_fills_our_own_github_commit_from_the_sealed_step0(
     summaries = [
         make_summary(sub_game_number=1, role="thief", github_commit=sha),
         make_summary(
-            sub_game_number=2, role="police", result="survival", winner="thief",
+            sub_game_number=2,
+            role="police",
+            result="survival",
+            winner="thief",
             github_commit=sha,
         ),
     ]
