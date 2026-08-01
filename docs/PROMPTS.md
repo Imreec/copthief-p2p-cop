@@ -3,6 +3,21 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #92 — m7-28-result-conformance (the book's commit mandate, honored)
+
+- **Driver:** Imree ("are there things that need to be included in the email and we
+  aren't including them yet? ... i rather we fix our gap and then try another friendly
+  game before moving to counted") · **Author:** Claude (terminal) · **Reviewer:**
+  pending (AG).
+- **What happened:** his question audited the emailed artifact against the book. The
+  answer: hardware/identity/tokens/mutual-agreement all correctly placed (verified
+  against the reference sample schema), but `github_commit` — book-mandated per
+  sub-game in the closing email — sat at "unknown" (an M6-3 leftover; the reference's
+  own sample has the same hole, contradiction resolved toward the book), and our
+  `log_files` used a subdir prefix the sample doesn't. Both fixed TDD (RED→GREEN);
+  own column reads the sealed step-0 hash, opponent column awaits the proposed
+  commit-in-negotiate declaration. Next friendly proves both live before counted.
+
 ## PR #91 — m7-27-warmup-evidence (the join proven, the deltas named)
 
 - **Driver:** Imree (named the T twice — "let's do it 15:30" / "let's try again at
