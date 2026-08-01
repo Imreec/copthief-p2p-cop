@@ -18,6 +18,22 @@
   own column reads the sealed step-0 hash, opponent column awaits the proposed
   commit-in-negotiate declaration. Next friendly proves both live before counted.
 
+## PR #91 — m7-27-warmup-evidence (the join proven, the deltas named)
+
+- **Driver:** Imree (named the T twice — "let's do it 15:30" / "let's try again at
+  15:40" — then "i rather we fix our gap and then try another friendly ... i want us
+  to play counted when we are 100% sure") · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What happened:** the agreed cross-team warm-up, run push-button off the refreshed
+  runbook. Window 1 burned on the opponent side (their thief declared sub-game 1 at
+  our s2; 163 M7-10 refusals, killed per T-protocol, zero orphans); window 2 complete
+  (60–40, 4–2, six clean mutual audits, one game_uid). Live promotions: info_mode
+  `020947da…` matched all six handshakes; zero frame refusals (FP=0 held); sorted-pair
+  artifact names' first live use. Report diff vs their arriving artifact: substance
+  matches exactly; four cosmetic deltas + the mutual `github_commit` gap → M7-28
+  claimed. Six logs committed, all replay Verified OK (378 records). Their premature
+  one-sub-game report email (burned window) is recorded as their-side evidence.
+
 ## PR #90 — adr-0010-addendum (nobody signs the pre-refinement claim bare)
 
 - **Driver:** Imree ("check if the work in M7-0 the Wire-shape mutual ADR actually
