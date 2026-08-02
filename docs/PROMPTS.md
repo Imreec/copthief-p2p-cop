@@ -3,6 +3,18 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #94 — m7-31-referee-thief-quota (the instrument tells the truth again)
+
+- **Driver:** Imree ("the PR was merged, you can do the fix you wanted" — after this
+  session's first-hand review of thief PR #61) · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What happened:** the police-lead half of the M7-30 finding. `thief_observation`
+  now carries the quota exactly as the wire does (barriers_used=0 own count,
+  max_barriers from the constitution); police builder pinned unchanged. TDD; 903
+  tests; committed cop-repo arena regeneration proven byte-identical (no thief arm
+  here reads the quota). The sync deletes the thief repo's red-going gap pin per its
+  own stated design.
+
 ## PR #93 — m7-29-rule47-self-concession (their finding, our verification, the fix)
 
 - **Driver:** Imree (forwarded the opponent team's two Round-20 letters, then "let's
