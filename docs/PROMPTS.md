@@ -3,6 +3,20 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #98 — m7-36-live-path-truth (the window caught our own two gaps)
+
+- **Driver:** Imree ("Alon is here, let's do 16:00" — the verification window whose
+  whole purpose was catching exactly this) · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What happened:** the 16:00 series settled clean (30–90 — his rematch evader now
+  survives all our cop games) and the artifact sweep found the emitted result
+  contradicting the driver twice: opponent commits "unknown" (only the in-memory
+  path knew the M7-33 field; the live path rebuilds from logs) and a rehearsal
+  claiming a counted first meeting + diversity reward (league bump keyed on
+  strict_rules). Both fixed TDD; the step-0 reader now lives in domain/ and both
+  paths share it; validated against the real 16:00 logs. One more short window owed
+  before counted.
+
 ## PR #97 — m7-35-identity-channels (their keep, our mirror, one correction)
 
 - **Driver:** Imree (relayed the opponent team's Round-23 letter: their two-channel

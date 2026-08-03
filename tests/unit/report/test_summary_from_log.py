@@ -150,16 +150,12 @@ def test_the_opponents_revealed_step_zero_commit_is_read(tmp_path: Path) -> None
             },
         }
     )
-    summary = summary_from_log(
-        _write(tmp_path, rows), sub_game_number=1, group_name="G"
-    )
+    summary = summary_from_log(_write(tmp_path, rows), sub_game_number=1, group_name="G")
     assert summary["opponent_github_commit"] == "ba" * 20
 
 
 def test_a_log_without_their_audit_leaves_the_opponent_commit_unknown(
     tmp_path: Path,
 ) -> None:
-    summary = summary_from_log(
-        _write(tmp_path, _log_rows()), sub_game_number=1, group_name="G"
-    )
+    summary = summary_from_log(_write(tmp_path, _log_rows()), sub_game_number=1, group_name="G")
     assert summary["opponent_github_commit"] == "unknown"
