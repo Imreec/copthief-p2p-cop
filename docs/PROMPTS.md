@@ -3,6 +3,19 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #97 — m7-35-identity-channels (their keep, our mirror, one correction)
+
+- **Driver:** Imree (relayed the opponent team's Round-23 letter: their two-channel
+  keep + "let's answer him and i'll send him the files as well?") · **Author:**
+  Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** verifying their "keep" against our own tree found an M7-34
+  inaccuracy — the wire handshake never carried the count (only the report-path
+  builder did). Fixed together with the mirror of their rule: the wire identity now
+  declares counted_games_played + the step-0 commit, sourced from the sealed record
+  so the channels agree by construction. Their catch about the professor-repo
+  example set lacking the commit confirms our documented example-vs-reference
+  contradiction; the four book-attached files go to them with the reply.
+
 ## PR #96 — m7-33-34-example-conformance (the book's own files, honored)
 
 - **Driver:** Imree (asked the book chatbot, caught its citation, fetched the book's
