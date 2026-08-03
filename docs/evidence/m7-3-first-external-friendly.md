@@ -8,9 +8,10 @@ settlement and the mail leaving.**
 ## Result
 
 Winner **imreeyal, 75–35**, five sub-games to one (artifact
-`reports/imreeyal/archive-friendlies/2026-07-25-first-friendly/result_imreeyal-vs-anrbj666.json`
-— archived there 2026-08-03 so the counted set owns the top level; the filenames are the
-pre-M7-17 self-first convention and are deliberately unchanged; series exit 0; report
+`reports/friendlies/archive/2026-07-25-first-friendly/result_imreeyal-vs-anrbj666.json`
+— archived there 2026-08-04 under the friendlies tree (`reports/` splits counted-series
+from friendlies; see `reports/README.md`); the filenames are the pre-M7-17 self-first
+convention and are deliberately unchanged; series exit 0; report
 `{"action": "send"}` to `imreeyal.copthief@gmail.com`,
 `alonisrael.engel@gmail.com`, `imree.c@gmail.com`).
 
@@ -27,7 +28,7 @@ One shared `game_uid e351176a-8883-7ce6-aad8-8a50bff637d7` across all twelve hal
 every mutual audit clean (`audit_ok` both sides, opponent records verified per game).
 Logs committed beside this file as `m7-3-friendly-g01..06.jsonl`; the six per-game
 configs, declaration, per-game reports and result are committed under
-`reports/imreeyal/archive-friendlies/2026-07-25-first-friendly/`.
+`reports/friendlies/archive/2026-07-25-first-friendly/`.
 
 **Competitive note:** sub-games 2 and 6 are the first cop captures recorded under
 `multiplicative_book_v1` by either team — every previous game under the book model, in

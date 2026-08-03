@@ -5,8 +5,11 @@ Read this first: the folder name tells you whether a game **counted**.
 | Path | What it holds | Scores? |
 |---|---|---|
 | `counted-series/<group_id>/` | **The official counted league series** — one per opponent, played under `--counted`, reported by email to the lecturer. | **Yes** |
-| `<group_id>/` | The most recent **uncounted warm-up** against that opponent (played under `--rehearsal`; the lecturer is structurally unreachable in that mode). | No |
-| `<group_id>/archive-friendlies/` | Earlier warm-up snapshots, kept because every run of one pairing overwrites the last (see below). | No |
+| `friendlies/<group_id>/` | The most recent **uncounted warm-up** against that opponent (played under `--rehearsal`; the lecturer is structurally unreachable in that mode). | No |
+| `friendlies/archive/<date>-<label>/` | Earlier warm-up snapshots, kept because every run of one pairing overwrites the last (see below). | No |
+
+Nothing counted ever lands outside `counted-series/`, and nothing uncounted ever lands
+inside it — the two trees are written by the two run modes and never share a directory.
 
 Uncounted warm-ups are not clutter — the book asks for them: ch. 9.2.1, *"משחקי חימום
 (warm-ups) שאינם נספרים — מותרים ואף מומלצים, לצורך בדיקה וכיול לפני המשחק הנספר"*

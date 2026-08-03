@@ -6,7 +6,9 @@ recommends them explicitly — ch. 9.2.1: *"משחקי חימום (warm-ups) ש�
 מומלצים, לצורך בדיקה וכיול לפני המשחק הנספר"* — and only ONE game per opponent ever counts
 for league points, so none of these carry any.
 
-The **counted** series artifacts live at the parent level (`reports/imreeyal/`), not here.
+The **counted** series artifacts live in their own tree — `reports/counted-series/<group_id>/`,
+never here. The most recent warm-up sits one level up in `reports/friendlies/<group_id>/`;
+this folder keeps the older snapshots (see `reports/README.md` for the whole layout).
 
 ## `2026-07-25-first-friendly/`
 
