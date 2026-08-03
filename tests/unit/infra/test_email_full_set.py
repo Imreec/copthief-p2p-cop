@@ -63,7 +63,7 @@ def test_build_raw_carries_every_extra_file_and_keeps_the_body() -> None:
 def test_the_series_email_attaches_the_whole_template_set(tmp_path: Path) -> None:
     result = _artifact_set(tmp_path)
     sender, transport = make_sender(recipient=FRIENDLY)
-    outcome = sender.report_result(result, role="police")
+    outcome = sender.send_report(result_path=result, role="police")
     assert outcome["action"] == "send"
     sent = transport.sends[0]
     assert sent["attachment"] == f"result_{GID}.json"
@@ -82,7 +82,7 @@ def test_a_result_without_siblings_still_reports_alone(tmp_path: Path) -> None:
     # Reporting beats completeness: rule 35 punishes the missing REPORT; a thin mail
     # is visible in the outcome and recoverable by hand.
     sender, transport = make_sender(recipient=FRIENDLY)
-    outcome = sender.report_result(result_file(tmp_path), role="police")
+    outcome = sender.send_report(result_path=result_file(tmp_path), role="police")
     assert outcome["action"] == "send"
     assert transport.sends[0]["extra"] == []
     assert outcome["attachments"] == ["result_x.json"]
