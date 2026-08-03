@@ -3,6 +3,19 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #103 — proof-window-artifacts (the 20:15 set: equal mutual hashes, on the record)
+
+- **Driver:** Imree ("so there isn't anything i need to push right now right?") ·
+  **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** the 2026-08-03 20:15 proof window's 20-file artifact set committed
+  as the standing pre-counted evidence — the first window in cross-team history where
+  both teams' result files carry the SAME mutual_agreement.sha256 (59147968…,
+  verified against the opponent's arriving artifact field-by-field; only the two
+  documented divergence classes remain). Also the live proof of the Round-29 mail
+  (result-only, single attachment) and of M7-39's links.github in the wild. Artifacts
+  only — no code, no mirrored path, no sync owed; clears the working tree for the
+  counted-day clean-tree requirement.
+
 ## PR #102 — m7-40-result-only-mail (the flip back, with the reasoning on the record)
 
 - **Driver:** Imree ("i tend to agree with Alon, and if we are going back to the one
