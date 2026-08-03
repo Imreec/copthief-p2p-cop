@@ -64,7 +64,16 @@ def test_emit_series_result_matches_the_file_and_signs_the_symmetric_outcome(
         (tmp_path / "team-a" / "result_team-a-vs-team-b.json").read_text(encoding="utf-8")
     )
     assert on_disk == result
-    aggregate = {k: v for k, v in result["final_result"].items() if k != "tokens_total_series"}
+    # The signed symmetric outcome covers the SHARED game facts only — tokens and the
+    # M7-34 league fields (each side's own declarations) stay outside the preimage,
+    # so two honest reports with different declared counts still verify.
+    unsigned = {
+        "tokens_total_series",
+        "games_played_including_this",
+        "first_meeting_between_groups",
+        "diversity_reward_applied",
+    }
+    aggregate = {k: v for k, v in result["final_result"].items() if k not in unsigned}
     slim = [
         {key: sg[key] for key in ("sub_game_number", "roles", "result", "winner_group", "score")}
         for sg in result["sub_games"]
