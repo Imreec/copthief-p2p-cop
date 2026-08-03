@@ -3,7 +3,7 @@
 # M1 carries only the sections the walking skeleton reads; [strategy]/[trash_talk]/[llm]/[email]
 # arrive with their milestones (M5/M6).
 
-version = "1.02"
+version = "1.03"
 
 [game]
 group_name = "ImreEyal-Police"
@@ -13,6 +13,13 @@ sub_game_number = 1
 # whole-match declaration; the reference's writer requires every key.
 members = ["Imree Cohen", "Eyal Shtinmetz"]
 llm_model = "none"
+# M7-41 league ledger (book §9.2.1; rules 37-38). Declared mutually at every game start
+# and read by the diversity weighting. UPDATE AFTER EVERY COUNTED SERIES, never after a
+# warm-up: a stale count makes the NEXT counted game declare "first meeting" falsely,
+# which is a project-level disqualification (rule 38). First counted series played
+# 2026-08-04 vs anrbj666 (30-90; artifacts in reports/counted-series/).
+counted_games_played = 1
+counted_opponents = ["anrbj666"]
 
 [game.repos]
 cop = "https://github.com/Imreec/copthief-p2p-cop"
