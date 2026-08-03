@@ -68,7 +68,7 @@
   "game_uid": "e351176a-8883-7ce6-aad8-8a50bff637d7",
   "sub_game_number": 3,
   "links": {
-    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are examples for game_id=S01R02-team07-vs-team13.",
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
     "declaration": "declaration_anrbj666-vs-imreeyal.json",
     "config": "config_anrbj666-vs-imreeyal_g<NN>.json",
     "log": "log_anrbj666-vs-imreeyal_g<NN>.json",

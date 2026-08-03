@@ -4,8 +4,8 @@
   "תפקיד_מדווח": "thief",
   "קבוצה_מדווחת": "ImreEyal-Police",
   "מספר_משחקון": 1,
-  "זמן_התחלה": "2026-08-03T14:44:48.689430+00:00",
-  "משך_משחק_שניות": 8.8,
+  "זמן_התחלה": "2026-08-03T17:15:04.757989+00:00",
+  "משך_משחק_שניות": 8.0,
   "הצהרת_מפרט_מחשב_וטוקנים": {
     "מפרט_מחשב": {
       "cpu_cores": 24,
@@ -53,7 +53,7 @@
   "לוג_צעדים_מאומת": [
     {
       "מספר_צעד": 1,
-      "טביעת_זמן": "2026-08-03T14:44:50.414689+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:06.882390+00:00",
       "שולח": "police",
       "רמז_מילולי_שנשלח": "East side alleys are friendly tonight.",
       "גריד_ריח_מצורף": {
@@ -68,11 +68,11 @@
         "2,2": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "778612ab98d80aca234f375cbf23bcc554639c3ee7cd0792662b6ce5aeaa2c41"
+      "חתימת_מצב": "0ed9185f46c753fba1f002a8ed822cb7cf9309b4302fb536d0c7498bbeb8be5c"
     },
     {
       "מספר_צעד": 2,
-      "טביעת_זמן": "2026-08-03T14:44:50.685367+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:07.141790+00:00",
       "שולח": "police",
       "רמז_מילולי_שנשלח": "Downtown crowds hide me well.",
       "גריד_ריח_מצורף": {
@@ -90,13 +90,13 @@
         "2,3": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "73f0e5160e9178729639b575ac79efb2847317478220467d97f1d267436bef84"
+      "חתימת_מצב": "09a29ba134a74de588008cadbae2014b6f97db80b4d24e53f508cc01f172d2de"
     },
     {
       "מספר_צעד": 3,
-      "טביעת_זמן": "2026-08-03T14:44:50.983053+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:07.417711+00:00",
       "שולח": "police",
-      "רמז_מילולי_שנשלח": "East side alleys are friendly tonight.",
+      "רמז_מילולי_שנשלח": "Chasing sunrise eastward.",
       "גריד_ריח_מצורף": {
         "0,0": 0.9,
         "0,1": 0.9,
@@ -116,11 +116,11 @@
         "3,3": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "7879bed159e97022a203d6eb5189cbbfc83c5e567c3ad34278504177a546323b"
+      "חתימת_מצב": "cd8c9fd924edb63296d88a47c0851fd20c69b441c2ceb11d2f709edde0105c63"
     },
     {
       "מספר_צעד": 4,
-      "טביעת_זמן": "2026-08-03T14:44:51.256445+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:07.693906+00:00",
       "שולח": "police",
       "רמז_מילולי_שנשלח": "Chasing sunrise eastward.",
       "גריד_ריח_מצורף": {
@@ -146,13 +146,13 @@
         "3,4": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "adc4a3d606e046e5289c381dc5e732fd10961a733c96ba0d1bbcefc051aae753"
+      "חתימת_מצב": "6dff6c8655fd88707bd20152922bbd526e40036c5fd4ec6e66d0bb5439bde868"
     },
     {
       "מספר_צעד": 5,
-      "טביעת_זמן": "2026-08-03T14:44:51.543549+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:08.000361+00:00",
       "שולח": "police",
-      "רמז_מילולי_שנשלח": "Downtown crowds hide me well.",
+      "רמז_מילולי_שנשלח": "Slipping south past the docks.",
       "גריד_ריח_מצורף": {
         "0,0": 0.81,
         "0,1": 0.9,
@@ -180,11 +180,11 @@
         "3,5": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "590ce4873a6c3da54f43102b601ae596887aca6eafaccf6eb3eaf8b3c4f73e0e"
+      "חתימת_מצב": "2a1ceab5e219c62205708faef34c08466e9d34969defd36c8d0de79030e417bd"
     },
     {
       "מספר_צעד": 6,
-      "טביעת_זמן": "2026-08-03T14:44:51.808059+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:08.338150+00:00",
       "שולח": "police",
       "רמז_מילולי_שנשלח": "Slipping south past the docks.",
       "גריד_ריח_מצורף": {
@@ -219,13 +219,13 @@
         "4,5": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "44692141a164f541661ebfa2f82076986fd786330949fba9e4f9058716b5e293"
+      "חתימת_מצב": "b4e311bf1097e4a6184c8a4ac2fb3e3fc63e1d4ff1a6e8ebb4c3e6ca1cbd87b9"
     },
     {
       "מספר_צעד": 7,
-      "טביעת_זמן": "2026-08-03T14:44:52.076138+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:08.621757+00:00",
       "שולח": "police",
-      "רמז_מילולי_שנשלח": "East side alleys are friendly tonight.",
+      "רמז_מילולי_שנשלח": "Chasing sunrise eastward.",
       "גריד_ריח_מצורף": {
         "0,0": 0.6561000000000001,
         "0,1": 0.7650000000000001,
@@ -263,13 +263,13 @@
         "5,5": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "00e1e3b8ed9300090d6ac992c82a7fbadca7eced9e97207a5b9f46f1aa589ab6"
+      "חתימת_מצב": "04211bba19b30d4e3ce82d0143062ec53d45003356ed37d6a0668cda29115bd0"
     },
     {
       "מספר_צעד": 8,
-      "טביעת_זמן": "2026-08-03T14:44:52.358210+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:08.905153+00:00",
       "שולח": "police",
-      "רמז_מילולי_שנשלח": "Downtown crowds hide me well.",
+      "רמז_מילולי_שנשלח": "Slipping south past the docks.",
       "גריד_ריח_מצורף": {
         "0,0": 0.5904900000000002,
         "0,1": 0.6885000000000001,
@@ -312,13 +312,13 @@
         "5,6": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "073bb483f6c0248766db61126100590f722f0c8efd137aa4c77dddc1573a0161"
+      "חתימת_מצב": "5c3ac530dece3a2c1b6612aa84e0fce20886345226b8d89bf97c3b0b9249fb7d"
     },
     {
       "מספר_צעד": 9,
-      "טביעת_זמן": "2026-08-03T14:44:52.689993+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:09.247561+00:00",
       "שולח": "police",
-      "רמז_מילולי_שנשלח": "Chasing sunrise eastward.",
+      "רמז_מילולי_שנשלח": "East side alleys are friendly tonight.",
       "גריד_ריח_מצורף": {
         "0,0": 0.5314410000000002,
         "0,1": 0.6196500000000001,
@@ -366,13 +366,13 @@
         "6,6": 0.04
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "faf41908a85f099bee779e223e70ba3e7690fab110b6700613bb08712e75e8dd"
+      "חתימת_מצב": "64dc1a47d6871a126fb2a0953b2975df797b174873459f4b642d4e6ebe850a58"
     },
     {
       "מספר_צעד": 10,
-      "טביעת_זמן": "2026-08-03T14:44:52.945542+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:09.514103+00:00",
       "שולח": "police",
-      "רמז_מילולי_שנשלח": "Downtown crowds hide me well.",
+      "רמז_מילולי_שנשלח": "Slipping south past the docks.",
       "גריד_ריח_מצורף": {
         "0,0": 0.47829690000000014,
         "0,1": 0.5576850000000001,
@@ -420,13 +420,13 @@
         "6,6": 0.17600000000000002
       },
       "מחסום_שהוצב": null,
-      "חתימת_מצב": "b906089e6a6cf36d38ab49c284a17473ab37f2a31cee57fac82afcfe57df78fd"
+      "חתימת_מצב": "1335c1d2a391173488d861f60350ce14bc48bcb55eb9f83dd4d0fdbb079752cc"
     },
     {
       "מספר_צעד": 11,
-      "טביעת_זמן": "2026-08-03T14:44:53.212534+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:09.778560+00:00",
       "שולח": "police",
-      "רמז_מילולי_שנשלח": "Not moving an inch, promise.",
+      "רמז_מילולי_שנשלח": "Comfortable right where I am.",
       "גריד_ריח_מצורף": {
         "0,0": 0.43046721000000016,
         "0,1": 0.5019165000000001,
@@ -477,11 +477,11 @@
         5,
         6
       ],
-      "חתימת_מצב": "14cf769fcff2db4112003c7efd734632abd66f27208749bfdf33d95615abcf24"
+      "חתימת_מצב": "99eea858ca73c10e1be8b70a989cc0a3f5a122379be92da9421ae4d82bf9e2af"
     },
     {
       "מספר_צעד": 12,
-      "טביעת_זמן": "2026-08-03T14:44:53.473562+00:00",
+      "טביעת_זמן": "2026-08-03T17:15:10.049122+00:00",
       "שולח": "police",
       "רמז_מילולי_שנשלח": "Not moving an inch, promise.",
       "גריד_ריח_מצורף": {
@@ -534,16 +534,16 @@
         6,
         5
       ],
-      "חתימת_מצב": "f1aae2a610e83a4cd7df35f545f7dba1ac3fcf3e59f7b22de64036a5a3dc11c1"
+      "חתימת_מצב": "acb5c8d947c9c6bfc57c12b8f7c6498228aec91082cd3bdcf878b27afb0a8108"
     }
   ],
   "הצהרות_חתומות_שלי": [
     {
-      "commit": "73aed8b367a13e86cb54c26e31eed951750e82a6759e191a3539a8dee6e8cec8",
-      "nonce": "c7f5b95ac24aeee44372b6d52dc669da",
+      "commit": "72aced75b673ca9588cf64b37bf8251d4313a978c3a993281849c94781962c66",
+      "nonce": "ee7289da202bd049de8a0f6eeea9ca80",
       "payload": {
         "code_version": "1.00",
-        "github_commit": "21207aa89e2aa335dc14adb4dbff13656787c435",
+        "github_commit": "160d173646808385c84b444ea9d2ae51df91e1b1",
         "group_name": "ImreEyal-Police",
         "model": "none",
         "num_games_declared": 6,
@@ -564,8 +564,8 @@
       }
     },
     {
-      "commit": "c8a7da14cab0421975ae73e17f4f8e314be1b7d5c76eab3aa38feb27b7855cf2",
-      "nonce": "db57271e2d158dad2bda357d516b321e",
+      "commit": "b696de315ac92f5f2b8233a1e42b4374ec2a414080306a191b528027afa87ebe",
+      "nonce": "c8e312561ef70fb3100250bcf1155739",
       "payload": {
         "hint": "They say the crowds near Grand Central hide anyone.",
         "intent": "truth",
@@ -575,7 +575,7 @@
           3,
           4
         ],
-        "response_seconds": 0.002,
+        "response_seconds": 0.003,
         "state": "grid=7x7;self=[3, 4];barriers=[]",
         "step": 1,
         "tokens_step": 0,
@@ -583,8 +583,8 @@
       }
     },
     {
-      "commit": "05f7207e13798e6335c92fe2711e434f31c92b3560f18e1533eb85f8ba856041",
-      "nonce": "dca962f9c0cad8e64bdee5936bb6dc01",
+      "commit": "aed5819bcf6622d40014c5535d439335747ffa2da4d0918dcf51c954d8c17e03",
+      "nonce": "460cd42ec3585b78becd16d926053191",
       "payload": {
         "hint": "I heard sirens somewhere around Grand Central.",
         "intent": "truth",
@@ -594,7 +594,7 @@
           3,
           5
         ],
-        "response_seconds": 0.002,
+        "response_seconds": 0.003,
         "state": "grid=7x7;self=[3, 5];barriers=[]",
         "step": 2,
         "tokens_step": 0,
@@ -602,8 +602,8 @@
       }
     },
     {
-      "commit": "ba20f6a5505c155f671be273614421eded3261a26add085297261207aa062d1f",
-      "nonce": "808c6cbd1f1e41e03882d94999a05e84",
+      "commit": "6d313936461b32ca0487be7de0d9eaa44882bdaaff698f32f88841de60d0580a",
+      "nonce": "2b64822bf55d003a9ee05ec91ce5bf35",
       "payload": {
         "hint": "The shadows by Brooklyn Bridge feel busy tonight.",
         "intent": "truth",
@@ -621,8 +621,8 @@
       }
     },
     {
-      "commit": "a5b19bbbf6b4216df795e9fc12543bdb0804c36c54807e46b10d079e5458bc89",
-      "nonce": "2077185028597af7e49f1550090215b6",
+      "commit": "297fc765d4182f2b9a7304aba8f1bc1845893693e65b464112cce589a9463dca",
+      "nonce": "607fb4a40f3d0439a599a38372806acf",
       "payload": {
         "hint": "Word is, keep an eye on Brooklyn Bridge.",
         "intent": "truth",
@@ -640,8 +640,8 @@
       }
     },
     {
-      "commit": "05bb06d0bb5aaf6ea7ad8a99439a2b2cac3b104d90c7bff2c359fe542ef06f1e",
-      "nonce": "168f86eb7f8dbad077678a2b80547c85",
+      "commit": "8ce2e79aea027b0042e428e0749b8e6d62e6b123170cff80be14cef643d56887",
+      "nonce": "a0b78c70b895690cdf0c11c1bc131f24",
       "payload": {
         "hint": "Someone was asking about Brooklyn Bridge just now.",
         "intent": "truth",
@@ -659,8 +659,8 @@
       }
     },
     {
-      "commit": "1f15104fac131678ec96ea9a5139ab0c0f4b183c883ad2e560e24c94cc4f0a41",
-      "nonce": "2dc1e97be3167ec44e93d74718934074",
+      "commit": "7aa0823b2062b7a778fcf8a6c9ed2485e92fd284c356879a8a8de9605c5d6957",
+      "nonce": "584e5e128e937b72fe12604720792bb6",
       "payload": {
         "hint": "All roads seem to lead to Brooklyn Bridge.",
         "intent": "truth",
@@ -678,8 +678,8 @@
       }
     },
     {
-      "commit": "f9c63077e90d8ee60c8f6b34f44d69e24d0dd8287db9cd0e343ed70318e48aa8",
-      "nonce": "c5d7e9fbce738e4e053853f104454dcd",
+      "commit": "ea19c40fb9a3628bffa1afe62f0bc49311a098e712de2e295f12bc242c441f9d",
+      "nonce": "ddc8536bdbc20813ceee26af42b8bac8",
       "payload": {
         "hint": "They say the crowds near Brooklyn Bridge hide anyone.",
         "intent": "truth",
@@ -697,8 +697,8 @@
       }
     },
     {
-      "commit": "949b78c147620558b364d2c892ea8a884e8e439f58e23dda9b6e8b1249c848c9",
-      "nonce": "5a62231e4d276176dea1c67b6ba3e041",
+      "commit": "c32047ce69c397e358376a6d3178efa44e340a0e33ab14d41f246b4fabce2482",
+      "nonce": "550c6843203691fcc34fa6d90174b14d",
       "payload": {
         "hint": "I heard sirens somewhere around Brooklyn Bridge.",
         "intent": "truth",
@@ -708,7 +708,7 @@
           6,
           6
         ],
-        "response_seconds": 0.002,
+        "response_seconds": 0.003,
         "state": "grid=7x7;self=[6, 6];barriers=[]",
         "step": 8,
         "tokens_step": 0,
@@ -716,8 +716,8 @@
       }
     },
     {
-      "commit": "36d23957abc50e823eb2eb0cb9967c179f856cdbdaaee382fb2a534a4cc3762a",
-      "nonce": "7d6ad1b7fc290cf134dce06cc4acae65",
+      "commit": "d4f2d287acb72c0038d484cfc24104f9a4f147e92cd01cbe0b8a54cec239b63a",
+      "nonce": "f4c5a6b6919ffba9d5c3337db0e1ce65",
       "payload": {
         "hint": "The shadows by Brooklyn Bridge feel busy tonight.",
         "intent": "truth",
@@ -735,8 +735,8 @@
       }
     },
     {
-      "commit": "d8fb72c915f1b5cf4f9a2028b29ce6040bfcfe8bdf00f23696fce7efa862289a",
-      "nonce": "a73054554c63ff6bed88db1421a2952c",
+      "commit": "03f0fda45be5d092f1bd57c5eb3d011868d8ee15f109ac1392233c5d93a5f646",
+      "nonce": "c17d326a907dc469092efd52152680ce",
       "payload": {
         "hint": "Word is, keep an eye on Brooklyn Bridge.",
         "intent": "truth",
@@ -754,8 +754,8 @@
       }
     },
     {
-      "commit": "8758db1bb192a4500c8513a9edf1297fa4ee2c4ea4652996372ff5aebb5210cd",
-      "nonce": "05037639c403ad96584b16fa3c271b97",
+      "commit": "69a25fa91a2fecad13b14af0a5b76817dbf8108d69747a67b7c3c3de79726b3d",
+      "nonce": "6e432b404b8e7e70d5e88e0e4fb961bc",
       "payload": {
         "hint": "Someone was asking about Brooklyn Bridge just now.",
         "intent": "truth",
@@ -773,8 +773,8 @@
       }
     },
     {
-      "commit": "7049bdc457a2a2eb653c17515491a2356667f3973188c4c11b9a47118a3f408f",
-      "nonce": "40f3645f60e7a223a0b4a8bdbf4cee72",
+      "commit": "dc4cc89b0e10fdb8da14cac87f10d8db6647a3ef0992251cfec4aa39a50eb77b",
+      "nonce": "82165b5cf6694376adeb8ddf15f70cfc",
       "payload": {
         "hint": "All roads seem to lead to Brooklyn Bridge.",
         "intent": "truth",
@@ -792,8 +792,8 @@
       }
     },
     {
-      "commit": "cc39d786be1dbbf40b1132aa9e283cf621389ba8ad1ff3092c5b241d0387ee63",
-      "nonce": "d90b6909dca681fe770a9e9b83c3bbc8",
+      "commit": "18c7a3a4f9e8899bdc43913b98fbe4b85b5244f8b6b07c756f5a98ae85351690",
+      "nonce": "6121a9b89f4366f57bd0087d9fd58134",
       "payload": {
         "hint": "You got me.",
         "intent": "truth",
@@ -812,5 +812,5 @@
     }
   ],
   "הסכמה_הדדית": true,
-  "חתימת_קונסנזוס_משותפת": "2644400bbfe2c65dcac752b206900bf3e8238f951948225ca9b01db3deb7a7f9"
+  "חתימת_קונסנזוס_משותפת": "b4950515a08d9331f93ad02ac93e29efef6145f8be1745cf4440cde5fb4d929e"
 }
