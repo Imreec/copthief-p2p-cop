@@ -87,9 +87,7 @@ def test_handshake_identity_declares_count_and_step0_commit() -> None:
     from copthief_core.peer.session import PeerSession
 
     spec = live_spec_record(_SHIPPED, CONSTITUTION, sub_game_number=1, role="police")
-    session = PeerSession(
-        CONSTITUTION, _SHIPPED, role="police", seed=1, spec_record=spec
-    )
+    session = PeerSession(CONSTITUTION, _SHIPPED, role="police", seed=1, spec_record=spec)
     identity = session.negotiate_payload()["identity"]
     assert identity["counted_games_played"] == _SHIPPED.counted_games_played
     assert identity["github_commit"] == spec.payload["github_commit"]
