@@ -3,6 +3,21 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #96 — m7-33-34-example-conformance (the book's own files, honored)
+
+- **Driver:** Imree (asked the book chatbot, caught its citation, fetched the book's
+  four attached example files, and asked the two-repo question — "are we using the
+  cop's? what about the fact that we have two repos?" — then "let's build it") ·
+  **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** the chatbot's answer was first called fabricated (the commits it
+  cited appear nowhere in the book text), then RETRACTED when the real attached
+  example files surfaced — verify-then-accept cut both ways this round. The files
+  redefined "mails perfect": M7-33 fills both commit columns (role-aware own via the
+  loaded brain's repo — Imree's two-repo catch; opponent from their revealed step-0,
+  zero wire changes) and M7-34 adds the three league-standing fields (diversity
+  semantics re-derived from §9.2.1 + App F before coding, kept outside the signed
+  symmetric outcome). One PR for both, per Imree's fewer-PRs preference.
+
 ## PR #95 — m7-32-warmup2-evidence (honest play, agreed score, converged artifacts)
 
 - **Driver:** Imree ("let's set the T for 12:15 (israel) today... my computer has been
