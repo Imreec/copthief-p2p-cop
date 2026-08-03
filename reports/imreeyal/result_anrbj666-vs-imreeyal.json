@@ -24,14 +24,14 @@
         "imreeyal": "thief",
         "anrbj666": "police"
       },
-      "started_at": "2026-08-03T09:15:19.501011+00:00",
-      "ended_at": "2026-08-03T09:15:41.601011+00:00",
+      "started_at": "2026-08-03T14:44:48.689430+00:00",
+      "ended_at": "2026-08-03T14:44:57.489430+00:00",
       "result": "capture",
       "winner_group": "anrbj666",
       "tie": false,
       "github_commit": {
-        "imreeyal": "e650af3f7801c0a8dbb5bfe12346d560c7486e52",
-        "anrbj666": "unknown"
+        "imreeyal": "21207aa89e2aa335dc14adb4dbff13656787c435",
+        "anrbj666": "3b1a343dbb992c6206bcbe6cd6d30f7254a6e05b"
       },
       "tokens": {
         "imreeyal": 0,
@@ -56,14 +56,14 @@
         "imreeyal": "police",
         "anrbj666": "thief"
       },
-      "started_at": "2026-08-03T09:15:36.524786+00:00",
-      "ended_at": "2026-08-03T09:16:10.624786+00:00",
+      "started_at": "2026-08-03T14:44:57.314909+00:00",
+      "ended_at": "2026-08-03T14:45:11.614909+00:00",
       "result": "survival",
       "winner_group": "anrbj666",
       "tie": false,
       "github_commit": {
-        "imreeyal": "e650af3f7801c0a8dbb5bfe12346d560c7486e52",
-        "anrbj666": "unknown"
+        "imreeyal": "d04c4eca192e5bd8eaf63c3fa7d71e718352a525",
+        "anrbj666": "7578924fa8434eeedb04cc5252ad1257813ba6a3"
       },
       "tokens": {
         "imreeyal": 0,
@@ -88,14 +88,14 @@
         "imreeyal": "thief",
         "anrbj666": "police"
       },
-      "started_at": "2026-08-03T09:16:09.448325+00:00",
-      "ended_at": "2026-08-03T09:16:25.548325+00:00",
+      "started_at": "2026-08-03T14:45:12.216683+00:00",
+      "ended_at": "2026-08-03T14:45:21.516683+00:00",
       "result": "capture",
       "winner_group": "anrbj666",
       "tie": false,
       "github_commit": {
-        "imreeyal": "e650af3f7801c0a8dbb5bfe12346d560c7486e52",
-        "anrbj666": "unknown"
+        "imreeyal": "21207aa89e2aa335dc14adb4dbff13656787c435",
+        "anrbj666": "3b1a343dbb992c6206bcbe6cd6d30f7254a6e05b"
       },
       "tokens": {
         "imreeyal": 0,
@@ -120,22 +120,22 @@
         "imreeyal": "police",
         "anrbj666": "thief"
       },
-      "started_at": "2026-08-03T09:16:26.248642+00:00",
-      "ended_at": "2026-08-03T09:16:43.048642+00:00",
-      "result": "capture",
-      "winner_group": "imreeyal",
+      "started_at": "2026-08-03T14:45:21.013666+00:00",
+      "ended_at": "2026-08-03T14:45:35.513666+00:00",
+      "result": "survival",
+      "winner_group": "anrbj666",
       "tie": false,
       "github_commit": {
-        "imreeyal": "e650af3f7801c0a8dbb5bfe12346d560c7486e52",
-        "anrbj666": "unknown"
+        "imreeyal": "d04c4eca192e5bd8eaf63c3fa7d71e718352a525",
+        "anrbj666": "7578924fa8434eeedb04cc5252ad1257813ba6a3"
       },
       "tokens": {
         "imreeyal": 0,
         "anrbj666": 0
       },
       "score": {
-        "imreeyal": 20,
-        "anrbj666": 5
+        "imreeyal": 5,
+        "anrbj666": 10
       },
       "log_files": {
         "imreeyal": "log_anrbj666-vs-imreeyal_g04.json",
@@ -152,14 +152,14 @@
         "imreeyal": "thief",
         "anrbj666": "police"
       },
-      "started_at": "2026-08-03T09:16:41.538517+00:00",
-      "ended_at": "2026-08-03T09:16:56.838517+00:00",
+      "started_at": "2026-08-03T14:45:35.801944+00:00",
+      "ended_at": "2026-08-03T14:45:44.701944+00:00",
       "result": "capture",
       "winner_group": "anrbj666",
       "tie": false,
       "github_commit": {
-        "imreeyal": "e650af3f7801c0a8dbb5bfe12346d560c7486e52",
-        "anrbj666": "unknown"
+        "imreeyal": "21207aa89e2aa335dc14adb4dbff13656787c435",
+        "anrbj666": "3b1a343dbb992c6206bcbe6cd6d30f7254a6e05b"
       },
       "tokens": {
         "imreeyal": 0,
@@ -184,22 +184,22 @@
         "imreeyal": "police",
         "anrbj666": "thief"
       },
-      "started_at": "2026-08-03T09:16:56.819465+00:00",
-      "ended_at": "2026-08-03T09:17:29.019465+00:00",
-      "result": "survival",
-      "winner_group": "anrbj666",
+      "started_at": "2026-08-03T14:45:44.743096+00:00",
+      "ended_at": "2026-08-03T14:45:53.843096+00:00",
+      "result": "capture",
+      "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "e650af3f7801c0a8dbb5bfe12346d560c7486e52",
-        "anrbj666": "unknown"
+        "imreeyal": "d04c4eca192e5bd8eaf63c3fa7d71e718352a525",
+        "anrbj666": "7578924fa8434eeedb04cc5252ad1257813ba6a3"
       },
       "tokens": {
         "imreeyal": 0,
         "anrbj666": 0
       },
       "score": {
-        "imreeyal": 5,
-        "anrbj666": 10
+        "imreeyal": 20,
+        "anrbj666": 5
       },
       "log_files": {
         "imreeyal": "log_anrbj666-vs-imreeyal_g06.json",
@@ -226,10 +226,19 @@
     "tokens_total_series": {
       "anrbj666": 0,
       "imreeyal": 0
+    },
+    "games_played_including_this": {
+      "imreeyal": 0,
+      "anrbj666": 0
+    },
+    "first_meeting_between_groups": true,
+    "diversity_reward_applied": {
+      "imreeyal": false,
+      "anrbj666": false
     }
   },
   "mutual_agreement": {
-    "sha256": "84cec600fea545d8ed4a3d88a328113389925c0d46349709ee1e5ddbff6e6d3a",
+    "sha256": "42f2a1ba9a22dec448e1a0389ac38d9104a7c5d1d43937b0492be38ae2c3988c",
     "confirmed": true
   }
 }

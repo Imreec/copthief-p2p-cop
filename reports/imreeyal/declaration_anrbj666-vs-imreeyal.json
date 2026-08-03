@@ -12,8 +12,8 @@
     "result": "result_anrbj666-vs-imreeyal.json"
   },
   "timezone": "Asia/Jerusalem",
-  "game_started_at": "2026-08-03T09:15:19.501011+00:00",
-  "game_ended_at": "2026-08-03T09:17:29.019465+00:00",
+  "game_started_at": "2026-08-03T14:44:48.689430+00:00",
+  "game_ended_at": "2026-08-03T14:45:53.843096+00:00",
   "num_sub_games": 6,
   "max_tokens_per_game": 200000,
   "groups": {
@@ -58,16 +58,16 @@
         "cop": "https://cop-mcp.alon.website/mcp",
         "thief": "https://thief-mcp.alon.website/mcp"
       },
-      "llm_model": "",
+      "llm_model": "template",
       "hardware_spec": {
-        "cpu_type": null,
-        "cpu_freq_mhz": null,
-        "cpu_cores": null,
-        "ram_gb": null,
-        "gpu_model": null,
-        "vram_gb": null
+        "cpu_type": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+        "cpu_freq_mhz": 3418,
+        "cpu_cores": 24,
+        "ram_gb": 32,
+        "gpu_model": "AMD Radeon RX 7900 XTX",
+        "vram_gb": 24
       },
-      "signature": "a4ad399407cb71c0c5624de77b6de52c8765b4fe526b444be9fd06355bda94eb"
+      "signature": "909b7c57601069daba921c4923c1a8cea2dc9cc95d7ce11fff2e82ca89d283ed"
     }
   }
 }

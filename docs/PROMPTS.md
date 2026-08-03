@@ -3,6 +3,18 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #101 — m7-39-result-repo-links (rule 49's four links, and a truthful remark)
+
+- **Driver:** Imree (relayed the opponent team's Round-28 mail-diff verdict: exit
+  criterion met + three findings) · **Author:** Claude (terminal) · **Reviewer:**
+  pending (AG).
+- **What happened:** his one material finding accepted after checking rule 49/p.96
+  against both sample sets — the result's links block now carries both teams' repo
+  links (his shape); and his cosmetic catch cut deeper than cosmetic: our _remark
+  repeated the reference's "these names are examples" sentence inside real
+  artifacts. Fixed truthfully, with the conformance byte-pin reworked to document
+  the single deliberate divergence rather than hide it.
+
 ## PR #100 — m7-38-identity-spec-tolerance (his values were there all along)
 
 - **Driver:** Imree (relayed the opponent team's ready letter claiming hardware "was
