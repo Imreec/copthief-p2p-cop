@@ -3,6 +3,25 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #102 — m7-40-result-only-mail (the flip back, with the reasoning on the record)
+
+- **Driver:** Imree ("i tend to agree with Alon, and if we are going back to the one
+  attached thing make sure it's the last version ... with most of ours and Alons
+  changes") · **Author:** Claude (terminal, fresh session picking up from the
+  long-context one) · **Reviewer:** pending (AG).
+- **What happened:** the opponent team's chatbot evidence (result-only mail; artifacts
+  referenced, not embedded) was verified against the reference's own source before
+  accepting — `emit_series` returns only the result "for emailing" and its sender puts
+  it in the body — and the flip landed as a surgical supersession of M7-37's
+  attachment policy only: result = body + single named attachment (the exact
+  pre-M7-37 shape), `evidence_set` deleted, transport capability kept and pinned,
+  full-sibling-set-on-disk pin proves nothing else ever rides. Every content
+  improvement M7-33..39 built stays. Pair symmetry recorded as the tiebreaker (they
+  flipped first; one-of-each is the only wrong state under rule 35); both Moodle
+  readings stay documented; the forum one-liner to Yoram is the endorsed closer.
+  PR #101 (links.github) was explicitly NOT scrapped — the opponent team's second
+  letter recommends it.
+
 ## PR #101 — m7-39-result-repo-links (rule 49's four links, and a truthful remark)
 
 - **Driver:** Imree (relayed the opponent team's Round-28 mail-diff verdict: exit
