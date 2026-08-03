@@ -83,9 +83,7 @@ def test_a_counted_first_meeting_rewards_the_winner_only(
 def test_a_counted_repeat_meeting_applies_no_reward(
     tmp_path: Path, table: ScoringTable, shared_terms: dict[str, Any]
 ) -> None:
-    final = _emit(tmp_path, table, shared_terms, counted=True, first_meeting=False)[
-        "final_result"
-    ]
+    final = _emit(tmp_path, table, shared_terms, counted=True, first_meeting=False)["final_result"]
     assert final["first_meeting_between_groups"] is False
     assert final["diversity_reward_applied"] == {"team-a": False, "team-b": False}
 
@@ -108,8 +106,7 @@ def test_opponent_identity_capture_passes_the_declared_count_through(
     assert captured["counted_games_played"] == 4
     bare = tmp_path / "g02.jsonl"
     bare.write_text(
-        json.dumps({"event": "agreement_received", "raw": {"identity": {"group_id": "x"}}})
-        + "\n",
+        json.dumps({"event": "agreement_received", "raw": {"identity": {"group_id": "x"}}}) + "\n",
         encoding="utf-8",
         newline="\n",
     )
