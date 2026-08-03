@@ -3,6 +3,19 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #99 — m7-37-full-evidence-mail (the grader's instruction, met in full)
+
+- **Driver:** Imree ("why not build M7-37 now as part of this PR? i though we were
+  doing this as well" — after verifying Moodle item 4 himself and the superset
+  resolution was agreed with the opponent team) · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What happened:** the series email now attaches the complete four-template set
+  (14 files on a six-window series) while the result stays the body and named
+  attachment — correct under both the Moodle instruction and the book's
+  result-is-the-report mandate. Two 150-line splits fell out (evidence_set,
+  email_build). The same Moodle page's item 7 set the submission deadline
+  (12/08 23:59) — M8 becomes the priority track after this lands.
+
 ## PR #98 — m7-36-live-path-truth (the window caught our own two gaps)
 
 - **Driver:** Imree ("Alon is here, let's do 16:00" — the verification window whose
