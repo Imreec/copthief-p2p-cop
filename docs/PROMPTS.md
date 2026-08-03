@@ -3,6 +3,19 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #95 — m7-32-warmup2-evidence (honest play, agreed score, converged artifacts)
+
+- **Driver:** Imree ("let's set the T for 12:15 (israel) today... my computer has been
+  reset from yesterday so you might need to set your things up again", then the
+  artifact path for the diff) · **Author:** Claude (terminal) · **Reviewer:**
+  pending (AG).
+- **What happened:** post-reset preflight re-verified (junction, token, entry point,
+  strays), launched at T-3min, gates green with 2.5min margin, fired 12:15:00.2, six
+  clean sub-games, exit 0. 45–85 to them — exactly their Round-20 corrected
+  adjudication, which is the convergence proof. M7-28/29 live-proven; report diff
+  joins clean with only designed differences; his hardware/llm nulls = the sole
+  residual. Counted gate met per his own letter.
+
 ## PR #94 — m7-31-referee-thief-quota (the instrument tells the truth again)
 
 - **Driver:** Imree ("the PR was merged, you can do the fix you wanted" — after this
