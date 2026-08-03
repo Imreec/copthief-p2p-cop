@@ -92,7 +92,13 @@ def subgame_entry(
         "result": summary["result"],
         "winner_group": winner,
         "tie": winner is None,
-        "github_commit": {own_gid: _own_commit(summary), opp_gid: "unknown"},
+        "github_commit": {
+            own_gid: _own_commit(summary),
+            # M7-33: the book's example fills BOTH columns; theirs arrives in the
+            # audit reveal (step-0) and rides the summary. "unknown" when a peer
+            # reveals no step-0 (the reference's own omission).
+            opp_gid: str(summary.get("opponent_github_commit", "unknown")),
+        },
         "tokens": {own_gid: summary["tokens_total"], opp_gid: 0},
         "score": subgame_score(summary["result"], roles, table),
         "log_files": {
