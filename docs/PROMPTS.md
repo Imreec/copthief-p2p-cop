@@ -3,6 +3,18 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #100 — m7-38-identity-spec-tolerance (his values were there all along)
+
+- **Driver:** Imree (relayed the opponent team's ready letter claiming hardware "was
+  already filled in the 16:00 window — check the declaration") · **Author:** Claude
+  (terminal) · **Reviewer:** pending (AG).
+- **What happened:** his claim checked against the wire bytes rather than our
+  artifact — and he was right: his identity carried real hardware under
+  `hardware_spec` (declaration shape) while our reader expected `spec` (F8b shape)
+  and printed nulls. Our tolerance gap, fixed: both spellings accepted, gpu_model
+  remapped, validated against the live 16:00 log. Verify-before-assert saved us from
+  sending him a wrong accusation twice in one week.
+
 ## PR #99 — m7-37-full-evidence-mail (the grader's instruction, met in full)
 
 - **Driver:** Imree ("why not build M7-37 now as part of this PR? i though we were
