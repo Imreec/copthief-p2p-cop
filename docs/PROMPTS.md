@@ -16,6 +16,23 @@
   only — no code, no mirrored path, no sync owed; clears the working tree for the
   counted-day clean-tree requirement.
 
+## PR #106 — m7-41-counted-series-evidence (the first counted series, on the record)
+
+- **Driver:** Imree (named the T with the opponent team, set the lecturer recipient
+  himself after challenging why it was not automatic, then "sure, do it") ·
+  **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What happened:** the first counted league series was played at T=01:00 and reported
+  automatically to the lecturer alone (exit 0, six clean audits, single attachment). We
+  lost 30–90. This PR is the evidence and the bookkeeping: the 20-file counted artifact
+  set in its own `reports/counted-series/` tree, the six replay-verified logs, the
+  evidence doc, and — the part that protects the NEXT counted game — the league ledger
+  advanced to `counted_games_played = 1` / `counted_opponents = ["anrbj666"]` in the
+  repo config, because a stale ledger would declare a false first meeting (rule 38).
+  Three tests that hardcoded the shipped ledger values were rewritten to pin the
+  invariants (count is an int ≥ 0, opponents unique, count ≥ distinct opponents,
+  declaration equals what we carry) rather than today's numbers — the same gotcha-#9
+  class as the config-version pins.
+
 ## PR #102 — m7-40-result-only-mail (the flip back, with the reasoning on the record)
 
 - **Driver:** Imree ("i tend to agree with Alon, and if we are going back to the one
