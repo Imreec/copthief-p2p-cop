@@ -20,10 +20,19 @@ _WIRE_RESULTS = {"thief_survival": "survival", "cop_capture": "capture"}
 # Sealed record `type` values that are NOT moves in the game chain (M7-42). Public so a
 # peer implementation can see exactly which spellings we excuse: `system_spec` is the
 # reference's step-0 declaration (we emit that spelling, the book prints `step_zero`,
-# and readers accept both), `control` is a sealed control message — uoh-sqak seals two
-# per sub-game. Deliberately a CLOSED set: an unknown type keeps counting as a game
-# step, so this can never be used to empty the continuity check.
-NON_GAME_RECORD_TYPES = frozenset({"system_spec", "step_zero", "control"})
+# and readers accept both), `control` is a sealed control message, and `equivocation` is
+# uoh-sqak's sealed evidence of a peer sending two commits for one step.
+#
+# Deliberately a CLOSED set: an unknown type keeps counting as a game step, so this can
+# never be used to empty the continuity check. That safe default has a cost uoh-sqak
+# named (2026-08-06): the list can only ever hold types that existed when it was written,
+# and they had shipped `equivocation` — carrying a POSITIVE step — hours before we wrote
+# it. It would have broken this very check the first time either side equivocated.
+# They now stamp every non-move record with a DESCENDING NEGATIVE step, so any
+# `step >= 1` filter excuses them with no agreement about type names at all; that is the
+# durable fix and it is theirs. This list stays as the belt to their braces, because the
+# next league team will not have made that change.
+NON_GAME_RECORD_TYPES = frozenset({"system_spec", "step_zero", "control", "equivocation"})
 
 
 def wire_result(result: str) -> str:

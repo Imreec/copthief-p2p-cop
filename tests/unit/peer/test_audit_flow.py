@@ -166,3 +166,15 @@ def test_an_unknown_record_type_still_counts_as_a_game_step() -> None:
     wire = build_audit("police", _records(3), "pending")
     wire["records"].insert(0, _sealed_meta({"step": 1, "type": "something_new"}))
     assert any("continuity" in p for p in verify_audit(AuditPayload.from_wire(wire)))
+
+
+def test_negatively_numbered_records_are_excluded_whatever_their_type() -> None:
+    """uoh-sqak's durable fix (2026-08-06): they stamp every non-move sealed record with a
+    descending negative step, so a `step >= 1` filter excuses them with no agreement about
+    type names. Pinned because it is the path that protects us from types we have never
+    heard of — the closed set above can only name types that existed when it was written.
+    """
+    wire = build_audit("thief", _records(3), "survival")
+    for offset, kind in enumerate(("control", "equivocation", "a_type_we_never_heard_of")):
+        wire["records"].insert(0, _sealed_meta({"step": -1 - offset, "type": kind}))
+    assert verify_audit(AuditPayload.from_wire(wire)) == []
