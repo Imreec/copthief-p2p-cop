@@ -14,6 +14,7 @@ import time
 from copthief_core.domain.state_machine import GameState
 from copthief_core.peer import events, inbox_order
 from copthief_core.peer.handshake import PairingRefusalError
+from copthief_core.peer.pairing import SUB_GAME_KEY
 from copthief_core.peer.session import NegotiationError, PeerSession
 from copthief_core.peer.settlement import (
     LogFn,
@@ -81,6 +82,11 @@ def run_peer_game(
     # bound the opponent's own negotiate wait declares). Terms drift and bad
     # signatures still raise on the first offense.
     handshake_deadline = time.time() + turn_timeout
+    # M7-43: remember the FURTHEST index a refused peer declared. A bystander from their
+    # previous window declares a LOWER one and is genuinely noise; a peer that has
+    # settled windows we never saw declares a HIGHER one, and that is not noise — it is
+    # the only evidence we get that we are the ones out of step.
+    peer_sub_game: int | None = None
     while True:
         theirs = transport.exchange_agreement(signed)
         if theirs is None:
@@ -89,17 +95,21 @@ def run_peer_game(
         try:
             session.handle_negotiate(theirs)
         except PairingRefusalError as refusal:
+            declared = theirs.get(SUB_GAME_KEY)
+            if isinstance(declared, int) and not isinstance(declared, bool):
+                peer_sub_game = declared if peer_sub_game is None else max(peer_sub_game, declared)
             emit(
                 {
                     "event": "agreement_refused",
                     "sender": session.role,
-                    "payload": {"reason": str(refusal)},
+                    "payload": {"reason": str(refusal), "peer_sub_game": declared},
                 }
             )
             if time.time() > handshake_deadline:
                 raise NegotiationError(
                     "handshake budget exhausted refusing bystander agreements: "
-                    "our counterpart never arrived"
+                    "our counterpart never arrived",
+                    peer_sub_game=peer_sub_game,
                 ) from refusal
             continue
         break

@@ -126,6 +126,8 @@ connect_timeout_seconds = 60
 # a protocol violation, not a tunnel artifact. 1 covers the realistic race (one step
 # ahead) - raise it only with a drill that shows a deeper reorder actually happening.
 inbound_buffer_limit = 1
+# M7-43: retries for a window whose handshake never completed (same index).
+handshake_retry_budget = 3
 
 [email]
 # M7-6 automatic report rail (ADR-0008; PRD_reporting s5a). App E rule 32 requires
