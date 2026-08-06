@@ -13,7 +13,7 @@ import time
 
 from copthief_core.domain.state_machine import GameState
 from copthief_core.peer import events, inbox_order
-from copthief_core.peer.handshake import PairingRefusalError
+from copthief_core.peer.handshake import PairingRefusalError, declared_sub_game
 from copthief_core.peer.pairing import SUB_GAME_KEY
 from copthief_core.peer.session import NegotiationError, PeerSession
 from copthief_core.peer.settlement import (
@@ -87,7 +87,21 @@ def run_peer_game(
     # settled windows we never saw declares a HIGHER one, and that is not noise — it is
     # the only evidence we get that we are the ones out of step.
     peer_sub_game: int | None = None
+    attempt = 0
     while True:
+        # M7-43b: log the OUTBOUND half too. We logged only what we received, so a window
+        # where we pushed and heard nothing back left an EMPTY FILE — indistinguishable
+        # from a window we never opened. Both teams then reason about the same minutes
+        # from one side's records: the uoh-sqak sub-game 2 (2026-08-06) is a blank page
+        # here and a completed handshake on theirs, and neither of us can say why.
+        attempt += 1
+        emit(
+            {
+                "event": "agreement_sent",
+                "sender": session.role,
+                "payload": {"attempt": attempt, "sub_game_number": declared_sub_game(session)},
+            }
+        )
         theirs = transport.exchange_agreement(signed)
         if theirs is None:
             raise NegotiationError("opponent never sent its agreement")

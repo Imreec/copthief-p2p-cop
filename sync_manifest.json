@@ -65,7 +65,7 @@
     "src/copthief_core/peer/inbound.py": "535bbc26978fc41877f5f0046c9a9219c8bd7013f29265aa29f8bda0f6e8cd25",
     "src/copthief_core/peer/inbox_order.py": "806abba1cbe6c5f19285c83227a22af36343a77ddf587d8dd9c5e48c5d825f37",
     "src/copthief_core/peer/match.py": "89c719224436d9fd206c461090ff6c11e11181dddc1090418c98bfff2a092968",
-    "src/copthief_core/peer/p2p.py": "02ad2405ddfb940989ba77783a3613b67911b75d5c76cb8c6255b7c4cb4ee53e",
+    "src/copthief_core/peer/p2p.py": "703a287075fa83b7b701b6e14aa8587f7d4b84a0a6ee682e7b52e12aeda8cf6e",
     "src/copthief_core/peer/pairing.py": "648e9b6228920cb333f8895190e56cfde4d28cbf58080021ad8107cf702caa74",
     "src/copthief_core/peer/policy.py": "1cc1e4606de7f41423f219f855082bb390591674f735cc14aa8b4f22f884c9b1",
     "src/copthief_core/peer/port_guard.py": "3ac1f48bdf2b2a8b7b4a6150fffd20d98ce5439c41b9e5806258fa9376e3116b",
@@ -100,13 +100,13 @@
     "src/copthief_core/sdk/cli.py": "83553356f4516b3531f14953347ee54709720d1f9a5b8f8597d4389e89737599",
     "src/copthief_core/sdk/cli_args.py": "efd6048c441c463087e742eebeac1316d43e20165451a9bdf4759afb877f1216",
     "src/copthief_core/sdk/identity.py": "f120169c3cc1a826515e993ee61c53a742d3c4d8e0d472013357067bd128e1d9",
-    "src/copthief_core/sdk/live_series.py": "a46d013338d297841f26be84284258f92d409e519648067368a6b71cf8341523",
+    "src/copthief_core/sdk/live_series.py": "b6c71bd26b8fa837a4071f1bc45fb626f08d7436a90aa97dab3f1d28469211cf",
     "src/copthief_core/sdk/p2p_match.py": "59b95d35833ef996d5e54295dc58417f5194e1d218aeecb6ce289c9b94065f24",
     "src/copthief_core/sdk/peer_run.py": "d05b43b8b00046290b05329cdc31312376a6caf544b7f6336d98e91855adb694",
     "src/copthief_core/sdk/series_endpoints.py": "8f48128628b81674d772f28cf3cb8dcee31df662c36bbae63aebfd098bdf2923",
     "src/copthief_core/sdk/series_pacing.py": "e60fe12d7403a99a7eb810f81f7db0416d380c8914d4dc09013c4cb79fc60188",
     "src/copthief_core/sdk/series_run.py": "9ea742e817399836b8a585e45dfe18c48f63cbfc9b1b5861e67c653a31114100",
-    "src/copthief_core/sdk/series_windows.py": "9c83c629986bc089e38acd800a027925ea4b4e343bba8055887228281492e658",
+    "src/copthief_core/sdk/series_windows.py": "a30705a3d9946292ee036f88e789d4c91a1bbac4ad6c05484ebce7c771ee6de0",
     "src/copthief_core/sdk/simulation.py": "13d1db07cc44a080afb9012e8abb6fc9236c0fc25242093fbd1002b0fde6d1c1",
     "src/copthief_core/sdk/simulation_referee.py": "c2477a22c2134ddc569e45633bd0cb02bbe05df8ac35a1792985c8aa2e3d8fb2",
     "src/copthief_core/sdk/subgame_process.py": "57273d52de17df97da5663d59a8a1cbcb88eb31293de1531e3c4a80c4b7e050e",
@@ -181,7 +181,7 @@
     "tests/integration/test_fullinfo_referee.py": "bfd0db9fe0c595864710f04fc4a8bd99047e81645409af5e3d2707c48d80dd08",
     "tests/integration/test_handshake_bystanders.py": "2311c1f5c8d25fbb18f99f0e3b41c786cf0c1a3a1136bf1b7e002a539575ae28",
     "tests/integration/test_headless_series.py": "08a2be275c9ac50cfd902cf007ec76183ab9719117ee53e1202f6f6dff99bcb3",
-    "tests/integration/test_live_series_pacing.py": "e4bc266742fcc2a4f61250ff4e73bae1b8b23376c94bbe7fbd8b65a37065b90a",
+    "tests/integration/test_live_series_pacing.py": "0e99c596841d13df2e1f6e0300c623f552eae63f11070eaa4e453e0fa940047b",
     "tests/integration/test_live_series_preflight.py": "746fbb2ae10a2d688ba0271ff3503f6de0ddc097974354a24b2dad22643535ca",
     "tests/integration/test_live_series_report.py": "e7051764fd95c052be12d2e5bbafb3df0fde9cbb107162dd4ee2ec3c6472b59c",
     "tests/integration/test_local_minigame.py": "8d7c90d3415502038d719ac2572dc042b4a670e5827778a270866661961404c3",
@@ -313,7 +313,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "ff5e7cc",
+  "source_commit": "da833cf",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "17f4177b85a4586e7fc8b5ec022e5fd6b638de993a5b342836d66770058527f1"
+  "tree_hash": "385492ecf9c43f01a18aeda781b40027c7c3bb0cd5b023fb7d2b78c83c74ff54"
 }

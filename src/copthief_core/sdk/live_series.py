@@ -34,7 +34,7 @@ from copthief_core.infra.email_sender import (
 from copthief_core.report.schemas import result_filename
 from copthief_core.report.series_from_logs import series_artifact_from_logs
 from copthief_core.report.summary_from_log import SummaryRebuildError
-from copthief_core.sdk.series_windows import play_windows
+from copthief_core.sdk.series_windows import missing_sub_games, play_windows
 
 if TYPE_CHECKING:
     from copthief_core.sdk.simulation import SimulationSdk
@@ -120,6 +120,16 @@ def run_live_series(
         "logs": [str(path) for path in logs],
         "email": None,
     }
+    # M7-43b: a report that quietly drops a game is the contradictory report rule 35
+    # punishes, so a partial series is refused outright (see series_windows).
+    absent = missing_sub_games(played, sdk.constitution.league.num_games)
+    if absent:
+        record["refused"] = (
+            f"only {len(played)} of {sdk.constitution.league.num_games} sub-games "
+            "settled — a partial series has no honest report"
+        )
+        record["problems"] = [f"sub-game {n} never settled" for n in absent]
+        return record
     try:
         result = series_artifact_from_logs(
             logs=logs,

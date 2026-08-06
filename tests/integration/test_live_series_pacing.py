@@ -101,3 +101,45 @@ def test_a_window_that_never_became_a_game_leaves_no_row(tmp_path: Path) -> None
     )
     numbers = [row["sub_game_number"] for row in record["sub_games"]]
     assert numbers == [1, 2, 3, 4, 5, 6], numbers
+
+
+def test_a_series_that_stops_early_refuses_to_report(tmp_path: Path) -> None:
+    """LIVE DEFECT, uoh-sqak 2026-08-07 00:02: sub-game 3 never became a game, the retry
+    budget ran out, the loop stopped — and the driver then built a report from the TWO
+    settled games it held and MAILED it (`num_sub_games: 2`, a 27-27 "series tie").
+
+    The completeness check had never been explicit. The old loop always ran exactly
+    `num_games` windows, so the artifact builder could only be handed a full set, and its
+    own check — does every log I was given settle? — was sufficient by accident. A loop
+    that can stop early hands it a set that is consistent and INCOMPLETE, and nothing
+    asked how many there should have been.
+    """
+    mail = RecordingMail()
+
+    def play(*, sub_game_number: int, role: str, log_path: Path, seed: int) -> dict[str, Any]:
+        if sub_game_number == 3:
+            return dict(_FAILED)  # never becomes a game, whatever the budget allows
+        sub_game_log(
+            log_path,
+            role=role,
+            claim="survival",
+            outcome="thief_survival",
+            steps=3,
+            sub=sub_game_number,
+        )
+        return {"outcome": "thief_survival", "steps": 3, "audit_ok": True}
+
+    record = run_live_series(
+        rehearsal_sdk(),
+        natural_role="police",
+        opponent_group=OPPONENT,
+        log_dir=tmp_path / "logs",
+        out_root=tmp_path / "out",
+        seed=7,
+        play=play,
+        email_transport=mail,
+    )
+    assert "refused" in record, record.keys()
+    assert mail.sends == []
+    assert mail.drafts == []
+    assert record["email"] is None

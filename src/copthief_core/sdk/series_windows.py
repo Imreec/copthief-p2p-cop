@@ -22,7 +22,20 @@ from copthief_core.sdk.series_pacing import became_a_game, declared_index, next_
 if TYPE_CHECKING:
     from copthief_core.sdk.live_series import PlaySubGame
 
-__all__ = ["WindowRun", "play_windows"]
+__all__ = ["WindowRun", "missing_sub_games", "play_windows"]
+
+
+def missing_sub_games(played: list[dict[str, Any]], expected: int) -> list[int]:
+    """Which of the `expected` sub-games never settled (Output: their indices, ascending).
+
+    M7-43b: completeness is CHECKED, not assumed. It used to be a side effect of the
+    loop's shape — a `for n in range(...)` could only hand the artifact builder a full
+    set, so the builder's own "does every log settle?" check was sufficient by accident.
+    A loop that can stop early hands it a set that is consistent and INCOMPLETE, and the
+    driver mailed a two-sub-game "series tie" for a six-game match (uoh-sqak, 2026-08-07).
+    """
+    settled = {int(row["sub_game_number"]) for row in played}
+    return [n for n in range(1, expected + 1) if n not in settled]
 
 
 @dataclass
