@@ -9,6 +9,10 @@ secrets/
 # OAuth / token / tunnel state — NEVER commit
 client_secret*.json
 token*.json
+# A backup taken before re-auth is a LIVE credential and `token*.json` does not
+# match `token.json.bak-<stamp>` — one got committed and pushed on 2026-08-07.
+token.json.*
+*.bak-*
 *.token
 *.tunnel
 ngrok*.yml
