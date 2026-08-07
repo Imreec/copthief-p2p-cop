@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #107 — m7-42-audit-continuity-record-type (what a record IS, not what number it carries)
+
+- **Driver:** Imree ("ok, so are you doing those fixes?" — after asking, twice, for plain
+  language on what the killed window had actually found) · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What happened:** the first live sub-game against `uoh-sqak` settled with
+  `audit_ok: false`. Rather than accept the leading theory, the failure was reproduced by
+  replaying the opponent's real `audit_received` payload through `validate_opponent_audit`,
+  which named it exactly: `revealed game steps [1, 2, 1, 2, 3, … 35]`. An earlier guess in
+  the same session — that his sealed records carried the wrong CONTENT — was wrong and was
+  retracted before it reached him: 35 of his 38 records are proper move records. The real
+  cause was ours, and one our own docstring had already described the intent of: non-game
+  records were meant to be excluded from continuity, but were identified by step number
+  instead of by type. TDD RED→GREEN with the live case as the acceptance test.
+- **Outcome:** continuity keyed on a closed set of non-game record types; tamper checking
+  untouched; two guards pinned (a tampered control record is still caught; an unknown type
+  still counts, so the check cannot be emptied). His real audit now verifies clean.
+
 ## PR #103 — proof-window-artifacts (the 20:15 set: equal mutual hashes, on the record)
 
 - **Driver:** Imree ("so there isn't anything i need to push right now right?") ·
