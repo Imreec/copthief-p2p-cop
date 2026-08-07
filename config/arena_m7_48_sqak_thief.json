@@ -1,0 +1,77 @@
+{
+  "version": "1.00",
+  "_comment": "M7-48 uoh-sqak REWRITTEN thief (measurement instrument, champion_pin null): our cop against their thief_evader_v2 @1ca9d23, the rewrite that replaced the corner-camping thief we beat 3-0 in the 2026-08-07 friendly. Their fielded values, their seeded random tie-break, their no-STAY-on-a-tie rule. Their cop claims only above claim_mass_threshold 0.08, so the thief-side claim channel is NOT modelled here. Regenerate: uv run python scripts/arena_run.py --config config/arena_m7_48_sqak_thief.json",
+  "police_roster": [
+    "random",
+    "greedy-manhattan",
+    "ref-police",
+    {
+      "name": "police-brain",
+      "spec": "copthief_police.brain:PoliceBrain"
+    }
+  ],
+  "thief_roster": [
+    "ref-thief",
+    "best2934-thief",
+    {
+      "name": "sqak-evader",
+      "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
+    }
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "ref-police": {
+      "ref_police_barrier_chance": 0.15
+    },
+    "police-brain": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143
+    },
+    "best2934-thief": {
+      "area_weight": 1.0,
+      "distance_weight": 1.2,
+      "endgame_window": 4.0
+    }
+  },
+  "evidence_out": "docs/evidence/m7-48-sqak-thief-arena.md"
+}

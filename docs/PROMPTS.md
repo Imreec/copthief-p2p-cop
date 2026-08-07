@@ -2,6 +2,33 @@
 
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
+## PR — m7-48-sqak-rewrite (they rebuilt both roles overnight)
+
+- **Driver:** Imree (sent the Barrier Law message) · **Author:** Claude (terminal) ·
+  **Reviewer:** pending (AG).
+- **What was asked:** after the sibling repo's M7-46 found that uoh-sqak's cop was taking a
+  step AND a wall in the same turn, and Imree raised it with them, measure what we actually
+  face now — both of their roles, from their published source.
+- **Outcome:** they fixed the Barrier Law inside two hours (`d07b654`), at the one chokepoint
+  every one of their brains passes through, with a new test and a retune whose config comment
+  records the same measurement we had made independently. They had also rewritten their thief
+  (`1ca9d23`) after diagnosing the one we beat 3-0 as forfeiting. **So the friendly's record
+  is void on both sides and projects nothing.**
+- **Built:** `copthief_police/sqak_evader.py` — their new evader as an arm, carrying the
+  values they FIELD rather than class defaults, their seeded tie-break, and their no-STAY
+  rule. Never a role brain.
+- **Two findings worth more than the numbers:** their THIEF is not deterministic (their
+  runtime seeds it per sub-game, so a series draws a fresh stream each time — only their cop
+  is deterministic, and their own "one game per role played three times" projection is right
+  for one half and wrong for the other); and their rewrite fixed PARKING, not corner-seeking
+  — on an open board it still rates the far corner highest, it simply no longer stands there.
+- **Measured:** our cop takes their rewrite 20/32 on varied starts — the hardest thief in our
+  pool — but **56/64 = 88% at the signed start**, which is the only start a counted game
+  plays. Their fixed cop no longer threatens our thief at all (64/64), before or after the
+  sibling's M7-46/47: their own fix did more for that matchup than ours did.
+- **Caveat stated rather than buried:** the sibling's arm omits their L3 endgame solver,
+  which cannot be expressed under a move-XOR-wall turn law, so 64/64 is an upper bound on our
+  thief's comfort and not a guarantee.
 
 ## PR #107 — m7-42-audit-continuity-record-type (what a record IS, not what number it carries)
 
