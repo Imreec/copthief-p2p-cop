@@ -35,9 +35,6 @@ def _delta_belief(cell: tuple[int, int]) -> object:
     return referee_belief(CONSTITUTION, start=cell, smell_trust=TRUST)
 
 
-
-
-
 def test_the_thief_adjacency_penalty_is_inert_too() -> None:
     """⚠ SECOND finding, same shape as the first.
 
@@ -125,9 +122,9 @@ def test_their_thief_reduces_to_a_greedy_distance_maximiser() -> None:
             observation = _observation(board, (row, col), "thief")
             ours = board.apply_move((row, col), theirs.pick_move(observation, belief))
             base = board.apply_move((row, col), baseline.pick_move(observation, belief))
-            assert abs(ours[0] - peak[0]) + abs(ours[1] - peak[1]) == abs(
-                base[0] - peak[0]
-            ) + abs(base[1] - peak[1]), (row, col)
+            assert abs(ours[0] - peak[0]) + abs(ours[1] - peak[1]) == abs(base[0] - peak[0]) + abs(
+                base[1] - peak[1]
+            ), (row, col)
 
 
 def test_the_thief_is_penalised_for_standing_still() -> None:

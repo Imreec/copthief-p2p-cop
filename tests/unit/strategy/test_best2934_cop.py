@@ -35,9 +35,6 @@ def _delta_belief(cell: tuple[int, int]) -> object:
     return referee_belief(CONSTITUTION, start=cell, smell_trust=TRUST)
 
 
-
-
-
 def test_the_cop_closes_on_the_belief_peak() -> None:
     """Their movement term is greedy descent on belief-weighted distance."""
     board = CONSTITUTION.board.make_board()

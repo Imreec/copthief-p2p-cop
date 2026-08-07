@@ -1,5 +1,3 @@
-
-
 def test_path_length_routes_around_a_wall() -> None:
     """A barrier on the straight line lengthens the path rather than blocking it."""
     from copthief_core.domain.board import Board
