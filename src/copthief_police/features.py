@@ -23,6 +23,7 @@ DEFAULT_OPTIONS: dict[str, float] = {
     "search_depth": 2.0,  # our-move plies in the expectimax
     "p_commit": 0.5,  # neighbor mass that triggers the capture-commit step
     "barrier_gain_threshold": 2.0,  # belief-weighted region cut needed to spend a wall
+    "lockout_mass_threshold": 0.9,  # belief mass that may NOT end up walled away from us
     "region_cap": 24.0,  # BFS early-exit: beyond this a region counts as "open"
     "w_capture": 100.0,  # value of a captured branch (plus earlier-is-better bonus)
     "w_distance": 3.0,  # per-cell Manhattan pressure toward the mass

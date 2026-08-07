@@ -8,6 +8,7 @@ knob arrives via options (data-table defaults, config overrides — AppFTable pa
 from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.board import Board
 from copthief_core.strategy.brains import Observation, make_brain
+from copthief_core.strategy.region import path_length
 from copthief_police.brain import PoliceBrain
 
 MOVE_SET = ("N", "S", "E", "W", "STAY")
@@ -63,16 +64,33 @@ def test_closes_distance_toward_a_certain_far_target() -> None:
     assert decision.move in {"S", "E"}
 
 
-def test_seals_a_pocket_entrance_instead_of_stepping() -> None:
-    # The thief is believed deep in a one-wide pocket: row 6 sealed from row 5 except
-    # the entrance at (5, 5) — walling the OPEN entrance cuts its whole region off.
+def test_refuses_the_pocket_seal_that_locks_us_out() -> None:
+    """⚠ EXPECTATION REVERSED at M7-49; the original is preserved in the body below.
+
+    This test used to assert `decision.barrier == (5, 5)` — "graph surgery: one wall
+    seals the region". Measured against the 2026-08-08 friendly, that is a LOSING move
+    and the original expectation was wrong.
+
+    Row 6 is sealed from row 5 except the entrance at (5, 5), and the thief is at (6, 0).
+    Walling (5, 5) does cut its region to seven cells — and leaves `path_length(cop,
+    thief) is None`, so the cop can never enter. A thief with seven cells and no pursuer
+    simply runs out the clock: the "seal" converts a hunt into a guaranteed survival.
+    Leaving the entrance open keeps a seven-step route into a ONE-WIDE corridor, which
+    is the best terrain a pursuer can ask for.
+
+    This is not hypothetical. Our cop played the same shape in friendly g03: it walled
+    (5,6) to complete a two-cell pocket around their camping thief, sealed itself out,
+    and then stood at (4,5) playing STAY for sixteen turns with eleven barriers unspent.
+    """
     walls = frozenset({(5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (5, 6)})
     board = make_board(barriers=walls)
     belief = make_belief(board, (6, 0))  # far end of the pocket
     decision = PoliceBrain(seed=1).decide(
         observation(board, (4, 5), barriers_used=len(walls)), belief
     )
-    assert decision.barrier == (5, 5)  # graph surgery: one wall seals the region
+    assert decision.barrier != (5, 5)
+    if decision.barrier is not None:
+        assert path_length(board.with_barrier(decision.barrier), (4, 5), (6, 0), MOVE_SET)
 
 
 def test_never_walls_with_quota_spent() -> None:
