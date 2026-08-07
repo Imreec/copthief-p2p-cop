@@ -5,6 +5,7 @@
     "random",
     "greedy-manhattan",
     "ref-police",
+    "best2934-police",
     {
       "name": "police-brain",
       "spec": "copthief_police.brain:PoliceBrain"
@@ -13,7 +14,8 @@
   "thief_roster": [
     "random",
     "greedy-manhattan",
-    "ref-thief"
+    "ref-thief",
+    "best2934-thief"
   ],
   "seeds": [
     1,
@@ -37,6 +39,16 @@
       "w_distance": 3.8875,
       "w_mobility": 3.6061,
       "w_region": 0.1143
+    },
+    "best2934-police": {
+      "barrier_engage_range": 1.0,
+      "barrier_min_gain": 1.0,
+      "barrier_endgame_reserve": 3.0
+    },
+    "best2934-thief": {
+      "area_weight": 1.0,
+      "distance_weight": 1.2,
+      "endgame_window": 4.0
     }
   },
   "dod_series": [

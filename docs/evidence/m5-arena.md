@@ -4,19 +4,21 @@
 > (deterministic; regenerate, never hand-edit). Per-role rosters over the
 > seeded start-scenario suite; games run headless through the sdk scenario
 > series.
-> Police roster: random, greedy-manhattan, ref-police, police-brain. Thief roster: random, greedy-manhattan, ref-thief.
+> Police roster: random, greedy-manhattan, ref-police, best2934-police, police-brain. Thief roster: random, greedy-manhattan, ref-thief, best2934-thief.
 > Seeds: 1, 2, 3, 4, 5, 6, 7, 8 (scenario #1 = signed starts).
 > Scent model: subtractive_chebyshev_v1 (shipped default).
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-brain | police | 24 | 24 | 480 |
-| ref-police | police | 24 | 14 | 330 |
-| greedy-manhattan | police | 24 | 8 | 240 |
-| random | police | 24 | 3 | 165 |
-| greedy-manhattan | thief | 32 | 21 | 265 |
-| ref-thief | thief | 32 | 20 | 260 |
-| random | thief | 32 | 6 | 190 |
+| police-brain | police | 32 | 31 | 625 |
+| ref-police | police | 32 | 18 | 430 |
+| best2934-police | police | 32 | 16 | 400 |
+| greedy-manhattan | police | 32 | 11 | 325 |
+| random | police | 32 | 3 | 205 |
+| greedy-manhattan | thief | 40 | 29 | 345 |
+| ref-thief | thief | 40 | 28 | 340 |
+| best2934-thief | thief | 40 | 18 | 290 |
+| random | thief | 40 | 6 | 230 |
 
 **Champion pin** (`config/arena_champion.json`): police = `police-brain`, thief = `greedy-manhattan`.
 
@@ -29,15 +31,23 @@ Per-pairing outcomes:
 | random | random | 3 | 5 |
 | random | greedy-manhattan | 0 | 8 |
 | random | ref-thief | 0 | 8 |
+| random | best2934-thief | 0 | 8 |
 | greedy-manhattan | random | 8 | 0 |
 | greedy-manhattan | greedy-manhattan | 0 | 8 |
 | greedy-manhattan | ref-thief | 0 | 8 |
+| greedy-manhattan | best2934-thief | 3 | 5 |
 | ref-police | random | 7 | 1 |
 | ref-police | greedy-manhattan | 3 | 5 |
 | ref-police | ref-thief | 4 | 4 |
+| ref-police | best2934-thief | 4 | 4 |
+| best2934-police | random | 8 | 0 |
+| best2934-police | greedy-manhattan | 0 | 8 |
+| best2934-police | ref-thief | 0 | 8 |
+| best2934-police | best2934-thief | 8 | 0 |
 | police-brain | random | 8 | 0 |
 | police-brain | greedy-manhattan | 8 | 0 |
 | police-brain | ref-thief | 8 | 0 |
+| police-brain | best2934-thief | 7 | 1 |
 
 ## DoD win-rate floors
 
