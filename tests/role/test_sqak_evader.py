@@ -95,7 +95,7 @@ def test_the_adjacent_cell_penalty_bites() -> None:
     assert clear - touching > opts["w_risk"]  # the risk term plus the lost distance
 
 
-def test_a_walled_in_thief_still_answers(  ) -> None:
+def test_a_walled_in_thief_still_answers() -> None:
     """No legal move must degrade to STAY, never raise — the arm plays a full series."""
     board = make_board(frozenset({(0, 1), (1, 0)}))
     brain = SqakEvaderThiefBrain(seed=1)
