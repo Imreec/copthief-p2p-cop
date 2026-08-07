@@ -10,7 +10,7 @@ nothing about them.
 from pathlib import Path
 
 from copthief_core.shared.config import load_all
-from copthief_core.strategy.best2934_brains import Best2934CopBrain, Best2934ThiefBrain
+from copthief_core.strategy.best2934_cop import Best2934CopBrain
 from copthief_core.strategy.brains import Observation
 from copthief_core.strategy.referee_setup import referee_belief
 
@@ -35,57 +35,7 @@ def _delta_belief(cell: tuple[int, int]) -> object:
     return referee_belief(CONSTITUTION, start=cell, smell_trust=TRUST)
 
 
-# --------------------------------------------------------------------- their thief
 
-
-def test_the_thief_refuses_a_cell_adjacent_to_the_believed_cop() -> None:
-    """Their ADJACENCY_PENALTY (6.0) dominates every other term: a destination within
-    one step of the belief peak is close to fatal and is never chosen while a legal
-    alternative exists. This is the term our cop's approach has to defeat."""
-    board = CONSTITUTION.board.make_board()
-    brain = Best2934ThiefBrain(seed=1)
-    move = brain.pick_move(_observation(board, (3, 3), "thief"), _delta_belief((3, 5)))
-    dest = board.apply_move((3, 3), move)
-    assert abs(dest[0] - 3) + abs(dest[1] - 5) > 1
-
-
-def test_the_thief_prefers_open_space_over_raw_distance() -> None:
-    """AREA_WEIGHT is the point of their design: fleeing into a pocket is what a
-    barrier-building cop wants. With the two directions tied on distance, the one
-    that keeps more board reachable wins — the opposite of a pure distance-maximiser."""
-    board = CONSTITUTION.board.make_board()
-    for cell in ((0, 2), (1, 2), (2, 2)):  # wall off the top-left corner pocket
-        board = board.with_barrier(cell)
-    brain = Best2934ThiefBrain(seed=1)
-    move = brain.pick_move(_observation(board, (1, 1), "thief"), _delta_belief((5, 1)))
-    assert move != "N"  # N drives deeper into the sealed pocket
-
-
-def test_the_thief_switches_to_pure_distance_in_the_endgame() -> None:
-    """Inside ENDGAME_WINDOW (4) of the survival threshold they drop the area term to
-    0.05 and double distance: with two steps left, not being adjacent is all that
-    counts. Same board and belief as the area test, opposite preference."""
-    board = CONSTITUTION.board.make_board()
-    brain = Best2934ThiefBrain(seed=1)
-    early = brain.pick_move(
-        _observation(board, (3, 3), "thief", step=1, survival_threshold=35), _delta_belief((3, 1))
-    )
-    late = brain.pick_move(
-        _observation(board, (3, 3), "thief", step=33, survival_threshold=35), _delta_belief((3, 1))
-    )
-    assert late == "S"  # straight away from the cop, area disregarded
-    assert early in {"S", "E", "W"}
-
-
-def test_the_thief_is_penalised_for_standing_still() -> None:
-    """IDLE_PENALTY (1.0): camping saturates their own scent field and paints a target."""
-    board = CONSTITUTION.board.make_board()
-    brain = Best2934ThiefBrain(seed=1)
-    move = brain.pick_move(_observation(board, (3, 3), "thief"), _delta_belief((3, 1)))
-    assert move != "STAY"
-
-
-# ----------------------------------------------------------------------- their cop
 
 
 def test_the_cop_closes_on_the_belief_peak() -> None:
@@ -93,7 +43,7 @@ def test_the_cop_closes_on_the_belief_peak() -> None:
     board = CONSTITUTION.board.make_board()
     brain = Best2934CopBrain(seed=1)
     move = brain.pick_move(_observation(board, (3, 3), "police"), _delta_belief((3, 6)))
-    assert move == "S"
+    assert move == "E"  # (3,3) -> (3,6) is three columns east under the top-left origin
 
 
 def test_the_cop_does_not_wall_beyond_its_engage_range() -> None:
