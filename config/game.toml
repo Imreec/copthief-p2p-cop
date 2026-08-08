@@ -18,8 +18,8 @@ llm_model = "none"
 # warm-up: a stale count makes the NEXT counted game declare "first meeting" falsely,
 # which is a project-level disqualification (rule 38). First counted series played
 # 2026-08-04 vs anrbj666 (30-90; artifacts in reports/counted-series/).
-counted_games_played = 1
-counted_opponents = ["anrbj666"]
+counted_games_played = 2
+counted_opponents = ["anrbj666", "uoh-sqak"]
 
 [game.repos]
 cop = "https://github.com/Imreec/copthief-p2p-cop"
