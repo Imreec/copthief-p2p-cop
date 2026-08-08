@@ -2,6 +2,20 @@
 
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
+
+## PR — fix/m7-55-opponent-identity (the rescued commit, re-landed)
+
+- **Driver:** Imree (the truth-pass surfaced the orphan; merge word is his) · **Author:** the
+  2026-08-07 session (original commit `9e7cd1c`, rescued to `rescue/m7-opponent-identity`) ·
+  **Re-lander:** Claude (terminal, cleanup session) · **Reviewer:** pending (AG).
+- **What was asked:** make the M7-55 decision one-click. The rescue branch carried six commits,
+  five of them M7-45 work already re-landed on `main` via PR #109 — only `9e7cd1c` (refuse an
+  agreement from a group we are not playing) was still unmerged.
+- **Outcome:** that single commit cherry-picked onto current `main`; the only conflict was
+  `sync_manifest.json`, resolved by regeneration (`--write-manifest`, 319 files, verify OK).
+  982 tests green, ruff + mypy --strict clean. Original authorship and the uoh-sqak credit
+  preserved in the commit. **Mirrored core — the thief sync ritual is owed after merge.**
+
 ## PR — m7-48-sqak-rewrite (they rebuilt both roles overnight)
 
 - **Driver:** Imree (sent the Barrier Law message) · **Author:** Claude (terminal) ·
