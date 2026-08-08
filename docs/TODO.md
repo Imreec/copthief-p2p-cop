@@ -135,7 +135,7 @@
 - ☑ **M7-52** 🏁 **SECOND COUNTED SERIES WON** 60–40 (4–2) vs uoh-sqak (2026-08-08) — **App F pass floor met (2 counted vs different groups), +10 diversity**; mutual sha matched byte-for-byte both ways; ledger advanced to 2 in both repos (PR #113).
 - ☑ **M7-53** Absorb the opponent's opening handover (best2934's step-0 nil turn no longer collapses us into a technical loss on our cop windows) (PR #114).
 - ☑ **M7-54** A signature refusal names the construction (PR #115).
-- ☐ **M7-55** 🚦 **Opponent identity at negotiate: our `negotiate` accepts ANY caller** — a stranger declaring a matching index + complementary role passes every gate and would be sealed into the series under the real opponent's group id (rule-35 shape). Fix exists on `rescue/m7-opponent-identity` (`9e7cd1c`), **UNMERGED** — decide before any further live play, especially with two opponents up. Mirrored core when it lands.
+- ◐ **M7-55** 🚦 **Opponent identity at negotiate: our `negotiate` accepts ANY caller** — a stranger declaring a matching index + complementary role passes every gate and would be sealed into the series under the real opponent's group id (rule-35 shape). The rescued fix (`9e7cd1c`) is re-landed on current `main` as **PR #117** (982 tests green, manifest regenerated) — **awaiting Imree's merge word; thief sync ritual owed after merge.**
 
 ## Phase M8 — Submission hardening
 
