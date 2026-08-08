@@ -3,6 +3,23 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — chore/m8-todo-truth-pass (the TODO stops being a second journal)
+
+- **Driver:** Imree (asked for a pre-M8 cleanup: sessions drift, and he suspected the TODO's
+  walls of text and unclear completeness) · **Author:** Claude (terminal) · **Reviewer:** pending (AG).
+- **What was asked:** diagnose the drift sources before M8, then fix the TODO without losing
+  information. Found: 143 lines carrying ~46k tokens (M7 entries had become full dossiers), while
+  the file was simultaneously STALE — M7-43/45/48/49/52/53/54 merged on `main` with no entry or a
+  wrong status, two different entries both numbered M7-4, and counted-series items still ☐ after
+  both counted series had been played.
+- **Outcome:** every ☑ compressed to status + pointers (evidence docs / ADRs / PR numbers; the
+  full dossiers remain in this file's git history); every status re-verified against `git log`;
+  missing milestones added; every open item given an explicit disposition (M7-0 overtaken,
+  M7-1 delivered-as-the-kit's-sparring-peer, M7-2 verified in the kit tree, M7-8 accepted
+  residual for M8, M7-5 blocked on best2934's handshake gap) — and the one genuinely open code
+  item got its own number: **M7-55**, re-landed as PR #117 and merged. Header gains the
+  entry-discipline rule so the file cannot regrow into a journal.
+
 ## PR — fix/m7-55-opponent-identity (the rescued commit, re-landed)
 
 - **Driver:** Imree (the truth-pass surfaced the orphan; merge word is his) · **Author:** the
