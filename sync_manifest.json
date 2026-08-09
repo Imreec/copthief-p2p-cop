@@ -328,7 +328,7 @@
     "tests/unit/strategy/test_reference_brains.py": "37c824cf8a20767306da5139afd4d394c3a6c6658891a5ae8b556075a9555b4d",
     "tests/unit/strategy/test_region.py": "9ddb9a1f180568a00c74c5c07fa29ba268c7a42adfbdfe1590d65539376428ca",
     "tests/unit/strategy/test_scenarios.py": "43772faa4d342138171422f5a3ed3a26acbb904c48c006ea909690f33a570d01",
-    "tests/unit/strategy/test_seed_variance.py": "b0d4cf9fda1938a1aa8f8b3d4a0d10f61f955237cb53135e01d13967fd43fe23",
+    "tests/unit/strategy/test_seed_variance.py": "76bec8e2eec5da12b10a4d1fc81968c79b92037cc57b8a74bb4755d5acddab6a",
     "tests/unit/strategy/test_sharp_feed.py": "f1262fcf1ecd908294d1f3de595e6ac6df102385bc3d29217d2d385f3fcde4b7",
     "tests/unit/strategy/test_vibecode_cop.py": "4bd861b2dab33d969e92e61a4c1c12381e965fd20495dc92b79e36429132e279",
     "tests/unit/strategy/test_vibecode_thief.py": "078214455885f2bb72148e4fab291ba9ee21107fc5c38ff3ca0db16e31ef28ab",
@@ -336,7 +336,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "3914d69",
+  "source_commit": "3ba2a91",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "37f27b908fb13a41b599ee00e1d905f65a0f6d40c2772d1ec4f81dcb794036fa"
+  "tree_hash": "de1fae380719da347cc701ffbd43e0ea77419653a3b1df7ce7ffc4a8ff83e2f5"
 }
