@@ -31,6 +31,11 @@ DEFAULT_OPTIONS: dict[str, float] = {
     "w_region": 1.0,  # per-cell penalty for thief safe area (capped)
     "w_budget": 1.0,  # cost of spending one barrier from the quota
     "decision_budget_seconds": 5.0,  # generous per-decision ceiling (perf pin)
+    "endgame_enabled": 1.0,  # M9-1 solver on/off (arena A/B arm toggle)
+    "endgame_support_mass": 0.05,  # gate: mass a cell needs to count as support
+    "endgame_max_support": 3.0,  # gate: widest support the solver will try to prove
+    "endgame_max_horizon": 5.0,  # deepest forcing line searched (cop actions)
+    "endgame_node_cap": 20000.0,  # node budget; exhausted -> defer to the heuristic
 }
 
 
