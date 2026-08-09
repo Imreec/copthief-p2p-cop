@@ -14,6 +14,7 @@ from copthief_core.domain.rules import legal_moves
 from copthief_core.strategy.brains import BrainBase, Observation
 from copthief_core.strategy.decision import Decision
 from copthief_police.barriers import best_candidate
+from copthief_police.endgame import forced_action, sharp_support
 from copthief_police.features import resolve_options
 from copthief_police.search import action_value, truncated_support
 
@@ -43,20 +44,70 @@ class PoliceBrain(BrainBase):
         moves = sorted(legal_moves(board, position, observation.move_set))
         if not moves or not support:
             return "STAY"
-        best_move, best_value = moves[0], float("-inf")
-        for move in moves:
-            value = action_value(
-                board, board.apply_move(position, move), support, observation.move_set, opts
+        scored = [
+            (
+                action_value(
+                    board, board.apply_move(position, move), support, observation.move_set, opts
+                ),
+                move,
             )
-            if value > best_value:
-                best_move, best_value = move, value
-        return best_move
+            for move in moves
+        ]
+        best_value = max(value for value, _ in scored)
+        if opts["tie_epsilon"] > 0.0:
+            # M9-5: seed-consuming resolution among near-equal values — an opponent
+            # cannot replay a proven line across sub-games (the counted-loss lesson).
+            ties = sorted(
+                move for value, move in scored if value >= best_value - opts["tie_epsilon"]
+            )
+            return self._rng.choice(ties)
+        return next(move for value, move in scored if value == best_value)
+
+    def _forced_endgame(self, observation: Observation, belief: BeliefFilter) -> Decision | None:
+        """The M9-1 solver seam: a proven forcing line outranks the heuristic.
+
+        Gated on a sharp support and capped at the turns actually remaining — a
+        capture proven past the clock is a survival, not a win.
+        """
+        opts = resolve_options(self._options)
+        if opts["endgame_enabled"] <= 0.0:
+            return None
+        support = sharp_support(
+            belief.probs(),
+            mass_threshold=opts["endgame_support_mass"],
+            max_cells=int(opts["endgame_max_support"]),
+        )
+        if support is None:
+            return None
+        if observation.max_moves > 0:
+            turns_left = max(0, observation.max_moves - observation.step)
+            opts = {**opts, "endgame_max_horizon": min(opts["endgame_max_horizon"], turns_left)}
+        forced = forced_action(
+            observation.board,
+            observation.position,
+            support,
+            observation.move_set,
+            opts,
+            barriers_used=observation.barriers_used,
+            max_barriers=observation.max_barriers,
+        )
+        if forced is None:
+            return None
+        kind, payload = forced
+        if kind == "barrier" and isinstance(payload, tuple):
+            return Decision(barrier=payload)
+        if kind == "move" and isinstance(payload, str):
+            return Decision(move=payload)
+        return None
 
     def _decide(self, observation: Observation, belief: BeliefFilter) -> Decision:
         """Full action: commit beats everything; then wall-vs-move by expected value."""
         commit = self._commit_move(observation, belief)
         if commit is not None:
             return Decision(move=commit)
+        forced = self._forced_endgame(observation, belief)
+        if forced is not None:
+            return forced
         opts = resolve_options(self._options)
         support = truncated_support(belief, int(opts["search_top_k"]))
         board, position = observation.board, observation.position

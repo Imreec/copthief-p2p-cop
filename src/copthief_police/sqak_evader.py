@@ -9,8 +9,15 @@ strongest cop. So the friendly's three cop wins say nothing about this arm — w
 the whole reason to build it before a counted series rather than after.
 
 Values are the ones they FIELD in `config/thief/game.toml [strategy]`, not the class
-defaults: `w_exits` is 1.0 there against a class default of 0.3 (their comment: "0.3 ->
-1.0 doubles survival") and `w_risk` is 1.0 against a default of 3.0.
+defaults: `w_exits` is 1.0 there (their comment: "0.3 -> 1.0 doubles survival" — the
+fix commit raised the class default from 0.3 to 1.0 as well) and `w_risk` is 1.0
+against a class default of 3.0.
+
+Resynced 2026-08-09 against their HEAD `d0bb80f`: `thief_evader_v2.py` is
+byte-identical to `1ca9d23` and the fielded `[strategy]` thief weights are unchanged
+(`w_dist`/`w_exits`/`w_risk` all 1.0; `w_reach`/`tie_epsilon` still class defaults).
+The only fielded motion since the fix is cop-side (`min_gain` 1 -> 2, new
+`apex_barrier_cost` 1.0) — nothing this arm models, so the arm stands unchanged.
 
 Their objective is ROOM, not distance: exits and reachable area carry it, and distance
 survives only as a tiebreak. Two behaviours are load-bearing and mirrored exactly:
@@ -40,7 +47,7 @@ __all__ = ["EVADER_DEFAULTS", "SqakEvaderThiefBrain"]
 
 EVADER_DEFAULTS: dict[str, float] = {
     "w_dist": 1.0,  # FIELDED; distance is only a tiebreak in their new objective
-    "w_exits": 1.0,  # FIELDED (class default 0.3 — "0.3 -> 1.0 doubles survival")
+    "w_exits": 1.0,  # FIELDED (pre-fix default 0.3 — "0.3 -> 1.0 doubles survival")
     "w_reach": 0.15,  # their class default; absent from the config they field
     "w_risk": 1.0,  # FIELDED (class default 3.0)
     "tie_epsilon": 0.25,  # their class default; the width of the random tie set
