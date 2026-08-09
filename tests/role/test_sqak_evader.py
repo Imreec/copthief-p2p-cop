@@ -3,6 +3,8 @@
 Pins what the arm exists to model: their FIELDED values (not class defaults), the ROOM
 objective that replaced distance-maximising, and the two tie-break behaviours their own
 commit says were load-bearing — seeded randomness, and never standing still on a tie.
+Resynced 2026-08-09 against their HEAD `d0bb80f`: evader source and fielded thief
+weights byte-identical to `1ca9d23`, so every pin below still describes their HEAD.
 """
 
 from copthief_core.domain.belief import BeliefFilter
@@ -43,10 +45,11 @@ def observation(board: Board, position: tuple[int, int], *, step: int = 1) -> Ob
 
 
 def test_the_fielded_weights_are_the_ones_they_play() -> None:
-    """config/thief/game.toml [strategy] @ 1ca9d23 — NOT the class defaults.
+    """config/thief/game.toml [strategy], unchanged from 1ca9d23 through HEAD d0bb80f.
 
-    `w_exits` is 1.0 there against a class default of 0.3 (their comment: "measured:
-    0.3 -> 1.0 doubles survival"), and `w_risk` is 1.0 against a default of 3.0.
+    `w_exits` is 1.0 there (their comment: "measured: 0.3 -> 1.0 doubles survival";
+    the fix also raised the class default 0.3 -> 1.0), and `w_risk` is 1.0 against a
+    class default of 3.0. Post-fix config commits moved only cop-side values.
     """
     assert EVADER_DEFAULTS["w_exits"] == 1.0
     assert EVADER_DEFAULTS["w_risk"] == 1.0

@@ -1,0 +1,82 @@
+{
+  "version": "1.00",
+  "_comment": "M9 modeled-opponent study (measurement instrument, champion_pin null): our police brain against every modeled rival thief, and every modeled rival cop against our evader stand-ins - the vibecode arms are behavioral approximations from anrbj666's audit-revealed logs (their repos are private), hunter-cop re-implements anrbj666's arena_aged_cop sparring instrument, sqak-evader plays uoh-sqak's fielded values (resynced at their HEAD d0bb80f). Regenerate: uv run python scripts/arena_run.py --config config/arena_m9_study.json",
+  "police_roster": [
+    {
+      "name": "police-brain",
+      "spec": "copthief_police.brain:PoliceBrain"
+    },
+    "best2934-police",
+    "vibecode-police",
+    "hunter-cop",
+    "greedy-manhattan"
+  ],
+  "thief_roster": [
+    "belief-evader",
+    "best2934-thief",
+    "vibecode-thief",
+    {
+      "name": "sqak-evader",
+      "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
+    },
+    "greedy-manhattan"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "police-brain": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143
+    },
+    "best2934-police": {
+      "barrier_engage_range": 1.0,
+      "barrier_min_gain": 1.0,
+      "barrier_endgame_reserve": 3.0
+    },
+    "best2934-thief": {
+      "area_weight": 1.0,
+      "distance_weight": 1.2,
+      "endgame_window": 4.0
+    }
+  },
+  "evidence_out": "docs/evidence/m9-study-arena.md"
+}
