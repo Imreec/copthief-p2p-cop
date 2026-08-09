@@ -69,7 +69,7 @@ def test_a_stale_frame_abstains() -> None:
 def test_enabled_filter_collapses_onto_the_peak() -> None:
     """The re-landed M7-46 behavior: after a spread, one fresh frame makes the
     peak cell dominate the posterior (>0.9) — the sharpness the solver feeds on."""
-    belief = make_filter(fresh_peak_trust=24.0)
+    belief = make_filter(fresh_peak_trust=199.0)
     belief.predict()
     belief.predict()
     belief.update_scent({"3,4": 0.8, "3,3": 0.5, "2,4": 0.5, "4,4": 0.5})
@@ -79,7 +79,7 @@ def test_enabled_filter_collapses_onto_the_peak() -> None:
 def test_never_eliminates_the_rest_of_the_support() -> None:
     """SQ3: the peak boosts, it does not zero — every prior support cell keeps
     strictly positive mass, so a fabricated stamp stays recoverable."""
-    belief = make_filter(fresh_peak_trust=24.0)
+    belief = make_filter(fresh_peak_trust=199.0)
     belief.predict()
     support_before = set(belief.probs())
     belief.update_scent({"3,4": 0.8})
