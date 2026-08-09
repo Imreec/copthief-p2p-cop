@@ -140,6 +140,7 @@
 
 ## Phase M9 — Strategy upgrade (post-loss study; ADR-0011)
 
+- ☑ **M7-58** The scent-physics check reads the coordinate under the name its AUTHOR chose (`position` or `state`, shape-validated as two ints), and a run that had nothing to compare now emits `scent_physics_unavailable` instead of silence. **The check had never run against a single opponent**: `position` is our own spelling — best2934 and uoh-sqak write `state`, anrbj666 seal a `state_digest` and no cell — so six cross-team series reported "no problems" having compared zero steps (WARNINGS §5b, in our own tree). Reader-side only: no wire change, no hash moves, evidence-grade as before. `peer/scent_records.py` split out at the 150-line rule.
 - ☑ **M9-1** ⚑ Forcing endgame solver (`copthief_police/endgame.py`): exact iterative-deepening
   search when the belief support is sharp, barriers inside the search (rules 46/47), node-cap
   deferral, no wall clock. The counted-loss STAY-paralysis position is pinned and now resolves
