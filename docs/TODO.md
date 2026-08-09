@@ -138,6 +138,33 @@
 - ☑ **M7-55** Opponent identity at negotiate — a stranger naming a different group is refused without consuming the window; omission never refuses (closes the rule-35 false-record shape; uoh-sqak's framing, credited). The rescued `9e7cd1c` re-landed and **merged as PR #117** (main `ee88445`); thief sync rides its PR #78.
 - ☑ **M7-57** Every outbound tool call carries an explicit deadline (`[network] call_timeout_seconds`, reconciled against the SIGNED `response_timeout_sec` as budgets rule 6). `McpToolClient` passed no timeout, so a delivered-but-unanswered push inherited the transport library's own default; two of those plus a retry put our turn on the wire **61.0 s** after the opponent's, inside their signed 30 s budget — both best2934 sub-games died there (2026-08-09 friendly, their clock and ours agreeing to the second). Diagnosed by best2934 from the interval alone; their LLM-fallback hypothesis was wrong (`llm_model = "none"`) and the cause was the transport. **Open follow-up: we still open a NEW MCP session per call, which is the behaviour that makes their server stop answering in the first place.**
 
+## Phase M9 — Strategy upgrade (post-loss study; ADR-0011)
+
+- ☑ **M9-1** ⚑ Forcing endgame solver (`copthief_police/endgame.py`): exact iterative-deepening
+  search when the belief support is sharp, barriers inside the search (rules 46/47), node-cap
+  deferral, no wall clock. The counted-loss STAY-paralysis position is pinned and now resolves
+  to the two-wall seal.
+- ☑ **M9-2** Fresh-peak observation tier re-landed BEHIND the solver (`[belief] fresh_peak_trust`,
+  0.0 = the M3-3 voucher path byte-for-byte; `sharp<T>` per-arm arena feed) — the M7-46 negative
+  result's ordering constraint honored and formally resolved.
+- ☑ **M9-3** Worst-wall forecast + lethal gate (`strategy/wall_forecast.py`) and the
+  `DoctrineEvaderBrain` — belief-native MIN over top-k support; the g01/g03/g05 corner deaths
+  refuse at their first step.
+- ☑ **M9-4** Anti-camp doctrine: stay cap + hunted-only flee lift (threat NEAR US, bounded).
+- ☑ **M9-5** Determinism kill (seed-consuming tie-breaks both roles) + capture-claim confidence
+  gate (`claim_threshold = 0.1` base table; the m7-19 blanket-silence negative respected).
+  game.toml → v1.04.
+- ☑ **M9-6** Eval: modeled arms (vibecode pair from anrbj666's audit logs — their repos are
+  private; hunter-cop; sqak verified byte-current at their HEAD), the M9 study matrix
+  (`docs/evidence/m9-study-arena.md`: police-m9 216/224; doctrine+sharp survives every rival cop
+  32/32), offline peer-path series sweeps (new vs best2934/vibecode/uoh-sqak all 90–30), CI
+  arena moved to the shipped stack, thief champion pin → `doctrine-evader`. Fixed en route: the
+  round robin dropped the POLICE entry's feed (pinned).
+- ☑ **M9-7** Move-echo hint tier DROPPED as redundant (fresh-peak subsumes it on every wire we
+  play) — reasoning in ADR-0011.
+- ☐ **M9-8** Thief-repo sync branch: core mirror + sibling `game.toml` selects `doctrine-evader`
+  and sets `[belief] fresh_peak_trust` — without it the live thief plays the old brain.
+
 ## Phase M8 — Submission hardening
 
 - ☐ **M8-1** README academic reports ×2 (§9.4.2 sections + user-manual sections + contradiction-choices narrative + screenshots + sibling links) — C, review E+AG, approve I. DoD: `check_submission.py` README items green.
