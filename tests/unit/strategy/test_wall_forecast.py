@@ -21,17 +21,17 @@ def make_board(barriers: frozenset[Coord] = frozenset()) -> Board:
 
 def test_corner_landing_next_to_the_cop_is_lethal() -> None:
     """Cop support at (5,6): landing on (6,6) dies next turn (wall or step)."""
-    assert lethal_landing(make_board(), (6, 6), [(5, 6)], MOVE_SET)
+    assert lethal_landing(make_board(), (6, 6), [(5, 6)])
 
 
 def test_landing_two_steps_away_is_not_lethal() -> None:
     """No support cell reaches (6,6) in one action from (4,6)."""
-    assert not lethal_landing(make_board(), (6, 6), [(4, 6)], MOVE_SET)
+    assert not lethal_landing(make_board(), (6, 6), [(4, 6)])
 
 
 def test_any_support_cell_with_a_kill_line_disqualifies() -> None:
     """Belief-native MIN: one far cell + one adjacent cell — still lethal."""
-    assert lethal_landing(make_board(), (6, 6), [(0, 0), (6, 5)], MOVE_SET)
+    assert lethal_landing(make_board(), (6, 6), [(0, 0), (6, 5)])
 
 
 def test_worst_wall_shrinks_the_almost_sealed_pocket_to_nothing() -> None:

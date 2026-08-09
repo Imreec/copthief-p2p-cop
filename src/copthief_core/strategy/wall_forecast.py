@@ -23,7 +23,7 @@ and re-measured here. Pure geometry: no I/O, no RNG, no config reads.
 from __future__ import annotations
 
 from copthief_core.domain.board import Board, Coord
-from copthief_core.domain.rules import is_imprisoned, legal_moves
+from copthief_core.domain.rules import is_imprisoned
 from copthief_core.strategy.region import region_size
 
 __all__ = ["lethal_landing", "worst_wall_outcome"]
@@ -75,7 +75,6 @@ def lethal_landing(
     board: Board,
     landing: Coord,
     support: list[Coord],
-    move_set: tuple[str, ...],
     *,
     quota_left: int = 1,
 ) -> bool:

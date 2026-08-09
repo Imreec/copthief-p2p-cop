@@ -21,7 +21,7 @@ def make_board(barriers: frozenset[Coord] = frozenset()) -> Board:
 
 
 def make_belief(board: Board, cop_cell: Coord) -> BeliefFilter:
-    belief = BeliefFilter(
+    return BeliefFilter(
         board=board,
         move_set=MOVE_SET,
         start=cop_cell,
@@ -30,7 +30,6 @@ def make_belief(board: Board, cop_cell: Coord) -> BeliefFilter:
         smell_trust=0.0,
         hint_trust=0.0,
     )
-    return belief
 
 
 def make_observation(board: Board, position: Coord) -> Observation:
