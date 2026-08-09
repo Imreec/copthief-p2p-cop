@@ -68,16 +68,23 @@ jobs:
         run: uv run python scripts/check_submission.py
 
   # The suite lane keeps the historical job id `quality` so anything keyed to that
-  # check name still points at a blocking gate. Runs in PARALLEL with `gates`.
+  # check name still points at a blocking gate. Runs in PARALLEL with `gates`,
+  # ON THE SELF-HOSTED 24-core runner (label fast24, one registered per repo):
+  # GitHub's 2-core VM ran this suite in ~25 min; the local runner + xdist runs it
+  # in ~2 min. If the runner is offline this lane QUEUES - restart it with the
+  # one-liner in the ops runbook/memory. Arena seeds and the solver node cap stay
+  # untouched: they are the measurement, not speed knobs. --dist loadscope keeps
+  # each test module on one worker so the arena module's shared round-robin
+  # fixture is computed once.
   quality:
-    runs-on: ubuntu-latest
-    # M9: the forcing solver fires inside the arena integration games; the suite went
-    # ~68s -> ~334s locally and ~23-28m on this runner. Node-capped, so the bound is
-    # firm - 30 keeps margin. Deliberately NOT trimmed via arena seeds or the solver
-    # node cap: those are the measurement, not speed knobs. pytest-xdist considered
-    # and deferred - it needs a flakiness trial we will not run the weekend before
-    # the deadline (threads + shared tmp paths in the peer tests).
-    timeout-minutes: 30
+    runs-on: [self-hosted, fast24]
+    timeout-minutes: 15
+    defaults:
+      run:
+        # The dev machine's PowerShell execution policy blocks the runner's
+        # generated .ps1 step scripts (PSSecurityException); Git Bash sidesteps
+        # policy without changing system state, and is present on the machine.
+        shell: bash
 
     steps:
       - name: Checkout
@@ -96,4 +103,4 @@ jobs:
         run: uv sync
 
       - name: Tests with coverage
-        run: uv run pytest --cov=src --cov-report=xml --cov-fail-under=85
+        run: uv run pytest -n auto --dist loadscope --cov=src --cov-report=xml --cov-fail-under=85
