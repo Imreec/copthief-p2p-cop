@@ -136,6 +136,7 @@
 - ☑ **M7-53** Absorb the opponent's opening handover (best2934's step-0 nil turn no longer collapses us into a technical loss on our cop windows) (PR #114).
 - ☑ **M7-54** A signature refusal names the construction (PR #115).
 - ☑ **M7-55** Opponent identity at negotiate — a stranger naming a different group is refused without consuming the window; omission never refuses (closes the rule-35 false-record shape; uoh-sqak's framing, credited). The rescued `9e7cd1c` re-landed and **merged as PR #117** (main `ee88445`); thief sync rides its PR #78.
+- ☑ **M7-57** Every outbound tool call carries an explicit deadline (`[network] call_timeout_seconds`, reconciled against the SIGNED `response_timeout_sec` as budgets rule 6). `McpToolClient` passed no timeout, so a delivered-but-unanswered push inherited the transport library's own default; two of those plus a retry put our turn on the wire **61.0 s** after the opponent's, inside their signed 30 s budget — both best2934 sub-games died there (2026-08-09 friendly, their clock and ours agreeing to the second). Diagnosed by best2934 from the interval alone; their LLM-fallback hypothesis was wrong (`llm_model = "none"`) and the cause was the transport. **Open follow-up: we still open a NEW MCP session per call, which is the behaviour that makes their server stop answering in the first place.**
 
 ## Phase M8 — Submission hardening
 
