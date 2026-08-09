@@ -5,7 +5,7 @@
     ".claude/skills/pr-discipline/SKILL.md": "a2743a764009a4b6dea39caa1156b62dc4d06da398a0e6a7b22a3f052570a226",
     ".claude/skills/self-grade/SKILL.md": "2322978e54d5c5d239359791456cc8b418578345b23b8fae7d6437418982f8b8",
     ".claude/skills/tdd-cycle/SKILL.md": "603b808da80a724a65868452d28e64d3badaa513deed81ed0d0542a31101def1",
-    ".github/workflows/quality.yml": "02846a564061b235518eb7375f45f47447d5b06a80939dc3b6859d7944532a7d",
+    ".github/workflows/quality.yml": "ce90a048b3e69655dececf954523ed0b25305ac202c177f51ea846c6fe12734e",
     "docs/REVIEW_PROCESS.md": "00c0a77abbb89ccc5a22695b44e1c093df6196f4de360ba9182479d20b9c1688",
     "scripts/arena_run.py": "6a9fe56aa19cfcef0768d09068dba6a9715668cc75b7d3fbf9acec1dc10e75bf",
     "scripts/balance_run.py": "4845724ceffe1022fca11714ddd69b2859acb1553de2c08a3a2fe11a8115d521",
@@ -336,7 +336,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "b2350bd",
+  "source_commit": "4c76ed9",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "e524629c691a535c2272a9000707e41fe7d54539bcd61700d7b4210fdec9e85c"
+  "tree_hash": "073055097d90ab80abcc3ad3abbc5c24a37e0228a8cf5d98b88f5e8ebac1721c"
 }
