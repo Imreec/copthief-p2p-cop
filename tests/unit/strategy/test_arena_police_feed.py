@@ -23,7 +23,7 @@ class _RecordingSdk:
         self.constitution, _p, _l = load_all(Path("config"), counted=False)
         self.calls: list[dict[str, Any]] = []
 
-    def scenario_series(self, **kwargs: Any) -> list[Any]:
+    def scenario_series(self, **kwargs: Any) -> list[Any]:  # noqa: ANN401 - recording stub
         self.calls.append(kwargs)
         return []
 

@@ -57,7 +57,9 @@ class PoliceBrain(BrainBase):
         if opts["tie_epsilon"] > 0.0:
             # M9-5: seed-consuming resolution among near-equal values — an opponent
             # cannot replay a proven line across sub-games (the counted-loss lesson).
-            ties = sorted(move for value, move in scored if value >= best_value - opts["tie_epsilon"])
+            ties = sorted(
+                move for value, move in scored if value >= best_value - opts["tie_epsilon"]
+            )
             return self._rng.choice(ties)
         return next(move for value, move in scored if value == best_value)
 

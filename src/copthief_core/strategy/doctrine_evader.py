@@ -78,8 +78,7 @@ class DoctrineEvaderBrain(BrainBase):
             sum(
                 p
                 for cop, p in probs.items()
-                if abs(cop[0] - position[0]) + abs(cop[1] - position[1])
-                <= opts["hunted_radius"]
+                if abs(cop[0] - position[0]) + abs(cop[1] - position[1]) <= opts["hunted_radius"]
             )
             >= opts["hunted_mass"]
         )

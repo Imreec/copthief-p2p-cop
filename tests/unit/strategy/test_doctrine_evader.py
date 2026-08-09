@@ -69,9 +69,7 @@ def test_stay_cap_breaks_the_camp() -> None:
     """Uncapped flight makes the corner a STAY-magnet (the g02 geometry); after
     `stay_cap_limit` consecutive STAYs the cap forces motion anyway."""
     board = make_board()
-    brain = DoctrineEvaderBrain(
-        seed=3, options={"safe_distance": 99.0, "stay_cap_limit": 2.0}
-    )
+    brain = DoctrineEvaderBrain(seed=3, options={"safe_distance": 99.0, "stay_cap_limit": 2.0})
     observation = make_observation(board, (6, 6))
     belief = make_belief(board, (0, 0))
     moves = [brain.pick_move(observation, belief) for _ in range(3)]

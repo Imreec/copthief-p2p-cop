@@ -31,9 +31,7 @@ __all__ = ["lethal_landing", "worst_wall_outcome"]
 
 def _cop_reach(board: Board, cop: Coord) -> tuple[Coord, ...]:
     """The cells a cop at `cop` can wall (or step onto): own cell + open neighbors."""
-    return tuple(
-        cell for cell in (cop, *board.neighbors(cop)) if not board.is_blocked(cell)
-    )
+    return tuple(cell for cell in (cop, *board.neighbors(cop)) if not board.is_blocked(cell))
 
 
 def worst_wall_outcome(
@@ -55,9 +53,7 @@ def worst_wall_outcome(
     """
 
     def outcome(with_board: Board) -> tuple[int, int]:
-        escapes = sum(
-            1 for n in with_board.neighbors(landing) if not with_board.is_blocked(n)
-        )
+        escapes = sum(1 for n in with_board.neighbors(landing) if not with_board.is_blocked(n))
         return escapes, region_size(with_board, landing, move_set, region_cap, {})
 
     if quota_left <= 0:

@@ -46,9 +46,7 @@ def test_it_routes_around_walls_where_the_vibecode_cop_dithers() -> None:
     detour also sealed, only the southern route shortens the true path."""
     board = CONSTITUTION.board.make_board().with_barrier((3, 4)).with_barrier((2, 4))
     brain = HunterCopBrain(seed=1)
-    decision = brain.decide(
-        _observation(board, (3, 3), barriers_used=2), _delta_belief((3, 5))
-    )
+    decision = brain.decide(_observation(board, (3, 3), barriers_used=2), _delta_belief((3, 5)))
     assert decision.move == "S"
 
 
@@ -56,9 +54,7 @@ def test_a_sharp_adjacent_peak_gets_the_rule_46_kill_wall() -> None:
     """Their KILL_MASS branch: a collapsed belief in placement reach is walled
     directly — a barrier on the thief's cell captures outright."""
     board = CONSTITUTION.board.make_board()
-    decision = HunterCopBrain(seed=1).decide(
-        _observation(board, (3, 3)), _delta_belief((3, 4))
-    )
+    decision = HunterCopBrain(seed=1).decide(_observation(board, (3, 3)), _delta_belief((3, 4)))
     assert decision.barrier == (3, 4)
     assert decision.move == "STAY"
 

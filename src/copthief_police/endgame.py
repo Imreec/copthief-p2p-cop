@@ -50,7 +50,9 @@ def _captured(board: Board, cop: Coord, thief: Coord) -> bool:
     return cop == thief or thief in board.barriers or is_imprisoned(board, thief)
 
 
-def _thief_replies(board: Board, cop: Coord, thief: Coord, move_set: tuple[str, ...]) -> list[Coord]:
+def _thief_replies(
+    board: Board, cop: Coord, thief: Coord, move_set: tuple[str, ...]
+) -> list[Coord]:
     """Distinct legal destinations; stepping onto the cop is suicide, not escape."""
     dests = {board.apply_move(thief, move) for move in legal_moves(board, thief, move_set)}
     return sorted(dest for dest in dests if dest != cop)
@@ -105,7 +107,9 @@ def _forces(
             result = True
             break
         if all(
-            _forces(next_board, next_cop, reply, move_set, actions_left - 1, next_quota, budget, memo)
+            _forces(
+                next_board, next_cop, reply, move_set, actions_left - 1, next_quota, budget, memo
+            )
             for reply in replies
         ):
             result = True
@@ -141,7 +145,16 @@ def forced_action(
                     _captured(next_board, next_cop, thief)
                     or not _thief_replies(next_board, next_cop, thief, move_set)
                     or all(
-                        _forces(next_board, next_cop, reply, move_set, depth - 1, next_quota, budget, memo)
+                        _forces(
+                            next_board,
+                            next_cop,
+                            reply,
+                            move_set,
+                            depth - 1,
+                            next_quota,
+                            budget,
+                            memo,
+                        )
                         for reply in _thief_replies(next_board, next_cop, thief, move_set)
                     )
                     for thief in support
