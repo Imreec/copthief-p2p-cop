@@ -109,7 +109,9 @@ class DoctrineEvaderBrain(BrainBase):
                 for cop in support
             ]
             worst_escapes = min(escapes for escapes, _ in outcomes)
-            worst_region = min(region for _, region in outcomes)
+            # Clamp at the cap: the capped BFS may overshoot by frontier-order noise,
+            # and "beyond the cap" MEANS open — noise must not break genuine ties.
+            worst_region = min(int(opts["region_cap"]), min(region for _, region in outcomes))
             mobility = len(legal_moves(board, dest, observation.move_set))
             return (
                 0.0 if lethal else 1.0,
@@ -120,6 +122,10 @@ class DoctrineEvaderBrain(BrainBase):
                 float(mobility),
             )
 
-        best = max(candidates, key=lambda m: (score(m), m))
+        # M9-5: exact ties resolve by the seeded shuffle (sub-game seeds differ, so a
+        # rival cannot replay our path), with STAY last in any tie — a tied STAY is
+        # a free beacon. Same (config, seed) still replays identically.
+        self._rng.shuffle(candidates)
+        best = max(candidates, key=lambda m: (score(m), m != STAY))
         self._stay_run = self._stay_run + 1 if best == STAY else 0
         return best

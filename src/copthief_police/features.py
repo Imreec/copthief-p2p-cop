@@ -36,6 +36,7 @@ DEFAULT_OPTIONS: dict[str, float] = {
     "endgame_max_support": 3.0,  # gate: widest support the solver will try to prove
     "endgame_max_horizon": 5.0,  # deepest forcing line searched (cop actions)
     "endgame_node_cap": 20000.0,  # node budget; exhausted -> defer to the heuristic
+    "tie_epsilon": 0.0,  # M9-5: seeded choice among values this close (0 = deterministic)
 }
 
 

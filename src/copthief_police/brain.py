@@ -44,14 +44,22 @@ class PoliceBrain(BrainBase):
         moves = sorted(legal_moves(board, position, observation.move_set))
         if not moves or not support:
             return "STAY"
-        best_move, best_value = moves[0], float("-inf")
-        for move in moves:
-            value = action_value(
-                board, board.apply_move(position, move), support, observation.move_set, opts
+        scored = [
+            (
+                action_value(
+                    board, board.apply_move(position, move), support, observation.move_set, opts
+                ),
+                move,
             )
-            if value > best_value:
-                best_move, best_value = move, value
-        return best_move
+            for move in moves
+        ]
+        best_value = max(value for value, _ in scored)
+        if opts["tie_epsilon"] > 0.0:
+            # M9-5: seed-consuming resolution among near-equal values — an opponent
+            # cannot replay a proven line across sub-games (the counted-loss lesson).
+            ties = sorted(move for value, move in scored if value >= best_value - opts["tie_epsilon"])
+            return self._rng.choice(ties)
+        return next(move for value, move in scored if value == best_value)
 
     def _forced_endgame(self, observation: Observation, belief: BeliefFilter) -> Decision | None:
         """The M9-1 solver seam: a proven forcing line outranks the heuristic.
