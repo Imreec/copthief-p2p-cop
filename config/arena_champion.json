@@ -1,6 +1,6 @@
 {
   "version": "1.00",
-  "_comment": "Champion regression pin (CLAUDE.md s5, TODO M3-6): a new brain must not lose to these on the shipped arena config - CI runs champion_regression blocking. Update ONLY when a challenger demonstrably tops the role table, in the same PR as the regenerated evidence (M5-2: police-brain dethroned ref-police 390>330; greedy-manhattan holds the thief table until the sibling repo's M5-3 ThiefBrain).",
+  "_comment": "Champion regression pin (CLAUDE.md s5, TODO M3-6): a new brain must not lose to these on the shipped arena config - CI runs champion_regression blocking. Update ONLY when a challenger demonstrably tops the role table, in the same PR as the regenerated evidence (M5-2: police-brain dethroned ref-police 390>330; M9: doctrine-evader+sharp dethroned greedy-manhattan on the study matrix - docs/evidence/m9-study-arena.md - and the CI table below; the police-brain entry now runs the SHIPPED stack incl. the sharp feed, matching game.toml v1.04).",
   "police_champion": "police-brain",
-  "thief_champion": "greedy-manhattan"
+  "thief_champion": "doctrine-evader"
 }

@@ -8,14 +8,20 @@
     "best2934-police",
     {
       "name": "police-brain",
-      "spec": "copthief_police.brain:PoliceBrain"
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199"
     }
   ],
   "thief_roster": [
     "random",
     "greedy-manhattan",
     "ref-thief",
-    "best2934-thief"
+    "best2934-thief",
+    {
+      "name": "doctrine-evader",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199"
+    }
   ],
   "seeds": [
     1,
