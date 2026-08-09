@@ -30,7 +30,7 @@ __all__ = ["Action", "forced_action", "sharp_support"]
 Action = tuple[str, "str | Coord"]
 
 
-class _BudgetExhausted(Exception):
+class _BudgetExhaustedError(Exception):
     """Internal: the node budget ran out — the search aborts to a clean deferral."""
 
 
@@ -89,7 +89,7 @@ def _forces(
         return False
     budget[0] -= 1
     if budget[0] < 0:
-        raise _BudgetExhausted
+        raise _BudgetExhaustedError
     key = (board.barriers, cop, thief, actions_left, quota_left)
     if key in memo:
         return memo[key]
@@ -147,6 +147,6 @@ def forced_action(
                     for thief in support
                 ):
                     return (kind, payload)
-    except _BudgetExhausted:
+    except _BudgetExhaustedError:
         return None
     return None
