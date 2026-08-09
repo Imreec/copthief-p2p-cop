@@ -79,6 +79,12 @@ jobs:
   quality:
     runs-on: [self-hosted, fast24]
     timeout-minutes: 15
+    defaults:
+      run:
+        # The dev machine's PowerShell execution policy blocks the runner's
+        # generated .ps1 step scripts (PSSecurityException); Git Bash sidesteps
+        # policy without changing system state, and is present on the machine.
+        shell: bash
 
     steps:
       - name: Checkout
