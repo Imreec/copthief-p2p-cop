@@ -65,6 +65,10 @@ class BeliefFilter:
         # M7-14: the previous observed field, for the kernel path's innovation.
         self._last_scent: dict[Coord, float] | None = None
 
+    def set_fresh_peak_trust(self, trust: float) -> None:
+        """The M9-2 sharp-tier dial (feed/arena seam): 0.0 restores the voucher path."""
+        self._fresh_peak_trust = trust
+
     def note_barrier(self, cell: Coord) -> None:
         """A declared barrier (sealed, audited — certain) blocks motion AND occupancy."""
         self._board = self._board.with_barrier(cell)

@@ -46,6 +46,15 @@ w_budget = 1.7277
 w_distance = 3.8875
 w_mobility = 3.6061
 w_region = 0.1143
+# M9-5: seed-consuming tie resolution among expectimax values this close - the
+# counted 30-90 replayed byte-identical games because ties broke on sorted order.
+tie_epsilon = 0.25
+# M9-5 claim gate (base table - applies under the shipped subtractive model too):
+# claim only when the landing's own belief mass clears this. NOT the m7-19 blanket
+# silence (that lost 32/32 -> 0/32 captures); with the sharp tier the belief is
+# usually near-certain, so conversions keep riding while low-confidence position
+# leaks stop. 0.1 = our own published sweep's best point (which anrbj666 adopted).
+claim_threshold = 0.1
 
 [strategy.police.multiplicative_book_v1]
 # M7-15 per-model overlay: applies ONLY when [scent] model selects this name
@@ -95,6 +104,13 @@ hint_trust_default = 1.0
 # M5-5 profiling: the post-audit lie-rate scales the NEXT mini-game's hint trust
 # down toward (never past) this floor - distrust-but-never-eliminate.
 profile_hint_floor = 0.2
+# M9-2: the sharp fresh-peak tier. Under subtractive_chebyshev_v1 the age-zero stamp
+# names the emitter cell exactly, so the multiplier is strong on purpose (x200 on the
+# peak); ambiguous/stale frames abstain to the voucher path, and SQ3 still holds
+# (boost, never eliminate). 0.0 disables (the pre-M9 filter byte-for-byte). Landed
+# together with the M9-1 solver - the M7-46 negative result forbids one without the
+# other (a sharp belief without a forcing search made the cop PASSIVE, 45/64 -> 0/64).
+fresh_peak_trust = 199.0
 
 [gui]
 # Live-view render knobs (PRD_gui_replay s7): display-only, never negotiated. The
