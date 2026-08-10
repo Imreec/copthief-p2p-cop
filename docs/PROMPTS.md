@@ -3,6 +3,30 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — m10-vibecode-countertune (the 30–90 becomes a mechanism, not a mood)
+
+- **Driver:** Imree (session prompt `SESSION-PROMPT-M10-VIBECODE-COUNTERTUNE.md`, written off
+  the 08-10 forensics; merge word is his) · **Author:** Claude (terminal, isolated worktree) ·
+  **Reviewer:** pending (AG).
+- **What was asked:** three work items from the 30–90 vibecode friendly — make the police wall
+  in a central evader (42 walls unused despite perfect tracking), fix the doctrine evader's
+  flee-to-corner death, feed opponent capture_claims into the evader's belief — plus rebuild
+  the vibecode arena arms from the real logs first; strategy layer only; M9-pattern gates.
+- **Outcome:** ADR-0012. Item 3 closed as already-implemented (the live loop has collapsed
+  belief on inbound claims since M7-18 — verified in the g02 log: belief == the claimed cell
+  at every step — so the work moved to arena-side modeling: `claim_threshold 0.0` on their cop
+  arm, `truth` claim-feed on our evader arms). Containment walling (M10-1) and room-first
+  flight (M10-2) landed config-gated, defaults off. Arms rebuilt from
+  `logs/imreeyal-vs-vibecode_g0*.jsonl`; three fidelity iterations were needed before the
+  thief arm reproduced the live result (wall-less M9 cop: 0/8 at signed starts, was 8/8
+  against the naive rebuild) — the tuning instrument is only as honest as its worst arm.
+  Evidence: `docs/evidence/m10-countertune.md` + regenerated arena tables. Fixed en route:
+  the live view-model crashed folding a wall turn (`BARRIER` is not a compass move) — latent
+  since M5-2 because no committed fixture game ever placed a wall until containment armed
+  (`gui/models/live.py` + wall-turn pin). Also surfaced: our replay tool flags vibecode's
+  audit hints ("revealed hint differs") — their audit does not echo hints verbatim; the
+  settlement contract does not compare hints, so live Verified OK stands (dialect note).
+
 ## PR — chore/m8-todo-truth-pass (the TODO stops being a second journal)
 
 - **Driver:** Imree (asked for a pre-M8 cleanup: sessions drift, and he suspected the TODO's
