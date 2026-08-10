@@ -37,6 +37,12 @@ DEFAULT_OPTIONS: dict[str, float] = {
     "endgame_max_horizon": 5.0,  # deepest forcing line searched (cop actions)
     "endgame_node_cap": 20000.0,  # node budget; exhausted -> defer to the heuristic
     "tie_epsilon": 0.0,  # M9-5: seeded choice among values this close (0 = deterministic)
+    "contain_enabled": 0.0,  # M10 containment walling on/off (0.0 = shipped M9 stream)
+    "contain_mass": 0.4,  # belief mass the top cell needs before walls are invested
+    "contain_range": 3.0,  # BFS gap to the target within which a wall is invested
+    "contain_cooldown": 3.0,  # turns between wall investments (tempo throttle)
+    "contain_reserve": 2.0,  # quota held back for the solver's finishing walls
+    "contain_min_shrink": 1.0,  # believed-region shrink a wall must buy (uncapped BFS)
 }
 
 

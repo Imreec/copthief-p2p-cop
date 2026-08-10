@@ -10,10 +10,12 @@ tie breaks on sorted move order. The LLM never appears anywhere in this package
 from __future__ import annotations
 
 from copthief_core.domain.belief import BeliefFilter
+from copthief_core.domain.board import Coord
 from copthief_core.domain.rules import legal_moves
 from copthief_core.strategy.brains import BrainBase, Observation
 from copthief_core.strategy.decision import Decision
 from copthief_police.barriers import best_candidate
+from copthief_police.containment import containment_wall
 from copthief_police.endgame import forced_action, sharp_support
 from copthief_police.features import resolve_options
 from copthief_police.search import action_value, truncated_support
@@ -21,6 +23,13 @@ from copthief_police.search import action_value, truncated_support
 
 class PoliceBrain(BrainBase):
     """Expectimax + graph surgery over the belief's public read surface."""
+
+    _last_wall_step: int = -(10**9)  # M10 containment spacing (any wall resets it)
+
+    def _walled(self, step: int, barrier: Coord) -> Decision:
+        """Record the investment turn, then stand and place (BARRIER semantics)."""
+        self._last_wall_step = step
+        return Decision(barrier=barrier)
 
     def _commit_move(self, observation: Observation, belief: BeliefFilter) -> str | None:
         """The capture-commit rule: step onto any adjacent cell holding ≥ p_commit."""
@@ -95,7 +104,7 @@ class PoliceBrain(BrainBase):
             return None
         kind, payload = forced
         if kind == "barrier" and isinstance(payload, tuple):
-            return Decision(barrier=payload)
+            return self._walled(observation.step, payload)
         if kind == "move" and isinstance(payload, str):
             return Decision(move=payload)
         return None
@@ -124,6 +133,11 @@ class PoliceBrain(BrainBase):
         )
         move = self._pick_move(observation, belief)
         if wall is None:
+            invest = containment_wall(
+                observation, support, opts, last_wall_step=self._last_wall_step
+            )
+            if invest is not None:
+                return self._walled(observation.step, invest)
             return Decision(move=move)
         move_value = action_value(
             board, board.apply_move(position, move), support, observation.move_set, opts
@@ -133,5 +147,5 @@ class PoliceBrain(BrainBase):
             - opts["w_budget"]
         )
         if wall_value > move_value:
-            return Decision(barrier=wall)
+            return self._walled(observation.step, wall)
         return Decision(move=move)

@@ -3,7 +3,7 @@
 # M1 carries only the sections the walking skeleton reads; [strategy]/[trash_talk]/[llm]/[email]
 # arrive with their milestones (M5/M6).
 
-version = "1.04"
+version = "1.05"
 
 [game]
 group_name = "ImreEyal-Police"
@@ -50,6 +50,13 @@ w_region = 0.1143
 # M9-5: seed-consuming tie resolution among expectimax values this close - the
 # counted 30-90 replayed byte-identical games because ties broke on sorted order.
 tie_epsilon = 0.25
+# M10 containment walling (ADR-0012, the vibecode 30-90 lesson): the surgery
+# threshold is structurally silent in open center (one wall shrinks the believed
+# region by exactly 1 - 0 of 42 walls placed across three perfectly-tracked
+# games), so sub-threshold walls are invested deliberately while close and sharp,
+# until the board is small enough for the M9-1 solver to finish. Knob table in
+# copthief_police/features.py; the cooldown/reserve/range values are its defaults.
+contain_enabled = 1.0
 # M9-5 claim gate (base table - applies under the shipped subtractive model too):
 # claim only when the landing's own belief mass clears this. NOT the m7-19 blanket
 # silence (that lost 32/32 -> 0/32 captures); with the sharp tier the belief is

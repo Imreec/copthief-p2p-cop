@@ -166,6 +166,28 @@
 - ☐ **M9-8** Thief-repo sync branch: core mirror + sibling `game.toml` selects `doctrine-evader`
   and sets `[belief] fresh_peak_trust` — without it the live thief plays the old brain.
 
+## Phase M10 — vibecode counter-tune (the 08-10 30–90; ADR-0012)
+
+- ☑ **M10-1** Containment walling (`copthief_police/containment.py`, config-gated, default off):
+  the surgery threshold is structurally silent in open center — sub-threshold walls invested
+  close+sharp+throttled+reserved until the M9-1 solver can finish. `game.toml` → v1.05
+  (`contain_enabled = 1.0`); shipped arena entry armed.
+- ☑ **M10-2** Room-first flight (`doctrine_evader.py` `room_first`/`flight_floor`, default off):
+  hunted flight demoted below the worst-wall room terms past a safety floor — the g02 herding
+  step refuses at its first move (pinned).
+- ☑ **M10-3** vibecode arms REBUILT from our own 08-10 logs (pre-08-10 models dead): central
+  hex-loop thief (+ inferred arc reversal — three fidelity iterations until wall-less M9 went
+  0/8 as live), seal-wall cop with every-turn claims at the roster level. Signed-start probe:
+  police-m10 8/8 inside 35 with 6–8 walls (`scripts/m10_probe.py`).
+- ☑ **M10-4** Claim finding closed as already-implemented (M7-18 collapses live; verified in
+  g02 log) — arena now models the SENDER side (`claim_threshold 0.0` / `claim_feed truth`).
+- ☐ **M10-5** Thief-repo sync after merge: core mirror + sibling `[strategy.thief]`
+  `room_first = 1.0` by hand (config never travels with the mirror) + runbook/sparring config
+  layers checked (tuned weights never to sparring).
+- ☐ **M10-6** Offer vibecode a SECOND friendly to validate live before any counted decision
+  (counted vs them is a 30–90-class risk until validated). Check gal-roy1 offer status
+  (was through 11/08) before assuming.
+
 ## Phase M8 — Submission hardening
 
 - ☐ **M8-1** README academic reports ×2 (§9.4.2 sections + user-manual sections + contradiction-choices narrative + screenshots + sibling links) — C, review E+AG, approve I. DoD: `check_submission.py` README items green.

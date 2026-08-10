@@ -1,0 +1,73 @@
+{
+  "version": "1.00",
+  "_comment": "M10 vibecode counter-tune instrument (measurement, champion_pin null): both vibecode arms rebuilt from OUR OWN 08-10 friendly logs (logs/imreeyal-vs-vibecode_g0*.jsonl - the 30-90 loss). vibecode-police carries claim_threshold 0.0 (their cop truthfully claimed its own cell on 43/43 turns); the -claims doctrine entries read those claims as exact position (claim_feed truth) - the LIVE information condition our peer loop already implements (inbound.py note_claim). Pairings that matter: police-m10 x vibecode-thief (does containment wall-in the central hex-loop?), vibecode-police x doctrine-m10-claims (does room-first survive the herd-and-seal?), and the m9 rows as the before-picture. Regenerate: uv run python scripts/arena_run.py --config config/arena_m10_vibecode.json",
+  "police_roster": [
+    {
+      "name": "police-m9",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199"
+    },
+    {
+      "name": "police-m10",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199"
+    },
+    {
+      "name": "vibecode-police",
+      "spec": "vibecode-police",
+      "feed": "sharp199",
+      "claim_threshold": 0.0
+    }
+  ],
+  "thief_roster": [
+    {
+      "name": "doctrine-m9",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-m10",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "vibecode-thief",
+      "spec": "vibecode-thief",
+      "feed": "sharp199"
+    }
+  ],
+  "seeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "police-m9": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25
+    },
+    "police-m10": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0
+    },
+    "doctrine-m10": {
+      "room_first": 1.0
+    }
+  },
+  "evidence_out": "docs/evidence/m10-countertune-arena.md"
+}

@@ -44,7 +44,11 @@
       "w_budget": 1.7277,
       "w_distance": 3.8875,
       "w_mobility": 3.6061,
-      "w_region": 0.1143
+      "w_region": 0.1143,
+      "contain_enabled": 1.0
+    },
+    "doctrine-evader": {
+      "room_first": 1.0
     },
     "best2934-police": {
       "barrier_engage_range": 1.0,
