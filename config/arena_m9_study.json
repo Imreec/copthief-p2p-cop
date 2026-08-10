@@ -1,6 +1,6 @@
 {
   "version": "1.00",
-  "_comment": "M9 modeled-opponent study (measurement instrument, champion_pin null): our police brain against every modeled rival thief, and every modeled rival cop against our evader stand-ins - the vibecode arms are behavioral approximations from anrbj666's audit-revealed logs (their repos are private), hunter-cop re-implements anrbj666's arena_aged_cop sparring instrument, sqak-evader plays uoh-sqak's fielded values (resynced at their HEAD d0bb80f). Regenerate: uv run python scripts/arena_run.py --config config/arena_m9_study.json",
+  "_comment": "M9/M10 modeled-opponent study (measurement instrument, champion_pin null): our police brains against every modeled rival thief, and every modeled rival cop against our evader stand-ins. M10: the vibecode arms are REBUILT from our own 08-10 friendly logs (logs/imreeyal-vs-vibecode_g0*.jsonl - the pre-08-10 anrbj666-log models are dead) and run sharp199 + every-turn claims, matching their fielded tracker; police-m10/doctrine-m10 are the countertune stacks (containment walling / room-first flight), so this matrix IS the modeled-arm non-regression evidence vs best2934, uoh-sqak and hunter-cop. Regenerate: uv run python scripts/arena_run.py --config config/arena_m9_study.json",
   "police_roster": [
     {
       "name": "police-m7",
@@ -11,8 +11,18 @@
       "spec": "copthief_police.brain:PoliceBrain",
       "feed": "sharp199"
     },
+    {
+      "name": "police-m10",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199"
+    },
     "best2934-police",
-    "vibecode-police",
+    {
+      "name": "vibecode-police",
+      "spec": "vibecode-police",
+      "feed": "sharp199",
+      "claim_threshold": 0.0
+    },
     "hunter-cop",
     "greedy-manhattan"
   ],
@@ -24,8 +34,18 @@
       "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
       "feed": "sharp199"
     },
+    {
+      "name": "doctrine-m10",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
     "best2934-thief",
-    "vibecode-thief",
+    {
+      "name": "vibecode-thief",
+      "spec": "vibecode-thief",
+      "feed": "sharp199"
+    },
     {
       "name": "sqak-evader",
       "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
@@ -87,6 +107,19 @@
       "w_mobility": 3.6061,
       "w_region": 0.1143,
       "tie_epsilon": 0.25
+    },
+    "police-m10": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0
+    },
+    "doctrine-m10": {
+      "room_first": 1.0
     },
     "best2934-police": {
       "barrier_engage_range": 1.0,
