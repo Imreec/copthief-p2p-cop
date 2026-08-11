@@ -1,21 +1,23 @@
-"""Cage-escape kit for the doctrine evader (M11-1) — tempo punishment + pockets.
+"""Cage-escape kit for the doctrine evader (M11-1) — orbit + pocket forecast.
 
-The M10 exposure this closes (police-m10 converts doctrine-m10 32/32): a cage is
-built from adjacency, so every wall costs the cop its ENTIRE move — 14 walls are
-14 free tempi — and the correct counter is to flee the ENCLOSURE, not the cop.
-Two instruments, both consumed by `doctrine_evader` behind the `cage_escape`
-gate (0.0 = the shipped M10 stream byte-for-byte):
+The M10 exposure this closes (police-m10 converts doctrine-m10 32/32): a cage
+is built from adjacency, and the correct counter is to flee the ENCLOSURE, not
+the cop. Two instruments, both consumed by `doctrine_evader` behind the
+`cage_escape` gate (0.0 = the shipped M10 stream byte-for-byte):
 
-- `WallTempo`: reads opponent wall investment off the shared board (barriers are
-  police-only — `decision.barrier_is_playable` — so barrier growth between our
-  observations IS a cop turn spent building). While armed, the ruling flight cap
-  lifts from `flight_floor` to `tempo_cap`: relocation across the board exactly
-  when the cop cannot chase. Keying the lift on observed investment, not on
-  being hunted, is what keeps the M10 anti-herding cap intact against an
-  ADVANCING cop.
 - `worst_k_region`: the k-wall pocket forecast over the belief support
   (`wall_forecast.worst_walls_region` MIN'd belief-native, like every other
-  forecast term) — a cage is priced while its gap still exists.
+  forecast term) — a cage is priced while its gap still exists. Measured on
+  the signed starts vs police-m10: k=3/reach=2 carries 3 of the 4 survivals
+  (k=0 keeps 1).
+- `center_margin`: the orbit-zone term — hold the central margin band and
+  sidestep, the shape of the only thief that ever survived a builder cop.
+
+A third mechanism was built, measured, and REMOVED (the session hypothesis
+said the flight cap should LIFT on observed opponent wall-turns so the evader
+relocates while the cop builds): every lift variant converted survivals into
+rim-corner deaths — max-flight relocation is rim-ward, which is exactly where
+a builder wants us. The m11 evidence doc carries the numbers.
 """
 
 from __future__ import annotations
@@ -25,35 +27,31 @@ from collections.abc import Mapping
 from copthief_core.domain.board import Board, Coord
 from copthief_core.strategy.wall_forecast import worst_walls_region
 
-__all__ = ["CAGE_DEFAULTS", "WallTempo", "worst_k_region"]
+__all__ = ["CAGE_DEFAULTS", "center_margin", "worst_k_region"]
 
 CAGE_DEFAULTS: dict[str, float] = {
     "cage_escape": 0.0,  # master gate; 0.0 = the shipped M10 stream byte-for-byte
     "forecast_walls": 3.0,  # k: wall investments the pocket forecast credits
     "forecast_wall_reach": 2.0,  # builder Manhattan reach per investment
-    "tempo_window": 2.0,  # turns the flight lift outlives an observed wall-turn
-    "tempo_cap": 12.0,  # ruling flight cap while the lift is armed
+    # The orbit-zone margin (the m11 seed-1 trace finding: with every room term
+    # tied on an open board, even the DEMOTED flight tie-break herds the evader
+    # to the rim). Ranks above that tie-break; 0.0 keeps it a constant = off.
+    "center_margin_cap": 0.0,
 }
 
 
-class WallTempo:
-    """Per-game tracker of opponent wall-turns (Input: our per-turn observation of
-    the shared board; Output: whether the tempo lift is armed this turn)."""
+def center_margin(board: Board, dest: Coord, cap: float) -> float:
+    """Distance to the nearest board rim, capped — the orbit-zone term.
 
-    def __init__(self) -> None:
-        self._seen: int | None = None
-        self._lift_until = -1
-
-    def lifted(self, step: int, barrier_count: int, window: float) -> bool:
-        """Record this turn's barrier count; True while a lift is armed.
-
-        The first observation only baselines (a scenario may start mid-board);
-        growth afterwards arms the lift for `window` turns including this one.
-        """
-        if self._seen is not None and barrier_count > self._seen:
-            self._lift_until = step + int(window) - 1
-        self._seen = barrier_count
-        return step <= self._lift_until
+    The ring shape that survives builders holds the central margin>=cap zone
+    (uoh-vibecode's fielded thief lived its whole 105-step life there); capping
+    keeps every cell inside that zone equivalent, so the evader orbits freely
+    instead of pinning to the exact center.
+    """
+    low = board.axis_start_index
+    high = low + board.grid_size - 1
+    margin = min(dest[0] - low, high - dest[0], dest[1] - low, high - dest[1])
+    return min(float(margin), cap)
 
 
 def worst_k_region(

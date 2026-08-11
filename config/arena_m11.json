@@ -1,0 +1,82 @@
+{
+  "version": "1.00",
+  "_comment": "M11 robust-brains instrument (measurement, champion_pin null): the cage-escape evader (doctrine-m11) against the cage-building cop it exists to answer (police-m10, the 32/32 hole in m9-study-arena) and the full modeled-rival pool as the non-regression bar. doctrine-m10 rows are the before-picture. vibecode-police carries claim_threshold 0.0 + claim_feed truth exactly as in arena_m10_vibecode.json. Regenerate: uv run python scripts/arena_run.py --config config/arena_m11.json",
+  "police_roster": [
+    {
+      "name": "police-m10",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199"
+    },
+    {
+      "name": "vibecode-police",
+      "spec": "vibecode-police",
+      "feed": "sharp199",
+      "claim_threshold": 0.0
+    },
+    {
+      "name": "hunter-cop",
+      "spec": "hunter-cop",
+      "feed": "sharp199"
+    },
+    {
+      "name": "best2934-police",
+      "spec": "best2934-police",
+      "feed": "sharp199"
+    }
+  ],
+  "thief_roster": [
+    {
+      "name": "doctrine-m10",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-m11",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "vibecode-thief",
+      "spec": "vibecode-thief",
+      "feed": "sharp199"
+    }
+  ],
+  "seeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "police-m10": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0
+    },
+    "best2934-police": {
+      "barrier_engage_range": 1.0,
+      "barrier_min_gain": 1.0,
+      "barrier_endgame_reserve": 3.0
+    },
+    "doctrine-m10": {
+      "room_first": 1.0
+    },
+    "doctrine-m11": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 2.0,
+      "center_margin_cap": 2.0
+    }
+  },
+  "evidence_out": "docs/evidence/m11-arena.md"
+}
