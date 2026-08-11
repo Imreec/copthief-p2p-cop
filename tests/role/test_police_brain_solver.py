@@ -48,6 +48,8 @@ def test_certain_corner_thief_triggers_the_forced_seal() -> None:
     """Belief certain at (6,6): the solver's depth-2 corner seal wins the turn."""
     board = make_board()
     belief = make_belief(board)
+    for _ in range(12):  # grow the motion envelope so the claim passes the M11-2 gate
+        belief.predict()
     belief.note_claim((6, 6))
     decision = PoliceBrain(seed=7).decide(make_observation(board), belief)
     assert decision.barrier == (5, 6)
@@ -58,6 +60,8 @@ def test_disabled_solver_restores_the_heuristic() -> None:
     the capped region makes surgery gainless, so the heuristic plays a move."""
     board = make_board()
     belief = make_belief(board)
+    for _ in range(12):  # grow the motion envelope so the claim passes the M11-2 gate
+        belief.predict()
     belief.note_claim((6, 6))
     brain = PoliceBrain(seed=7, options={"endgame_enabled": 0.0})
     decision = brain.decide(make_observation(board), belief)

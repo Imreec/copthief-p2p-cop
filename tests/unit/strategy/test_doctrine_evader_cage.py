@@ -91,6 +91,18 @@ def test_center_margin_outranks_the_flight_tie_break() -> None:
     assert move in {"N", "W"}
 
 
+def test_the_nisyar1_g02_corner_step_is_refused() -> None:
+    """The 2026-08-11 live kill, pinned at its decisive step: us at (6,5), their
+    cop exactly known at (5,4) (they claim every turn). The live M10 doctrine
+    took E into (6,6), was pinned at the diagonal and sealed with two walls.
+    The k-wall forecast prices (6,6) as a two-wall pocket (region 1) and holds
+    (6,5) instead — both remaining moves are lethal-gated."""
+    board = make_board()
+    armed = DoctrineEvaderBrain(seed=3, options=ARMED)
+    move = armed.pick_move(make_observation(board, (6, 5)), make_belief(board, (5, 4)))
+    assert move != "E"
+
+
 def test_the_k_wall_forecast_holds_the_closing_gap() -> None:
     """A four-wall cut down column 3 with the gap at rows 4-6 and the builder at
     (6,3): the west side is three walls from sealed. The one-wall room terms

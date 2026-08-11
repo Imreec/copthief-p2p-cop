@@ -14,7 +14,7 @@ from collections.abc import Mapping
 
 from copthief_core.domain.board import Board, Coord
 from copthief_core.domain.rules import legal_moves
-from copthief_core.strategy.region import region_size
+from copthief_core.strategy.region import path_length, region_size
 
 __all__ = ["DEFAULT_OPTIONS", "leaf_value", "region_size", "resolve_options"]
 
@@ -43,6 +43,10 @@ DEFAULT_OPTIONS: dict[str, float] = {
     "contain_cooldown": 3.0,  # turns between wall investments (tempo throttle)
     "contain_reserve": 2.0,  # quota held back for the solver's finishing walls
     "contain_min_shrink": 1.0,  # believed-region shrink a wall must buy (uncapped BFS)
+    # M11-C1 (nis-yar1 g01 stall): 1.0 prices leaf distance as the wall-aware
+    # path length instead of Manhattan — our own wall can otherwise create a
+    # local minimum the 2-ply horizon freezes in (19 STAY turns, game conceded).
+    "path_distance": 0.0,
 }
 
 
@@ -58,9 +62,22 @@ def leaf_value(
     move_set: tuple[str, ...],
     opts: Mapping[str, float],
     region_cache: dict[Coord, int],
+    path_cache: dict[tuple[Coord, Coord], int] | None = None,
 ) -> float:
-    """The non-terminal leaf: pressure the mass, starve mobility, shrink the region."""
-    distance = abs(cop[0] - thief[0]) + abs(cop[1] - thief[1])
+    """The non-terminal leaf: pressure the mass, starve mobility, shrink the region.
+
+    `path_distance` armed prices the pressure term as the wall-aware BFS path
+    (cache per board, owned by the caller); an unreachable mass costs a full
+    board-crossing so a self-sealed pocket is never the leaf's best seat.
+    """
+    if opts["path_distance"] > 0.0 and path_cache is not None:
+        key = (cop, thief)
+        if key not in path_cache:
+            steps = path_length(board, cop, thief, move_set)
+            path_cache[key] = steps if steps is not None else 2 * board.grid_size
+        distance = path_cache[key]
+    else:
+        distance = abs(cop[0] - thief[0]) + abs(cop[1] - thief[1])
     mobility = len(legal_moves(board, thief, move_set))
     region = region_size(board, thief, move_set, int(opts["region_cap"]), region_cache)
     return (
