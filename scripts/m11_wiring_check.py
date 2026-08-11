@@ -21,7 +21,8 @@ ARMED_THIEF = {
 }
 
 merged = {**DEFAULT_OPTIONS, **CAGE_DEFAULTS, **ARMED_THIEF}
-assert merged["cage_escape"] == 1.0 and merged["center_margin_cap"] == 2.0
+assert merged["cage_escape"] == 1.0
+assert merged["center_margin_cap"] == 2.0
 print("thief merge path OK:", {k: merged[k] for k in ARMED_THIEF})
 
 settings = load_private_settings(Path("config/game.toml"))
