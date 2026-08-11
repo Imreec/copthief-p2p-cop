@@ -42,9 +42,7 @@ def our_moves(events: list[dict]) -> list[tuple[int, str, object]]:
 
 
 def our_beliefs(events: list[dict]) -> dict[int, str]:
-    return {
-        e["payload"]["step"]: e["payload"]["argmax"] for e in events if e["event"] == "belief"
-    }
+    return {e["payload"]["step"]: e["payload"]["argmax"] for e in events if e["event"] == "belief"}
 
 
 def outbound_barriers(events: list[dict]) -> dict[int, object]:

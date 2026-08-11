@@ -47,9 +47,7 @@ def _cop_turn(
         if dest == thief:
             values.append(opts["w_capture"] + plies)
         else:
-            values.append(
-                _thief_turn(board, dest, thief, move_set, plies - 1, opts, cache, paths)
-            )
+            values.append(_thief_turn(board, dest, thief, move_set, plies - 1, opts, cache, paths))
     return max(values) if values else leaf_value(board, cop, thief, move_set, opts, cache, paths)
 
 

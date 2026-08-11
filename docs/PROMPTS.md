@@ -3,6 +3,33 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — m11-robust-brains (from patching to hardening; the 08-11 counted-eve build)
+
+- **Driver:** Imree (session prompt `SESSION-PROMPT-M11-ROBUST-BRAINS.md` — red-team mandate
+  outranking the work-item list — plus two mid-session live inputs: the nis-yar1 60–80 friendly
+  logs and the directive to be ready for the same-evening counted; merge word is his) ·
+  **Author:** Claude (terminal, isolated worktree `m11-robust-brains`) · **Reviewer:** pending.
+- **What was asked:** stop one-opponent patching. Red-team both brains and check every attack
+  against the tree; hunt silently-vacuous checks; close the police-m10-kills-doctrine-m10 32/32
+  hole with a cage-escape/tempo-punish evader + k-wall forecast; measure before deferring to any
+  prior design. Mid-session: fold in the fresh nis-yar1 loss (their cop = second independent
+  cage killer, step 13 ×3; our cop dropped g01 to a camper) and make the stack counted-ready.
+- **Outcome:** ADR-0013 + `m11-redteam.md` + `m11-hardening.md`. Vacuous-check hunt confirmed
+  the big one: `note_claim`'s "false claims are sanctioned" justification is enforced by NO
+  audit path — fixed with the physics-only `MotionEnvelope` plausibility gate (no-op for every
+  truthful claimer, closes a role-blind belief-hijack channel). Cage-escape landed as orbit
+  (k-wall pocket forecast + center-margin term + low flight floor): doctrine-m11 vs police-m10
+  0/32 → 5/32 with forced walls 6–8, and 8/8 vs every rival cop class incl. the new lag-1
+  nis-yar1 pin arm that reproduces their live kill class. The session prompt's own tempo-lift
+  hypothesis was built, measured harmful in every variant, and REMOVED (the mandate's
+  measurement-over-deference applied to the mandate itself). nis-yar1 postmortem found the g01
+  root cause — containment range refusal + a Manhattan-leaf local minimum behind our own wall
+  (19-turn freeze, 11 walls unspent) — fixed (`contain_range 4`, `path_distance`), both live
+  geometries pinned as unit tests. game.toml v1.06 arms the cop knobs and pins the book-v1
+  overlay explicitly OFF (session item 3a). Deferred past the counted window, recorded in the
+  session prompt's terms: self-play loop, Alon-newest pool refresh, claim re-sweep, solver
+  defer-rate measurement.
+
 ## PR — m10-vibecode-countertune (the 30–90 becomes a mechanism, not a mood)
 
 - **Driver:** Imree (session prompt `SESSION-PROMPT-M10-VIBECODE-COUNTERTUNE.md`, written off

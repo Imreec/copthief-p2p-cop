@@ -42,9 +42,7 @@ VARIANTS: dict[str, dict[str, float]] = {
 def scenarios(full: bool) -> list[Scenario]:
     if full:
         return list(scenario_suite(sdk.constitution, seeds=range(1, 33), min_separation=4))
-    return [
-        Scenario(seed=seed, cop_start=SIGNED[0], thief_start=SIGNED[1]) for seed in range(1, 9)
-    ]
+    return [Scenario(seed=seed, cop_start=SIGNED[0], thief_start=SIGNED[1]) for seed in range(1, 9)]
 
 
 def run(label: str, thief_opts: dict[str, float], suite: list[Scenario]) -> None:
@@ -101,7 +99,9 @@ def trace(variant: str, seed: int) -> None:
             make_feed("sharp199", sdk.constitution, smell_trust=trust), cop_track
         ),
     )
-    print(f"== seed {seed}: {result.outcome.value} @ {result.steps}, walls {result.barriers_placed}")
+    print(
+        f"== seed {seed}: {result.outcome.value} @ {result.steps}, walls {result.barriers_placed}"
+    )
     print("thief:", " ".join(f"{s + 1}:{c}" for s, (c, _b) in enumerate(thief_track)))
     print("cop  :", " ".join(f"{s + 1}:{c}w{b}" for s, (c, b) in enumerate(cop_track)))
 
