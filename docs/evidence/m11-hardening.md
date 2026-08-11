@@ -27,12 +27,15 @@ the cage CLASS and the cop convert what it could not.
 | **orbit: floor 2 + margin cap 2 + k3/reach2** | **4/8** | survivals force 8–9 walls; the shipped armed shape |
 | ablations of the shipped shape | k=0 → 1/8 · k=2 → 3/8 · reach=1 → 1/8 · +lift → 0/8 · stay-cap 1 → 2/8 · stay-cap 0 → 1/8 | k3/reach2 carries the weight; every "discipline" tweak on top loses survivals |
 
-Full 32-scenario suite: doctrine-m11 vs police-m10 **5/32 survivals (from
-0/32), forced walls 6–8 (from 3–4)**. Two mechanisms were built, measured
-against this table, and REMOVED (tempo lift, banked floor) — the session
-prompt's tempo-punish hypothesis is refuted in its cap-lifting form: the tempo
-profit is real but is collected by orbiting (the builder converts less per
-wall), not by fleeing far.
+Full 32-scenario suite (canonical numbers from `m11-arena.md`): doctrine-m11
+vs police-m10 **4/32 survivals (from 0/32), forced walls 6–8 (from 3–4)**, and
+**doctrine-m11 TOPS the thief table** (1635 pts — above the vibecode ring
+thief's 1570 and doctrine-m10's 1510) while keeping every 32/32 sweep against
+vibecode-police, hunter-cop, and best2934-police. Two mechanisms were built,
+measured against this table, and REMOVED (tempo lift, banked floor) — the
+session prompt's tempo-punish hypothesis is refuted in its cap-lifting form:
+the tempo profit is real but is collected by orbiting (the builder converts
+less per wall), not by fleeing far.
 
 ## Thief: the nis-yar1 kill class
 
@@ -44,8 +47,9 @@ rule-47 capture. Modeled as the vibecode-cop class + `pin_enabled` on a
 `truth-lag1` feed (`nisyar1-police`):
 
 ```
-nisyar1-police vs doctrine-m10: 3/8 kills, 1-2 seal walls   <- the kill class, reproduced
-nisyar1-police vs doctrine-m11: 0/8 kills, 0 walls placed   <- no seal opportunity ever conceded
+signed starts:  nisyar1-police vs doctrine-m10: 3/8 kills, 1-2 seal walls
+full suite:     nisyar1-police vs doctrine-m10: 18/32 kills   <- the fielded thief would keep dying
+                nisyar1-police vs doctrine-m11:  0/32 kills   <- no seal opportunity ever conceded
 ```
 
 The decisive live moment is pinned as a unit test
@@ -69,9 +73,13 @@ Measured root causes and cures (both pinned in
   the leaf wall-aware; open-board decisions provably unchanged.
 
 Their thief is modeled as `nisyar1-thief` (flee-then-perch; wake inferred —
-ONE game of evidence, played against our frozen cop). Both M10 and M11 cops
-convert the arm 8/8 on signed starts; the arm validates camper-conversion
-generally, while the stall itself is pinned at the exact logged geometry.
+ONE game of evidence, played against our frozen cop). Full-suite: police-m11
+converts the camper **32/32 (police-m10: 30/32)** and tops the police table
+(2485 pts vs 2470); the stall itself is pinned at the exact logged geometry.
+Honest trade recorded: police-m11 gives back 2 games against the vibecode
+ring thief (30/32, was 32/32) — the wall-aware leaf slightly re-shapes the
+ring chase. Net +1 win, +15 points, and tonight's opponent fields the camper
+class, not the ring.
 
 ## Claim gate (M11-2)
 

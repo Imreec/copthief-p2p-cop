@@ -45,10 +45,17 @@
       "w_distance": 3.8875,
       "w_mobility": 3.6061,
       "w_region": 0.1143,
-      "contain_enabled": 1.0
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0
     },
     "doctrine-evader": {
-      "room_first": 1.0
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 2.0,
+      "center_margin_cap": 2.0
     },
     "best2934-police": {
       "barrier_engage_range": 1.0,
