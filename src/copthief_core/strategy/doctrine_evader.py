@@ -31,6 +31,7 @@ from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.board import STAY, Coord
 from copthief_core.domain.rules import legal_moves
 from copthief_core.strategy.brains import BrainBase, Observation
+from copthief_core.strategy.evader_cage import CAGE_DEFAULTS, WallTempo, worst_k_region
 from copthief_core.strategy.wall_forecast import lethal_landing, worst_wall_outcome
 
 __all__ = ["DEFAULT_OPTIONS", "DoctrineEvaderBrain"]
@@ -61,6 +62,7 @@ class DoctrineEvaderBrain(BrainBase):
     """
 
     _stay_run: int = 0
+    _tempo: WallTempo | None = None
 
     def _support(self, belief: BeliefFilter, opts: dict[str, float]) -> list[Coord]:
         """The top-k believed cop cells above the mass floor (never empty)."""
@@ -69,7 +71,7 @@ class DoctrineEvaderBrain(BrainBase):
         return (cells or [ranked[0][0]])[: int(opts["forecast_top_k"])]
 
     def _pick_move(self, observation: Observation, belief: BeliefFilter) -> str:
-        opts = {**DEFAULT_OPTIONS, **self._options}
+        opts = {**DEFAULT_OPTIONS, **CAGE_DEFAULTS, **self._options}
         board, position = observation.board, observation.position
         candidates = sorted(legal_moves(board, position, observation.move_set))
         if not candidates:
@@ -89,6 +91,14 @@ class DoctrineEvaderBrain(BrainBase):
             >= opts["hunted_mass"]
         )
         flee_cap = opts["flee_cap_hunted"] if hunted else opts["safe_distance"]
+        # M11-1 tempo punishment: an observed wall-turn (barriers are police-only,
+        # so board growth IS one) lifts the ruling cap — relocate while they build.
+        cage = opts["cage_escape"] > 0.0
+        if cage and self._tempo is None:
+            self._tempo = WallTempo()
+        lifted = cage and self._tempo is not None and self._tempo.lifted(
+            observation.step, len(board.barriers), opts["tempo_window"]
+        )
 
         def flight(cell: Coord) -> float:
             """Expected Manhattan+Chebyshev separation (the M7-14 evader form)."""
@@ -121,13 +131,18 @@ class DoctrineEvaderBrain(BrainBase):
             # M10 room-first: cap the ruling flight term at the FLOOR so the room
             # terms govern past bare safety; full capped flight is demoted to a
             # tie-break (not deleted). Off (0.0), the extra rank is a constant and
-            # the M9 tuple is unchanged.
+            # the M9 tuple is unchanged. M11-1: a tempo lift raises the cap to
+            # `tempo_cap` (see above), and the k-wall pocket term ranks right
+            # under flight — a constant 0.0 while `cage_escape` is off.
             room_first = opts["room_first"] > 0.0
             ruling_cap = opts["flight_floor"] if room_first else flee_cap
+            if lifted:
+                ruling_cap = opts["tempo_cap"]
             return (
                 0.0 if lethal else 1.0,
                 stay_ok,
                 min(flight(dest), ruling_cap),
+                worst_k_region(board, dest, support, observation.move_set, quota_left, opts),
                 float(worst_escapes),
                 float(worst_region),
                 min(flight(dest), flee_cap) if room_first else 0.0,

@@ -43,11 +43,12 @@ def test_walls_beyond_the_reach_radius_are_not_credited() -> None:
 
 
 def test_reach_two_extends_the_builder_one_step() -> None:
-    # Cop at (2,2): its stationary reach cannot touch (0,1)/(1,0), but a one-step
-    # walk can — reach=2 credits the two-wall seal a moving builder actually has.
+    # Cop at (2,1): its stationary reach cannot touch (0,1)/(1,0) (both Manhattan
+    # 2 away), but a one-step walk can — reach=2 credits the two-wall seal a
+    # moving builder actually has.
     board = make_board()
-    assert worst_walls_region(board, (0, 0), (2, 2), MOVE_SET, walls=2, reach=1) >= 40
-    assert worst_walls_region(board, (0, 0), (2, 2), MOVE_SET, walls=2, reach=2) == 1
+    assert worst_walls_region(board, (0, 0), (2, 1), MOVE_SET, walls=2, reach=1) >= 40
+    assert worst_walls_region(board, (0, 0), (2, 1), MOVE_SET, walls=2, reach=2) == 1
 
 
 def test_quota_bounds_the_forecast() -> None:
