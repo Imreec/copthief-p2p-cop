@@ -13,8 +13,9 @@ Bounded and deterministic: a node budget aborts to None (the caller's heuristic
 plays on), tie-breaks are sorted, and there is deliberately NO wall clock —
 unlike the per-decision seconds pin at the brain level, the solver's budget is
 counted in nodes so replays and CI see identical decisions. Concept studied
-from anrbj666's shipped solver after the counted loss; re-implemented and
-re-gated here (docs/PROMPTS.md records the study).
+from anrbj666's solver (repos shared by them for study — ADR-0011, no code
+copied) after the counted loss; re-implemented and re-gated here
+(docs/PROMPTS.md records the study).
 """
 
 from __future__ import annotations
