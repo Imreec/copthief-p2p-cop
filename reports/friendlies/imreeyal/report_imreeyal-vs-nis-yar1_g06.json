@@ -1,0 +1,291 @@
+{
+  "סוג_דוח": "משחק_ליגה_רשמי",
+  "גרסת_קוד": "1.00",
+  "תפקיד_מדווח": "thief",
+  "קבוצה_מדווחת": "ImreEyal-Police",
+  "מספר_משחקון": 6,
+  "זמן_התחלה": "2026-08-11T17:39:19.485181+00:00",
+  "משך_משחק_שניות": 10.4,
+  "הצהרת_מפרט_מחשב_וטוקנים": {
+    "מפרט_מחשב": {
+      "cpu_cores": 24,
+      "cpu_freq_mhz": 3693,
+      "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "gpu_cores_or_cuda": "cuda",
+      "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+      "os": "Windows (10.0.19045)",
+      "ram_gb": 31.9,
+      "vram_gb": 12.0
+    },
+    "דגם_שפה_בשימוש": "none",
+    "גרסת_קוד": "1.00",
+    "סך_טוקנים_שנצרכו": 0
+  },
+  "תוצאה": "לכידה",
+  "מנצח": "police",
+  "צעדים_שבוצעו": 5,
+  "הסכם_תפאורה_משא_ומתן": {
+    "board_size": 7,
+    "smell_grid_size": 5,
+    "decay_per_step": 0.1,
+    "emit_intensity": 0.9,
+    "min_center_intensity": 0.5,
+    "max_steps": 35,
+    "barriers_max": 14,
+    "setting": "New York",
+    "hint_max_words": 15,
+    "axis_origin_corner": "top-left",
+    "axis_start_index": 0,
+    "thief_start": [
+      3,
+      3
+    ],
+    "cop_start": [
+      0,
+      0
+    ],
+    "num_games": 6
+  },
+  "אימות_קריפטוגרפי": {
+    "צעדים_מאומתים": 4,
+    "צעדים_שנכשלו": []
+  },
+  "לוג_צעדים_מאומת": [
+    {
+      "מספר_צעד": 1,
+      "טביעת_זמן": "2026-08-11T17:39:20.781593+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "Backup is meeting me at Grand Central; slow night.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.5,
+        "0,1": 0.8,
+        "0,2": 0.5,
+        "0,3": 0.2,
+        "1,0": 0.5,
+        "1,1": 0.5,
+        "1,2": 0.5,
+        "1,3": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "6dfe6488433b039683f2801e8ed9e7c4fa6ea11b45806cd8b5ddb7e086b44b5c"
+    },
+    {
+      "מספר_צעד": 2,
+      "טביעת_זמן": "2026-08-11T17:39:22.000443+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "Your options are thinner than yesterday's alibi.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.4,
+        "0,1": 0.7,
+        "0,2": 0.8,
+        "0,3": 0.5,
+        "0,4": 0.2,
+        "1,0": 0.4,
+        "1,1": 0.5,
+        "1,2": 0.5,
+        "1,3": 0.5,
+        "1,4": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "71273d1642b734390adb46f574d78735ab842ee7e8b1a72546adc7bd1702f369"
+    },
+    {
+      "מספר_צעד": 3,
+      "טביעת_זמן": "2026-08-11T17:39:23.531471+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "The clock is my partner and it never takes bribes.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.3,
+        "0,1": 0.6,
+        "0,2": 0.7,
+        "0,3": 0.5,
+        "0,4": 0.2,
+        "1,0": 0.3,
+        "1,1": 0.5,
+        "1,2": 0.8,
+        "1,3": 0.5,
+        "1,4": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.5,
+        "2,2": 0.5,
+        "2,3": 0.5,
+        "2,4": 0.2,
+        "3,0": 0.2,
+        "3,1": 0.2,
+        "3,2": 0.2,
+        "3,3": 0.2,
+        "3,4": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "0776c17b316aca28200b141ac9ecd9d50ced16e538c308b34f15faca4e0b09b2"
+    },
+    {
+      "מספר_צעד": 4,
+      "טביעת_זמן": "2026-08-11T17:39:24.932327+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "I do not chase; I herd.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.2,
+        "0,1": 0.5,
+        "0,2": 0.6,
+        "0,3": 0.4,
+        "0,4": 0.2,
+        "1,0": 0.2,
+        "1,1": 0.5,
+        "1,2": 0.7,
+        "1,3": 0.5,
+        "1,4": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.5,
+        "2,2": 0.8,
+        "2,3": 0.5,
+        "2,4": 0.2,
+        "3,0": 0.2,
+        "3,1": 0.5,
+        "3,2": 0.5,
+        "3,3": 0.5,
+        "3,4": 0.2,
+        "4,0": 0.2,
+        "4,1": 0.2,
+        "4,2": 0.2,
+        "4,3": 0.2,
+        "4,4": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "f4fd227caaef405aecb6b18745215024a8befcd55bfece2f6b1768700bd7a205"
+    }
+  ],
+  "הצהרות_חתומות_שלי": [
+    {
+      "commit": "c6ae63cc6883564597a456f1909d4a3624528d7319782a70035dbfa97a21737d",
+      "nonce": "b2eeb8dcc373c34ae3b9d57b7f6f49b2",
+      "payload": {
+        "code_version": "1.00",
+        "github_commit": "dbfecba05a729cc19754df9a7a5d185fe32719cf",
+        "group_name": "ImreEyal-Police",
+        "model": "none",
+        "num_games_declared": 6,
+        "scent_model_sha256": "81ebee59640e80eae8ca9ee5f86abd26e7edf5cdbb27d15925cb6ee45ca6ddf4",
+        "spec": {
+          "cpu_cores": 24,
+          "cpu_freq_mhz": 3693,
+          "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+          "gpu_cores_or_cuda": "cuda",
+          "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+          "os": "Windows (10.0.19045)",
+          "ram_gb": 31.9,
+          "vram_gb": 12.0
+        },
+        "step": 0,
+        "sub_game_number": 6,
+        "type": "system_spec"
+      }
+    },
+    {
+      "commit": "c59f3248fe31d30823f12b26d80fef6f091c3948924efe2052139a9ce6f6a3f4",
+      "nonce": "dc606c6d57c60c00feed7ae78d7950d8",
+      "payload": {
+        "hint": "They say the crowds near Grand Central hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          3,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[3, 4];barriers=[]",
+        "step": 1,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "d41661ac13decc1c92530b9a2effe8d9f1c030eb530c512a8981cb5e6d293b9a",
+      "nonce": "e038b3e62f55f0ce9c632db76d6a2cf9",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          2,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 4];barriers=[]",
+        "step": 2,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "aa9c6e7a6deb62f329d5becc54d0220bd5305c582fb65887a352e0564bad1486",
+      "nonce": "a1a2a603b084e50f0e81557cb122bc44",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          2,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 3];barriers=[]",
+        "step": 3,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "fee7fb0c7baec02bf89ba2d0fa098eac509b86512f4d342fd40c2776f7b88564",
+      "nonce": "e2a1c226bd1c77ce968aa7ee4b6a785f",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          2,
+          2
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 2];barriers=[]",
+        "step": 4,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "4694d93404f0968ecbbcddc375a44cf5518794c0fd3b88e41638997747b19297",
+      "nonce": "108a5566016c09a97dc951bfb345e2d3",
+      "payload": {
+        "hint": "You got me.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          2,
+          2
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 2];barriers=[]",
+        "step": 5,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    }
+  ],
+  "הסכמה_הדדית": true,
+  "חתימת_קונסנזוס_משותפת": "0256512277fd7c8d3483b0518e438bf59e63c42040fbad36519adc3a2c2a3e8c"
+}
