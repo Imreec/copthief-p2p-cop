@@ -88,8 +88,26 @@ def worst_walls_region(
     region from `landing` over every wall SET of that size — a cage is priced
     while its gap still exists, not one wall before it closes (M11-1; the M10
     exposure was exactly this blindness). Walls on the landing itself are the
-    rule-46 kill line and belong to `lethal_landing`, not here.
+    rule-46 kill line and belong to `lethal_landing`, not here. NB a landing-
+    distance site prune was tried for speed and REVERTED: it erased all four
+    signed-start survivals vs police-m10 — distant walls close the LARGE
+    forming cages that a persistent builder still converts. Batch callers use
+    `worst_walls_regions` (same semantics, one scan for many landings).
     """
+    return worst_walls_regions(board, [landing], cop, move_set, walls=walls, reach=reach)[landing]
+
+
+def worst_walls_regions(
+    board: Board,
+    landings: list[Coord],
+    cop: Coord,
+    move_set: tuple[str, ...],
+    *,
+    walls: int,
+    reach: int,
+) -> dict[Coord, int]:
+    """`worst_walls_region` for many landings in one combo scan (per-board BFS
+    cache shared across landings — the affordability fix for the armed arena)."""
     cap = board.grid_size * board.grid_size
     low = board.axis_start_index
     span = range(low, low + board.grid_size)
@@ -97,19 +115,33 @@ def worst_walls_region(
         (r, c)
         for r in span
         for c in span
-        if abs(r - cop[0]) + abs(c - cop[1]) <= reach
-        and (r, c) != landing
-        and not board.is_blocked((r, c))
+        if abs(r - cop[0]) + abs(c - cop[1]) <= reach and not board.is_blocked((r, c))
     ]
+    base_cache: dict[Coord, int] = {}
+    worst = {cell: region_size(board, cell, move_set, cap, base_cache) for cell in landings}
     count = min(walls, len(sites))
     if count <= 0:
-        return region_size(board, landing, move_set, cap, {})
-    worst = region_size(board, landing, move_set, cap, {})
+        return worst
     for combo in combinations(sites, count):
         candidate = board
         for cell in combo:
             candidate = candidate.with_barrier(cell)
-        worst = min(worst, region_size(candidate, landing, move_set, cap, {}))
+        cache: dict[Coord, int] = {}
+        for cell in landings:
+            # A wall ON a landing is the rule-46 kill line (lethal gate's job),
+            # so a combo containing this landing does not price it here.
+            if cell not in combo and worst[cell] > 1:
+                worst[cell] = min(worst[cell], region_size(candidate, cell, move_set, cap, cache))
+    if count >= len(sites):
+        # Tiny site sets: the only combo contained the landing itself — price
+        # the per-landing equivalent (every OTHER site walled) instead.
+        for cell in landings:
+            if cell in set(sites) and worst[cell] > 1:
+                candidate = board
+                for site in sites:
+                    if site != cell:
+                        candidate = candidate.with_barrier(site)
+                worst[cell] = min(worst[cell], region_size(candidate, cell, move_set, cap, {}))
     return worst
 
 

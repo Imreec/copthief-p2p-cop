@@ -31,7 +31,7 @@ from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.board import STAY, Coord
 from copthief_core.domain.rules import legal_moves
 from copthief_core.strategy.brains import BrainBase, Observation
-from copthief_core.strategy.evader_cage import CAGE_DEFAULTS, center_margin, worst_k_region
+from copthief_core.strategy.evader_cage import CAGE_DEFAULTS, center_margin, k_regions_by_dest
 from copthief_core.strategy.wall_forecast import lethal_landing, worst_wall_outcome
 
 __all__ = ["DEFAULT_OPTIONS", "DoctrineEvaderBrain"]
@@ -91,6 +91,10 @@ class DoctrineEvaderBrain(BrainBase):
         )
         flee_cap = opts["flee_cap_hunted"] if hunted else opts["safe_distance"]
         cage = opts["cage_escape"] > 0.0  # M11-1: k-wall pockets + orbit margin
+        dests = {move: board.apply_move(position, move) for move in candidates}
+        k_region = k_regions_by_dest(
+            board, list(dests.values()), support, observation.move_set, quota_left, opts
+        )
 
         def flight(cell: Coord) -> float:
             """Expected Manhattan+Chebyshev separation (the M7-14 evader form)."""
@@ -132,7 +136,7 @@ class DoctrineEvaderBrain(BrainBase):
                 0.0 if lethal else 1.0,
                 stay_ok,
                 min(flight(dest), ruling_cap),
-                worst_k_region(board, dest, support, observation.move_set, quota_left, opts),
+                k_region[dest],
                 float(worst_escapes),
                 float(worst_region),
                 center_margin(board, dest, opts["center_margin_cap"]) if cage else 0.0,

@@ -25,9 +25,9 @@ from __future__ import annotations
 from collections.abc import Mapping
 
 from copthief_core.domain.board import Board, Coord
-from copthief_core.strategy.wall_forecast import worst_walls_region
+from copthief_core.strategy.wall_forecast import worst_walls_regions
 
-__all__ = ["CAGE_DEFAULTS", "center_margin", "worst_k_region"]
+__all__ = ["CAGE_DEFAULTS", "center_margin", "k_regions_by_dest"]
 
 CAGE_DEFAULTS: dict[str, float] = {
     "cage_escape": 0.0,  # master gate; 0.0 = the shipped M10 stream byte-for-byte
@@ -54,32 +54,31 @@ def center_margin(board: Board, dest: Coord, cap: float) -> float:
     return min(float(margin), cap)
 
 
-def worst_k_region(
+def k_regions_by_dest(
     board: Board,
-    dest: Coord,
+    dests: list[Coord],
     support: list[Coord],
     move_set: tuple[str, ...],
     quota_left: int,
     opts: Mapping[str, float],
-) -> float:
-    """MIN over the support of the k-wall pocket region for `dest` (0.0 disarmed).
+) -> dict[Coord, float]:
+    """MIN over the support of the k-wall pocket region, for every candidate
+    landing in one scan (constant 0.0 disarmed — the rank stays inert).
 
     The wall budget clamps to the cop's live quota: a pocket needing more walls
     than remain is not a threat, and crediting it would re-corner the evader.
+    The batch shape is the affordability fix from the CI-timeout finding: one
+    combo scan prices all landings against a shared per-board BFS cache,
+    instead of rescanning ~C(13,3) combos per landing.
     """
     walls = min(int(opts["forecast_walls"]), quota_left)
     if opts["cage_escape"] <= 0.0 or walls <= 0:
-        return 0.0
-    return float(
-        min(
-            worst_walls_region(
-                board,
-                dest,
-                cop,
-                move_set,
-                walls=walls,
-                reach=int(opts["forecast_wall_reach"]),
-            )
-            for cop in support
+        return dict.fromkeys(dests, 0.0)
+    worst = dict.fromkeys(dests, float("inf"))
+    for cop in support:
+        regions = worst_walls_regions(
+            board, dests, cop, move_set, walls=walls, reach=int(opts["forecast_wall_reach"])
         )
-    )
+        for dest in dests:
+            worst[dest] = min(worst[dest], float(regions[dest]))
+    return worst
