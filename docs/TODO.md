@@ -192,6 +192,25 @@
   `notes/SESSION-PROMPT-M11-ROBUST-BRAINS.md`. gal-roy1 offer (was through 11/08): check
   status before assuming either way.
 
+## Phase M11 — robust brains (the 08-11 red-team + nis-yar1 hardening; ADR-0013)
+
+- ☑ **M11-1** Cage-escape doctrine (`evader_cage.py` + doctrine knobs, config-gated, default
+  off): k-wall pocket forecast (`worst_walls_region`) + orbit margin + low flight floor —
+  doctrine-m11 vs police-m10 0/32 → 5/32 (forced walls 6–8), 8/8 vs every rival cop class.
+  The session-prompt tempo-lift hypothesis measured harmful and REMOVED (m11-hardening.md).
+- ☑ **M11-2** Claim plausibility gate (`domain/belief_envelope.py`): the red-team's confirmed
+  vacuous-sanction finding — collapse only inside the kinematic envelope; refusals counted.
+- ☑ **M11-C1** nis-yar1 g01 camper-stall fix (`contain_range 4` + `path_distance`), both live
+  geometries pinned (`test_police_path_distance.py`); g02 corner kill-step pinned and refused
+  by the armed doctrine. Arms: `nisyar1-thief` (flee-then-perch) + lag-1 pin cop (config
+  variant of the vibecode class). Logs committed under
+  `docs/evidence/friendly-nis-yar1-2026-08-11/`.
+- ☑ **M11-3a** Book-v1 overlay pins explicit-off (game.toml v1.06).
+- ☐ **M11-4** Deferred past the 08-11 counted window (session prompt items): self-play
+  hardening loop + real-opponent validation gate (Alon newest HEAD arms, sqak HEAD re-verify) ·
+  claim-threshold re-sweep under the M10/M11 stack · solver defer-rate measurement ·
+  plan-level diversity (stretch).
+
 ## Phase M8 — Submission hardening
 
 - ☐ **M8-1** README academic reports ×2 (§9.4.2 sections + user-manual sections + contradiction-choices narrative + screenshots + sibling links) — C, review E+AG, approve I. DoD: `check_submission.py` README items green.

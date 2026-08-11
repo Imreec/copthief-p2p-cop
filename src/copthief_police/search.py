@@ -35,19 +35,20 @@ def _cop_turn(
     plies: int,
     opts: Mapping[str, float],
     cache: dict[Coord, int],
+    paths: dict[tuple[Coord, Coord], int],
 ) -> float:
     if _captured(board, cop, thief):
         return opts["w_capture"] + plies
     if plies == 0:
-        return leaf_value(board, cop, thief, move_set, opts, cache)
+        return leaf_value(board, cop, thief, move_set, opts, cache, paths)
     values = []
     for move in sorted(legal_moves(board, cop, move_set)):
         dest = board.apply_move(cop, move)
         if dest == thief:
             values.append(opts["w_capture"] + plies)
         else:
-            values.append(_thief_turn(board, dest, thief, move_set, plies - 1, opts, cache))
-    return max(values) if values else leaf_value(board, cop, thief, move_set, opts, cache)
+            values.append(_thief_turn(board, dest, thief, move_set, plies - 1, opts, cache, paths))
+    return max(values) if values else leaf_value(board, cop, thief, move_set, opts, cache, paths)
 
 
 def _thief_turn(
@@ -58,18 +59,19 @@ def _thief_turn(
     plies: int,
     opts: Mapping[str, float],
     cache: dict[Coord, int],
+    paths: dict[tuple[Coord, Coord], int],
 ) -> float:
     if _captured(board, cop, thief):
         return opts["w_capture"] + plies
     if plies == 0:
-        return leaf_value(board, cop, thief, move_set, opts, cache)
+        return leaf_value(board, cop, thief, move_set, opts, cache, paths)
     replies = [
         board.apply_move(thief, move) for move in sorted(legal_moves(board, thief, move_set))
     ]
     replies = [dest for dest in replies if dest != cop]  # stepping onto the cop = capture
     if not replies:
         return opts["w_capture"] + plies  # cornered: every escape is blocked or suicidal
-    return min(_cop_turn(board, cop, dest, move_set, plies, opts, cache) for dest in replies)
+    return min(_cop_turn(board, cop, dest, move_set, plies, opts, cache, paths) for dest in replies)
 
 
 def action_value(
@@ -79,10 +81,12 @@ def action_value(
     move_set: tuple[str, ...],
     opts: Mapping[str, float],
 ) -> float:
-    """Expected value of one root action over the belief support (fresh region cache
-    per call — the board differs between move and barrier actions)."""
+    """Expected value of one root action over the belief support (fresh region and
+    path caches per call — the board differs between move and barrier actions)."""
     cache: dict[Coord, int] = {}
+    paths: dict[tuple[Coord, Coord], int] = {}
     plies = int(opts["search_depth"]) - 1
     return sum(
-        p * _thief_turn(board, cop_after, cell, move_set, plies, opts, cache) for cell, p in support
+        p * _thief_turn(board, cop_after, cell, move_set, plies, opts, cache, paths)
+        for cell, p in support
     )

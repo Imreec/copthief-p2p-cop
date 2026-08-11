@@ -3,7 +3,7 @@
 # M1 carries only the sections the walking skeleton reads; [strategy]/[trash_talk]/[llm]/[email]
 # arrive with their milestones (M5/M6).
 
-version = "1.05"
+version = "1.06"
 
 [game]
 group_name = "ImreEyal-Police"
@@ -57,6 +57,13 @@ tie_epsilon = 0.25
 # until the board is small enough for the M9-1 solver to finish. Knob table in
 # copthief_police/features.py; the cooldown/reserve/range values are its defaults.
 contain_enabled = 1.0
+# M11-C1 (ADR-0013, the nis-yar1 g01 stall): containment refused at BFS gap 4
+# (its own wall made the gap 4) while the Manhattan leaf froze the chase - a
+# 19-turn mutual stare with 11 walls unspent. Range 4 resumes investment in the
+# logged geometry; path_distance prices the leaf wall-aware (open-board stream
+# provably unchanged - the geodesic IS Manhattan there).
+contain_range = 4.0
+path_distance = 1.0
 # M9-5 claim gate (base table - applies under the shipped subtractive model too):
 # claim only when the landing's own belief mass clears this. NOT the m7-19 blanket
 # silence (that lost 32/32 -> 0/32 captures); with the sharp tier the belief is
@@ -84,6 +91,13 @@ w_region = 0.03057885641327504
 # the LANDING capture is claim-gated. A chasing vector silenced the same way loses
 # everything (32/32 -> 0/32 captures), which is why the base table below is untouched.
 claim_threshold = 0.1
+# M11 overlay pin (ADR-0013, session item 3a): the M10/M11 mechanisms were never
+# measured under book-v1 physics, and without these lines the base table would arm
+# them via fallthrough if a pairing ever locked this model. Explicit OFF until a
+# book-v1 measurement exists - do not remove the pins without one.
+contain_enabled = 0.0
+contain_range = 3.0
+path_distance = 0.0
 
 [scent]
 # Which NAMED scent model we play (M3-8, ADR-0004 v2; registrations in
