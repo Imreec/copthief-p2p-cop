@@ -181,12 +181,16 @@
   police-m10 8/8 inside 35 with 6–8 walls (`scripts/m10_probe.py`).
 - ☑ **M10-4** Claim finding closed as already-implemented (M7-18 collapses live; verified in
   g02 log) — arena now models the SENDER side (`claim_threshold 0.0` / `claim_feed truth`).
-- ☐ **M10-5** Thief-repo sync after merge: core mirror + sibling `[strategy.thief]`
-  `room_first = 1.0` by hand (config never travels with the mirror) + runbook/sparring config
-  layers checked (tuned weights never to sparring).
-- ☐ **M10-6** Offer vibecode a SECOND friendly to validate live before any counted decision
-  (counted vs them is a 30–90-class risk until validated). Check gal-roy1 offer status
-  (was through 11/08) before assuming.
+- ☑ **M10-5** Thief sync + config layers DONE 2026-08-11: thief #86 → `c8836d3` (1054 tests
+  green pre-commit, mirror 341 intact both sides); both `game.toml` v1.05 + ALL 8 runbook
+  dirs hand-armed and parse-verified; sparring verified cold. Live-path wiring audit proved
+  both knobs reach the fielded brains through the real loaders (repo + runbook + counted).
+- ☐ **M10-6** Live validation of the M10 stack + rebuilt arms — RE-SCOPED: the counted vs
+  vibecode was played 2026-08-10 BEFORE the tune merged (pairing spent), so a validation
+  friendly no longer gates a counted decision; its purpose is proving arena models predict
+  live play (the M10 caveat). Folded into the M11 validation gate —
+  `notes/SESSION-PROMPT-M11-ROBUST-BRAINS.md`. gal-roy1 offer (was through 11/08): check
+  status before assuming either way.
 
 ## Phase M8 — Submission hardening
 
