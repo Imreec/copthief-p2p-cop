@@ -1,0 +1,254 @@
+{
+  "_schema": "Summary and final result for the WHOLE game (all sub-games) between two teams. It condenses the per-sub-game logs into a per-group score for every sub-game plus the aggregate outcome the lecturer needs to build the league standings. Static team metadata (identity, members, repos, MCP, hardware, model) is NOT repeated here — it lives in 1-pre-game-declaration.json and is referenced via game_id / group_id. Both teams must agree on this result and each sends its own copy to the lecturer (book ch9).",
+  "schema_version": "1.1",
+  "report_type": "final_game_result",
+  "game_id": "imreeyal-vs-nis-yar1",
+  "game_uid": "df1a2b30-84bc-fc98-0956-4aef8f317962",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-nis-yar1.json",
+    "config": "config_imreeyal-vs-nis-yar1_g<NN>.json",
+    "log": "log_imreeyal-vs-nis-yar1_g<NN>.json",
+    "result": "result_imreeyal-vs-nis-yar1.json",
+    "github": {
+      "imreeyal": {
+        "cop": "https://github.com/Imreec/copthief-p2p-cop",
+        "thief": "https://github.com/Imreec/copthief-p2p-thief"
+      },
+      "nis-yar1": {
+        "cop": "https://github.com/NisoDeri/nis-yar1-cop",
+        "thief": "https://github.com/NisoDeri/nis-yar1-thief"
+      }
+    }
+  },
+  "timezone": "Asia/Jerusalem",
+  "groups": [
+    "imreeyal",
+    "nis-yar1"
+  ],
+  "num_sub_games": 6,
+  "sub_games": [
+    {
+      "sub_game_number": 1,
+      "roles": {
+        "imreeyal": "police",
+        "nis-yar1": "thief"
+      },
+      "started_at": "2026-08-11T19:37:05.673446+00:00",
+      "ended_at": "2026-08-11T19:37:37.673446+00:00",
+      "result": "capture",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "aef719cd87e3967c5c15fa2e9b555a577f691869",
+        "nis-yar1": "41b9fb76b994ece0f9fe9f4e50f8f2599fa91d73"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "nis-yar1": 0
+      },
+      "score": {
+        "imreeyal": 20,
+        "nis-yar1": 5
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-nis-yar1_g01.json",
+        "nis-yar1": "log_imreeyal-vs-nis-yar1_g01.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 2,
+      "roles": {
+        "imreeyal": "thief",
+        "nis-yar1": "police"
+      },
+      "started_at": "2026-08-11T19:37:37.588326+00:00",
+      "ended_at": "2026-08-11T19:38:19.188326+00:00",
+      "result": "survival",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "aef719cd87e3967c5c15fa2e9b555a577f691869",
+        "nis-yar1": "41b9fb76b994ece0f9fe9f4e50f8f2599fa91d73"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "nis-yar1": 0
+      },
+      "score": {
+        "imreeyal": 10,
+        "nis-yar1": 5
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-nis-yar1_g02.json",
+        "nis-yar1": "log_imreeyal-vs-nis-yar1_g02.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 3,
+      "roles": {
+        "imreeyal": "police",
+        "nis-yar1": "thief"
+      },
+      "started_at": "2026-08-11T19:38:19.549308+00:00",
+      "ended_at": "2026-08-11T19:38:39.649308+00:00",
+      "result": "capture",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "aef719cd87e3967c5c15fa2e9b555a577f691869",
+        "nis-yar1": "41b9fb76b994ece0f9fe9f4e50f8f2599fa91d73"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "nis-yar1": 0
+      },
+      "score": {
+        "imreeyal": 20,
+        "nis-yar1": 5
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-nis-yar1_g03.json",
+        "nis-yar1": "log_imreeyal-vs-nis-yar1_g03.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 4,
+      "roles": {
+        "imreeyal": "thief",
+        "nis-yar1": "police"
+      },
+      "started_at": "2026-08-11T19:38:39.415798+00:00",
+      "ended_at": "2026-08-11T19:39:20.015798+00:00",
+      "result": "survival",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "aef719cd87e3967c5c15fa2e9b555a577f691869",
+        "nis-yar1": "41b9fb76b994ece0f9fe9f4e50f8f2599fa91d73"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "nis-yar1": 0
+      },
+      "score": {
+        "imreeyal": 10,
+        "nis-yar1": 5
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-nis-yar1_g04.json",
+        "nis-yar1": "log_imreeyal-vs-nis-yar1_g04.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 5,
+      "roles": {
+        "imreeyal": "police",
+        "nis-yar1": "thief"
+      },
+      "started_at": "2026-08-11T19:39:20.286176+00:00",
+      "ended_at": "2026-08-11T19:39:45.986176+00:00",
+      "result": "capture",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "aef719cd87e3967c5c15fa2e9b555a577f691869",
+        "nis-yar1": "41b9fb76b994ece0f9fe9f4e50f8f2599fa91d73"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "nis-yar1": 0
+      },
+      "score": {
+        "imreeyal": 20,
+        "nis-yar1": 5
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-nis-yar1_g05.json",
+        "nis-yar1": "log_imreeyal-vs-nis-yar1_g05.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 6,
+      "roles": {
+        "imreeyal": "thief",
+        "nis-yar1": "police"
+      },
+      "started_at": "2026-08-11T19:39:45.508630+00:00",
+      "ended_at": "2026-08-11T19:40:24.108630+00:00",
+      "result": "survival",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "aef719cd87e3967c5c15fa2e9b555a577f691869",
+        "nis-yar1": "41b9fb76b994ece0f9fe9f4e50f8f2599fa91d73"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "nis-yar1": 0
+      },
+      "score": {
+        "imreeyal": 10,
+        "nis-yar1": 5
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-nis-yar1_g06.json",
+        "nis-yar1": "log_imreeyal-vs-nis-yar1_g06.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    }
+  ],
+  "final_result": {
+    "total_score": {
+      "imreeyal": 90,
+      "nis-yar1": 30
+    },
+    "sub_games_won": {
+      "imreeyal": 6,
+      "nis-yar1": 0
+    },
+    "ties": 0,
+    "winner_group": "imreeyal",
+    "series_tie": false,
+    "tokens_total_series": {
+      "imreeyal": 0,
+      "nis-yar1": 0
+    },
+    "games_played_including_this": {
+      "imreeyal": 4,
+      "nis-yar1": 1
+    },
+    "first_meeting_between_groups": true,
+    "diversity_reward_applied": {
+      "imreeyal": true,
+      "nis-yar1": false
+    }
+  },
+  "mutual_agreement": {
+    "sha256": "1bf79e75294b8846253cc93b22a138080ecb4d9c8bea030a3f86566bf9b7034c",
+    "confirmed": true
+  }
+}
