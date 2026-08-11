@@ -143,9 +143,9 @@
     "src/copthief_core/strategy/brains.py": "9d3c0338960234e9c5e03b7c4116140bd377b532005106f836c43255085521ff",
     "src/copthief_core/strategy/deception_eval.py": "7bc093a4c0755097a05b48a4668aa66d436187d0c0dbcbe2a3756925be5cb0cf",
     "src/copthief_core/strategy/decision.py": "17928bfde96702f538f01ca62145d7311f147532666a81a3996099028fa0db47",
-    "src/copthief_core/strategy/doctrine_evader.py": "ac3349f367faa7e1657199551dd768addf6fd9378083dc8266b64f7bf81543ee",
+    "src/copthief_core/strategy/doctrine_evader.py": "bc02464f027758791968ef7126abb11c6ea6e2288575700eaee18362fc4bb741",
     "src/copthief_core/strategy/evader_brains.py": "a2faf8a2245a5c5d4ebd63cb4f8cf17c18a903dd416179bb6753730d84b356a6",
-    "src/copthief_core/strategy/evader_cage.py": "4d3b4172f39a86ae893e00306da7ded6829f87d7e44c14669e2ce86473f0c29c",
+    "src/copthief_core/strategy/evader_cage.py": "ac6f818ab137dbf41785d26b314169018cc2ea5d1122003205f7a345021eb02d",
     "src/copthief_core/strategy/genetic/__init__.py": "c7e64949da2cd055f741f1ecb087e01d1fe74dad440dd39e06706e80cdeea70f",
     "src/copthief_core/strategy/genetic/evolve.py": "5da254024480f1a1a2173a4a29ef5040032498694fb6ed1089d3df5b1db37920",
     "src/copthief_core/strategy/genetic/fitness.py": "93cc0d59ef6475b073e3c7cf836fe3238222e1eec828e3be8b419645abc5e4a8",
@@ -352,7 +352,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "2115227",
+  "source_commit": "187fd5e",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "b07a654281ce374e2c2c55249d6c5cd97d033279abe7e1f872dc61587a2d1642"
+  "tree_hash": "2e21caac0528ed1e5f3d13b1e8b9705cffd00269e64c87624c77da1ca6723c4f"
 }
