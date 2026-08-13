@@ -3,6 +3,32 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #133 — feat/nis-yar1-counted (4th counted series banked; thief mirror #90)
+
+- **Driver:** Imree (T set for the same evening; merge word "approved, you can merge") ·
+  **Author:** Claude (terminal, league session) · **Reviewer:** AG review waived by Imree
+  (evidence/config-only precedent).
+- **What was asked:** run the counted vs nis-yar1 on the frozen commits, settle, report to the
+  lecturer alone, bank the artifacts + ledger truthfully.
+- **Outcome:** 90–30, 6–0 sweep (2026-08-11 T=22:37) — M11's first live outing, offline
+  predictions validated exactly (cage-escape evader survived their cage cop 35×3; the M11 cop
+  converted all three incl. the g01-class camper at 27/12/19). All audits Verified OK, zero
+  problems, report SENT (exit 0), cross-diff vs their copy byte-clean (mutual sha 1bf79e75
+  four-way equal). 20 evidence files + ledger 4 landed (`ab40f4f`); thief ledger mirror
+  #90 (`95e53f3`). Counters truthful (ours 4/1 first-meeting true, +10 diversity ours).
+
+## PR #132 — test/arena-determinism-cost (CI 25-min cap breach; thief sync #89)
+
+- **Driver:** Imree (merge word) · **Author:** Claude (terminal) · **Reviewer:** cross-model
+  posture per process; cost fix reviewed on the thread.
+- **What was asked:** the M11 merge made the quality lane time out at the 25-min cap — the armed
+  champion arena was effectively playing a SECOND full robin under coverage. Fix the cost
+  without weakening what the test proves.
+- **Outcome:** the arena reproducibility test now proves determinism on 2 reduced seeds instead
+  of re-running the full robin (`aef719c`); quality lanes green both repos (cop 19m45s). Thief
+  sync #89 (`d78badb`). The lesson is standing policy: heavy measurement lives in scripts +
+  evidence docs, never in CI tests ([[ops-gotcha-ruff-format-ci]] carries the cadence rule).
+
 ## PR — m11-robust-brains (from patching to hardening; the 08-11 counted-eve build)
 
 - **Driver:** Imree (session prompt `SESSION-PROMPT-M11-ROBUST-BRAINS.md` — red-team mandate
