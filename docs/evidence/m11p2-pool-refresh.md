@@ -53,6 +53,22 @@ to capped flight (believed-cop-distance proxy for their trail-freshness
 signal). NOT modeled: the survival certificate (their own keep-gate: survival
 identical with it off) and the stealth self-mirror tie-shaper.
 
+## Champion hold-gate verdict (the robin in `m11p2-pool-arena.md`)
+
+GREEN — the pool is trusted for self-play. police-m11 holds every M11 number
+against the refreshed arms: 32/32 vs the nis-yar1 RUNNER (the counted shape),
+30/32 vs vibecode-thief (the ring watch item, unchanged), 3 survivals conceded
+to doctrine-m11 exactly as in M11. doctrine-m11 stays 32/32 vs the SIX-WALL
+nis-yar1 cage cop — the cage-escape scales to 3x the wall pressure it was
+built against. Two new facts the loop must answer:
+
+- **doctrine-m11 gives 10/32 to `anrbj666-police`** (steady-heading
+  interception + contact-dwell quota release) — a threat class no prior arm
+  carried; the evader phase's primary target after the champion cop itself.
+- **`anrbj666-thief` tops the pool thief table** (166/192 vs doctrine-m11's
+  153) — only police-m11 converts it (26/32). Their room-first law, as
+  studied, is simply strong; the cop phase inherits it as a fitness member.
+
 ## Standing warnings for anyone using this pool
 
 1. **anrbj666 friendly tapes are poisoned by design.** Their friendly overlays
