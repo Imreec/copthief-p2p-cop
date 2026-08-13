@@ -1,0 +1,710 @@
+{
+  "_schema": "Per-sub-game match log consumed by the Replay Viewer for cryptographic audit. Each step is committed as SHA-256(State || Move || Intent || Nonce) and later revealed; nonces are revealed only at the final audit (book ch5 commit-reveal, ch7 replay). Static team metadata (hardware, members, repos, model) is NOT repeated here — it lives in 1-pre-game-declaration.json; join by game_uid. Step 0 is the signed step-zero record carrying only what changes per sub-game (github_commit). The 'prompt_discussion' block records the natural-language exchange and the LLM prompt/reasoning behind each hint (book ch6 prompt engineering).",
+  "schema_version": "1.1",
+  "game_id": "imreeyal-vs-najamjad",
+  "game_uid": "0109494f-4e63-cb2d-d402-741e1468bdbf",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-najamjad.json",
+    "config": "config_imreeyal-vs-najamjad_g<NN>.json",
+    "log": "log_imreeyal-vs-najamjad_g<NN>.json",
+    "result": "result_imreeyal-vs-najamjad.json"
+  },
+  "summary": {
+    "sub_game_number": 1,
+    "group_id": "imreeyal",
+    "role": "police",
+    "opponent_group_id": "najamjad",
+    "result": "survival",
+    "winner_role": "thief",
+    "steps": 34,
+    "timezone": "Asia/Jerusalem",
+    "started_at": "2026-08-13T12:23:05.869259+00:00",
+    "ended_at": "2026-08-13T12:24:05.469259+00:00",
+    "duration_seconds": 59.6,
+    "tokens_total": 0,
+    "audit": {
+      "passed": true,
+      "verified_steps": 35,
+      "failed_steps": []
+    }
+  },
+  "records": [
+    {
+      "commit": "25fabeabe97c38f63a0f68e9a879cfe670f957b457b9eb9f829b69283709d7dd",
+      "nonce": "04fed7d1d191fd2247a95ec657e991f4",
+      "payload": {
+        "code_version": "1.00",
+        "github_commit": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "group_name": "ImreEyal-Police",
+        "model": "none",
+        "num_games_declared": 6,
+        "scent_model_sha256": "81ebee59640e80eae8ca9ee5f86abd26e7edf5cdbb27d15925cb6ee45ca6ddf4",
+        "spec": {
+          "cpu_cores": 24,
+          "cpu_freq_mhz": 3693,
+          "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+          "gpu_cores_or_cuda": "cuda",
+          "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+          "os": "Windows (10.0.19045)",
+          "ram_gb": 31.9,
+          "vram_gb": 12.0
+        },
+        "step": 0,
+        "sub_game_number": 1,
+        "type": "system_spec"
+      }
+    },
+    {
+      "commit": "bd76f46f33617714dbb351683c0b994be46150d03db39909d4561c9764c1fcb9",
+      "nonce": "6420955df23c6755fbba8c576d2b3e4e",
+      "payload": {
+        "hint": "They say the crowds near Hell's Kitchen hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 1,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "552c4c645d5ce240d41c92a15269721f02a1fe6bdfa333f7e82998e4f6ae9fdf",
+      "nonce": "1fc09f3380cd27b9294751d8f048e061",
+      "payload": {
+        "hint": "I heard sirens somewhere around Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 2,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "f7e28bc4eb8561e69fcc8a29719ab562e8baf5a0982def96f68d440f71560ba8",
+      "nonce": "4686e5a3a49138cdad2ee6b64a33abc4",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          2
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 2];barriers=[]",
+        "step": 3,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "9c96d7e5e13ddd99c8513f26c58af23950d7485744457200ec6c54c6b7bcdfb6",
+      "nonce": "32b9d7fa9524da6f3b94da72a5a72a19",
+      "payload": {
+        "hint": "Word is, keep an eye on Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 4,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "9556afed48c216ff924002e6795d804eec8f0616235753fdbc3fdf721b32fc1f",
+      "nonce": "c727fb1f2b42d27b0b4106244dffe710",
+      "payload": {
+        "hint": "Someone was asking about Hell's Kitchen just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 5,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "0c734513094cbf41b30ab47a27e184e4d8882b24764ce692593953d3436336ef",
+      "nonce": "624fc15d606bbbce008a1336ca1ae45f",
+      "payload": {
+        "hint": "All roads seem to lead to Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 6,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "c4f0c15b844e462e4e3e7208a244ebb9b70c0a15e38ed6d5429f76647a0f3589",
+      "nonce": "5b2a13c2a9758b37b1575c8323f44b28",
+      "payload": {
+        "hint": "They say the crowds near Hell's Kitchen hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 7,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "b30b97fca29b750b2fd1167175d07743899262b572b9c9aea65f1d42a96d2d9e",
+      "nonce": "476f15401b0c8b808420ec3c2a87e02f",
+      "payload": {
+        "hint": "I heard sirens somewhere around Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 8,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "1fb15e06b5b57d9e032f863d1f5d4bb7cda7de33503f9be5d107533193ffcf9d",
+      "nonce": "85625a270f42ac40a8ed54a5907463f6",
+      "payload": {
+        "hint": "The shadows by Hell's Kitchen feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          3,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[3, 0];barriers=[]",
+        "step": 9,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "fb2291c74d5616dece691a815054a3d9495a68a636832bd6de93278c52f88a19",
+      "nonce": "307d163fbea7f3f7ec03523657ade701",
+      "payload": {
+        "hint": "Word is, keep an eye on Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 10,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "192a181f4139d36358a103aec5d6d3b2f5c3b71d0df9e2cbd908ebcc8fee6488",
+      "nonce": "d5523ee0265e833b3cf138ff8e0ce226",
+      "payload": {
+        "hint": "Someone was asking about Hell's Kitchen just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 11,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "29560a4890e81b373ac1f618aafb43364dfdf8f77f805bdbe7a254df181f2786",
+      "nonce": "f0629de5253abb34a0bcdcf9b114688e",
+      "payload": {
+        "hint": "All roads seem to lead to Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 12,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "023cce8570d4625a2a6aec8be4263a55d6940efb2f3f90e6c2c0ccfe1e100f0b",
+      "nonce": "831e8d6ee59138fce10960bb15b4b0ff",
+      "payload": {
+        "hint": "They say the crowds near Hell's Kitchen hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 13,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "c615a2ee8795f3b8d29d869d39bceddfc4d1d6d32fbc940d613ab83334e3c4d2",
+      "nonce": "54407bbd78c4eec58579e2bfb3c7bf3b",
+      "payload": {
+        "hint": "I heard sirens somewhere around Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 14,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "514b01cd09e5827844df3d972b8bc943da250c546b987b2212287b79c98d0a4d",
+      "nonce": "5d6075b1c580dc65855e98cd6f6aa1f9",
+      "payload": {
+        "hint": "The shadows by Hell's Kitchen feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 15,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "e4f496de9188c7a37c3c4192131dacb5fd75efb66aefe9dd9ce9e808651db50d",
+      "nonce": "564ee2e5355e17b2718984b4ca8cd2fd",
+      "payload": {
+        "hint": "Word is, keep an eye on Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 16,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "6a3798e25427abd9eb1a5c540e6757e6c6349827f95fd20056bb142bcf8919e0",
+      "nonce": "cc4545a06ed4233e30d81b9fa121750a",
+      "payload": {
+        "hint": "Someone was asking about Hell's Kitchen just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 17,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "a36414c2b17261c15e380aa84844f12734b1ba5c3fd09f94e422e8ba249ab3cd",
+      "nonce": "18f4680b546add8a6ed30a7029f2d31f",
+      "payload": {
+        "hint": "All roads seem to lead to Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 18,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "a3de8f7a87a0557e94db94ff97e03d975989094e73f5f540aabefc7f7859a4d5",
+      "nonce": "18c42414084383d172eefd7ef31e62a8",
+      "payload": {
+        "hint": "They say the crowds near Central Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          2
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 2];barriers=[]",
+        "step": 19,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "13ab315511c918257314fe536814d1a381fe59951819579260bc4fd07f6c58e7",
+      "nonce": "f2a1aa721c4fedbeab279504dbe133ff",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 20,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "1ce692968edf7e408c58c948fba254977b757e69d6365c96281d7577216bde88",
+      "nonce": "208e6345d568200dddb4c69bbdbcb845",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 21,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "98187e5058385d9cb185d0118ffc235b21d97917e9040a0398e453450567546e",
+      "nonce": "e3cc694af0d4b8a523e19d7046c42d9c",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 22,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "1f17034534e6652f89774e25d53250eff89b81e2e0a1297501444b7219829e11",
+      "nonce": "bf273c0f18dd23dd415355dd0904f647",
+      "payload": {
+        "hint": "Someone was asking about Central Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 23,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "9ed9e4e62832155a12a6200f833b752924a36203f1e00ed72891401a7dd1e2e1",
+      "nonce": "159d6d54b5097b15b32d8193344d952e",
+      "payload": {
+        "hint": "All roads seem to lead to Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 24,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "44dbf6ce8e1b49b22ae314b4863f2f8e06fa3840ead184ecfc712ee50866bd93",
+      "nonce": "959c0e0b37235106d09e037e32c144e3",
+      "payload": {
+        "hint": "They say the crowds near Central Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 25,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "d06b381054a7ecc37aa6ffecbe9e2f46119e20b55aba8040f9eef5b9062e096e",
+      "nonce": "0c6446a9b057c6a32822c2c766374cb3",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 3];barriers=[]",
+        "step": 26,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "9d20867339fa8e6315a61a508e05afbd16473a93481c00d1030a31f2bea348e4",
+      "nonce": "214849fd243d451910c3360655927824",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          2,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 4];barriers=[]",
+        "step": 27,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "96192ab7b1860b8eb2b8dcbcb9f1cb03055df74db0cc9f6f98b6a8037aa0086c",
+      "nonce": "2cfe9a111c180fcfa9f61a67fdd659aa",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 28,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "9ca2d358ff2605438368d06e5270a297b83d5586397083daa41315a571411419",
+      "nonce": "64071873fbb161f386f541b138d48982",
+      "payload": {
+        "hint": "Someone was asking about Central Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          5
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 5];barriers=[]",
+        "step": 29,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "04048ef3bf095feb9e32b3ff6f06c39d6dea9a0ace83410483a3cf7ef9eb22de",
+      "nonce": "ee21492fa6700a086f5d7bf49fde901d",
+      "payload": {
+        "hint": "All roads seem to lead to Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 30,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "545457582ff6a35c05958600b77340c3f01ec04e4f6eea0c55f2922d6dd91691",
+      "nonce": "dd0341a4c4e8067360768f9dbe47d519",
+      "payload": {
+        "hint": "They say the crowds near Central Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 4];barriers=[]",
+        "step": 31,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "4639eba2ee3938793d214a5df69f8e7a2d1da1bb8e2edcb29d4199ce8ec94029",
+      "nonce": "022362ef0a009805b96952d1ddd17841",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 32,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "d7b03c32d83edb9cf330acf20ebbda8df9ae6594703436be0baefab66ddd41a8",
+      "nonce": "67fe7811f30a7f1a8223e673ccbc1e46",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 33,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "3e846cee44e3b581f6c2c6a8a25d07c167ad6f95f4093e67fa30064df857d76c",
+      "nonce": "163a27cd49a7a9244eb735d2ba17ed5c",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          0,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[0, 3];barriers=[]",
+        "step": 34,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    }
+  ],
+  "mutual_agreement": {
+    "opponent_group_id": "najamjad",
+    "sha256": "b31d0ce7c2bcb61d19da653b807070a2489b06d1b67c753d5b033d428aa9a244",
+    "confirmed": true
+  }
+}

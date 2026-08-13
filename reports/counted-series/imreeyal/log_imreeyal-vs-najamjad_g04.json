@@ -1,0 +1,197 @@
+{
+  "_schema": "Per-sub-game match log consumed by the Replay Viewer for cryptographic audit. Each step is committed as SHA-256(State || Move || Intent || Nonce) and later revealed; nonces are revealed only at the final audit (book ch5 commit-reveal, ch7 replay). Static team metadata (hardware, members, repos, model) is NOT repeated here — it lives in 1-pre-game-declaration.json; join by game_uid. Step 0 is the signed step-zero record carrying only what changes per sub-game (github_commit). The 'prompt_discussion' block records the natural-language exchange and the LLM prompt/reasoning behind each hint (book ch6 prompt engineering).",
+  "schema_version": "1.1",
+  "game_id": "imreeyal-vs-najamjad",
+  "game_uid": "0109494f-4e63-cb2d-d402-741e1468bdbf",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-najamjad.json",
+    "config": "config_imreeyal-vs-najamjad_g<NN>.json",
+    "log": "log_imreeyal-vs-najamjad_g<NN>.json",
+    "result": "result_imreeyal-vs-najamjad.json"
+  },
+  "summary": {
+    "sub_game_number": 4,
+    "group_id": "imreeyal",
+    "role": "thief",
+    "opponent_group_id": "najamjad",
+    "result": "capture",
+    "winner_role": "police",
+    "steps": 7,
+    "timezone": "Asia/Jerusalem",
+    "started_at": "2026-08-13T16:02:37.374281+00:00",
+    "ended_at": "2026-08-13T16:03:07.274281+00:00",
+    "duration_seconds": 29.9,
+    "tokens_total": 0,
+    "audit": {
+      "passed": true,
+      "verified_steps": 6,
+      "failed_steps": []
+    }
+  },
+  "records": [
+    {
+      "commit": "1d8344d6e0a9524988d8cf67663f0249cae073bea11b685bf70f6bae8835ac5c",
+      "nonce": "98043b43f828d8380e511a824faf6282",
+      "payload": {
+        "code_version": "1.00",
+        "github_commit": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "group_name": "ImreEyal-Police",
+        "model": "none",
+        "num_games_declared": 6,
+        "scent_model_sha256": "81ebee59640e80eae8ca9ee5f86abd26e7edf5cdbb27d15925cb6ee45ca6ddf4",
+        "spec": {
+          "cpu_cores": 24,
+          "cpu_freq_mhz": 3693,
+          "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+          "gpu_cores_or_cuda": "cuda",
+          "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+          "os": "Windows (10.0.19045)",
+          "ram_gb": 31.9,
+          "vram_gb": 12.0
+        },
+        "step": 0,
+        "sub_game_number": 4,
+        "type": "system_spec"
+      }
+    },
+    {
+      "commit": "727d3387d130cd202fb18199f9c827a002a0b5a15e9ff848ffc0dd78fc5ae4f0",
+      "nonce": "5d1588c20542c080b5df558f65325214",
+      "payload": {
+        "hint": "They say the crowds near Grand Central hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          4,
+          3
+        ],
+        "response_seconds": 0.01,
+        "state": "grid=7x7;self=[4, 3];barriers=[]",
+        "step": 1,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "78214fe3c74200cfe729af2be0ebda5a1d248495539b459c90459b2e824f06ad",
+      "nonce": "a7bcb4d2cc7801185957da2dd8d97edf",
+      "payload": {
+        "hint": "I heard sirens somewhere around Greenwich Village.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          4,
+          2
+        ],
+        "response_seconds": 0.078,
+        "state": "grid=7x7;self=[4, 2];barriers=[]",
+        "step": 2,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "a7e0da15e2e2581e234f1492a765eaf76ff92a191540c431d9b9c6eb57466090",
+      "nonce": "fda9d2dd1239da04289c0ce7b2558387",
+      "payload": {
+        "hint": "The shadows by Grand Central feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          4,
+          3
+        ],
+        "response_seconds": 0.063,
+        "state": "grid=7x7;self=[4, 3];barriers=[]",
+        "step": 3,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "4a33ebf6bad3dade5673372e1c779782310f8ab2fa101b1db5bdd8e98228b3ab",
+      "nonce": "04667594fe08ce4693c200308fb6fdff",
+      "payload": {
+        "hint": "Word is, keep an eye on Greenwich Village.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          4,
+          2
+        ],
+        "response_seconds": 0.063,
+        "state": "grid=7x7;self=[4, 2];barriers=[]",
+        "step": 4,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "e57542219b915d02df5e4f96f3cc8c0b45dd42b92bf47c743c5838f1cbda159d",
+      "nonce": "ce68ff1c580f65847eadd3ef4375cd56",
+      "payload": {
+        "hint": "Someone was asking about Grand Central just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          4,
+          3
+        ],
+        "response_seconds": 0.16,
+        "state": "grid=7x7;self=[4, 3];barriers=[]",
+        "step": 5,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "2d1e62cae75ef8626ccfc3d8e0c01272dc07b36788a8033b49191415c4568db4",
+      "nonce": "7033052677be3746a3e341eacf621c95",
+      "payload": {
+        "hint": "All roads seem to lead to Grand Central.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          3,
+          3
+        ],
+        "response_seconds": 0.159,
+        "state": "grid=7x7;self=[3, 3];barriers=[]",
+        "step": 6,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "d68713a1327bbe5f463d97eed516c26bab4b7c40ad343a3fcacfbf9590770d2f",
+      "nonce": "9accde01bd7b177467d988e967019dbb",
+      "payload": {
+        "hint": "You got me.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          3,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[3, 3];barriers=[]",
+        "step": 7,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    }
+  ],
+  "mutual_agreement": {
+    "opponent_group_id": "najamjad",
+    "sha256": "ceafe51cad014984f403028fd4a08b61a1e99c35fc894723a196fac989cd4686",
+    "confirmed": true
+  }
+}
