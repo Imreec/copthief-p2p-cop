@@ -1,0 +1,254 @@
+{
+  "_schema": "Summary and final result for the WHOLE game (all sub-games) between two teams. It condenses the per-sub-game logs into a per-group score for every sub-game plus the aggregate outcome the lecturer needs to build the league standings. Static team metadata (identity, members, repos, MCP, hardware, model) is NOT repeated here — it lives in 1-pre-game-declaration.json and is referenced via game_id / group_id. Both teams must agree on this result and each sends its own copy to the lecturer (book ch9).",
+  "schema_version": "1.1",
+  "report_type": "final_game_result",
+  "game_id": "imreeyal-vs-najamjad",
+  "game_uid": "0109494f-4e63-cb2d-d402-741e1468bdbf",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-najamjad.json",
+    "config": "config_imreeyal-vs-najamjad_g<NN>.json",
+    "log": "log_imreeyal-vs-najamjad_g<NN>.json",
+    "result": "result_imreeyal-vs-najamjad.json",
+    "github": {
+      "imreeyal": {
+        "cop": "https://github.com/Imreec/copthief-p2p-cop",
+        "thief": "https://github.com/Imreec/copthief-p2p-thief"
+      },
+      "najamjad": {
+        "cop": "https://github.com/najikay/najamjad-cop",
+        "thief": "https://github.com/najikay/najamjad-thief"
+      }
+    }
+  },
+  "timezone": "Asia/Jerusalem",
+  "groups": [
+    "imreeyal",
+    "najamjad"
+  ],
+  "num_sub_games": 6,
+  "sub_games": [
+    {
+      "sub_game_number": 1,
+      "roles": {
+        "imreeyal": "police",
+        "najamjad": "thief"
+      },
+      "started_at": "2026-08-13T16:00:05.915972+00:00",
+      "ended_at": "2026-08-13T16:01:18.615972+00:00",
+      "result": "survival",
+      "winner_group": "najamjad",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "najamjad": "07ee4ea2331aa5aa4058214df257baecc05d7daf"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "najamjad": 0
+      },
+      "score": {
+        "imreeyal": 5,
+        "najamjad": 10
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-najamjad_g01.json",
+        "najamjad": "log_imreeyal-vs-najamjad_g01.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 2,
+      "roles": {
+        "imreeyal": "thief",
+        "najamjad": "police"
+      },
+      "started_at": "2026-08-13T16:01:29.343186+00:00",
+      "ended_at": "2026-08-13T16:01:58.943186+00:00",
+      "result": "capture",
+      "winner_group": "najamjad",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "najamjad": "07ee4ea2331aa5aa4058214df257baecc05d7daf"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "najamjad": 0
+      },
+      "score": {
+        "imreeyal": 5,
+        "najamjad": 20
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-najamjad_g02.json",
+        "najamjad": "log_imreeyal-vs-najamjad_g02.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 3,
+      "roles": {
+        "imreeyal": "police",
+        "najamjad": "thief"
+      },
+      "started_at": "2026-08-13T16:01:59.574614+00:00",
+      "ended_at": "2026-08-13T16:02:37.974614+00:00",
+      "result": "survival",
+      "winner_group": "najamjad",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "najamjad": "07ee4ea2331aa5aa4058214df257baecc05d7daf"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "najamjad": 0
+      },
+      "score": {
+        "imreeyal": 5,
+        "najamjad": 10
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-najamjad_g03.json",
+        "najamjad": "log_imreeyal-vs-najamjad_g03.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 4,
+      "roles": {
+        "imreeyal": "thief",
+        "najamjad": "police"
+      },
+      "started_at": "2026-08-13T16:02:37.374281+00:00",
+      "ended_at": "2026-08-13T16:03:07.274281+00:00",
+      "result": "capture",
+      "winner_group": "najamjad",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "najamjad": "07ee4ea2331aa5aa4058214df257baecc05d7daf"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "najamjad": 0
+      },
+      "score": {
+        "imreeyal": 5,
+        "najamjad": 20
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-najamjad_g04.json",
+        "najamjad": "log_imreeyal-vs-najamjad_g04.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 5,
+      "roles": {
+        "imreeyal": "police",
+        "najamjad": "thief"
+      },
+      "started_at": "2026-08-13T16:03:07.975153+00:00",
+      "ended_at": "2026-08-13T16:03:44.875153+00:00",
+      "result": "survival",
+      "winner_group": "najamjad",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "najamjad": "07ee4ea2331aa5aa4058214df257baecc05d7daf"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "najamjad": 0
+      },
+      "score": {
+        "imreeyal": 5,
+        "najamjad": 10
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-najamjad_g05.json",
+        "najamjad": "log_imreeyal-vs-najamjad_g05.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 6,
+      "roles": {
+        "imreeyal": "thief",
+        "najamjad": "police"
+      },
+      "started_at": "2026-08-13T16:03:44.439104+00:00",
+      "ended_at": "2026-08-13T16:04:05.639104+00:00",
+      "result": "capture",
+      "winner_group": "najamjad",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "najamjad": "07ee4ea2331aa5aa4058214df257baecc05d7daf"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "najamjad": 0
+      },
+      "score": {
+        "imreeyal": 5,
+        "najamjad": 20
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-najamjad_g06.json",
+        "najamjad": "log_imreeyal-vs-najamjad_g06.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    }
+  ],
+  "final_result": {
+    "total_score": {
+      "imreeyal": 30,
+      "najamjad": 90
+    },
+    "sub_games_won": {
+      "imreeyal": 0,
+      "najamjad": 6
+    },
+    "ties": 0,
+    "winner_group": "najamjad",
+    "series_tie": false,
+    "tokens_total_series": {
+      "imreeyal": 0,
+      "najamjad": 0
+    },
+    "games_played_including_this": {
+      "imreeyal": 5,
+      "najamjad": 2
+    },
+    "first_meeting_between_groups": true,
+    "diversity_reward_applied": {
+      "imreeyal": false,
+      "najamjad": true
+    }
+  },
+  "mutual_agreement": {
+    "sha256": "38b22e02393d3e9908a4d8bd4d1544c673f922ccd1af1e448ce58c3b525a4262",
+    "confirmed": true
+  }
+}

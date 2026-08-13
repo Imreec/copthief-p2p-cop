@@ -1,0 +1,73 @@
+{
+  "_schema": "Static declaration for the WHOLE game (the full series of sub-games) between two teams. This is the single home for every field that does NOT change while the sub-games are played: team identity, members, cop/thief repository URLs, MCP server URLs, hardware spec, LLM model, the agreed max-tokens-per-game cap, and the game start/end times. Roles (cop/thief) switch across the sub-games, so no role and no sub_game_number appear here. Both teams sign it and lock it cryptographically before play (book ch5 Step-0). Data that changes per sub-game (github_commit, moves, scores) lives in 3-game-log.json and 4-final-result.json.",
+  "schema_version": "1.1",
+  "declaration_type": "pre_game_declaration",
+  "game_id": "imreeyal-vs-najamjad",
+  "game_uid": "0109494f-4e63-cb2d-d402-741e1468bdbf",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-najamjad.json",
+    "config": "config_imreeyal-vs-najamjad_g<NN>.json",
+    "log": "log_imreeyal-vs-najamjad_g<NN>.json",
+    "result": "result_imreeyal-vs-najamjad.json"
+  },
+  "timezone": "Asia/Jerusalem",
+  "game_started_at": "2026-08-13T12:23:05.869259+00:00",
+  "game_ended_at": "2026-08-13T12:28:15.060073+00:00",
+  "num_sub_games": 6,
+  "max_tokens_per_game": 200000,
+  "groups": {
+    "group_1": {
+      "group_id": "imreeyal",
+      "group_name": "ImreEyal-Police",
+      "members": [
+        "Imree Cohen",
+        "Eyal Shtinmetz"
+      ],
+      "repos": {
+        "cop": "https://github.com/Imreec/copthief-p2p-cop",
+        "thief": "https://github.com/Imreec/copthief-p2p-thief"
+      },
+      "mcp_servers": {
+        "cop": "https://cop.imreeyal.com/mcp",
+        "thief": "https://thief.imreeyal.com/mcp"
+      },
+      "llm_model": "none",
+      "hardware_spec": {
+        "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+        "cpu_freq_mhz": 3693,
+        "cpu_cores": 24,
+        "ram_gb": 31.9,
+        "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+        "vram_gb": 12.0
+      },
+      "signature": "41e714067ace09ba71beb4021c360f7152788237b2c238e6bac25619ac87b23c"
+    },
+    "group_2": {
+      "group_id": "najamjad",
+      "group_name": "NajAmjad",
+      "members": [
+        "Naji Kayal",
+        "Amjad Abed"
+      ],
+      "repos": {
+        "cop": "https://github.com/najikay/najamjad-cop",
+        "thief": "https://github.com/najikay/najamjad-thief"
+      },
+      "mcp_servers": {
+        "cop": "https://thief.4laboratory.com/mcp",
+        "thief": "https://thief.4laboratory.com/mcp"
+      },
+      "llm_model": "deepseek-v4-flash",
+      "hardware_spec": {
+        "cpu_type": "11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz",
+        "cpu_freq_mhz": 2800,
+        "cpu_cores": 8,
+        "ram_gb": 7.5,
+        "gpu_model": "none detected",
+        "vram_gb": 0.0
+      },
+      "signature": "1d3a94cc711dc35c33cf55fa1e2a2698cb43818cdd038fe2f95f8941341a9502"
+    }
+  }
+}
