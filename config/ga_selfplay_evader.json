@@ -9,7 +9,10 @@
   "candidate_feed": "sharp199",
   "claim_threshold": 0.1,
   "claim_feed": "truth",
-  "opponent_pool": [],
+  "opponent_pool": [
+    {"spec": "anrbj666-police", "feed": "sharp199"},
+    {"spec": "nisyar1-police", "feed": "truth-lag1"}
+  ],
   "genes": {
     "forecast_walls": [1.0, 4.0],
     "forecast_wall_reach": [1.0, 3.0],

@@ -9,7 +9,10 @@
   "candidate_feed": "sharp199",
   "claim_threshold": 0.1,
   "claim_feed": "truth",
-  "opponent_pool": [],
+  "opponent_pool": [
+    {"spec": "anrbj666-thief", "feed": "sharp199", "claim_feed": "truth"},
+    {"spec": "nisyar1-thief", "feed": "sharp199", "claim_feed": null}
+  ],
   "genes": {
     "w_distance": [0.5, 6.0],
     "w_mobility": [0.0, 5.0],
