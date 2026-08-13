@@ -11,6 +11,8 @@ Role-blind: nothing here names this repo's brain or its shipped values.
 
 from pathlib import Path
 
+import pytest
+
 from copthief_core.shared.config import load_all
 from copthief_core.strategy.genetic.fitness import opponent_fitness
 from copthief_core.strategy.genetic.runs import GaConfig, load_ga_config
@@ -53,9 +55,9 @@ def _fitness(candidate_feed: str | None) -> float:
 
 
 def test_fitness_runs_under_the_candidates_feed() -> None:
-    """A truth-fed chaser sees the true cell and must convert at least as often
-    as the blurred one — and on this suite, strictly more (non-vacuous pin)."""
-    truth = _fitness("truth")
-    hidden = _fitness(None)
-    assert truth >= hidden
-    assert truth > hidden  # the door demonstrably changes what fitness measures
+    """The candidate side consumes the configured feed name: an unknown name
+    refuses the run (the non-vacuous wiring pin — a dropped door would play the
+    hidden default silently), and a truth feed never scores below hidden."""
+    with pytest.raises(ValueError, match="unknown feed"):
+        _fitness("no-such-feed")
+    assert _fitness("truth") >= _fitness(None)
