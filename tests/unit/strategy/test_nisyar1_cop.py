@@ -62,16 +62,21 @@ def test_holds_the_metronome_gap_before_the_wall_phase() -> None:
     assert decision.barrier is None
 
 
-def test_walls_the_fewest_exit_escape_from_step_nine() -> None:
-    """Counted g02 step-18 shape: in contact from step 9 on, the wall lands on
-    the believed cell's reachable escape with the fewest exits."""
+def test_walls_the_shared_corner_cell_in_diagonal_contact() -> None:
+    """Counted g02 step 18 exactly: cop (3,3), believed thief (4,2) — the wall
+    lands on (3,2), the sorted-first of the two shared-adjacent cells. All six
+    counted walls follow this rule (verified against g02/g04/g06)."""
     board = make_board()
     brain = NisYar1CopBrain(seed=1)
-    decision = brain.decide(make_observation(board, (3, 3), step=9), make_belief(board, (4, 3)))
-    assert decision.barrier is not None
-    wall: Coord = decision.barrier
-    assert abs(wall[0] - 4) + abs(wall[1] - 3) == 1  # adjacent to the believed cell
-    assert abs(wall[0] - 3) + abs(wall[1] - 3) <= 1  # within our own reach (barrier law)
+    decision = brain.decide(make_observation(board, (3, 3), step=18), make_belief(board, (4, 2)))
+    assert decision.barrier == (3, 2)
+
+
+def test_no_wall_before_step_nine_even_in_diagonal_contact() -> None:
+    board = make_board()
+    brain = NisYar1CopBrain(seed=1)
+    decision = brain.decide(make_observation(board, (3, 3), step=8), make_belief(board, (4, 2)))
+    assert decision.barrier is None
 
 
 def test_respects_its_observed_wall_budget() -> None:
@@ -79,7 +84,7 @@ def test_respects_its_observed_wall_budget() -> None:
     board = make_board()
     brain = NisYar1CopBrain(seed=1)
     decision = brain.decide(
-        make_observation(board, (3, 3), step=20, used=6), make_belief(board, (4, 3))
+        make_observation(board, (3, 3), step=20, used=6), make_belief(board, (4, 2))
     )
     assert decision.barrier is None
 
