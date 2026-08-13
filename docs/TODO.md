@@ -206,10 +206,18 @@
   variant of the vibecode class). Logs committed under
   `docs/evidence/friendly-nis-yar1-2026-08-11/`.
 - ☑ **M11-3a** Book-v1 overlay pins explicit-off (game.toml v1.06).
-- ☐ **M11-4** Deferred past the 08-11 counted window (session prompt items): self-play
-  hardening loop + real-opponent validation gate (Alon newest HEAD arms, sqak HEAD re-verify) ·
-  claim-threshold re-sweep under the M10/M11 stack · solver defer-rate measurement ·
-  plan-level diversity (stretch).
+- ☑ **M11-4** (ADR-0014, M11 part 2) Pool refresh at named source shas — anrbj666 fielded
+  cop+thief modeled at HEAD `41e907d`/`f95b438` (their friendly tapes carry deliberate decoys:
+  standing warning in `m11p2-pool-refresh.md`), nis-yar1 arms rebuilt from the COUNTED logs
+  (runner thief; 6-wall shared-corner cage cop, rule exact), sqak re-verified `72e7abc` ·
+  champion hold-gate GREEN (`m11p2-pool-arena.md`) · self-play loop with per-phase pool gate
+  (`m11p2-selfplay.md`): EVADER harvest adopted (3/32 → 18/32 vs police-m11; anrbj666-police
+  gap closed 22→32/32; arena.json flipped), cop harvest REFUSED by the gate twice (honest
+  negative — fitness 0.958 but three real-arm regressions) · claim 0.1 KEPT with data
+  (`m11p2-claim-sweep.md`) · node cap 20000 KEPT with data (`m11p2-solver-defer.md`, 0
+  budget-aborts / 3125 calls) · plan-level diversity DEFERRED (champions changed this session;
+  cost must be measured against the final stack). Thief-repo game.toml + runbook propagation
+  owed post-merge (v1.07).
 
 ## Phase M8 — Submission hardening
 

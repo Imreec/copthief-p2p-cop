@@ -3,6 +3,26 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — m11-part2-selfplay (M11-4: pool refresh, self-play loop, kept-with-data sweeps)
+
+- **Driver:** Imree (session prompt `SESSION-PROMPT-M11-PART2-SELFPLAY-AND-VALIDATION.md`;
+  mid-session live inputs: a hold for a possible counted window, then "continue"; merge word
+  pending) · **Author:** Claude (terminal, isolated worktree `m11-part2-selfplay`) ·
+  **Reviewer:** pending.
+- **What was asked:** refresh the real-opponent pool at named shas FIRST (the gate for
+  everything), then alternate best-response self-play with a real-opponent validation gate
+  per round; re-sweep the claim threshold under M11; measure solver defer causes; same
+  measurement-over-deference bar as M11, including toward M11's own arms.
+- **Outcome:** ADR-0014 + five evidence docs. The refresh invalidated both M11 nis-yar1 arms
+  (counted logs: perch dead, 6 walls not 2 — the wall rule reproduced exactly) and surfaced
+  anrbj666's deliberate friendly-tape decoys (their fielded brains modeled from code at HEAD
+  instead). Hold-gate GREEN, then the loop ADOPTED an evader harvest through the pool gate
+  (3/32 → 18/32 vs our own cop, anrbj666-police gap closed) and REFUSED the cop harvest twice
+  (higher fitness, three real-arm regressions — the gate caught the exact failure mode it
+  exists for). Claim 0.1 and node cap 20000 both kept WITH data. GA gained a `candidate_feed`
+  door (evolve under the fielded sharp tier). Owed post-merge: thief sync + game.toml/runbook
+  propagation (v1.07).
+
 ## PR #133 — feat/nis-yar1-counted (4th counted series banked; thief mirror #90)
 
 - **Driver:** Imree (T set for the same evening; merge word "approved, you can merge") ·
