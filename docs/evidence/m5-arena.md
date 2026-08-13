@@ -10,12 +10,12 @@
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-brain | police | 40 | 40 | 800 |
+| police-brain | police | 40 | 37 | 755 |
 | ref-police | police | 40 | 18 | 470 |
 | best2934-police | police | 40 | 16 | 440 |
 | greedy-manhattan | police | 40 | 11 | 365 |
 | random | police | 40 | 3 | 245 |
-| doctrine-evader | thief | 40 | 32 | 360 |
+| doctrine-evader | thief | 40 | 35 | 375 |
 | greedy-manhattan | thief | 40 | 29 | 345 |
 | ref-thief | thief | 40 | 28 | 340 |
 | best2934-thief | thief | 40 | 17 | 285 |
@@ -53,8 +53,8 @@ Per-pairing outcomes:
 | police-brain | greedy-manhattan | 8 | 0 |
 | police-brain | ref-thief | 8 | 0 |
 | police-brain | best2934-thief | 8 | 0 |
-| police-brain | doctrine-evader | 8 | 0 |
+| police-brain | doctrine-evader | 5 | 3 |
 
 ## DoD win-rate floors
 
-**DoD series `M5-2 police DoD - PoliceBrain vs the reference heuristic`** - police-brain (police) vs ref-thief (thief), 32 scenarios: police wins 30/32 = **94%** (floor 60%) - **PASS**.
+**DoD series `M5-2 police DoD - PoliceBrain vs the reference heuristic`** - police-brain (police) vs ref-thief (thief), 32 scenarios: police wins 32/32 = **100%** (floor 60%) - **PASS**.

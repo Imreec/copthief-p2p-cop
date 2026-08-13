@@ -149,6 +149,15 @@ def main() -> int:
         "",
     ]
     Path(args.out).write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    for config_path, options in (
+        ("config/ga_selfplay_evader.json", evader),
+        ("config/ga_selfplay_cop.json", cop),
+    ):
+        artifact = load_ga_config(Path(config_path)).artifact_out
+        payload = {"version": "1.00", "champion_options": options, "source": args.out}
+        Path(artifact).write_text(
+            json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n"
+        )
     print(f"wrote {args.out}")
     return 0
 
