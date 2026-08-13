@@ -23,6 +23,7 @@ def modeled_arm_classes() -> dict[str, type[BrainBase]]:
     Output: the registry dict, rebuilt per call — import cost is trivial and
     laziness keeps the brains<->arms import cycle one-directional)."""
     from copthief_core.strategy.anrbj666_cop import Anrbj666CopBrain
+    from copthief_core.strategy.anrbj666_thief import Anrbj666ThiefBrain
     from copthief_core.strategy.best2934_cop import Best2934CopBrain
     from copthief_core.strategy.best2934_thief import Best2934ThiefBrain
     from copthief_core.strategy.hunter_cop import HunterCopBrain
@@ -40,4 +41,5 @@ def modeled_arm_classes() -> dict[str, type[BrainBase]]:
         "nisyar1-thief": NisYar1ThiefBrain,
         "nisyar1-police": NisYar1CopBrain,
         "anrbj666-police": Anrbj666CopBrain,
+        "anrbj666-thief": Anrbj666ThiefBrain,
     }

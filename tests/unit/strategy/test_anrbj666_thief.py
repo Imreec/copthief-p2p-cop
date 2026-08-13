@@ -73,10 +73,12 @@ def test_fresh_trail_flips_room_back_to_flight() -> None:
 
 
 def test_without_fresh_trail_room_still_rules() -> None:
+    """Room mode refuses the 2-exit east pocket; among the 3-exit options STAY
+    is farthest from the believed cop and STAY wins ties — their exact shape."""
     board = make_board(frozenset({(1, 4), (1, 5), (1, 6)}))
     roomy = Anrbj666ThiefBrain(seed=1, options={"trust_mass": 2.0, "fresh_radius": 0.0})
     move = roomy.pick_move(make_observation(board, (0, 3)), make_belief(board, (1, 1)))
-    assert move == "S"
+    assert move == "STAY"
 
 
 def test_registered_in_the_brain_factory() -> None:
