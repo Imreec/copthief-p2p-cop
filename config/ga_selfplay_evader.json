@@ -1,0 +1,52 @@
+{
+  "version": "1.00",
+  "_comment": "M11 part 2 self-play loop, EVADER phase: harden doctrine-evader against the M11 champion cop + the two strongest refreshed rival cops (fitness = mean survival). The M11 knob set joins the search space (cage_escape/room_first pinned ON via [1,1] boxes - the M11 ablations say k/reach/margin interact, so they move TOGETHER here). candidate_feed sharp199 = the fielded belief tier; claim_threshold 0.1 = the fielded cop claim policy so the reader-feed opponents learn what a real series leaks. Fitness seeds are FRESH (401+): never the pool-gate suite (1-32) and never the DoD seeds - the gate is not a training target. Opponent options for police-m11 are injected by scripts/selfplay_loop.py from config/arena_pool.json brain_options (single source). Run via scripts/selfplay_loop.py, never ga_run.py directly.",
+  "role": "thief",
+  "brain": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+  "opponent": "copthief_police.brain:PoliceBrain",
+  "opponent_options": {},
+  "opponent_feed": "sharp199",
+  "candidate_feed": "sharp199",
+  "claim_threshold": 0.1,
+  "claim_feed": "truth",
+  "opponent_pool": [],
+  "genes": {
+    "forecast_walls": [1.0, 4.0],
+    "forecast_wall_reach": [1.0, 3.0],
+    "flight_floor": [1.0, 4.0],
+    "center_margin_cap": [0.0, 4.0],
+    "safe_distance": [2.0, 6.0],
+    "flee_cap_hunted": [4.0, 8.0],
+    "hunted_radius": [2.0, 6.0],
+    "hunted_mass": [0.2, 0.8],
+    "stay_cap_limit": [1.0, 3.0],
+    "cage_escape": [1.0, 1.0],
+    "room_first": [1.0, 1.0]
+  },
+  "run": {
+    "seed": 1313,
+    "population": 8,
+    "generations": 6,
+    "elite_count": 2,
+    "tournament_size": 3,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.15,
+    "mutation_rate": 0.35,
+    "fitness_seeds": [401, 402, 403, 404, 405, 406, 407, 408],
+    "scenario_min_separation": 4
+  },
+  "smoke": {
+    "seed": 7,
+    "population": 4,
+    "generations": 3,
+    "elite_count": 1,
+    "tournament_size": 2,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.2,
+    "mutation_rate": 0.5,
+    "fitness_seeds": [301, 302, 303],
+    "scenario_min_separation": 4
+  },
+  "artifact_out": "config/selfplay_weights_evader.json",
+  "evidence_out": "docs/evidence/m11p2-ga-evader.md"
+}
