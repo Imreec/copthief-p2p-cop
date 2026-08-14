@@ -9,6 +9,7 @@ entry accuses an honest peer of forgery, and the wall-timing boundary case
 (seal completing on the final turn) makes a hard verdict unsafe.
 """
 
+from collections.abc import Callable
 from typing import Any
 
 from copthief_core.domain.board import Board, Coord
@@ -23,14 +24,14 @@ def make_board(barriers: frozenset[Coord]) -> Board:
     )
 
 
-def record(step: int, cell: tuple[int, int] | None, **extra: Any) -> dict[str, Any]:
+def record(step: int, cell: tuple[int, int] | None, **extra: str) -> dict[str, Any]:
     payload: dict[str, Any] = {"step": step, "role": "THIEF", **extra}
     if cell is not None:
         payload["state"] = list(cell)  # best2934's spelling — the live-finding shape
     return {"payload": payload}
 
 
-def collect(events: list[dict[str, Any]]) -> Any:
+def collect(events: list[dict[str, Any]]) -> Callable[[dict[str, Any]], None]:
     return events.append
 
 
