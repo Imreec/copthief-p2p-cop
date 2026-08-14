@@ -34,13 +34,13 @@
         "imreeyal": "thief",
         "best2934": "police"
       },
-      "started_at": "2026-08-14T19:03:11.217094+00:00",
-      "ended_at": "2026-08-14T19:04:26.817094+00:00",
+      "started_at": "2026-08-14T12:21:05.271708+00:00",
+      "ended_at": "2026-08-14T12:22:28.671708+00:00",
       "result": "survival",
       "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "eaa7f2f042eba87e2fc484d5e81f6890b28213fe",
+        "imreeyal": "130a7967c4aabc591f0dd8da64c041898e61707b",
         "best2934": "unknown"
       },
       "tokens": {
@@ -66,13 +66,13 @@
         "imreeyal": "police",
         "best2934": "thief"
       },
-      "started_at": "2026-08-14T19:04:20.670110+00:00",
-      "ended_at": "2026-08-14T19:05:30.970110+00:00",
+      "started_at": "2026-08-14T12:21:59.079845+00:00",
+      "ended_at": "2026-08-14T12:22:53.579845+00:00",
       "result": "survival",
       "winner_group": "best2934",
       "tie": false,
       "github_commit": {
-        "imreeyal": "eaa7f2f042eba87e2fc484d5e81f6890b28213fe",
+        "imreeyal": "130a7967c4aabc591f0dd8da64c041898e61707b",
         "best2934": "unknown"
       },
       "tokens": {
@@ -98,13 +98,13 @@
         "imreeyal": "thief",
         "best2934": "police"
       },
-      "started_at": "2026-08-14T19:05:19.344038+00:00",
-      "ended_at": "2026-08-14T19:06:13.444038+00:00",
-      "result": "capture",
-      "winner_group": "best2934",
+      "started_at": "2026-08-14T12:22:44.835116+00:00",
+      "ended_at": "2026-08-14T12:23:32.335116+00:00",
+      "result": "survival",
+      "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "eaa7f2f042eba87e2fc484d5e81f6890b28213fe",
+        "imreeyal": "130a7967c4aabc591f0dd8da64c041898e61707b",
         "best2934": "unknown"
       },
       "tokens": {
@@ -112,8 +112,8 @@
         "best2934": 0
       },
       "score": {
-        "imreeyal": 5,
-        "best2934": 20
+        "imreeyal": 10,
+        "best2934": 5
       },
       "log_files": {
         "imreeyal": "log_best2934-vs-imreeyal_g03.json",
@@ -130,13 +130,13 @@
         "imreeyal": "police",
         "best2934": "thief"
       },
-      "started_at": "2026-08-14T19:05:56.073716+00:00",
-      "ended_at": "2026-08-14T19:06:36.573716+00:00",
+      "started_at": "2026-08-14T12:23:30.368757+00:00",
+      "ended_at": "2026-08-14T12:24:13.068757+00:00",
       "result": "survival",
       "winner_group": "best2934",
       "tie": false,
       "github_commit": {
-        "imreeyal": "eaa7f2f042eba87e2fc484d5e81f6890b28213fe",
+        "imreeyal": "130a7967c4aabc591f0dd8da64c041898e61707b",
         "best2934": "unknown"
       },
       "tokens": {
@@ -162,13 +162,13 @@
         "imreeyal": "thief",
         "best2934": "police"
       },
-      "started_at": "2026-08-14T19:06:34.250232+00:00",
-      "ended_at": "2026-08-14T19:07:08.450232+00:00",
-      "result": "capture",
-      "winner_group": "best2934",
+      "started_at": "2026-08-14T12:24:15.523703+00:00",
+      "ended_at": "2026-08-14T12:24:58.023703+00:00",
+      "result": "survival",
+      "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "eaa7f2f042eba87e2fc484d5e81f6890b28213fe",
+        "imreeyal": "130a7967c4aabc591f0dd8da64c041898e61707b",
         "best2934": "unknown"
       },
       "tokens": {
@@ -176,8 +176,8 @@
         "best2934": 0
       },
       "score": {
-        "imreeyal": 5,
-        "best2934": 20
+        "imreeyal": 10,
+        "best2934": 5
       },
       "log_files": {
         "imreeyal": "log_best2934-vs-imreeyal_g05.json",
@@ -194,13 +194,13 @@
         "imreeyal": "police",
         "best2934": "thief"
       },
-      "started_at": "2026-08-14T19:07:08.821044+00:00",
-      "ended_at": "2026-08-14T19:07:48.821044+00:00",
+      "started_at": "2026-08-14T12:25:09.618555+00:00",
+      "ended_at": "2026-08-14T12:26:10.518555+00:00",
       "result": "survival",
       "winner_group": "best2934",
       "tie": false,
       "github_commit": {
-        "imreeyal": "eaa7f2f042eba87e2fc484d5e81f6890b28213fe",
+        "imreeyal": "130a7967c4aabc591f0dd8da64c041898e61707b",
         "best2934": "unknown"
       },
       "tokens": {
@@ -223,16 +223,16 @@
   ],
   "final_result": {
     "total_score": {
-      "imreeyal": 35,
-      "best2934": 75
+      "imreeyal": 47,
+      "best2934": 47
     },
     "sub_games_won": {
-      "imreeyal": 1,
-      "best2934": 5
+      "imreeyal": 3,
+      "best2934": 3
     },
     "ties": 0,
-    "winner_group": "best2934",
-    "series_tie": false,
+    "winner_group": null,
+    "series_tie": true,
     "tokens_total_series": {
       "best2934": 0,
       "imreeyal": 0
@@ -248,7 +248,7 @@
     }
   },
   "mutual_agreement": {
-    "sha256": "d15a422495a8393f7780f450701e2eef290ada3b2f02e289aaaf636a3a1d4c0b",
+    "sha256": "448002dad4983f066c61afd4dc7757a8b77711b73d8755a468c78be900c4711b",
     "confirmed": true
   }
 }
