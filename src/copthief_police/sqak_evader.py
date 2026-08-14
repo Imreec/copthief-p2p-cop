@@ -18,6 +18,10 @@ byte-identical to `1ca9d23` and the fielded `[strategy]` thief weights are uncha
 (`w_dist`/`w_exits`/`w_risk` all 1.0; `w_reach`/`tie_epsilon` still class defaults).
 The only fielded motion since the fix is cop-side (`min_gain` 1 -> 2, new
 `apex_barrier_cost` 1.0) — nothing this arm models, so the arm stands unchanged.
+Re-verified 2026-08-13 against their HEAD `72e7abc`: `thief_evader_v2.py` still
+byte-identical to `1ca9d23`, zero strategy/config motion since `d0bb80f` beyond
+`counted_games_played` 0 -> 2 (bookkeeping: they banked a counted vs vibecode
+2026-08-12). Arm stands.
 
 Their objective is ROOM, not distance: exits and reachable area carry it, and distance
 survives only as a tiebreak. Two behaviours are load-bearing and mirrored exactly:

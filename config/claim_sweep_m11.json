@@ -1,0 +1,155 @@
+{
+  "version": "1.00",
+  "_comment": "M11 part 2 claim-threshold RE-sweep (measurement, champion_pin null): claim_threshold 0.1 was measured under the M7 book-v1 vector (m7-19); containment changed the cop's rhythm (stand-still wall turns are readable), so the M11 armed vector is re-swept on SERIES POINTS against claim-READING and claim-BLIND forms of the refreshed pool evaders. t2 can never meet its threshold = the silent cop. Read PER OPPONENT (threshold is private per-match config). Regenerate: uv run python scripts/claim_sweep.py --config config/claim_sweep_m11.json --out docs/evidence/m11p2-claim-sweep.md",
+  "police_roster": [
+    {
+      "name": "m11-t0",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199",
+      "claim_threshold": 0.0
+    },
+    {
+      "name": "m11-t0p05",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199",
+      "claim_threshold": 0.05
+    },
+    {
+      "name": "m11-t0p1",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199",
+      "claim_threshold": 0.1
+    },
+    {
+      "name": "m11-t0p25",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199",
+      "claim_threshold": 0.25
+    },
+    {
+      "name": "m11-t2",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199",
+      "claim_threshold": 2.0
+    }
+  ],
+  "thief_roster": [
+    {
+      "name": "doctrine-reader",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-blind",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199"
+    },
+    {
+      "name": "anrbj666-reader",
+      "spec": "anrbj666-thief",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "anrbj666-blind",
+      "spec": "anrbj666-thief",
+      "feed": "sharp199"
+    },
+    {
+      "name": "nisyar1-thief",
+      "spec": "nisyar1-thief",
+      "feed": "sharp199"
+    },
+    {
+      "name": "sqak-evader",
+      "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
+    }
+  ],
+  "seeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "m11-t0": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0
+    },
+    "m11-t0p05": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0
+    },
+    "m11-t0p1": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0
+    },
+    "m11-t0p25": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0
+    },
+    "m11-t2": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0
+    },
+    "doctrine-reader": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 2.0,
+      "center_margin_cap": 2.0
+    },
+    "doctrine-blind": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 2.0,
+      "center_margin_cap": 2.0
+    }
+  },
+  "evidence_out": "docs/evidence/m11p2-claim-sweep.md"
+}

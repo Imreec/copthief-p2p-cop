@@ -52,10 +52,15 @@
     "doctrine-evader": {
       "room_first": 1.0,
       "cage_escape": 1.0,
-      "forecast_walls": 3.0,
-      "forecast_wall_reach": 2.0,
-      "flight_floor": 2.0,
-      "center_margin_cap": 2.0
+      "forecast_walls": 1.7077724887827392,
+      "forecast_wall_reach": 2.291547293741782,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
     },
     "best2934-police": {
       "barrier_engage_range": 1.0,

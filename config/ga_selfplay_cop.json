@@ -1,0 +1,54 @@
+{
+  "version": "1.00",
+  "_comment": "M11 part 2 self-play loop, COP phase: harden PoliceBrain against the hardened evader + the two strongest refreshed rival thieves (fitness = mean capture rate). Genes = the M10/M11 containment set + the classic vector (contain_enabled pinned ON via [1,1]; path_distance is the M11 wall-aware leaf flag, searched as on/off boundary box). candidate_feed sharp199 + claim_threshold 0.1 = the fielded stack. Fitness seeds FRESH (501+), never the pool-gate suite. Opponent options injected by scripts/selfplay_loop.py (evader phase output or champion). Run via scripts/selfplay_loop.py, never ga_run.py directly.",
+  "role": "police",
+  "brain": "copthief_police.brain:PoliceBrain",
+  "opponent": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+  "opponent_options": {},
+  "opponent_feed": "sharp199",
+  "candidate_feed": "sharp199",
+  "claim_threshold": 0.1,
+  "claim_feed": "truth",
+  "opponent_pool": [
+    {"spec": "anrbj666-thief", "feed": "sharp199", "claim_feed": "truth"},
+    {"spec": "nisyar1-thief", "feed": "sharp199", "claim_feed": null}
+  ],
+  "genes": {
+    "w_distance": [0.5, 6.0],
+    "w_mobility": [0.0, 5.0],
+    "w_region": [0.0, 3.0],
+    "w_budget": [0.0, 3.0],
+    "barrier_gain_threshold": [0.5, 6.0],
+    "p_commit": [0.2, 0.8],
+    "tie_epsilon": [0.0, 0.5],
+    "contain_range": [2.0, 6.0],
+    "path_distance": [0.0, 1.0],
+    "contain_enabled": [1.0, 1.0]
+  },
+  "run": {
+    "seed": 1717,
+    "population": 8,
+    "generations": 6,
+    "elite_count": 2,
+    "tournament_size": 3,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.15,
+    "mutation_rate": 0.35,
+    "fitness_seeds": [501, 502, 503, 504, 505, 506, 507, 508],
+    "scenario_min_separation": 4
+  },
+  "smoke": {
+    "seed": 7,
+    "population": 4,
+    "generations": 3,
+    "elite_count": 1,
+    "tournament_size": 2,
+    "crossover_blend": 0.5,
+    "mutation_sigma": 0.2,
+    "mutation_rate": 0.5,
+    "fitness_seeds": [301, 302, 303],
+    "scenario_min_separation": 4
+  },
+  "artifact_out": "config/selfplay_weights_cop.json",
+  "evidence_out": "docs/evidence/m11p2-ga-cop.md"
+}
