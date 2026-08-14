@@ -1,6 +1,6 @@
 {
   "version": "1.00",
-  "_comment": "M11 part 2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null): every modeled rival arm resynced to its source HEAD (anrbj666 41e907d/f95b438 fielded brains; nis-yar1 41b9fb76 counted shapes; sqak 72e7abc re-verified; vibecode/best2934 stand). The champions (police-m11/doctrine-m11, armed knobs copied from arena_m11.json) must hold their M11 numbers here BEFORE any self-play round trusts this pool. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json",
+  "_comment": "M11p2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null), M12: best2934 arms rebuilt at their 08-14 played heads (cop 96d9b17 / thief 5324415 - exit-veto thief, range-4 plow cop with their every-step claims; the 35-75 stack). Other arms: anrbj666 41e907d/f95b438; nis-yar1 41b9fb76; sqak 72e7abc; vibecode stands. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json",
   "police_roster": [
     {
       "name": "police-m11",
@@ -20,7 +20,8 @@
     {
       "name": "best2934-police",
       "spec": "best2934-police",
-      "feed": "sharp199"
+      "feed": "sharp199",
+      "claim_threshold": 0.0
     },
     {
       "name": "vibecode-police",
@@ -87,7 +88,7 @@
       "path_distance": 1.0
     },
     "best2934-police": {
-      "barrier_engage_range": 1.0,
+      "barrier_engage_range": 4.0,
       "barrier_min_gain": 1.0,
       "barrier_endgame_reserve": 3.0
     },

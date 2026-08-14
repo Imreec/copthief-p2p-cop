@@ -1,0 +1,134 @@
+{
+  "version": "1.00",
+  "_comment": "M12 best2934 counter-study (measurement instrument, champion_pin null): the 08-14 35-75 loss reproduced offline, then the counter-stack measured against the SAME arms. Their arms are rebuilt at the played heads (cop 96d9b17 range-4 plow, every-step claims / thief 5324415 exit vetoes) and run BUFFED feeds (sharp199); OUR arms run truth-lag1 - best2934 transmits scent one full turn lagged (offline study of their public code), which is exactly the lag-1 claim trail the 08-14 forensics measured, so converting/surviving under this asymmetry is the honest projection bar. police-m11/doctrine-m11 carry the FIELDED v1.07 knobs verbatim - including the forecast_walls 1.7077 whose int() truncation ran the pocket forecast at k=1 live (the M12 evader bug find). police-m12 arms decouple intercept from claim 0.0 (the first stale run measured claim 0.0 costing 9 captures vs claim-READING evaders while free vs their arms - pairing-specific, not a global default). Regenerate: uv run python scripts/arena_run.py --config config/arena_m12_best2934.json",
+  "police_roster": [
+    {
+      "name": "police-m11",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "truth-lag1",
+      "claim_threshold": 0.1
+    },
+    {
+      "name": "police-m12",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "truth-lag1",
+      "claim_threshold": 0.0
+    },
+    {
+      "name": "police-m12-c01",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "truth-lag1",
+      "claim_threshold": 0.1
+    },
+    {
+      "name": "best2934-police",
+      "spec": "best2934-police",
+      "feed": "sharp199",
+      "claim_threshold": 0.0
+    }
+  ],
+  "thief_roster": [
+    {
+      "name": "doctrine-m11",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-m12",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "best2934-thief",
+      "spec": "best2934-thief",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    }
+  ],
+  "seeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "police-m11": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0
+    },
+    "police-m12": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0,
+      "intercept_enabled": 1.0
+    },
+    "police-m12-c01": {
+      "barrier_gain_threshold": 4.7893,
+      "p_commit": 0.2,
+      "w_budget": 1.7277,
+      "w_distance": 3.8875,
+      "w_mobility": 3.6061,
+      "w_region": 0.1143,
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0,
+      "intercept_enabled": 1.0
+    },
+    "doctrine-m11": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 1.7077724887827392,
+      "forecast_wall_reach": 2.291547293741782,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
+    },
+    "doctrine-m12": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
+    },
+    "best2934-police": {
+      "barrier_engage_range": 4.0,
+      "barrier_min_gain": 1.0,
+      "barrier_endgame_reserve": 3.0
+    },
+    "best2934-thief": {
+      "area_weight": 1.0,
+      "distance_weight": 1.2,
+      "endgame_window": 4.0
+    }
+  },
+  "evidence_out": "docs/evidence/m12-best2934-arena.md"
+}
