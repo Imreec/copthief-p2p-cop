@@ -3,6 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — feat/audit-outcome-rederivation (the best2934 false-survival catch)
+
+- **Driver:** Imree (relayed the league session's go-ahead: "the other session says you
+  can do the fix") · **Author:** Claude (terminal, worktree branch off `130a796`) ·
+  **Reviewer:** pending.
+- **What was asked:** the 2026-08-14 best2934 friendly reproduced the scout's offline
+  prediction live — our cop imprisoned their thief at (6,6) by step 13 (rule 47), their
+  engine never conceded, both sub-games settled as false 35-step survivals, and OUR audit
+  said Verified OK while holding the refuting trail. Fix our half: the audit must
+  re-derive the outcome from the disclosed walk.
+- **Outcome:** `peer/outcome_check.py` + wiring in `settle` — a LOUD `outcome_mismatch`
+  event (M6-7/SQ3 posture, never a problems[] verdict change: the final-turn-seal
+  boundary makes a hard accusation unsafe), rule-46 and held->=2-steps rule-47 forms,
+  vacuous runs say so (M7-58). Validated two ways: 6 unit pins incl. the exact live
+  geometry and the boundary case, and a LIVE-ORACLE replay of the real g02/g04 audit
+  bytes (both fire: rule 47, cell [6,6], held 31 steps). Their-side fix + written
+  confirmation stays a precondition for any best2934 counted (league lane).
+
 ## PR — m11-part2-selfplay (M11-4: pool refresh, self-play loop, kept-with-data sweeps)
 
 - **Driver:** Imree (session prompt `SESSION-PROMPT-M11-PART2-SELFPLAY-AND-VALIDATION.md`;
