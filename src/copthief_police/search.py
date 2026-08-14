@@ -10,15 +10,32 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 
-from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.board import Board, Coord
 from copthief_core.domain.rules import is_imprisoned, legal_moves
+from copthief_core.strategy.brains import Observation
 from copthief_police.features import leaf_value
 
 
-def truncated_support(belief: BeliefFilter, top_k: int) -> list[tuple[Coord, float]]:
-    """The `top_k` most probable cells, renormalized (deterministic order)."""
-    ranked = sorted(belief.probs().items(), key=lambda kv: (-kv[1], kv[0]))[:top_k]
+def commit_move(
+    observation: Observation, probs: Mapping[Coord, float], p_commit: float
+) -> str | None:
+    """The capture-commit rule: step onto any adjacent cell holding ≥ `p_commit`
+    of the (possibly momentum-advanced — M12) posterior, in sorted move order."""
+    board, position = observation.board, observation.position
+    for move in sorted(legal_moves(board, position, observation.move_set)):
+        dest = board.apply_move(position, move)
+        if dest != position and probs.get(dest, 0.0) >= p_commit:
+            return move
+    return None
+
+
+def truncated_support(probs: Mapping[Coord, float], top_k: int) -> list[tuple[Coord, float]]:
+    """The `top_k` most probable cells, renormalized (deterministic order).
+
+    Takes the probs mapping rather than the filter so the M12 intercept can hand
+    every consumer the same momentum-advanced view through one seam.
+    """
+    ranked = sorted(probs.items(), key=lambda kv: (-kv[1], kv[0]))[:top_k]
     total = sum(p for _, p in ranked)
     return [(cell, p / total) for cell, p in ranked] if total > 0 else []
 

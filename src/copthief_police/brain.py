@@ -2,9 +2,11 @@
 
 Pursuit policy: capture-commit when the mass is one step away (the claim rides free —
 SQ2), otherwise expectimax over the truncated belief with barrier graph-surgery as a
-root action. Deterministic given (config, seed): the RNG is interface-only, every
-tie breaks on sorted move order. The LLM never appears anywhere in this package
-(App E rule 25 — pinned by an AST-scan test).
+root action. M12: every posterior read goes through `_observed_probs`, which can
+advance it by the peak's momentum (`intercept_enabled`; 0.0 = the M11 stream).
+Deterministic given (config, seed): the RNG is interface-only, every tie breaks on
+sorted move order. The LLM never appears anywhere in this package (App E rule 25 —
+pinned by an AST-scan test).
 """
 
 from __future__ import annotations
@@ -18,37 +20,43 @@ from copthief_police.barriers import best_candidate
 from copthief_police.containment import containment_wall
 from copthief_police.endgame import forced_action, sharp_support
 from copthief_police.features import resolve_options
-from copthief_police.search import action_value, truncated_support
+from copthief_police.intercept import InterceptTracker
+from copthief_police.search import action_value, commit_move, truncated_support
 
 
 class PoliceBrain(BrainBase):
     """Expectimax + graph surgery over the belief's public read surface."""
 
     _last_wall_step: int = -(10**9)  # M10 containment spacing (any wall resets it)
+    _tracker: InterceptTracker | None = None  # M12 momentum state, built on first use
 
     def _walled(self, step: int, barrier: Coord) -> Decision:
         """Record the investment turn, then stand and place (BARRIER semantics)."""
         self._last_wall_step = step
         return Decision(barrier=barrier)
 
-    def _commit_move(self, observation: Observation, belief: BeliefFilter) -> str | None:
-        """The capture-commit rule: step onto any adjacent cell holding ≥ p_commit."""
-        opts = resolve_options(self._options)
-        for move in sorted(
-            legal_moves(observation.board, observation.position, observation.move_set)
-        ):
-            dest = observation.board.apply_move(observation.position, move)
-            if dest != observation.position and belief.prob_at(dest) >= opts["p_commit"]:
-                return move
-        return None
+    def _observed_probs(self, observation: Observation, belief: BeliefFilter) -> dict[Coord, float]:
+        """The posterior the brain hunts: raw, or momentum-advanced (M12 seam)."""
+        if resolve_options(self._options)["intercept_enabled"] <= 0.0:
+            return belief.probs()
+        if self._tracker is None:
+            self._tracker = InterceptTracker()
+        return self._tracker.observe(
+            observation.step, belief.argmax(), belief.probs(), observation.board
+        )
+
+    def _commit(self, observation: Observation, probs: dict[Coord, float]) -> str | None:
+        """The capture-commit rule over the observed posterior (search primitive)."""
+        return commit_move(observation, probs, resolve_options(self._options)["p_commit"])
 
     def _pick_move(self, observation: Observation, belief: BeliefFilter) -> str:
         """Best MOVE-only action (also the degrade path when a barrier is refused)."""
-        commit = self._commit_move(observation, belief)
+        probs = self._observed_probs(observation, belief)
+        commit = self._commit(observation, probs)
         if commit is not None:
             return commit
         opts = resolve_options(self._options)
-        support = truncated_support(belief, int(opts["search_top_k"]))
+        support = truncated_support(probs, int(opts["search_top_k"]))
         board, position = observation.board, observation.position
         moves = sorted(legal_moves(board, position, observation.move_set))
         if not moves or not support:
@@ -72,7 +80,9 @@ class PoliceBrain(BrainBase):
             return self._rng.choice(ties)
         return next(move for value, move in scored if value == best_value)
 
-    def _forced_endgame(self, observation: Observation, belief: BeliefFilter) -> Decision | None:
+    def _forced_endgame(
+        self, observation: Observation, probs: dict[Coord, float]
+    ) -> Decision | None:
         """The M9-1 solver seam: a proven forcing line outranks the heuristic.
 
         Gated on a sharp support and capped at the turns actually remaining — a
@@ -82,7 +92,7 @@ class PoliceBrain(BrainBase):
         if opts["endgame_enabled"] <= 0.0:
             return None
         support = sharp_support(
-            belief.probs(),
+            probs,
             mass_threshold=opts["endgame_support_mass"],
             max_cells=int(opts["endgame_max_support"]),
         )
@@ -111,14 +121,15 @@ class PoliceBrain(BrainBase):
 
     def _decide(self, observation: Observation, belief: BeliefFilter) -> Decision:
         """Full action: commit beats everything; then wall-vs-move by expected value."""
-        commit = self._commit_move(observation, belief)
+        probs = self._observed_probs(observation, belief)
+        commit = self._commit(observation, probs)
         if commit is not None:
             return Decision(move=commit)
-        forced = self._forced_endgame(observation, belief)
+        forced = self._forced_endgame(observation, probs)
         if forced is not None:
             return forced
         opts = resolve_options(self._options)
-        support = truncated_support(belief, int(opts["search_top_k"]))
+        support = truncated_support(probs, int(opts["search_top_k"]))
         board, position = observation.board, observation.position
         if not support:
             return Decision(move=self._pick_move(observation, belief))
