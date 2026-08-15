@@ -1,9 +1,9 @@
 # copthief-p2p-cop — Cop agent, Distributed Cops-and-Robbers over P2P
 
-> **Status: M0 (process bedrock) — no gameplay code yet, by design.** This project builds
-> docs-first behind approved gates: see [docs/PRD.md](docs/PRD.md), [docs/PLAN.md](docs/PLAN.md),
-> [docs/TODO.md](docs/TODO.md). This README becomes the full academic report at M8; until then it
-> only states what is true of the tree.
+> **Status: playing the league (M12).** This project builds docs-first behind approved gates:
+> see [docs/PRD.md](docs/PRD.md), [docs/PLAN.md](docs/PLAN.md), [docs/TODO.md](docs/TODO.md).
+> This README becomes the full academic report at M8 (kept last); until then it only states
+> what is true of the tree.
 
 Final project, *Orchestration of AI Agents* (University of Haifa, Dr. Yoram Segal) — the **cop**
 agent for the hidden-position pursuit race over P2P FastMCP, per the official book v3.0.0 and its
@@ -14,9 +14,16 @@ our public conformance kit:
 
 ## What exists right now
 
-- Approved planning docs (PRD / PLAN / TODO) + `CLAUDE.md` (project law) + ADRs 0001–0002.
+- The full playing agent: pure domain core + belief filter, peer wire layer
+  (negotiate/turns/audit over FastMCP), strategy brains (expectimax cop with graph
+  surgery, containment, forcing endgame solver and belief-momentum intercept; doctrine
+  evader with k-wall pocket forecast), automatic reporting behind the recipient
+  interlock, replay GUI, and the arena/GA tuning instruments. Decisions: ADRs
+  0001–0015 in [docs/adr/](docs/adr/); five counted series banked
+  (`reports/counted-series/`).
 - Quality gates wired: ruff, mypy --strict, pytest+coverage, 150-line limit, anti-pattern /
-  no-hardcoded scanners, core-mirror manifest check, self-grade validation, submission checklist.
+  no-hardcoded scanners, core-mirror manifest check, self-grade validation, submission
+  checklist, champion-regression arena gate.
 - This repo is the **lead**: `src/copthief_core/` is developed here and mirrored to the sibling
   by `scripts/sync_core.py` (ADR-0001).
 

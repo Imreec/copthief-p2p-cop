@@ -1,0 +1,124 @@
+{
+  "version": "1.00",
+  "_comment": "M12 evader polish sweep (measurement instrument, champion_pin null): doctrine-m12 (the k=3 fix, 29/32 vs their r4 plow cop) against single-knob variants hunting the last 3 losses. Opponent = best2934-police at the 08-14 played head (96d9b17), buffed feed. Regenerate: uv run python scripts/arena_run.py --config config/arena_m12_evader_sweep.json",
+  "police_roster": [
+    {
+      "name": "best2934-police",
+      "spec": "best2934-police",
+      "feed": "sharp199",
+      "claim_threshold": 0.0
+    }
+  ],
+  "thief_roster": [
+    {
+      "name": "doctrine-m12",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-m12-margin2",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-m12-reach3",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-m12-hunt015",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
+      "name": "doctrine-m12-k4",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    }
+  ],
+  "seeds": [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
+  ],
+  "scenario_min_separation": 4,
+  "champion_pin": null,
+  "dod_series": [],
+  "brain_options": {
+    "best2934-police": {
+      "barrier_engage_range": 4.0,
+      "barrier_min_gain": 1.0,
+      "barrier_endgame_reserve": 3.0
+    },
+    "doctrine-m12": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
+    },
+    "doctrine-m12-margin2": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 2.0,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
+    },
+    "doctrine-m12-reach3": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 3.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
+    },
+    "doctrine-m12-hunt015": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 3.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.15,
+      "stay_cap_limit": 2.281202991194793
+    },
+    "doctrine-m12-k4": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 4.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
+    }
+  },
+  "evidence_out": "docs/evidence/m12-evader-sweep.md"
+}

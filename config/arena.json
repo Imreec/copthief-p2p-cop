@@ -5,7 +5,12 @@
     "random",
     "greedy-manhattan",
     "ref-police",
-    "best2934-police",
+    {
+      "name": "best2934-police",
+      "spec": "best2934-police",
+      "feed": "sharp199",
+      "claim_threshold": 0.0
+    },
     {
       "name": "police-brain",
       "spec": "copthief_police.brain:PoliceBrain",
@@ -16,7 +21,11 @@
     "random",
     "greedy-manhattan",
     "ref-thief",
-    "best2934-thief",
+    {
+      "name": "best2934-thief",
+      "spec": "best2934-thief",
+      "feed": "sharp199"
+    },
     {
       "name": "doctrine-evader",
       "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
@@ -45,15 +54,17 @@
       "w_distance": 3.8875,
       "w_mobility": 3.6061,
       "w_region": 0.1143,
+      "tie_epsilon": 0.25,
       "contain_enabled": 1.0,
       "contain_range": 4.0,
-      "path_distance": 1.0
+      "path_distance": 1.0,
+      "intercept_enabled": 1.0
     },
     "doctrine-evader": {
       "room_first": 1.0,
       "cage_escape": 1.0,
-      "forecast_walls": 1.7077724887827392,
-      "forecast_wall_reach": 2.291547293741782,
+      "forecast_walls": 4.0,
+      "forecast_wall_reach": 2.0,
       "flight_floor": 1.6081389068646288,
       "center_margin_cap": 1.6587821646865204,
       "safe_distance": 6.0,
@@ -63,7 +74,7 @@
       "stay_cap_limit": 2.281202991194793
     },
     "best2934-police": {
-      "barrier_engage_range": 1.0,
+      "barrier_engage_range": 4.0,
       "barrier_min_gain": 1.0,
       "barrier_endgame_reserve": 3.0
     },

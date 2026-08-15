@@ -47,6 +47,9 @@ DEFAULT_OPTIONS: dict[str, float] = {
     # path length instead of Manhattan — our own wall can otherwise create a
     # local minimum the 2-ply horizon freezes in (19 STAY turns, game conceded).
     "path_distance": 0.0,
+    # M12 (best2934 forensics): 1.0 advances the posterior by the peak's observed
+    # momentum before every read — the lag-1 claim-targeting fix. 0.0 = M11 stream.
+    "intercept_enabled": 0.0,
 }
 
 

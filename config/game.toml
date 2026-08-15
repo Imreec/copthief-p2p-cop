@@ -3,7 +3,7 @@
 # M1 carries only the sections the walking skeleton reads; [strategy]/[trash_talk]/[llm]/[email]
 # arrive with their milestones (M5/M6).
 
-version = "1.06"
+version = "1.07"
 
 [game]
 group_name = "ImreEyal-Police"
@@ -68,6 +68,13 @@ contain_enabled = 1.0
 # provably unchanged - the geodesic IS Manhattan there).
 contain_range = 4.0
 path_distance = 1.0
+# M12 belief-momentum intercept (ADR-0015, the best2934 35-75 lesson): our capture
+# claims trailed their thief's true cell by exactly one step for 20+ consecutive
+# steps (11-12 adjacencies, two co-locations, zero conversions). The brain now
+# advances the posterior by the peak's observed unit drift before every read -
+# measured best-or-equal against every arm (m12-best2934-arena.md: 4->10 captures
+# vs doctrine-m11, 32/32 vs their rebuilt thief).
+intercept_enabled = 1.0
 # M9-5 claim gate (base table - applies under the shipped subtractive model too):
 # claim only when the landing's own belief mass clears this. NOT the m7-19 blanket
 # silence (that lost 32/32 -> 0/32 captures); with the sharp tier the belief is
@@ -95,13 +102,14 @@ w_region = 0.03057885641327504
 # the LANDING capture is claim-gated. A chasing vector silenced the same way loses
 # everything (32/32 -> 0/32 captures), which is why the base table below is untouched.
 claim_threshold = 0.1
-# M11 overlay pin (ADR-0013, session item 3a): the M10/M11 mechanisms were never
-# measured under book-v1 physics, and without these lines the base table would arm
-# them via fallthrough if a pairing ever locked this model. Explicit OFF until a
-# book-v1 measurement exists - do not remove the pins without one.
+# M11 overlay pin (ADR-0013, session item 3a; M12 extends): the M10/M11/M12
+# mechanisms were never measured under book-v1 physics, and without these lines the
+# base table would arm them via fallthrough if a pairing ever locked this model.
+# Explicit OFF until a book-v1 measurement exists - do not remove the pins without one.
 contain_enabled = 0.0
 contain_range = 3.0
 path_distance = 0.0
+intercept_enabled = 0.0
 
 [scent]
 # Which NAMED scent model we play (M3-8, ADR-0004 v2; registrations in

@@ -219,6 +219,38 @@
   cost must be measured against the final stack). Thief-repo game.toml + runbook propagation
   owed post-merge (v1.07).
 
+## Phase M12 — counter best2934's overhauled stack (the 08-14 35–75 lesson; ADR-0015)
+
+- ☑ **M12-1** Both best2934 arms rebuilt at their played heads (cop `96d9b17` range-4 plow +
+  every-step claims + rule-46 seal exemption + region_cap 49 un-clamp; thief `5324415`
+  exit-veto chain + their N>S>E>W>STAY argmax) — offline study of their public code +
+  our own g01–g06 logs; replay-validated (wall-turn 14/14 both cop games, thief dest ~75%).
+  Arm-fidelity pins in `test_best2934_{cop,thief}.py`.
+- ☑ **M12-2** Cop belief-momentum intercept (`copthief_police/intercept.py`, knob
+  `intercept_enabled`, default-off byte-identical; armed `game.toml` v1.07 + book-v1
+  overlay explicit-OFF pin): the forensics' lag-1 claim-trail fix — 4→10 captures vs
+  doctrine-m11, 32/32 vs their rebuilt thief under the truth-lag1 handicap
+  (`m12-best2934-arena.md`). Claim 0.1 KEPT with data (claim 0.0 costs 9 captures vs a
+  claim-reading evader; pairing-specific only).
+- ☑ **M12-3** Evader k-forecast truncation bug fixed by config: fielded `forecast_walls
+  1.7077…` int-truncated to k=1 live (16/32 survivals vs their r4 cop); k=3 → 29/32,
+  k=4 sweep winner → 31/32 (`m12-evader-sweep.md`). Champion pins integer knobs (4.0/2.0);
+  flight_floor raise rejected with data (rim-death reproduced). The k dial is a measured
+  TRADE vs interception-class cops (anrbj666-police: k1 32/32 · k3 22/32 · k4 15/32) —
+  k4 chosen for the mission, per-pairing config can select k3/harvest vs that class
+  (ADR-0015 item 3).
+- ☑ **M12-4** Champion gate GREEN with the armed stack + buffed opponent arms
+  (`m5-arena.md`: police-brain 8/8 every thief arm, DoD 32/32; doctrine-evader 8/8 vs
+  their cop); `arena.json` now carries fielded `tie_epsilon 0.25` (live/gate divergence
+  closed). Intercept persistence gate (two equal drifts) closed the pool's cop dips:
+  final pool ZERO cop regressions (anrbj666-thief exactly 26/6, sqak 32/0, vibecode
+  30/2→32/0), evader holds every arm except the documented anrbj666-police k-trade.
+  Projection vs their stack (ours truth-lag1, theirs sharp199): ~90–30, P(6-0) ≈ 0.91.
+- ☐ **M12-5** Post-merge propagation: thief-repo `game.toml` v1.08 (`forecast_walls 4.0`,
+  `forecast_wall_reach 2.0`) via sync PR; ALL runbook config dirs hand-armed (intercept +
+  evader knobs + overlay pins); sparring untouched. Live validation = the next best2934
+  friendly (their mail gate + Imree's counted sign-off unchanged).
+
 ## Phase M8 — Submission hardening
 
 - ☐ **M8-1** README academic reports ×2 (§9.4.2 sections + user-manual sections + contradiction-choices narrative + screenshots + sibling links) — C, review E+AG, approve I. DoD: `check_submission.py` README items green.

@@ -1,9 +1,9 @@
 {
   "version": "1.00",
-  "_comment": "M11 part 2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null): every modeled rival arm resynced to its source HEAD (anrbj666 41e907d/f95b438 fielded brains; nis-yar1 41b9fb76 counted shapes; sqak 72e7abc re-verified; vibecode/best2934 stand). The champions (police-m11/doctrine-m11, armed knobs copied from arena_m11.json) must hold their M11 numbers here BEFORE any self-play round trusts this pool. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json",
+  "_comment": "M11p2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null), M12: best2934 arms rebuilt at their 08-14 played heads (cop 96d9b17 / thief 5324415 - exit-veto thief, range-4 plow cop with their every-step claims; the 35-75 stack). Other arms: anrbj666 41e907d/f95b438; nis-yar1 41b9fb76; sqak 72e7abc; vibecode stands. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json",
   "police_roster": [
     {
-      "name": "police-m11",
+      "name": "police-m12",
       "spec": "copthief_police.brain:PoliceBrain",
       "feed": "sharp199"
     },
@@ -20,7 +20,8 @@
     {
       "name": "best2934-police",
       "spec": "best2934-police",
-      "feed": "sharp199"
+      "feed": "sharp199",
+      "claim_threshold": 0.0
     },
     {
       "name": "vibecode-police",
@@ -36,7 +37,7 @@
   ],
   "thief_roster": [
     {
-      "name": "doctrine-m11",
+      "name": "doctrine-m12",
       "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
       "feed": "sharp199",
       "claim_feed": "truth"
@@ -74,7 +75,7 @@
   "champion_pin": null,
   "dod_series": [],
   "brain_options": {
-    "police-m11": {
+    "police-m12": {
       "barrier_gain_threshold": 4.7893,
       "p_commit": 0.2,
       "w_budget": 1.7277,
@@ -84,20 +85,26 @@
       "tie_epsilon": 0.25,
       "contain_enabled": 1.0,
       "contain_range": 4.0,
-      "path_distance": 1.0
+      "path_distance": 1.0,
+      "intercept_enabled": 1.0
     },
     "best2934-police": {
-      "barrier_engage_range": 1.0,
+      "barrier_engage_range": 4.0,
       "barrier_min_gain": 1.0,
       "barrier_endgame_reserve": 3.0
     },
-    "doctrine-m11": {
+    "doctrine-m12": {
       "room_first": 1.0,
       "cage_escape": 1.0,
-      "forecast_walls": 3.0,
+      "forecast_walls": 4.0,
       "forecast_wall_reach": 2.0,
-      "flight_floor": 2.0,
-      "center_margin_cap": 2.0
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
     }
   },
   "evidence_out": "docs/evidence/m11p2-pool-arena.md"

@@ -10,15 +10,15 @@
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-brain | police | 40 | 37 | 755 |
-| ref-police | police | 40 | 18 | 470 |
-| best2934-police | police | 40 | 16 | 440 |
-| greedy-manhattan | police | 40 | 11 | 365 |
+| police-brain | police | 40 | 39 | 785 |
+| best2934-police | police | 40 | 23 | 545 |
+| ref-police | police | 40 | 16 | 440 |
+| greedy-manhattan | police | 40 | 8 | 320 |
 | random | police | 40 | 3 | 245 |
-| doctrine-evader | thief | 40 | 35 | 375 |
-| greedy-manhattan | thief | 40 | 29 | 345 |
-| ref-thief | thief | 40 | 28 | 340 |
-| best2934-thief | thief | 40 | 17 | 285 |
+| doctrine-evader | thief | 40 | 33 | 365 |
+| greedy-manhattan | thief | 40 | 25 | 325 |
+| ref-thief | thief | 40 | 24 | 320 |
+| best2934-thief | thief | 40 | 23 | 315 |
 | random | thief | 40 | 6 | 230 |
 
 **Champion pin** (`config/arena_champion.json`): police = `police-brain`, thief = `doctrine-evader`.
@@ -37,23 +37,23 @@ Per-pairing outcomes:
 | greedy-manhattan | random | 8 | 0 |
 | greedy-manhattan | greedy-manhattan | 0 | 8 |
 | greedy-manhattan | ref-thief | 0 | 8 |
-| greedy-manhattan | best2934-thief | 3 | 5 |
+| greedy-manhattan | best2934-thief | 0 | 8 |
 | greedy-manhattan | doctrine-evader | 0 | 8 |
 | ref-police | random | 7 | 1 |
 | ref-police | greedy-manhattan | 3 | 5 |
 | ref-police | ref-thief | 4 | 4 |
-| ref-police | best2934-thief | 4 | 4 |
+| ref-police | best2934-thief | 2 | 6 |
 | ref-police | doctrine-evader | 0 | 8 |
 | best2934-police | random | 8 | 0 |
-| best2934-police | greedy-manhattan | 0 | 8 |
-| best2934-police | ref-thief | 0 | 8 |
-| best2934-police | best2934-thief | 8 | 0 |
+| best2934-police | greedy-manhattan | 4 | 4 |
+| best2934-police | ref-thief | 4 | 4 |
+| best2934-police | best2934-thief | 7 | 1 |
 | best2934-police | doctrine-evader | 0 | 8 |
 | police-brain | random | 8 | 0 |
 | police-brain | greedy-manhattan | 8 | 0 |
 | police-brain | ref-thief | 8 | 0 |
 | police-brain | best2934-thief | 8 | 0 |
-| police-brain | doctrine-evader | 5 | 3 |
+| police-brain | doctrine-evader | 7 | 1 |
 
 ## DoD win-rate floors
 
