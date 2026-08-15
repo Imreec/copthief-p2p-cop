@@ -3,6 +3,28 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR — feat/m12-counter-best2934 (M12: counter best2934's overhauled stack; ADR-0015)
+
+- **Driver:** Imree (overnight autonomous session prompt after the 08-14 35–75 loss;
+  four scoping answers given at start: finisher/claims default-on posture, small
+  documented dips acceptable, 6–0-sweep offline bar with ≥70 fallback, one PR with the
+  friendly evidence as its first commit; morning merge is the approval) ·
+  **Author:** Claude (terminal, branch `feat/m12-counter-best2934`) · **Reviewer:** pending.
+- **What was asked:** study tonight's loss logs and their public repos (scout rules:
+  private worktree, read-only, offline), rebuild both best2934 arena mimics, and improve
+  both brains to beat their new stack offline while holding every previously measured
+  arm; run through to an open PR with CI green.
+- **Outcome:** evidence commit (35–75 artifacts + cleansix archive) · both mimics rebuilt
+  at their played heads with replay validation (wall-turn 14/14; the region_cap-40 clamp
+  that silenced their waller found and fixed) · forensics found the cop's lag-1
+  claim-trail (two unconverted co-locations) → belief-momentum intercept
+  (`copthief_police/intercept.py`, default-off byte-identical, armed v1.07) · the
+  evader's k-forecast truncation bug (fielded k=1) fixed by config, sweep winner k=4:
+  16/32 → 31/32 survivals vs their range-4 plow cop · claim 0.0 and flight_floor raise
+  both REJECTED with data · champion gate GREEN, pool + study regenerated, projection
+  vs their stack ~90–30 under the truth-lag1 handicap. Full trail: ADR-0015 +
+  `m12-best2934-arena.md` + `m12-evader-sweep.md`.
+
 ## PR — feat/audit-outcome-rederivation (the best2934 false-survival catch)
 
 - **Driver:** Imree (relayed the league session's go-ahead: "the other session says you
