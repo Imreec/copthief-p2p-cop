@@ -50,20 +50,28 @@ class InterceptTracker:
     """Per-game momentum state (Input: one (step, argmax) reading per turn;
     Output: the drift in force for that step — stable across same-step re-entries,
     because the degrade path may re-enter the brain within one turn).
+
+    Persistence gate (the pool-dip fix): one observed step is noise against an
+    erratic evader — the pool measured a raw single-step advance costing 8/32 vs
+    anrbj666-thief and 5/32 vs sqak-evader while a steady runner is exactly the
+    case where two consecutive equal drifts are cheap to demand. The advance
+    fires only when the peak took the SAME unit step twice in a row.
     """
 
     def __init__(self) -> None:
         self._step: int | None = None
-        self._prev: Coord | None = None
-        self._current: Coord | None = None
+        self._trail: tuple[Coord | None, Coord | None, Coord | None] = (None, None, None)
 
     def drift_for(self, step: int, argmax: Coord) -> Coord | None:
-        """Record the reading once per step, and return the peak's momentum."""
+        """Record the reading once per step, and return the CONFIRMED momentum."""
         if self._step is None or step > self._step:
-            self._prev, self._current, self._step = self._current, argmax, step
-        if self._prev is None or self._current is None:
+            self._trail = (self._trail[1], self._trail[2], argmax)
+            self._step = step
+        oldest, middle, newest = self._trail
+        if oldest is None or middle is None or newest is None:
             return None
-        return drift(self._prev, self._current)
+        confirmed = drift(middle, newest)
+        return confirmed if confirmed is not None and confirmed == drift(oldest, middle) else None
 
     def observe(
         self, step: int, argmax: Coord, probs: dict[Coord, float], board: Board
