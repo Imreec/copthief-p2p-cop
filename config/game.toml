@@ -22,7 +22,9 @@ llm_model = "none"
 # counted series 2026-08-11 vs nis-yar1 (90-30 sweep; T=22:37, all audits Verified OK,
 # +10 diversity as winner of the first meeting). Fifth counted series 2026-08-13 vs
 # najamjad (30-90; T=19:00, all audits Verified OK ×6, both reports auto-fired to the
-# lecturer; +10 diversity theirs as winner of the first meeting).
+# lecturer; +10 diversity theirs as winner of the first meeting). Advanced 2026-08-15
+# after the sixth counted series vs best2934 (47-47 TIE, 3-3, six survivals, series_add;
+# all audits Verified OK ×6; diversity to nobody - a tie has no winner).
 counted_games_played = 6
 counted_opponents = ["anrbj666", "uoh-sqak", "vibecode", "nis-yar1", "najamjad", "best2934"]
 
