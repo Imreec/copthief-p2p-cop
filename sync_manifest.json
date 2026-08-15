@@ -308,7 +308,7 @@
     "tests/unit/report/test_scores.py": "9bd71fdb185a565675141bb8dc499f405320c6b7a82da7989953652a06ecb3a3",
     "tests/unit/report/test_summary_from_log.py": "5926d01065711a9481b9954d12de34ae1c318575e71560c07eb9b75a43cda3df",
     "tests/unit/sdk/test_arena.py": "9465052ce06463911706f56b09b8fb6533cb39faf7ff4fb4c2181f284279a5b1",
-    "tests/unit/sdk/test_arena_config.py": "cd16a7fa740f094d3bafccfd39c5688f41154bea4c249eee0b1435bcb6d2549f",
+    "tests/unit/sdk/test_arena_config.py": "656faadda9126211f4ff9851c8dc85fae7d842e4d25eb44b3fa2aa571edaea81",
     "tests/unit/sdk/test_cli.py": "f543822da1314ef6d0c66db30f40ff5d5002fff7ffd54ee3eb12d72800b67e5d",
     "tests/unit/sdk/test_cli_run_mode.py": "6b68772d35d59aee8ae9ca0b1162b3e01d5d788d3e0e851b4be98a8f6a38019e",
     "tests/unit/sdk/test_peer_run_paths.py": "9b151985c2a4f54dbd46c399d8bd20e933a650d11f63a3244972c89cecff6cff",
@@ -366,7 +366,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "4f65fc6",
+  "source_commit": "6203036",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "cbc04db73498cc852f1ad57a51a2b39a2c6870fcba831f0873dc254899e584cc"
+  "tree_hash": "18ac7bd293124cfda32ea9c5bdf221a18bc653fd69fc2d2fc9675a8b802c52e4"
 }
