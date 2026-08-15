@@ -69,16 +69,36 @@ def test_the_default_stream_ignores_momentum_entirely() -> None:
 
 
 def test_armed_intercept_commits_onto_the_running_thiefs_next_cell() -> None:
-    """THE conversion the forensics demanded: peak drifted (3,3)->(3,4) eastward, so
-    the true cell is (3,5); the armed cop standing at (3,6) steps W onto it even at
-    a commit bar its lagged posterior could never clear. The disarmed cop cannot
-    commit there (its mass sits on yesterday's cell)."""
+    """THE conversion the forensics demanded: the peak ran (3,2)->(3,3)->(3,4)
+    eastward — two consistent drifts — so the true cell is (3,5); the armed cop
+    standing at (3,6) steps W onto it even at a commit bar its lagged posterior
+    could never clear. The disarmed cop cannot commit there (its mass sits on
+    yesterday's cell)."""
     board = CONSTITUTION.board.make_board()
     armed = PoliceBrain(seed=7, options={"intercept_enabled": 1.0, "p_commit": 0.9})
-    armed.decide(_observation(board, (3, 6), step=1), _delta_belief((3, 3)))
-    decision = armed.decide(_observation(board, (3, 6), step=2), _delta_belief((3, 4)))
+    armed.decide(_observation(board, (3, 6), step=1), _delta_belief((3, 2)))
+    armed.decide(_observation(board, (3, 6), step=2), _delta_belief((3, 3)))
+    decision = armed.decide(_observation(board, (3, 6), step=3), _delta_belief((3, 4)))
     assert decision.barrier is None
     assert decision.move == "W"
+
+
+def test_one_drift_alone_is_not_momentum() -> None:
+    """Persistence gate (the pool-dip fix): a single observed step is noise against
+    an erratic evader — the advance fires only after the SAME unit drift twice in
+    a row, so a zigzagging peak leaves the posterior untouched. Verified through
+    the tracker directly: E then E fires east; E then N fires nothing."""
+    from copthief_police.intercept import InterceptTracker
+
+    board = CONSTITUTION.board.make_board()
+    steady = InterceptTracker()
+    steady.observe(1, (3, 2), {(3, 2): 1.0}, board)
+    steady.observe(2, (3, 3), {(3, 3): 1.0}, board)
+    assert steady.observe(3, (3, 4), {(3, 4): 1.0}, board) == {(3, 5): 1.0}
+    zigzag = InterceptTracker()
+    zigzag.observe(1, (3, 2), {(3, 2): 1.0}, board)
+    zigzag.observe(2, (3, 3), {(3, 3): 1.0}, board)
+    assert zigzag.observe(3, (2, 3), {(2, 3): 1.0}, board) == {(2, 3): 1.0}
 
 
 def test_intercept_is_stable_when_the_same_step_is_decided_twice() -> None:
@@ -86,8 +106,9 @@ def test_intercept_is_stable_when_the_same_step_is_decided_twice() -> None:
     must not consume itself (same step in => same answer out)."""
     board = CONSTITUTION.board.make_board()
     brain = PoliceBrain(seed=7, options={"intercept_enabled": 1.0, "p_commit": 0.9})
-    brain.decide(_observation(board, (3, 6), step=1), _delta_belief((3, 3)))
+    brain.decide(_observation(board, (3, 6), step=1), _delta_belief((3, 2)))
+    brain.decide(_observation(board, (3, 6), step=2), _delta_belief((3, 3)))
     belief = _delta_belief((3, 4))
-    first = brain.decide(_observation(board, (3, 6), step=2), belief)
-    second = brain.decide(_observation(board, (3, 6), step=2), belief)
+    first = brain.decide(_observation(board, (3, 6), step=3), belief)
+    second = brain.decide(_observation(board, (3, 6), step=3), belief)
     assert first == second
