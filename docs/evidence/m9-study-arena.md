@@ -4,27 +4,27 @@
 > (deterministic; regenerate, never hand-edit). Per-role rosters over the
 > seeded start-scenario suite; games run headless through the sdk scenario
 > series.
-> Police roster: police-m7, police-m9, police-m10, best2934-police, vibecode-police, hunter-cop, greedy-manhattan. Thief roster: belief-evader, doctrine-evader, doctrine-m9, doctrine-m10, best2934-thief, vibecode-thief, sqak-evader, greedy-manhattan.
+> Police roster: police-m9, police-m10, police-m12, best2934-police, vibecode-police, hunter-cop, greedy-manhattan. Thief roster: doctrine-evader, doctrine-m9, doctrine-m12, doctrine-m10, best2934-thief, vibecode-thief, sqak-evader, greedy-manhattan.
 > Seeds: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 (scenario #1 = signed starts).
 > Scent model: subtractive_chebyshev_v1 (shipped default).
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-m10 | police | 256 | 255 | 5105 |
-| police-m9 | police | 256 | 217 | 4535 |
-| police-m7 | police | 256 | 163 | 3725 |
-| vibecode-police | police | 256 | 90 | 2630 |
-| hunter-cop | police | 256 | 86 | 2570 |
-| best2934-police | police | 256 | 79 | 2465 |
-| greedy-manhattan | police | 256 | 65 | 2255 |
-| vibecode-thief | thief | 224 | 174 | 1990 |
-| doctrine-m10 | thief | 224 | 157 | 1905 |
-| doctrine-m9 | thief | 224 | 135 | 1795 |
-| doctrine-evader | thief | 224 | 111 | 1675 |
-| sqak-evader | thief | 224 | 110 | 1670 |
-| greedy-manhattan | thief | 224 | 107 | 1655 |
-| best2934-thief | thief | 224 | 42 | 1330 |
-| belief-evader | thief | 224 | 1 | 1125 |
+| police-m10 | police | 256 | 248 | 5000 |
+| police-m12 | police | 256 | 245 | 4955 |
+| police-m9 | police | 256 | 216 | 4520 |
+| best2934-police | police | 256 | 138 | 3350 |
+| vibecode-police | police | 256 | 37 | 1835 |
+| hunter-cop | police | 256 | 34 | 1790 |
+| greedy-manhattan | police | 256 | 20 | 1580 |
+| doctrine-m12 | thief | 224 | 143 | 1835 |
+| vibecode-thief | thief | 224 | 124 | 1740 |
+| doctrine-m10 | thief | 224 | 114 | 1690 |
+| doctrine-m9 | thief | 224 | 108 | 1660 |
+| best2934-thief | thief | 224 | 99 | 1615 |
+| sqak-evader | thief | 224 | 97 | 1605 |
+| greedy-manhattan | thief | 224 | 91 | 1575 |
+| doctrine-evader | thief | 224 | 78 | 1510 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
 
@@ -34,59 +34,59 @@ Per-pairing outcomes:
 
 | police brain | thief brain | captures | survivals |
 |---|---|---|---|
-| police-m7 | belief-evader | 32 | 0 |
-| police-m7 | doctrine-evader | 7 | 25 |
-| police-m7 | doctrine-m9 | 22 | 10 |
-| police-m7 | doctrine-m10 | 5 | 27 |
-| police-m7 | best2934-thief | 31 | 1 |
-| police-m7 | vibecode-thief | 12 | 20 |
-| police-m7 | sqak-evader | 23 | 9 |
-| police-m7 | greedy-manhattan | 31 | 1 |
-| police-m9 | belief-evader | 32 | 0 |
 | police-m9 | doctrine-evader | 24 | 8 |
 | police-m9 | doctrine-m9 | 32 | 0 |
+| police-m9 | doctrine-m12 | 31 | 1 |
 | police-m9 | doctrine-m10 | 30 | 2 |
 | police-m9 | best2934-thief | 32 | 0 |
 | police-m9 | vibecode-thief | 3 | 29 |
 | police-m9 | sqak-evader | 32 | 0 |
 | police-m9 | greedy-manhattan | 32 | 0 |
-| police-m10 | belief-evader | 32 | 0 |
 | police-m10 | doctrine-evader | 31 | 1 |
 | police-m10 | doctrine-m9 | 32 | 0 |
+| police-m10 | doctrine-m12 | 25 | 7 |
 | police-m10 | doctrine-m10 | 32 | 0 |
 | police-m10 | best2934-thief | 32 | 0 |
 | police-m10 | vibecode-thief | 32 | 0 |
 | police-m10 | sqak-evader | 32 | 0 |
 | police-m10 | greedy-manhattan | 32 | 0 |
-| best2934-police | belief-evader | 32 | 0 |
-| best2934-police | doctrine-evader | 5 | 27 |
-| best2934-police | doctrine-m9 | 0 | 32 |
-| best2934-police | doctrine-m10 | 0 | 32 |
-| best2934-police | best2934-thief | 32 | 0 |
-| best2934-police | vibecode-thief | 0 | 32 |
-| best2934-police | sqak-evader | 9 | 23 |
-| best2934-police | greedy-manhattan | 1 | 31 |
-| vibecode-police | belief-evader | 32 | 0 |
+| police-m12 | doctrine-evader | 29 | 3 |
+| police-m12 | doctrine-m9 | 32 | 0 |
+| police-m12 | doctrine-m12 | 24 | 8 |
+| police-m12 | doctrine-m10 | 32 | 0 |
+| police-m12 | best2934-thief | 32 | 0 |
+| police-m12 | vibecode-thief | 32 | 0 |
+| police-m12 | sqak-evader | 32 | 0 |
+| police-m12 | greedy-manhattan | 32 | 0 |
+| best2934-police | doctrine-evader | 16 | 16 |
+| best2934-police | doctrine-m9 | 17 | 15 |
+| best2934-police | doctrine-m12 | 1 | 31 |
+| best2934-police | doctrine-m10 | 16 | 16 |
+| best2934-police | best2934-thief | 29 | 3 |
+| best2934-police | vibecode-thief | 30 | 2 |
+| best2934-police | sqak-evader | 13 | 19 |
+| best2934-police | greedy-manhattan | 16 | 16 |
 | vibecode-police | doctrine-evader | 20 | 12 |
 | vibecode-police | doctrine-m9 | 3 | 29 |
+| vibecode-police | doctrine-m12 | 0 | 32 |
 | vibecode-police | doctrine-m10 | 0 | 32 |
-| vibecode-police | best2934-thief | 21 | 11 |
+| vibecode-police | best2934-thief | 0 | 32 |
 | vibecode-police | vibecode-thief | 3 | 29 |
 | vibecode-police | sqak-evader | 5 | 27 |
 | vibecode-police | greedy-manhattan | 6 | 26 |
-| hunter-cop | belief-evader | 31 | 1 |
 | hunter-cop | doctrine-evader | 9 | 23 |
 | hunter-cop | doctrine-m9 | 0 | 32 |
+| hunter-cop | doctrine-m12 | 0 | 32 |
 | hunter-cop | doctrine-m10 | 0 | 32 |
-| hunter-cop | best2934-thief | 21 | 11 |
+| hunter-cop | best2934-thief | 0 | 32 |
 | hunter-cop | vibecode-thief | 0 | 32 |
 | hunter-cop | sqak-evader | 10 | 22 |
 | hunter-cop | greedy-manhattan | 15 | 17 |
-| greedy-manhattan | belief-evader | 32 | 0 |
 | greedy-manhattan | doctrine-evader | 17 | 15 |
 | greedy-manhattan | doctrine-m9 | 0 | 32 |
+| greedy-manhattan | doctrine-m12 | 0 | 32 |
 | greedy-manhattan | doctrine-m10 | 0 | 32 |
-| greedy-manhattan | best2934-thief | 13 | 19 |
+| greedy-manhattan | best2934-thief | 0 | 32 |
 | greedy-manhattan | vibecode-thief | 0 | 32 |
 | greedy-manhattan | sqak-evader | 3 | 29 |
 | greedy-manhattan | greedy-manhattan | 0 | 32 |

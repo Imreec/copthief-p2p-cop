@@ -25,6 +25,11 @@
       "spec": "best2934-police",
       "feed": "sharp199",
       "claim_threshold": 0.0
+    },
+    {
+      "name": "anrbj666-police",
+      "spec": "anrbj666-police",
+      "feed": "sharp199"
     }
   ],
   "thief_roster": [
@@ -41,10 +46,25 @@
       "claim_feed": "truth"
     },
     {
+      "name": "doctrine-m12-k3",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
+    },
+    {
       "name": "best2934-thief",
       "spec": "best2934-thief",
       "feed": "sharp199",
       "claim_feed": "truth"
+    },
+    {
+      "name": "anrbj666-thief",
+      "spec": "anrbj666-thief",
+      "feed": "sharp199"
+    },
+    {
+      "name": "sqak-evader",
+      "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
     }
   ],
   "seeds": [
@@ -107,6 +127,19 @@
       "stay_cap_limit": 2.281202991194793
     },
     "doctrine-m12": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 4.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
+    },
+    "doctrine-m12-k3": {
       "room_first": 1.0,
       "cage_escape": 1.0,
       "forecast_walls": 3.0,

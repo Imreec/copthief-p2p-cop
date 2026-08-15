@@ -3,16 +3,17 @@
   "_comment": "M9/M10 modeled-opponent study (measurement instrument, champion_pin null): our police brains against every modeled rival thief, and every modeled rival cop against our evader stand-ins. M12: the best2934 arms are REBUILT at their 08-14 played heads (cop 96d9b17 range-4 plow with every-step claims / thief 5324415 exit vetoes - the 35-75 stack); vibecode arms stand from the 08-10 logs. Regenerate: uv run python scripts/arena_run.py --config config/arena_m9_study.json",
   "police_roster": [
     {
-      "name": "police-m7",
-      "spec": "copthief_police.brain:PoliceBrain"
-    },
-    {
       "name": "police-m9",
       "spec": "copthief_police.brain:PoliceBrain",
       "feed": "sharp199"
     },
     {
       "name": "police-m10",
+      "spec": "copthief_police.brain:PoliceBrain",
+      "feed": "sharp199"
+    },
+    {
+      "name": "police-m12",
       "spec": "copthief_police.brain:PoliceBrain",
       "feed": "sharp199"
     },
@@ -32,12 +33,17 @@
     "greedy-manhattan"
   ],
   "thief_roster": [
-    "belief-evader",
     "doctrine-evader",
     {
       "name": "doctrine-m9",
       "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
       "feed": "sharp199"
+    },
+    {
+      "name": "doctrine-m12",
+      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+      "feed": "sharp199",
+      "claim_feed": "truth"
     },
     {
       "name": "doctrine-m10",
@@ -99,14 +105,31 @@
   "champion_pin": null,
   "dod_series": [],
   "brain_options": {
-    "police-m7": {
+    "police-m12": {
       "barrier_gain_threshold": 4.7893,
       "p_commit": 0.2,
       "w_budget": 1.7277,
       "w_distance": 3.8875,
       "w_mobility": 3.6061,
       "w_region": 0.1143,
-      "endgame_enabled": 0.0
+      "tie_epsilon": 0.25,
+      "contain_enabled": 1.0,
+      "contain_range": 4.0,
+      "path_distance": 1.0,
+      "intercept_enabled": 1.0
+    },
+    "doctrine-m12": {
+      "room_first": 1.0,
+      "cage_escape": 1.0,
+      "forecast_walls": 4.0,
+      "forecast_wall_reach": 2.0,
+      "flight_floor": 1.6081389068646288,
+      "center_margin_cap": 1.6587821646865204,
+      "safe_distance": 6.0,
+      "flee_cap_hunted": 5.0258790436073335,
+      "hunted_radius": 3.749533704442913,
+      "hunted_mass": 0.2396036306544369,
+      "stay_cap_limit": 2.281202991194793
     },
     "police-m9": {
       "barrier_gain_threshold": 4.7893,

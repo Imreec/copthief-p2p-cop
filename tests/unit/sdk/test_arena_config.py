@@ -104,8 +104,13 @@ def test_police_claim_threshold_parses_and_defaults_to_unmodelled(tmp_path: Path
     mixed = load_arena_config(path)
     assert mixed.thief_roster[0].claim_feed is None
     assert mixed.thief_roster[1].claim_feed == "truth"
+    # M12: the shipped gate now models exactly ONE claim channel — best2934-police's
+    # every-step auto-claim (their fielded behavior, part of arm fidelity; the gate
+    # tables were regenerated under it). Every other entry stays unmodelled.
     shipped = load_arena_config(Path("config") / "arena.json")
-    assert all(entry.claim_threshold is None for entry in shipped.police_roster)
+    thresholds = {entry.name: entry.claim_threshold for entry in shipped.police_roster}
+    assert thresholds.pop("best2934-police") == 0.0
+    assert all(value is None for value in thresholds.values())
 
 
 def test_champion_pin_defaults_to_the_shipped_gate_and_can_opt_out(tmp_path: Path) -> None:

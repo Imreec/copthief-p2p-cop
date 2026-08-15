@@ -4,19 +4,23 @@
 > (deterministic; regenerate, never hand-edit). Per-role rosters over the
 > seeded start-scenario suite; games run headless through the sdk scenario
 > series.
-> Police roster: police-m11, police-m12, police-m12-c01, best2934-police. Thief roster: doctrine-m11, doctrine-m12, best2934-thief.
+> Police roster: police-m11, police-m12, police-m12-c01, best2934-police, anrbj666-police. Thief roster: doctrine-m11, doctrine-m12, doctrine-m12-k3, best2934-thief, anrbj666-thief, sqak-evader.
 > Seeds: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 (scenario #1 = signed starts).
 > Scent model: subtractive_chebyshev_v1 (shipped default).
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| best2934-police | police | 96 | 48 | 1200 |
-| police-m12-c01 | police | 96 | 46 | 1170 |
-| police-m12 | police | 96 | 41 | 1095 |
-| police-m11 | police | 96 | 39 | 1065 |
-| doctrine-m12 | thief | 128 | 113 | 1205 |
-| doctrine-m11 | thief | 128 | 93 | 1105 |
-| best2934-thief | thief | 128 | 4 | 660 |
+| anrbj666-police | police | 192 | 76 | 2100 |
+| best2934-police | police | 192 | 68 | 1980 |
+| police-m12-c01 | police | 192 | 63 | 1905 |
+| police-m11 | police | 192 | 57 | 1815 |
+| police-m12 | police | 192 | 57 | 1815 |
+| doctrine-m12 | thief | 160 | 139 | 1495 |
+| doctrine-m12-k3 | thief | 160 | 139 | 1495 |
+| doctrine-m11 | thief | 160 | 131 | 1455 |
+| anrbj666-thief | thief | 160 | 115 | 1375 |
+| sqak-evader | thief | 160 | 106 | 1330 |
+| best2934-thief | thief | 160 | 9 | 845 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
 
@@ -27,14 +31,32 @@ Per-pairing outcomes:
 | police brain | thief brain | captures | survivals |
 |---|---|---|---|
 | police-m11 | doctrine-m11 | 4 | 28 |
-| police-m11 | doctrine-m12 | 3 | 29 |
+| police-m11 | doctrine-m12 | 1 | 31 |
+| police-m11 | doctrine-m12-k3 | 3 | 29 |
 | police-m11 | best2934-thief | 32 | 0 |
-| police-m12 | doctrine-m11 | 5 | 27 |
-| police-m12 | doctrine-m12 | 5 | 27 |
-| police-m12 | best2934-thief | 31 | 1 |
-| police-m12-c01 | doctrine-m11 | 10 | 22 |
-| police-m12-c01 | doctrine-m12 | 4 | 28 |
+| police-m11 | anrbj666-thief | 14 | 18 |
+| police-m11 | sqak-evader | 3 | 29 |
+| police-m12 | doctrine-m11 | 1 | 31 |
+| police-m12 | doctrine-m12 | 1 | 31 |
+| police-m12 | doctrine-m12-k3 | 1 | 31 |
+| police-m12 | best2934-thief | 32 | 0 |
+| police-m12 | anrbj666-thief | 13 | 19 |
+| police-m12 | sqak-evader | 9 | 23 |
+| police-m12-c01 | doctrine-m11 | 8 | 24 |
+| police-m12-c01 | doctrine-m12 | 1 | 31 |
+| police-m12-c01 | doctrine-m12-k3 | 4 | 28 |
 | police-m12-c01 | best2934-thief | 32 | 0 |
+| police-m12-c01 | anrbj666-thief | 12 | 20 |
+| police-m12-c01 | sqak-evader | 6 | 26 |
 | best2934-police | doctrine-m11 | 16 | 16 |
-| best2934-police | doctrine-m12 | 3 | 29 |
+| best2934-police | doctrine-m12 | 1 | 31 |
+| best2934-police | doctrine-m12-k3 | 3 | 29 |
 | best2934-police | best2934-thief | 29 | 3 |
+| best2934-police | anrbj666-thief | 6 | 26 |
+| best2934-police | sqak-evader | 13 | 19 |
+| anrbj666-police | doctrine-m11 | 0 | 32 |
+| anrbj666-police | doctrine-m12 | 17 | 15 |
+| anrbj666-police | doctrine-m12-k3 | 10 | 22 |
+| anrbj666-police | best2934-thief | 26 | 6 |
+| anrbj666-police | anrbj666-thief | 0 | 32 |
+| anrbj666-police | sqak-evader | 23 | 9 |
