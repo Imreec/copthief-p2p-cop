@@ -10,18 +10,18 @@
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-m12 | police | 192 | 178 | 3630 |
+| police-m12 | police | 192 | 173 | 3555 |
 | anrbj666-police | police | 192 | 126 | 2850 |
 | best2934-police | police | 192 | 103 | 2505 |
-| nisyar1-police | police | 192 | 51 | 1725 |
+| nisyar1-police | police | 192 | 49 | 1695 |
 | hunter-cop | police | 192 | 13 | 1155 |
-| vibecode-police | police | 192 | 9 | 1095 |
-| anrbj666-thief | thief | 192 | 160 | 1760 |
-| doctrine-m12 | thief | 192 | 150 | 1710 |
+| vibecode-police | police | 192 | 6 | 1050 |
+| anrbj666-thief | thief | 192 | 166 | 1790 |
+| doctrine-m12 | thief | 192 | 149 | 1705 |
 | best2934-thief | thief | 192 | 106 | 1490 |
-| sqak-evader | thief | 192 | 103 | 1475 |
+| sqak-evader | thief | 192 | 105 | 1485 |
 | nisyar1-thief | thief | 192 | 90 | 1410 |
-| vibecode-thief | thief | 192 | 63 | 1275 |
+| vibecode-thief | thief | 192 | 66 | 1290 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
 
@@ -31,9 +31,9 @@ Per-pairing outcomes:
 
 | police brain | thief brain | captures | survivals |
 |---|---|---|---|
-| police-m12 | doctrine-m12 | 24 | 8 |
+| police-m12 | doctrine-m12 | 25 | 7 |
 | police-m12 | nisyar1-thief | 32 | 0 |
-| police-m12 | anrbj666-thief | 26 | 6 |
+| police-m12 | anrbj666-thief | 20 | 12 |
 | police-m12 | best2934-thief | 32 | 0 |
 | police-m12 | vibecode-thief | 32 | 0 |
 | police-m12 | sqak-evader | 32 | 0 |
@@ -42,7 +42,7 @@ Per-pairing outcomes:
 | nisyar1-police | anrbj666-thief | 0 | 32 |
 | nisyar1-police | best2934-thief | 0 | 32 |
 | nisyar1-police | vibecode-thief | 32 | 0 |
-| nisyar1-police | sqak-evader | 3 | 29 |
+| nisyar1-police | sqak-evader | 1 | 31 |
 | anrbj666-police | doctrine-m12 | 17 | 15 |
 | anrbj666-police | nisyar1-thief | 29 | 3 |
 | anrbj666-police | anrbj666-thief | 0 | 32 |
@@ -59,7 +59,7 @@ Per-pairing outcomes:
 | vibecode-police | nisyar1-thief | 1 | 31 |
 | vibecode-police | anrbj666-thief | 0 | 32 |
 | vibecode-police | best2934-thief | 0 | 32 |
-| vibecode-police | vibecode-thief | 3 | 29 |
+| vibecode-police | vibecode-thief | 0 | 32 |
 | vibecode-police | sqak-evader | 5 | 27 |
 | hunter-cop | doctrine-m12 | 0 | 32 |
 | hunter-cop | nisyar1-thief | 0 | 32 |

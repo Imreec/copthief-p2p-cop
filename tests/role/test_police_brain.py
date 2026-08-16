@@ -125,3 +125,43 @@ def test_decisions_are_deterministic_and_always_legal() -> None:
 def test_factory_builds_the_dotted_spec() -> None:
     brain = make_brain("copthief_police.brain:PoliceBrain", seed=3)
     assert isinstance(brain, PoliceBrain)
+
+
+# -- M13 (ADR-0016): the brain prices its own landing --------------------------------------
+
+
+def test_commit_decision_carries_the_hunted_posteriors_confidence() -> None:
+    """The claim gate's input is the SAME posterior the brain hunted — a certain
+    adjacent thief commits with confidence ~1.0 on the landing cell."""
+    board = make_board()
+    belief = make_belief(board, (3, 4))
+    decision = PoliceBrain(seed=1).decide(observation(board, (3, 3)), belief)
+    assert decision.move == "E"
+    assert decision.landing_confidence is not None
+    assert decision.landing_confidence > 0.9
+
+
+def test_expectimax_moves_price_their_landing_from_the_same_posterior() -> None:
+    """A far target: the landing cell holds ~none of the posterior, and the decision
+    says so — the gate can stay honest about non-capture steps."""
+    board = make_board()
+    belief = make_belief(board, (6, 6))
+    decision = PoliceBrain(seed=1).decide(observation(board, (0, 0)), belief)
+    assert decision.landing_confidence is not None
+    assert decision.landing_confidence < 0.1
+
+
+def test_parity_bonus_prices_even_distance_and_nothing_else() -> None:
+    """M13 (ADR-0016): w_parity adds exactly its weight at even Manhattan distance,
+    zero at odd — and 0.0 (the default) is the shipped stream byte-identical."""
+    from copthief_police.features import leaf_value, resolve_options
+
+    board = make_board()
+    base = resolve_options({})
+    armed = resolve_options({"w_parity": 2.0})
+    even = ((0, 0), (2, 0))  # distance 2
+    odd = ((0, 0), (1, 0))  # distance 1
+    for (cop, thief), expected_delta in ((even, 2.0), (odd, 0.0)):
+        plain = leaf_value(board, cop, thief, MOVE_SET, base, {})
+        priced = leaf_value(board, cop, thief, MOVE_SET, armed, {})
+        assert priced == plain + expected_delta

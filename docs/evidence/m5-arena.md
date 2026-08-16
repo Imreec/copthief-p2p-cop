@@ -14,12 +14,12 @@
 | best2934-police | police | 40 | 23 | 545 |
 | ref-police | police | 40 | 16 | 440 |
 | greedy-manhattan | police | 40 | 8 | 320 |
-| random | police | 40 | 3 | 245 |
+| random | police | 40 | 2 | 230 |
 | doctrine-evader | thief | 40 | 33 | 365 |
 | greedy-manhattan | thief | 40 | 25 | 325 |
 | ref-thief | thief | 40 | 24 | 320 |
 | best2934-thief | thief | 40 | 23 | 315 |
-| random | thief | 40 | 6 | 230 |
+| random | thief | 40 | 7 | 235 |
 
 **Champion pin** (`config/arena_champion.json`): police = `police-brain`, thief = `doctrine-evader`.
 
@@ -29,7 +29,7 @@ Per-pairing outcomes:
 
 | police brain | thief brain | captures | survivals |
 |---|---|---|---|
-| random | random | 3 | 5 |
+| random | random | 2 | 6 |
 | random | greedy-manhattan | 0 | 8 |
 | random | ref-thief | 0 | 8 |
 | random | best2934-thief | 0 | 8 |
@@ -57,4 +57,4 @@ Per-pairing outcomes:
 
 ## DoD win-rate floors
 
-**DoD series `M5-2 police DoD - PoliceBrain vs the reference heuristic`** - police-brain (police) vs ref-thief (thief), 32 scenarios: police wins 32/32 = **100%** (floor 60%) - **PASS**.
+**DoD series `M5-2 police DoD - PoliceBrain vs the reference heuristic`** - police-brain (police) vs ref-thief (thief), 32 scenarios: police wins 30/32 = **94%** (floor 60%) - **PASS**.

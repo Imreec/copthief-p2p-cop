@@ -50,6 +50,11 @@ DEFAULT_OPTIONS: dict[str, float] = {
     # M12 (best2934 forensics): 1.0 advances the posterior by the peak's observed
     # momentum before every read — the lag-1 claim-targeting fix. 0.0 = M11 stream.
     "intercept_enabled": 0.0,
+    # M13 (ADR-0016): bonus for EVEN cop-thief distance at the leaf — the capturable
+    # geometry. The vibecode counted pinned odd distance 1 for 28 plies (0 STAYs,
+    # 0 walls): with both sides moving every ply, parity is invariant and distance 0
+    # unreachable. 0.0 = byte-identical stream; armed only by a measured sweep.
+    "w_parity": 0.0,
 }
 
 
@@ -83,6 +88,15 @@ def leaf_value(
         distance = abs(cop[0] - thief[0]) + abs(cop[1] - thief[1])
     mobility = len(legal_moves(board, thief, move_set))
     region = region_size(board, thief, move_set, int(opts["region_cap"]), region_cache)
+    # M13 (ADR-0016): even Manhattan distance is the capturable geometry (the landing
+    # is graded one thief-move after ours) — parity pressure prices the STAY/wall
+    # turn that pursuit alone never buys. Manhattan on purpose, even when the
+    # pressure term above is wall-aware: parity is a property of the move alphabet.
+    manhattan = abs(cop[0] - thief[0]) + abs(cop[1] - thief[1])
+    parity_bonus = opts["w_parity"] if manhattan % 2 == 0 else 0.0
     return (
-        -opts["w_distance"] * distance - opts["w_mobility"] * mobility - opts["w_region"] * region
+        -opts["w_distance"] * distance
+        - opts["w_mobility"] * mobility
+        - opts["w_region"] * region
+        + parity_bonus
     )

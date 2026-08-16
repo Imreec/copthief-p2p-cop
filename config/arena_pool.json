@@ -1,111 +1,142 @@
 {
-  "version": "1.00",
-  "_comment": "M11p2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null), M12: best2934 arms rebuilt at their 08-14 played heads (cop 96d9b17 / thief 5324415 - exit-veto thief, range-4 plow cop with their every-step claims; the 35-75 stack). Other arms: anrbj666 41e907d/f95b438; nis-yar1 41b9fb76; sqak 72e7abc; vibecode stands. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json",
-  "police_roster": [
-    {
-      "name": "police-m12",
-      "spec": "copthief_police.brain:PoliceBrain",
-      "feed": "sharp199"
-    },
-    {
-      "name": "nisyar1-police",
-      "spec": "nisyar1-police",
-      "feed": "truth-lag1"
-    },
-    {
-      "name": "anrbj666-police",
-      "spec": "anrbj666-police",
-      "feed": "sharp199"
-    },
-    {
-      "name": "best2934-police",
-      "spec": "best2934-police",
-      "feed": "sharp199",
-      "claim_threshold": 0.0
-    },
-    {
-      "name": "vibecode-police",
-      "spec": "vibecode-police",
-      "feed": "sharp199",
-      "claim_threshold": 0.0
-    },
-    {
-      "name": "hunter-cop",
-      "spec": "hunter-cop",
-      "feed": "sharp199"
-    }
-  ],
-  "thief_roster": [
-    {
-      "name": "doctrine-m12",
-      "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
-      "feed": "sharp199",
-      "claim_feed": "truth"
-    },
-    {
-      "name": "nisyar1-thief",
-      "spec": "nisyar1-thief",
-      "feed": "sharp199"
-    },
-    {
-      "name": "anrbj666-thief",
-      "spec": "anrbj666-thief",
-      "feed": "sharp199"
-    },
-    {
-      "name": "best2934-thief",
-      "spec": "best2934-thief",
-      "feed": "sharp199"
-    },
-    {
-      "name": "vibecode-thief",
-      "spec": "vibecode-thief",
-      "feed": "sharp199"
-    },
-    {
-      "name": "sqak-evader",
-      "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
-    }
-  ],
-  "seeds": [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-    17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32
-  ],
-  "scenario_min_separation": 4,
-  "champion_pin": null,
-  "dod_series": [],
-  "brain_options": {
-    "police-m12": {
-      "barrier_gain_threshold": 4.7893,
-      "p_commit": 0.2,
-      "w_budget": 1.7277,
-      "w_distance": 3.8875,
-      "w_mobility": 3.6061,
-      "w_region": 0.1143,
-      "tie_epsilon": 0.25,
-      "contain_enabled": 1.0,
-      "contain_range": 4.0,
-      "path_distance": 1.0,
-      "intercept_enabled": 1.0
-    },
-    "best2934-police": {
-      "barrier_engage_range": 4.0,
-      "barrier_min_gain": 1.0,
-      "barrier_endgame_reserve": 3.0
-    },
-    "doctrine-m12": {
-      "room_first": 1.0,
-      "cage_escape": 1.0,
-      "forecast_walls": 4.0,
-      "forecast_wall_reach": 2.0,
-      "flight_floor": 1.6081389068646288,
-      "center_margin_cap": 1.6587821646865204,
-      "safe_distance": 6.0,
-      "flee_cap_hunted": 5.0258790436073335,
-      "hunted_radius": 3.749533704442913,
-      "hunted_mass": 0.2396036306544369,
-      "stay_cap_limit": 2.281202991194793
-    }
+ "version": "1.00",
+ "_comment": "M11p2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null), M12: best2934 arms rebuilt at their 08-14 played heads (cop 96d9b17 / thief 5324415 - exit-veto thief, range-4 plow cop with their every-step claims; the 35-75 stack). Other arms: anrbj666 41e907d/f95b438; nis-yar1 41b9fb76; sqak 72e7abc; vibecode stands. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json",
+ "police_roster": [
+  {
+   "name": "police-m12",
+   "spec": "copthief_police.brain:PoliceBrain",
+   "feed": "sharp199",
+   "claim_threshold": 0.1
   },
-  "evidence_out": "docs/evidence/m11p2-pool-arena.md"
+  {
+   "name": "nisyar1-police",
+   "spec": "nisyar1-police",
+   "feed": "truth-lag1"
+  },
+  {
+   "name": "anrbj666-police",
+   "spec": "anrbj666-police",
+   "feed": "sharp199"
+  },
+  {
+   "name": "best2934-police",
+   "spec": "best2934-police",
+   "feed": "sharp199",
+   "claim_threshold": 0.0
+  },
+  {
+   "name": "vibecode-police",
+   "spec": "vibecode-police",
+   "feed": "sharp199",
+   "claim_threshold": 0.0
+  },
+  {
+   "name": "hunter-cop",
+   "spec": "hunter-cop",
+   "feed": "sharp199"
+  }
+ ],
+ "thief_roster": [
+  {
+   "name": "doctrine-m12",
+   "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+   "feed": "sharp199",
+   "claim_feed": "truth"
+  },
+  {
+   "name": "nisyar1-thief",
+   "spec": "nisyar1-thief",
+   "feed": "sharp199"
+  },
+  {
+   "name": "anrbj666-thief",
+   "spec": "anrbj666-thief",
+   "feed": "sharp199"
+  },
+  {
+   "name": "best2934-thief",
+   "spec": "best2934-thief",
+   "feed": "sharp199"
+  },
+  {
+   "name": "vibecode-thief",
+   "spec": "vibecode-thief",
+   "feed": "sharp199"
+  },
+  {
+   "name": "sqak-evader",
+   "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
+  }
+ ],
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32
+ ],
+ "scenario_min_separation": 4,
+ "champion_pin": null,
+ "dod_series": [],
+ "brain_options": {
+  "police-m12": {
+   "barrier_gain_threshold": 4.7893,
+   "p_commit": 0.2,
+   "w_budget": 1.7277,
+   "w_distance": 3.8875,
+   "w_mobility": 3.6061,
+   "w_region": 0.1143,
+   "tie_epsilon": 0.25,
+   "contain_enabled": 1.0,
+   "contain_range": 4.0,
+   "path_distance": 1.0,
+   "intercept_enabled": 1.0
+  },
+  "best2934-police": {
+   "barrier_engage_range": 4.0,
+   "barrier_min_gain": 1.0,
+   "barrier_endgame_reserve": 3.0
+  },
+  "doctrine-m12": {
+   "room_first": 1.0,
+   "cage_escape": 1.0,
+   "forecast_walls": 4.0,
+   "forecast_wall_reach": 2.0,
+   "flight_floor": 1.6081389068646288,
+   "center_margin_cap": 1.6587821646865204,
+   "safe_distance": 6.0,
+   "flee_cap_hunted": 5.0258790436073335,
+   "hunted_radius": 3.749533704442913,
+   "hunted_mass": 0.2396036306544369,
+   "stay_cap_limit": 2.281202991194793
+  }
+ },
+ "evidence_out": "docs/evidence/m11p2-pool-arena.md"
 }

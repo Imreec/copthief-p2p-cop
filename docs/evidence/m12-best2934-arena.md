@@ -13,13 +13,13 @@
 | anrbj666-police | police | 192 | 76 | 2100 |
 | best2934-police | police | 192 | 68 | 1980 |
 | police-m12-c01 | police | 192 | 63 | 1905 |
-| police-m11 | police | 192 | 57 | 1815 |
-| police-m12 | police | 192 | 57 | 1815 |
-| doctrine-m12 | thief | 160 | 139 | 1495 |
-| doctrine-m12-k3 | thief | 160 | 139 | 1495 |
+| police-m11 | police | 192 | 55 | 1785 |
+| police-m12 | police | 192 | 50 | 1710 |
+| doctrine-m12-k3 | thief | 160 | 138 | 1490 |
+| doctrine-m12 | thief | 160 | 137 | 1485 |
 | doctrine-m11 | thief | 160 | 131 | 1455 |
-| anrbj666-thief | thief | 160 | 115 | 1375 |
-| sqak-evader | thief | 160 | 106 | 1330 |
+| sqak-evader | thief | 160 | 117 | 1385 |
+| anrbj666-thief | thief | 160 | 116 | 1380 |
 | best2934-thief | thief | 160 | 9 | 845 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
@@ -35,19 +35,19 @@ Per-pairing outcomes:
 | police-m11 | doctrine-m12-k3 | 3 | 29 |
 | police-m11 | best2934-thief | 32 | 0 |
 | police-m11 | anrbj666-thief | 14 | 18 |
-| police-m11 | sqak-evader | 3 | 29 |
+| police-m11 | sqak-evader | 1 | 31 |
 | police-m12 | doctrine-m11 | 1 | 31 |
 | police-m12 | doctrine-m12 | 1 | 31 |
 | police-m12 | doctrine-m12-k3 | 1 | 31 |
 | police-m12 | best2934-thief | 32 | 0 |
-| police-m12 | anrbj666-thief | 13 | 19 |
-| police-m12 | sqak-evader | 9 | 23 |
+| police-m12 | anrbj666-thief | 12 | 20 |
+| police-m12 | sqak-evader | 3 | 29 |
 | police-m12-c01 | doctrine-m11 | 8 | 24 |
-| police-m12-c01 | doctrine-m12 | 1 | 31 |
-| police-m12-c01 | doctrine-m12-k3 | 4 | 28 |
+| police-m12-c01 | doctrine-m12 | 3 | 29 |
+| police-m12-c01 | doctrine-m12-k3 | 5 | 27 |
 | police-m12-c01 | best2934-thief | 32 | 0 |
 | police-m12-c01 | anrbj666-thief | 12 | 20 |
-| police-m12-c01 | sqak-evader | 6 | 26 |
+| police-m12-c01 | sqak-evader | 3 | 29 |
 | best2934-police | doctrine-m11 | 16 | 16 |
 | best2934-police | doctrine-m12 | 1 | 31 |
 | best2934-police | doctrine-m12-k3 | 3 | 29 |

@@ -91,6 +91,45 @@ def test_exhausted_quota_still_finds_move_only_forces() -> None:
     assert action is None
 
 
+def test_a_cop_body_plug_is_not_a_forcing_line() -> None:
+    """M13 wire-true (ADR-0016): the thief escapes THROUGH the cop.
+
+    Thief certain at (0,0), (0,1) walled, quota spent, cop two south at (2,0). The
+    old model proved a force: cop steps to (1,0), the thief's only reply is STAY
+    (the cop's cell was excluded as suicide), cop lands. On the wire the thief
+    legally steps onto (1,0) — co-location is not graded — and walks out behind
+    the cop. No move-only force exists here.
+    """
+    board = make_board(frozenset({(0, 1)}))
+    action = forced_action(
+        board, (2, 0), [(0, 0)], MOVE_SET, opts_with(), barriers_used=14, max_barriers=14
+    )
+    assert action is None
+
+
+def test_a_certain_adjacent_thief_is_still_a_depth_one_landing() -> None:
+    """The landing transition survives M13: a real move onto the support cell is a
+    graded claim conversion (the commit path's geometry), proven at depth 1."""
+    board = make_board(frozenset({(0, 1)}))
+    action = forced_action(
+        board, (1, 0), [(0, 0)], MOVE_SET, opts_with(), barriers_used=14, max_barriers=14
+    )
+    assert action == ("move", "N")
+
+
+def test_a_stay_onto_a_colocated_thief_is_not_a_landing() -> None:
+    """M13 wire-true (ADR-0016): a STAY declares nothing (ClaimPolicy refuses it),
+    so a co-located 'capture' by standing still must not be provable. Thief certain
+    ON the cop's cell, quota spent: nothing forces — the cop must step off and
+    re-land, and the thief moves first.
+    """
+    board = make_board()
+    action = forced_action(
+        board, (3, 3), [(3, 3)], MOVE_SET, opts_with(), barriers_used=14, max_barriers=14
+    )
+    assert action is None
+
+
 def test_sharp_support_gates_on_mass_and_width() -> None:
     """The gate: cells at/above the mass threshold, only when 1..max_cells qualify."""
     probs = {(6, 6): 0.6, (6, 5): 0.3, (0, 0): 0.04}
