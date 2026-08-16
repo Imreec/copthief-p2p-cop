@@ -68,16 +68,37 @@ can replay a proven line across sub-games.
    damage; the najamjad series proved blindness costs more.
 5. **Parity-pressure knob** (`w_parity`, default 0.0 = byte-identical leaf): a leaf term
    rewarding even cop–thief distance, the minimal doctrine lever against the parity
-   lock; adopted only if the wire-true arena sweep shows best-or-equal across all arms.
+   lock. Ships DEFAULT-OFF, unswept: the wire-true instruments (lag-1 and lag-2 probes)
+   already convert every mimic without it, so a meaningful sweep needs the
+   live-faithful opponent model the doctrine milestone owns. The knob exists so that
+   milestone measures a config, not a code change.
 6. **Arena re-baseline**: our police roster entries carry the fielded
    `claim_threshold 0.1`; all champion/DoD tables regenerate under the honest physics;
    thresholds re-derived and recorded here (gates are never deleted).
 
 ## Consequences
 
-- Offline numbers DROP, honestly — the instrument stops predicting captures the wire
-  cannot grade. New tables land in `docs/evidence/` (m5-arena, pool) with before/after
-  in this ADR once regenerated.
+- **Measured re-baseline (all tables regenerated 2026-08-16):**
+  - Champion gate (`m5-arena.md`): police-brain **39/40, 785 pts — unchanged**, gate
+    GREEN (the baseline arms are too weak for the removed forms to bind; only the
+    random rows moved ±1).
+  - Real-opponent pool (`m11p2-pool-arena.md`): police-m12 **178→173 wins
+    (3630→3555 pts)**; vs anrbj666-thief **26/6 → 20/12** (the erratic mover is
+    exactly where thief-onto-cop/persistence physics had paid); nisyar1/vibecode/
+    best2934/sqak cop rows held 32/0; evader side ±1–3.
+  - Truth-lag1 study (`m12-best2934-arena.md`): police-m12 **57→50 wins**;
+    sqak 9/23→3/29, anrbj666 13/19→12/20; **vs best2934-thief still 32/0**.
+  - **Lag-2 probe (`m13-lag2-arena.md`, new instrument):** the counted forensics
+    measured a TWO-step live belief trail, so the fielded cop was re-measured under
+    `truth-lag2` — **still 32/32 vs their rebuilt thief** (and lag2 26/6 vs
+    doctrine-m12 where lag1 shows 3/29 — the momentum gate interacts with feed lag;
+    instrument note, not a claim).
+  - **Conclusion, stated plainly:** the physics generosity is gone (the dips above
+    are exactly the removed forms), and the remaining best2934 live/model gap is NOT
+    explained by capture physics or feed lag — it lives in the thief-mimic's ~75%
+    behavioral fidelity and/or live claim-timing details. Offline sweeps against
+    their mimic stay optimistic and are labeled so; the counted-log forfeit class
+    (silent co-locations) is closed by construction and test-pinned regardless.
 - The M9-1 solver loses its cop-body forcing lines (they were unsound live); its proofs
   are now claim-safe landings and wall forms only.
 - Deeper interception doctrine (targeting the thief's reply distribution) is the next

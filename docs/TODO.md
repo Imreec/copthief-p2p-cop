@@ -253,21 +253,23 @@
 
 ## Phase M13 — wire-true capture semantics (the 4/18 conversion lesson; ADR-0016)
 
-- ☐ **M13-1** Referee grades capture wire-true: landing form only at the cop's move, gated by
+- ☑ **M13-1** Referee grades capture wire-true: landing form only at the cop's move, gated by
   that turn's claim decision; thief-half keeps barrier/imprisonment forms only; no claim
   persistence across half-turns. Pins: thief-onto-cop ≠ capture, claim non-persistence.
-- ☐ **M13-2** Search + solver model capture as a landing transition: co-location is not a
+- ☑ **M13-2** Search + solver model capture as a landing transition: co-location is not a
   capture state, the thief's replies include the cop's cell, cop-body cornering proofs gone.
   Pins: body-block force returns None; rule-46/47 forms unchanged.
-- ☐ **M13-3** Claims ride the hunted posterior: `Decision.landing_confidence` set by
+- ☑ **M13-3** Claims ride the hunted posterior: `Decision.landing_confidence` set by
   PoliceBrain from `_observed_probs`, consumed by `peer/turns.py` + `referee.py` (raw-belief
   fallback). Pin: the best2934 g04-s12 forfeited co-location geometry now claims.
-- ☐ **M13-4** Refused-frame quarantine: `[scent] refused_frame_trust` (default 0.0; armed
+- ☑ **M13-4** Refused-frame quarantine: `[scent] refused_frame_trust` (default 0.0; armed
   0.5) feeds a physics-refused frame to the belief at scaled trust; known field + audit
   evidence untouched. Pins: 0.0 byte-identical; refusals still recorded.
-- ☐ **M13-5** Honest re-baseline: arena rosters carry fielded `claim_threshold 0.1`;
-  `w_parity` leaf knob (default 0.0) + sweep; champion/DoD tables regenerated under
-  wire-true physics, thresholds re-derived, before/after recorded in ADR-0016.
+- ☑ **M13-5** Honest re-baseline: arena rosters carry fielded `claim_threshold 0.1`;
+  `w_parity` leaf knob landed default-off (sweep deferred to the doctrine milestone —
+  ADR-0016 item 5); champion gate + pool + truth-lag1 study regenerated under wire-true
+  physics (all gates GREEN, no threshold change needed) + NEW `m13-lag2-arena.md` probe
+  at the measured live lag; before/after recorded in ADR-0016 Consequences.
 
 ## Phase M8 — Submission hardening
 

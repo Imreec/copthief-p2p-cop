@@ -149,3 +149,19 @@ def test_expectimax_moves_price_their_landing_from_the_same_posterior() -> None:
     decision = PoliceBrain(seed=1).decide(observation(board, (0, 0)), belief)
     assert decision.landing_confidence is not None
     assert decision.landing_confidence < 0.1
+
+
+def test_parity_bonus_prices_even_distance_and_nothing_else() -> None:
+    """M13 (ADR-0016): w_parity adds exactly its weight at even Manhattan distance,
+    zero at odd — and 0.0 (the default) is the shipped stream byte-identical."""
+    from copthief_police.features import leaf_value, resolve_options
+
+    board = make_board()
+    base = resolve_options({})
+    armed = resolve_options({"w_parity": 2.0})
+    even = ((0, 0), (2, 0))  # distance 2
+    odd = ((0, 0), (1, 0))  # distance 1
+    for (cop, thief), expected_delta in ((even, 2.0), (odd, 0.0)):
+        plain = leaf_value(board, cop, thief, MOVE_SET, base, {})
+        priced = leaf_value(board, cop, thief, MOVE_SET, armed, {})
+        assert priced == plain + expected_delta
