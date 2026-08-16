@@ -13,7 +13,6 @@ from __future__ import annotations
 
 from copthief_core.domain.belief import BeliefFilter
 from copthief_core.domain.board import Coord
-from copthief_core.domain.rules import legal_moves
 from copthief_core.strategy.brains import BrainBase, Observation
 from copthief_core.strategy.decision import Decision
 from copthief_police.barriers import best_candidate
@@ -21,6 +20,7 @@ from copthief_police.containment import containment_wall
 from copthief_police.endgame import forced_action, sharp_support
 from copthief_police.features import resolve_options
 from copthief_police.intercept import InterceptTracker
+from copthief_police.move_choice import best_move
 from copthief_police.pricing import priced_move
 from copthief_police.search import action_value, commit_move, truncated_support
 
@@ -56,30 +56,7 @@ class PoliceBrain(BrainBase):
         commit = self._commit(observation, probs)
         if commit is not None:
             return commit
-        opts = resolve_options(self._options)
-        support = truncated_support(probs, int(opts["search_top_k"]))
-        board, position = observation.board, observation.position
-        moves = sorted(legal_moves(board, position, observation.move_set))
-        if not moves or not support:
-            return "STAY"
-        scored = [
-            (
-                action_value(
-                    board, board.apply_move(position, move), support, observation.move_set, opts
-                ),
-                move,
-            )
-            for move in moves
-        ]
-        best_value = max(value for value, _ in scored)
-        if opts["tie_epsilon"] > 0.0:
-            # M9-5: seed-consuming resolution among near-equal values — an opponent
-            # cannot replay a proven line across sub-games (the counted-loss lesson).
-            ties = sorted(
-                move for value, move in scored if value >= best_value - opts["tie_epsilon"]
-            )
-            return self._rng.choice(ties)
-        return next(move for value, move in scored if value == best_value)
+        return best_move(observation, probs, resolve_options(self._options), self._rng)
 
     def _forced_endgame(
         self, observation: Observation, probs: dict[Coord, float]
