@@ -149,7 +149,13 @@ def play_referee_game(
         claims_this_landing = claims.claims(
             barrier_placed=decision.barrier is not None,
             move=decision.move,
-            confidence=police_belief.prob_at(cop),
+            # M13 (ADR-0016): the brain's own landing price when it offers one — the
+            # same coupling the live emitter runs (peer/turns.py); raw-belief fallback.
+            confidence=(
+                decision.landing_confidence
+                if decision.landing_confidence is not None
+                else police_belief.prob_at(cop)
+            ),
         )
         cop_trail.advance(cop, intensity)
         # Claim-conditional information (PRD_claims §5.2), composed at the loop level so

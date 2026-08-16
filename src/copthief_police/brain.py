@@ -21,6 +21,7 @@ from copthief_police.containment import containment_wall
 from copthief_police.endgame import forced_action, sharp_support
 from copthief_police.features import resolve_options
 from copthief_police.intercept import InterceptTracker
+from copthief_police.pricing import priced_move
 from copthief_police.search import action_value, commit_move, truncated_support
 
 
@@ -116,7 +117,7 @@ class PoliceBrain(BrainBase):
         if kind == "barrier" and isinstance(payload, tuple):
             return self._walled(observation.step, payload)
         if kind == "move" and isinstance(payload, str):
-            return Decision(move=payload)
+            return priced_move(observation, probs, payload)
         return None
 
     def _decide(self, observation: Observation, belief: BeliefFilter) -> Decision:
@@ -124,7 +125,7 @@ class PoliceBrain(BrainBase):
         probs = self._observed_probs(observation, belief)
         commit = self._commit(observation, probs)
         if commit is not None:
-            return Decision(move=commit)
+            return priced_move(observation, probs, commit)
         forced = self._forced_endgame(observation, probs)
         if forced is not None:
             return forced
@@ -149,7 +150,7 @@ class PoliceBrain(BrainBase):
             )
             if invest is not None:
                 return self._walled(observation.step, invest)
-            return Decision(move=move)
+            return priced_move(observation, probs, move)
         move_value = action_value(
             board, board.apply_move(position, move), support, observation.move_set, opts
         )
@@ -159,4 +160,4 @@ class PoliceBrain(BrainBase):
         )
         if wall_value > move_value:
             return self._walled(observation.step, wall)
-        return Decision(move=move)
+        return priced_move(observation, probs, move)
