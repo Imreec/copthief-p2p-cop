@@ -1,6 +1,6 @@
 {
  "version": "1.00",
- "_comment": "M11p2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null), M12: best2934 arms rebuilt at their 08-14 played heads (cop 96d9b17 / thief 5324415 - exit-veto thief, range-4 plow cop with their every-step claims; the 35-75 stack). Other arms: anrbj666 41e907d/f95b438; nis-yar1 41b9fb76; sqak 72e7abc; vibecode stands. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json",
+ "_comment": "M11p2 REFRESHED REAL-OPPONENT POOL (measurement, champion_pin null), M12: best2934 arms rebuilt at their 08-14 played heads (cop 96d9b17 / thief 5324415 - exit-veto thief, range-4 plow cop with their every-step claims; the 35-75 stack). Other arms: anrbj666 41e907d/f95b438; nis-yar1 41b9fb76; sqak 72e7abc; vibecode stands. Regenerate: uv run python scripts/arena_run.py --config config/arena_pool.json | M13p2: bestteam-thief arm added (truth-lag2, ADR-0017; mimic fidelity 81% - directional) + police-m12-i20 A/B (the intercept-sweep winner vs doctrine-m12).",
  "police_roster": [
   {
    "name": "police-m12",
@@ -34,6 +34,12 @@
    "name": "hunter-cop",
    "spec": "hunter-cop",
    "feed": "sharp199"
+  },
+  {
+   "name": "police-m12-i20",
+   "spec": "copthief_police.brain:PoliceBrain",
+   "feed": "sharp199",
+   "claim_threshold": 0.1
   }
  ],
  "thief_roster": [
@@ -66,6 +72,12 @@
   {
    "name": "sqak-evader",
    "spec": "copthief_police.sqak_evader:SqakEvaderThiefBrain"
+  },
+  {
+   "name": "bestteam-thief",
+   "spec": "bestteam-thief",
+   "feed": "truth-lag2",
+   "claim_feed": "truth"
   }
  ],
  "seeds": [
@@ -136,6 +148,20 @@
    "hunted_radius": 3.749533704442913,
    "hunted_mass": 0.2396036306544369,
    "stay_cap_limit": 2.281202991194793
+  },
+  "police-m12-i20": {
+   "barrier_gain_threshold": 4.7893,
+   "p_commit": 0.2,
+   "w_budget": 1.7277,
+   "w_distance": 3.8875,
+   "w_mobility": 3.6061,
+   "w_region": 0.1143,
+   "tie_epsilon": 0.25,
+   "contain_enabled": 1.0,
+   "contain_range": 4.0,
+   "path_distance": 1.0,
+   "intercept_enabled": 1.0,
+   "w_intercept": 20.0
   }
  },
  "evidence_out": "docs/evidence/m11p2-pool-arena.md"

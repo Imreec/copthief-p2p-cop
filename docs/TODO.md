@@ -271,6 +271,26 @@
   physics (all gates GREEN, no threshold change needed) + NEW `m13-lag2-arena.md` probe
   at the measured live lag; before/after recorded in ADR-0016 Consequences.
 
+## Phase M13p2 — interception + the bestteam arm (the wanderer lesson; ADR-0017)
+
+- ☑ **M13p2-1** Friendly #2 evidence committed (the unconceded rule-47 cage: g02 sealed at
+  (6,0) step 20, `outcome_mismatch` held 20 steps; sight validated live 35/35 ×3, zero
+  refusals — their same-evening scent fix cites our physics check).
+- ☑ **M13p2-2** Reply-adjacency positioning (`copthief_police/reply_forecast.py`, knob
+  `w_intercept` default 0.0 byte-identical; `best_move` split from brain.py). Property pin:
+  dominant weight ⇒ adjacency-maximizing move.
+- ☑ **M13p2-3** bestteam-thief arm from their public HEAD `a59fa05` (ADR-0011 method) +
+  GOLDEN-ORACLE validation: their code reproduces the tapes 98%; our mimic 57/70 = 81%
+  tie-aware on their own per-step scores — BELOW the 90% bar, all arena numbers vs the arm
+  labeled directional; fidelity floor pinned in CI (`test_bestteam_thief.py`). Their belief
+  runs on our scent lag-2 (feed `truth-lag2`); no claim-reading; compat path lacks the
+  rule-47 concession their native path has (the precise league ask).
+- ☑ **M13p2-4** Sweep + pool A/B done (`m13p2-bestteam-arena.md`, `m11p2-pool-arena.md`):
+  vs bestteam-thief 32/32 at EVERY w_intercept incl. 0.0 (directional; cage forms assume
+  their rule-47 fix); w_intercept 20 = +6 doctrine-m12, +12 anrbj666-thief (32/0), −8
+  vibecode-class ⇒ zero-dip rule fails ⇒ **default stays 0.0, 20.0 is a per-pairing
+  option** (gal-roy1 counted is live and their thief class unknown). ADR-0017.
+
 ## Phase M8 — Submission hardening
 
 - ☐ **M8-1** README academic reports ×2 (§9.4.2 sections + user-manual sections + contradiction-choices narrative + screenshots + sibling links) — C, review E+AG, approve I. DoD: `check_submission.py` README items green.
