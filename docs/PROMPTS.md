@@ -3,6 +3,36 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR #140 — feat/m13-wire-true-capture (M13: wire-true capture semantics; ADR-0016)
+
+- **Driver:** Imree ("I think our cop has to have a major flaw, find what it is and offer
+  how to fix it… do your own research, think out of the box" → after the diagnosis:
+  "let's start working on it"; merge on his word same day) · **Author:** Claude
+  (terminal, branch `feat/m13-wire-true-capture`) · **Reviewer:** merged on driver's
+  word (cross-model review waived by the merge instruction; findings-style evidence in
+  the PR body).
+- **What was asked:** find why the cop loses even when the belief knows the thief's
+  position, then fix it.
+- **Outcome (diagnosis):** forensics over all six counted series — cop 4/18 captures,
+  each gifted by an opponent parity break. Four mechanisms, each evidence-locked:
+  parity lock (vibecode: perfect belief 34/34, distance pinned 1 for 28 plies, 0
+  STAYs/walls), claim-gate incoherence (best2934: 3 co-locations forfeited at raw mass
+  0.0049 vs argmax 0.990 — the M12 intercept steered, the raw-belief gate silenced),
+  blind cop (najamjad: 35/35 frames refused, argmax 0/34), and a generous instrument
+  (referee/search granted thief-onto-cop, claim persistence, cop-body cornering, STAY
+  landings — none exist on the wire; empirical grading rule pinned 19/19).
+- **Outcome (build):** referee + search/solver wire-true (landing = cop-half transition
+  only) · `Decision.landing_confidence` claim intent (new `copthief_police/pricing.py`)
+  · `[scent] refused_frame_trust` quarantine (game.toml v1.08) · `w_parity` knob
+  default-off · arena re-baseline under wire-true physics + new lag-2 probe
+  (`m13-lag2-arena.md`): best2934 mimic still dies 32/32 at the measured lag ⇒ residual
+  gap is mimic fidelity, labeled so. 1131 tests green, manifest 367 refreshed.
+- **Same-day live validation:** the 2026-08-16 bestteam friendly (played off the branch
+  head `00f68d3` pre-merge; runbook now forbids that for counted) tied 47–47 with the
+  quarantine UNARMED in the runbook config — replaying their real refused frames
+  through the armed quarantine tracks their thief 35/35 in all three cop games
+  (receipts in `logs/bestteam-vs-imreeyal_g0*.jsonl`).
+
 ## PR — feat/m12-counter-best2934 (M12: counter best2934's overhauled stack; ADR-0015)
 
 - **Driver:** Imree (overnight autonomous session prompt after the 08-14 35–75 loss;
