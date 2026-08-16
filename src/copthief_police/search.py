@@ -41,7 +41,10 @@ def truncated_support(probs: Mapping[Coord, float], top_k: int) -> list[tuple[Co
 
 
 def _captured(board: Board, cop: Coord, thief: Coord) -> bool:
-    return cop == thief or thief in board.barriers or is_imprisoned(board, thief)
+    # M13 (ADR-0016): the STATE forms only (rules 46/47). Co-location is not a capture
+    # state on the wire — the landing is a graded TRANSITION, scored where the cop moves.
+    del cop
+    return thief in board.barriers or is_imprisoned(board, thief)
 
 
 def _cop_turn(
@@ -61,7 +64,7 @@ def _cop_turn(
     values = []
     for move in sorted(legal_moves(board, cop, move_set)):
         dest = board.apply_move(cop, move)
-        if dest == thief:
+        if dest == thief and dest != cop:  # a real landing — a STAY declares nothing (M13)
             values.append(opts["w_capture"] + plies)
         else:
             values.append(_thief_turn(board, dest, thief, move_set, plies - 1, opts, cache, paths))
@@ -82,12 +85,12 @@ def _thief_turn(
         return opts["w_capture"] + plies
     if plies == 0:
         return leaf_value(board, cop, thief, move_set, opts, cache, paths)
+    # M13 (ADR-0016): the cop's cell is a legal, ungraded reply — the thief escapes
+    # THROUGH the cop on the wire (the vibecode/best2934 forensics). STAY guarantees
+    # the reply set is never empty, so no "cornered" bonus exists.
     replies = [
         board.apply_move(thief, move) for move in sorted(legal_moves(board, thief, move_set))
     ]
-    replies = [dest for dest in replies if dest != cop]  # stepping onto the cop = capture
-    if not replies:
-        return opts["w_capture"] + plies  # cornered: every escape is blocked or suicidal
     return min(_cop_turn(board, cop, dest, move_set, plies, opts, cache, paths) for dest in replies)
 
 

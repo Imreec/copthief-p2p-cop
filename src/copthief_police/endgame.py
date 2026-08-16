@@ -47,16 +47,30 @@ def sharp_support(
 
 
 def _captured(board: Board, cop: Coord, thief: Coord) -> bool:
-    """All three capture forms after an action (the landing claim rides — SQ2)."""
-    return cop == thief or thief in board.barriers or is_imprisoned(board, thief)
+    """The STATE capture forms: barrier-on-thief (46) and imprisonment (47).
+
+    M13 (ADR-0016): co-location is NOT a capture state on the wire — the landing form
+    is a graded TRANSITION (a real move onto the thief's cell), checked where the cop
+    acts. A thief standing on the cop's cell is unharmed until the cop re-lands.
+    """
+    return thief in board.barriers or is_imprisoned(board, thief)
+
+
+def _lands_on(kind: str, cop_before: Coord, cop_after: Coord, thief: Coord) -> bool:
+    """The landing transition: a real MOVE onto the thief's cell (a STAY or a wall
+    turn lands nowhere, so it can declare nothing — M13, ADR-0016)."""
+    return kind == "move" and cop_after == thief and cop_after != cop_before
 
 
 def _thief_replies(
     board: Board, cop: Coord, thief: Coord, move_set: tuple[str, ...]
 ) -> list[Coord]:
-    """Distinct legal destinations; stepping onto the cop is suicide, not escape."""
+    """Distinct legal destinations — the cop's cell INCLUDED (M13, ADR-0016): nothing
+    on the wire grades a thief-initiated collision, so the cop's body is a door, not
+    a wall. `cop` stays in the signature for the callers' symmetry."""
+    del cop  # wire-true: the cop's body blocks nothing
     dests = {board.apply_move(thief, move) for move in legal_moves(board, thief, move_set)}
-    return sorted(dest for dest in dests if dest != cop)
+    return sorted(dests)
 
 
 def _actions(
@@ -97,21 +111,19 @@ def _forces(
     if key in memo:
         return memo[key]
     result = False
-    for _kind, _payload, next_board, next_cop, next_quota in _actions(
+    for kind, _payload, next_board, next_cop, next_quota in _actions(
         board, cop, move_set, quota_left
     ):
-        if _captured(next_board, next_cop, thief):
+        if _lands_on(kind, cop, next_cop, thief) or _captured(next_board, next_cop, thief):
             result = True
             break
-        replies = _thief_replies(next_board, next_cop, thief, move_set)
-        if not replies:  # cornered: every escape is blocked or suicidal
-            result = True
-            break
+        # M13 (ADR-0016): replies are never empty (STAY always exists) and include the
+        # cop's cell — the old "cornered by the cop's body" win was never on the wire.
         if all(
             _forces(
                 next_board, next_cop, reply, move_set, actions_left - 1, next_quota, budget, memo
             )
-            for reply in replies
+            for reply in _thief_replies(next_board, next_cop, thief, move_set)
         ):
             result = True
             break
@@ -143,8 +155,8 @@ def forced_action(
                 board, cop, move_set, quota_left
             ):
                 if all(
-                    _captured(next_board, next_cop, thief)
-                    or not _thief_replies(next_board, next_cop, thief, move_set)
+                    _lands_on(kind, cop, next_cop, thief)
+                    or _captured(next_board, next_cop, thief)
                     or all(
                         _forces(
                             next_board,
