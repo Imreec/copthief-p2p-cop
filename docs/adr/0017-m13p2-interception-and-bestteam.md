@@ -100,6 +100,31 @@ end-to-end and exposed the next layer:
 - The rule-47 concession remains their fix; every offline conversion number vs
   their arm assumes it (stated wherever the numbers are used).
 
+## Addendum — the full-game oracle (2026-08-17 morning, Imree's direction)
+
+Their PUBLISHED code (brain + belief filter, the golden-oracle drive validated at
+98%) played 64 full games against OUR real fielded cop in the offline scratchpad
+harness, signed starts, wire-true grading. Method + seams documented in the run
+notes; their code never enters any repo. Findings:
+
+- **Book-true conversion (concessions working): 22/32 = 69%** — 18 rule-46 walls +
+  4 rule-47 cages. **Zero landing captures in 64 games**: their capture_risk weight
+  (400) keeps their thief off any cell a landing could reach — the entire matchup
+  is walls. Corollaries: `claim_threshold` and `w_intercept` are largely INERT vs
+  this opponent (the A/B produced byte-identical cop sequences — unexercised, not
+  neutral), and cop tuning vs them should target wall TEMPO (the measured
+  one-tempo-late divergence decides converted-vs-escaped games).
+- **Concession-dependence corrected and sharpened:** their compat path consults NO
+  verdict — not for rule 47 and, by the same code shape, not for rule 46 either.
+  With neither concession working, our conversions vs their evader are ZERO by
+  construction (no landings exist) — which is exactly the two live 47–47 ties.
+  **The league ask must cover BOTH forms** (self-adjudication on barrier arrival,
+  as our own `peer/inbound.py` does — the best2934 precedent).
+- With both forms conceded, expected series ≈ 76–44 and P(6–0) ≈ 0.69³ ≈ 1/3 per
+  this instrument — carried caveats: published HEAD ≠ their played monorepo commits,
+  the hint channel unmodelled (can only make their thief better-informed), and the
+  live friendly remains the decisive test.
+
 ## Alternatives
 
 - **Predict-by-running-their-engine live**: rejected again (ADR-0015 grounds);
