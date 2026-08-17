@@ -76,10 +76,18 @@ end-to-end and exposed the next layer:
   unplayed thief could be that class, and their counted is LIVE. So the default
   holds 0.0 (byte-identical stream) and 20.0 arms per pairing on Imree's word
   against interceptor-resistant movers. Same posture as ADR-0015's k-trade.
-- **vs bestteam: 32/32 at every w_intercept including 0.0** — the M13 stack already
-  sweeps their mimic. DIRECTIONAL (mimic 81%), and the cage-form conversions among
-  those 32 assume THEIR rule-47 concession fix. The live friendly is the test;
-  nothing here is a projected series score.
+- **vs bestteam: 32/32 at every w_intercept including 0.0 — SUBSEQUENTLY DISPROVEN
+  for the league geometry** (Imree's morning review question, 2026-08-17). A probe on
+  the SIGNED starts alone showed captures at steps 5–8, contradicting the live tapes
+  outright (1 cage at step 20 + 2 survivals). Diagnosis: the `truth-lag2` feed hands
+  the arm a SHARP start-delta belief for the first two steps, where their real filter
+  is near-uniform (golden fixture, s1–s2) — so the mimic's opening moves degenerate
+  to coin-flip ties instead of their deterministic early camp, and it wanders into
+  the approach corridor. **The arm's numbers are invalid until the arena can feed a
+  fixture-faithful early belief (uniform → lag-2 sharp) — a named follow-up. Live
+  evidence outranks every table in this ADR: current live conversion vs their thief
+  is 1/3, via the corner mechanism.** Cage forms additionally assume THEIR rule-47
+  fix. Nothing here is a projected series score.
 - The pool instrument now carries the bestteam-thief row and the i20 A/B arm
   permanently; the golden fixture + fidelity floor are CI-pinned.
 - Runbook propagation owed post-merge: none for defaults (0.0 ships); the
