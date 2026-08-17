@@ -55,6 +55,10 @@ DEFAULT_OPTIONS: dict[str, float] = {
     # 0 walls): with both sides moving every ply, parity is invariant and distance 0
     # unreachable. 0.0 = byte-identical stream; armed only by a measured sweep.
     "w_parity": 0.0,
+    # M13p2 (ADR-0017): weight on the reply-adjacency positioning term — value cop
+    # destinations by the thief's reply mass landing ADJACENT to them (the geometry
+    # next turn's graded landing fires from). 0.0 = byte-identical stream.
+    "w_intercept": 0.0,
 }
 
 

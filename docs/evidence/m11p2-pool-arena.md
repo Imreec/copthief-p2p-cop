@@ -4,24 +4,26 @@
 > (deterministic; regenerate, never hand-edit). Per-role rosters over the
 > seeded start-scenario suite; games run headless through the sdk scenario
 > series.
-> Police roster: police-m12, nisyar1-police, anrbj666-police, best2934-police, vibecode-police, hunter-cop. Thief roster: doctrine-m12, nisyar1-thief, anrbj666-thief, best2934-thief, vibecode-thief, sqak-evader.
+> Police roster: police-m12, nisyar1-police, anrbj666-police, best2934-police, vibecode-police, hunter-cop, police-m12-i20. Thief roster: doctrine-m12, nisyar1-thief, anrbj666-thief, best2934-thief, vibecode-thief, sqak-evader, bestteam-thief.
 > Seeds: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 (scenario #1 = signed starts).
 > Scent model: subtractive_chebyshev_v1 (shipped default).
 
 | brain | role | games | wins | points |
 |---|---|---|---|---|
-| police-m12 | police | 192 | 173 | 3555 |
-| anrbj666-police | police | 192 | 126 | 2850 |
-| best2934-police | police | 192 | 103 | 2505 |
-| nisyar1-police | police | 192 | 49 | 1695 |
-| hunter-cop | police | 192 | 13 | 1155 |
-| vibecode-police | police | 192 | 6 | 1050 |
-| anrbj666-thief | thief | 192 | 166 | 1790 |
-| doctrine-m12 | thief | 192 | 149 | 1705 |
-| best2934-thief | thief | 192 | 106 | 1490 |
-| sqak-evader | thief | 192 | 105 | 1485 |
-| nisyar1-thief | thief | 192 | 90 | 1410 |
-| vibecode-thief | thief | 192 | 66 | 1290 |
+| police-m12-i20 | police | 224 | 215 | 4345 |
+| police-m12 | police | 224 | 205 | 4195 |
+| anrbj666-police | police | 224 | 130 | 3070 |
+| best2934-police | police | 224 | 127 | 3025 |
+| nisyar1-police | police | 224 | 67 | 2125 |
+| hunter-cop | police | 224 | 16 | 1360 |
+| vibecode-police | police | 224 | 6 | 1210 |
+| anrbj666-thief | thief | 224 | 166 | 1950 |
+| doctrine-m12 | thief | 224 | 150 | 1870 |
+| bestteam-thief | thief | 224 | 111 | 1675 |
+| best2934-thief | thief | 224 | 106 | 1650 |
+| sqak-evader | thief | 224 | 105 | 1645 |
+| nisyar1-thief | thief | 224 | 90 | 1570 |
+| vibecode-thief | thief | 224 | 74 | 1490 |
 
 **Champion gate:** not run - this config pins no champion (measurement instrument, not the CI-gated arena).
 
@@ -37,33 +39,46 @@ Per-pairing outcomes:
 | police-m12 | best2934-thief | 32 | 0 |
 | police-m12 | vibecode-thief | 32 | 0 |
 | police-m12 | sqak-evader | 32 | 0 |
+| police-m12 | bestteam-thief | 32 | 0 |
 | nisyar1-police | doctrine-m12 | 0 | 32 |
 | nisyar1-police | nisyar1-thief | 16 | 16 |
 | nisyar1-police | anrbj666-thief | 0 | 32 |
 | nisyar1-police | best2934-thief | 0 | 32 |
 | nisyar1-police | vibecode-thief | 32 | 0 |
 | nisyar1-police | sqak-evader | 1 | 31 |
+| nisyar1-police | bestteam-thief | 18 | 14 |
 | anrbj666-police | doctrine-m12 | 17 | 15 |
 | anrbj666-police | nisyar1-thief | 29 | 3 |
 | anrbj666-police | anrbj666-thief | 0 | 32 |
 | anrbj666-police | best2934-thief | 25 | 7 |
 | anrbj666-police | vibecode-thief | 32 | 0 |
 | anrbj666-police | sqak-evader | 23 | 9 |
+| anrbj666-police | bestteam-thief | 4 | 28 |
 | best2934-police | doctrine-m12 | 1 | 31 |
 | best2934-police | nisyar1-thief | 24 | 8 |
 | best2934-police | anrbj666-thief | 6 | 26 |
 | best2934-police | best2934-thief | 29 | 3 |
 | best2934-police | vibecode-thief | 30 | 2 |
 | best2934-police | sqak-evader | 13 | 19 |
+| best2934-police | bestteam-thief | 24 | 8 |
 | vibecode-police | doctrine-m12 | 0 | 32 |
 | vibecode-police | nisyar1-thief | 1 | 31 |
 | vibecode-police | anrbj666-thief | 0 | 32 |
 | vibecode-police | best2934-thief | 0 | 32 |
 | vibecode-police | vibecode-thief | 0 | 32 |
 | vibecode-police | sqak-evader | 5 | 27 |
+| vibecode-police | bestteam-thief | 0 | 32 |
 | hunter-cop | doctrine-m12 | 0 | 32 |
 | hunter-cop | nisyar1-thief | 0 | 32 |
 | hunter-cop | anrbj666-thief | 0 | 32 |
 | hunter-cop | best2934-thief | 0 | 32 |
 | hunter-cop | vibecode-thief | 0 | 32 |
 | hunter-cop | sqak-evader | 13 | 19 |
+| hunter-cop | bestteam-thief | 3 | 29 |
+| police-m12-i20 | doctrine-m12 | 31 | 1 |
+| police-m12-i20 | nisyar1-thief | 32 | 0 |
+| police-m12-i20 | anrbj666-thief | 32 | 0 |
+| police-m12-i20 | best2934-thief | 32 | 0 |
+| police-m12-i20 | vibecode-thief | 24 | 8 |
+| police-m12-i20 | sqak-evader | 32 | 0 |
+| police-m12-i20 | bestteam-thief | 32 | 0 |

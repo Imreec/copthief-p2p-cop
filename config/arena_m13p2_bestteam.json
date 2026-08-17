@@ -1,0 +1,173 @@
+{
+ "version": "1.00",
+ "_comment": "M13p2 bestteam study + intercept sweep (measurement instrument, champion_pin null; ADR-0017). bestteam-thief arm re-derived from their public repo HEAD a59fa05 (ADR-0011 method; fidelity docs/evidence/m13p2-bestteam-mimic.md), fed truth-lag2 - the golden-oracle finding: their belief runs on our scent TWO steps stale (they move first). Our cop arms sweep w_intercept (reply-adjacency positioning) with the fielded M12 knobs otherwise. doctrine-m12 rides as the pool-regression canary. Regenerate: uv run python scripts/arena_run.py --config config/arena_m13p2_bestteam.json",
+ "police_roster": [
+  {
+   "name": "police-i0",
+   "spec": "copthief_police.brain:PoliceBrain",
+   "feed": "sharp199",
+   "claim_threshold": 0.1
+  },
+  {
+   "name": "police-i2",
+   "spec": "copthief_police.brain:PoliceBrain",
+   "feed": "sharp199",
+   "claim_threshold": 0.1
+  },
+  {
+   "name": "police-i5",
+   "spec": "copthief_police.brain:PoliceBrain",
+   "feed": "sharp199",
+   "claim_threshold": 0.1
+  },
+  {
+   "name": "police-i10",
+   "spec": "copthief_police.brain:PoliceBrain",
+   "feed": "sharp199",
+   "claim_threshold": 0.1
+  },
+  {
+   "name": "police-i20",
+   "spec": "copthief_police.brain:PoliceBrain",
+   "feed": "sharp199",
+   "claim_threshold": 0.1
+  }
+ ],
+ "thief_roster": [
+  {
+   "name": "bestteam-thief",
+   "spec": "bestteam-thief",
+   "feed": "truth-lag2",
+   "claim_feed": "truth"
+  },
+  {
+   "name": "doctrine-m12",
+   "spec": "copthief_core.strategy.doctrine_evader:DoctrineEvaderBrain",
+   "feed": "sharp199",
+   "claim_feed": "truth"
+  }
+ ],
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32
+ ],
+ "scenario_min_separation": 4,
+ "champion_pin": null,
+ "dod_series": [],
+ "brain_options": {
+  "police-i0": {
+   "barrier_gain_threshold": 4.7893,
+   "p_commit": 0.2,
+   "w_budget": 1.7277,
+   "w_distance": 3.8875,
+   "w_mobility": 3.6061,
+   "w_region": 0.1143,
+   "tie_epsilon": 0.25,
+   "contain_enabled": 1.0,
+   "contain_range": 4.0,
+   "path_distance": 1.0,
+   "intercept_enabled": 1.0,
+   "w_intercept": 0.0
+  },
+  "police-i2": {
+   "barrier_gain_threshold": 4.7893,
+   "p_commit": 0.2,
+   "w_budget": 1.7277,
+   "w_distance": 3.8875,
+   "w_mobility": 3.6061,
+   "w_region": 0.1143,
+   "tie_epsilon": 0.25,
+   "contain_enabled": 1.0,
+   "contain_range": 4.0,
+   "path_distance": 1.0,
+   "intercept_enabled": 1.0,
+   "w_intercept": 2.0
+  },
+  "police-i5": {
+   "barrier_gain_threshold": 4.7893,
+   "p_commit": 0.2,
+   "w_budget": 1.7277,
+   "w_distance": 3.8875,
+   "w_mobility": 3.6061,
+   "w_region": 0.1143,
+   "tie_epsilon": 0.25,
+   "contain_enabled": 1.0,
+   "contain_range": 4.0,
+   "path_distance": 1.0,
+   "intercept_enabled": 1.0,
+   "w_intercept": 5.0
+  },
+  "police-i10": {
+   "barrier_gain_threshold": 4.7893,
+   "p_commit": 0.2,
+   "w_budget": 1.7277,
+   "w_distance": 3.8875,
+   "w_mobility": 3.6061,
+   "w_region": 0.1143,
+   "tie_epsilon": 0.25,
+   "contain_enabled": 1.0,
+   "contain_range": 4.0,
+   "path_distance": 1.0,
+   "intercept_enabled": 1.0,
+   "w_intercept": 10.0
+  },
+  "police-i20": {
+   "barrier_gain_threshold": 4.7893,
+   "p_commit": 0.2,
+   "w_budget": 1.7277,
+   "w_distance": 3.8875,
+   "w_mobility": 3.6061,
+   "w_region": 0.1143,
+   "tie_epsilon": 0.25,
+   "contain_enabled": 1.0,
+   "contain_range": 4.0,
+   "path_distance": 1.0,
+   "intercept_enabled": 1.0,
+   "w_intercept": 20.0
+  },
+  "doctrine-m12": {
+   "room_first": 1.0,
+   "cage_escape": 1.0,
+   "forecast_walls": 4.0,
+   "forecast_wall_reach": 2.0,
+   "flight_floor": 1.6081389068646288,
+   "center_margin_cap": 1.6587821646865204,
+   "safe_distance": 6.0,
+   "flee_cap_hunted": 5.0258790436073335,
+   "hunted_radius": 3.749533704442913,
+   "hunted_mass": 0.2396036306544369,
+   "stay_cap_limit": 2.281202991194793
+  }
+ },
+ "evidence_out": "docs/evidence/m13p2-bestteam-arena.md"
+}
