@@ -1,0 +1,390 @@
+{
+  "סוג_דוח": "משחק_ליגה_רשמי",
+  "גרסת_קוד": "1.00",
+  "תפקיד_מדווח": "thief",
+  "קבוצה_מדווחת": "ImreEyal-Police",
+  "מספר_משחקון": 4,
+  "זמן_התחלה": "2026-08-11T17:38:30.652893+00:00",
+  "משך_משחק_שניות": 10.5,
+  "הצהרת_מפרט_מחשב_וטוקנים": {
+    "מפרט_מחשב": {
+      "cpu_cores": 24,
+      "cpu_freq_mhz": 3693,
+      "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "gpu_cores_or_cuda": "cuda",
+      "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+      "os": "Windows (10.0.19045)",
+      "ram_gb": 31.9,
+      "vram_gb": 12.0
+    },
+    "דגם_שפה_בשימוש": "none",
+    "גרסת_קוד": "1.00",
+    "סך_טוקנים_שנצרכו": 0
+  },
+  "תוצאה": "לכידה",
+  "מנצח": "police",
+  "צעדים_שבוצעו": 7,
+  "הסכם_תפאורה_משא_ומתן": {
+    "board_size": 7,
+    "smell_grid_size": 5,
+    "decay_per_step": 0.1,
+    "emit_intensity": 0.9,
+    "min_center_intensity": 0.5,
+    "max_steps": 35,
+    "barriers_max": 14,
+    "setting": "New York",
+    "hint_max_words": 15,
+    "axis_origin_corner": "top-left",
+    "axis_start_index": 0,
+    "thief_start": [
+      3,
+      3
+    ],
+    "cop_start": [
+      0,
+      0
+    ],
+    "num_games": 6
+  },
+  "אימות_קריפטוגרפי": {
+    "צעדים_מאומתים": 6,
+    "צעדים_שנכשלו": []
+  },
+  "לוג_צעדים_מאומת": [
+    {
+      "מספר_צעד": 1,
+      "טביעת_זמן": "2026-08-11T17:38:31.932661+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "I could swear you were hiding behind Wall Street.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.5,
+        "0,1": 0.8,
+        "0,2": 0.5,
+        "0,3": 0.2,
+        "1,0": 0.5,
+        "1,1": 0.5,
+        "1,2": 0.5,
+        "1,3": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "be3af60645ba1675b8c3e44a79852d37b609cb2f81847eef6235981df085ebdf"
+    },
+    {
+      "מספר_צעד": 2,
+      "טביעת_זמן": "2026-08-11T17:38:32.801983+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "Every step you take costs you a street.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.4,
+        "0,1": 0.7,
+        "0,2": 0.8,
+        "0,3": 0.5,
+        "0,4": 0.2,
+        "1,0": 0.4,
+        "1,1": 0.5,
+        "1,2": 0.5,
+        "1,3": 0.5,
+        "1,4": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "3de6385ef99248299a40e7d3683b13effca13ca6c6876effbc50b0f137b23487"
+    },
+    {
+      "מספר_צעד": 3,
+      "טביעת_זמן": "2026-08-11T17:38:33.617643+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "The city closes like a hand, finger by finger.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.3,
+        "0,1": 0.6,
+        "0,2": 0.8,
+        "0,3": 0.5,
+        "0,4": 0.2,
+        "1,0": 0.3,
+        "1,1": 0.5,
+        "1,2": 0.5,
+        "1,3": 0.5,
+        "1,4": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2
+      },
+      "מחסום_שהוצב": [
+        0,
+        3
+      ],
+      "חתימת_מצב": "8a91fbb921e101004560cb7d24a5c950e92198de4fecec2179298e271fb71c73"
+    },
+    {
+      "מספר_צעד": 4,
+      "טביעת_זמן": "2026-08-11T17:38:34.446320+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "My patrol never sleeps and never guesses twice.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.2,
+        "0,1": 0.5,
+        "0,2": 0.7,
+        "0,3": 0.5,
+        "0,4": 0.2,
+        "1,0": 0.2,
+        "1,1": 0.5,
+        "1,2": 0.8,
+        "1,3": 0.5,
+        "1,4": 0.2,
+        "2,0": 0.2,
+        "2,1": 0.5,
+        "2,2": 0.5,
+        "2,3": 0.5,
+        "2,4": 0.2,
+        "3,0": 0.2,
+        "3,1": 0.2,
+        "3,2": 0.2,
+        "3,3": 0.2,
+        "3,4": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "01834e467f03373089148e4fc43dbd0be8d128245323df6fb133ddbac3fefdfa"
+    },
+    {
+      "מספר_צעד": 5,
+      "טביעת_זמן": "2026-08-11T17:38:35.742021+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "The walls you fear are the ones I have not built yet.",
+      "גריד_ריח_מצורף": {
+        "0,0": 0.1,
+        "0,1": 0.4,
+        "0,2": 0.6,
+        "0,3": 0.5,
+        "0,4": 0.5,
+        "0,5": 0.2,
+        "1,0": 0.1,
+        "1,1": 0.4,
+        "1,2": 0.7,
+        "1,3": 0.8,
+        "1,4": 0.5,
+        "1,5": 0.2,
+        "2,0": 0.1,
+        "2,1": 0.4,
+        "2,2": 0.5,
+        "2,3": 0.5,
+        "2,4": 0.5,
+        "2,5": 0.2,
+        "3,0": 0.1,
+        "3,1": 0.2,
+        "3,2": 0.2,
+        "3,3": 0.2,
+        "3,4": 0.2,
+        "3,5": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "4198bbaaa66379a536dfdf793f9512e7048879eeab024d4831d44ee35c1be33b"
+    },
+    {
+      "מספר_צעד": 6,
+      "טביעת_זמן": "2026-08-11T17:38:36.802828+00:00",
+      "שולח": "police",
+      "רמז_מילולי_שנשלח": "My patrol never sleeps and never guesses twice.",
+      "גריד_ריח_מצורף": {
+        "0,1": 0.3,
+        "0,2": 0.5,
+        "0,3": 0.5,
+        "0,4": 0.5,
+        "0,5": 0.5,
+        "0,6": 0.2,
+        "1,1": 0.3,
+        "1,2": 0.6,
+        "1,3": 0.7,
+        "1,4": 0.8,
+        "1,5": 0.5,
+        "1,6": 0.2,
+        "2,1": 0.3,
+        "2,2": 0.4,
+        "2,3": 0.5,
+        "2,4": 0.5,
+        "2,5": 0.5,
+        "2,6": 0.2,
+        "3,1": 0.1,
+        "3,2": 0.2,
+        "3,3": 0.2,
+        "3,4": 0.2,
+        "3,5": 0.2,
+        "3,6": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "5b77dd614f63fc8e704d4867183ab0f3715f91e16181c76219750570ef61c91b"
+    }
+  ],
+  "הצהרות_חתומות_שלי": [
+    {
+      "commit": "b6bbef51e5da709acfbfd2c51a3a1135c3e5f5fd65054f781ea3fbd0c5f04652",
+      "nonce": "efbb1293a07a3890c40f2422adf9c29e",
+      "payload": {
+        "code_version": "1.00",
+        "github_commit": "dbfecba05a729cc19754df9a7a5d185fe32719cf",
+        "group_name": "ImreEyal-Police",
+        "model": "none",
+        "num_games_declared": 6,
+        "scent_model_sha256": "81ebee59640e80eae8ca9ee5f86abd26e7edf5cdbb27d15925cb6ee45ca6ddf4",
+        "spec": {
+          "cpu_cores": 24,
+          "cpu_freq_mhz": 3693,
+          "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+          "gpu_cores_or_cuda": "cuda",
+          "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+          "os": "Windows (10.0.19045)",
+          "ram_gb": 31.9,
+          "vram_gb": 12.0
+        },
+        "step": 0,
+        "sub_game_number": 4,
+        "type": "system_spec"
+      }
+    },
+    {
+      "commit": "c3fc7ae0f2a89a70566498be82c593fa67f35c4122a615305b62dfe8d5929fc8",
+      "nonce": "2f9cd817d6bbdfb6cbaf90b6c94df1e6",
+      "payload": {
+        "hint": "They say the crowds near Central Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          2,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 3];barriers=[]",
+        "step": 1,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "66c516af13af7c316e2db9495a2a99a24af39924a78e577c46ecce9c8600adb8",
+      "nonce": "38344383969d77636b314ec5f9f6bd7d",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 2,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "4764e2013dc53ac6422da4eeb532f7510f8e94067f844ccd28ca569f36c3f31e",
+      "nonce": "060d79515eaff03645a7d1d8dff963c5",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 3,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ca58c25333e5a47d5038104fd60ec2e9c851af14737b538746ee5e2663bf479d",
+      "nonce": "3af5d2de7d25044957189c052b1a432b",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[[0, 3]]",
+        "step": 4,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "1f7a53653ce359743cdc1aa66a4c43026e731aa1a6bb43d2a22467f23b52932a",
+      "nonce": "92add29e5e05e04a7216f84542cff796",
+      "payload": {
+        "hint": "Someone was asking about Central Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          0,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[0, 4];barriers=[[0, 3]]",
+        "step": 5,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "15738efe1380f8feb7b0220b49c9fa48ab2730d0bb2c4118c733ca4fcc791c07",
+      "nonce": "046dc9d343f19bb87c7c0be3937aa402",
+      "payload": {
+        "hint": "All roads seem to lead to Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[[0, 3]]",
+        "step": 6,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "48b061bc9d9dec010258ac9fffce2a09d1b82112a6e0f01bd4c1af648197f0ae",
+      "nonce": "f3580cb8dc537365754c605432509c60",
+      "payload": {
+        "hint": "You got me.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[[0, 3]]",
+        "step": 7,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    }
+  ],
+  "הסכמה_הדדית": true,
+  "חתימת_קונסנזוס_משותפת": "0aed16de3ac1bf811b98be53e657ee3d27e137fc8ea46a1830a1ce9c0babdf1b"
+}
