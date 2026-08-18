@@ -3,6 +3,32 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
+## PR (this one) — report/bestteam-counted-close (seventh counted banked: bestteam W 60–40)
+
+- **Driver:** Imree ("run the full ledger PR and the rest of the post series work") ·
+  **Author:** Claude (terminal) · **Reviewer:** merged on driver's word (evidence/config-only,
+  per the #127/#133/#139 precedent).
+- **What was asked:** the complete close-out of the bestteam counted (2026-08-18 T=19:52,
+  won 60–40 4–2, +10 diversity derived to imreeyal, report fired exit 0 lecturer-alone).
+- **Outcome:** counted artifact set (20 files) · friendly windows 8–11 evidence incl. the
+  CORRECTED window-11 re-file (the stranger-identity incident, fixed in #144; poisoned
+  mailed set preserved under archive-20260818-window11-poisoned) · ledger 6→7 +
+  "bestteam" appended to counted_opponents (thief mirror in its own sync PR).
+
+## PR #144 — fix/stranger-identity-poison (+ thief sync #99)
+
+- **Driver:** Imree (incident surfaced live in the 2026-08-18 window-11 friendly; merge
+  on his recorded word "you have my approval to merge and sync immediately when it's
+  ready") · **Author:** Claude (terminal) · **Reviewer:** merged on driver's word.
+- **What was asked:** during window 11 a third team's process pushed one agreement into
+  our door mid-series; the wire guard refused it, but the mailed artifact keyed every row
+  to the stranger. Diagnose and fix before the counted.
+- **Outcome:** `opponent_identity_from_logs` adopts an inbound identity only when its
+  group_id agrees with the configured pairing (RED-first, 3 tests reproducing the
+  incident shape). Live-validated: the rebuilt window-11 artifact recomputes mutual sha
+  ff77bb1d, byte-equal to the opponent's independently filed copy. Mirrored to the thief
+  repo as sync PR #99. The counted played the same evening on the fixed pair.
+
 ## PR #140 — feat/m13-wire-true-capture (M13: wire-true capture semantics; ADR-0016)
 
 - **Driver:** Imree ("I think our cop has to have a major flaw, find what it is and offer
