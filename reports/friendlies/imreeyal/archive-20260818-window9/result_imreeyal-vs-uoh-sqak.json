@@ -1,0 +1,126 @@
+{
+  "_schema": "Summary and final result for the WHOLE game (all sub-games) between two teams. It condenses the per-sub-game logs into a per-group score for every sub-game plus the aggregate outcome the lecturer needs to build the league standings. Static team metadata (identity, members, repos, MCP, hardware, model) is NOT repeated here — it lives in 1-pre-game-declaration.json and is referenced via game_id / group_id. Both teams must agree on this result and each sends its own copy to the lecturer (book ch9).",
+  "schema_version": "1.1",
+  "report_type": "final_game_result",
+  "game_id": "imreeyal-vs-uoh-sqak",
+  "game_uid": "639db017-607b-1bce-9fae-f5948766a795",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-uoh-sqak.json",
+    "config": "config_imreeyal-vs-uoh-sqak_g<NN>.json",
+    "log": "log_imreeyal-vs-uoh-sqak_g<NN>.json",
+    "result": "result_imreeyal-vs-uoh-sqak.json",
+    "github": {
+      "imreeyal": {
+        "cop": "https://github.com/Imreec/copthief-p2p-cop",
+        "thief": "https://github.com/Imreec/copthief-p2p-thief"
+      },
+      "uoh-sqak": {
+        "cop": "https://github.com/salah-dev-stu/uoh-sqak-cop",
+        "thief": "https://github.com/salah-dev-stu/uoh-sqak-thief"
+      }
+    }
+  },
+  "timezone": "Asia/Jerusalem",
+  "groups": [
+    "imreeyal",
+    "uoh-sqak"
+  ],
+  "num_sub_games": 2,
+  "sub_games": [
+    {
+      "sub_game_number": 1,
+      "roles": {
+        "imreeyal": "police",
+        "uoh-sqak": "thief"
+      },
+      "started_at": "2026-08-06T20:55:07.413563+00:00",
+      "ended_at": "2026-08-06T20:55:29.113563+00:00",
+      "result": "capture",
+      "winner_group": "imreeyal",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "da833cf511f83351501d1b7a57448ecebf8aa12e",
+        "uoh-sqak": "unknown"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "uoh-sqak": 0
+      },
+      "score": {
+        "imreeyal": 20,
+        "uoh-sqak": 5
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-uoh-sqak_g01.json",
+        "uoh-sqak": "log_imreeyal-vs-uoh-sqak_g01.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    },
+    {
+      "sub_game_number": 2,
+      "roles": {
+        "imreeyal": "thief",
+        "uoh-sqak": "police"
+      },
+      "started_at": "2026-08-06T20:58:29.625449+00:00",
+      "ended_at": "2026-08-06T20:59:09.125449+00:00",
+      "result": "capture",
+      "winner_group": "uoh-sqak",
+      "tie": false,
+      "github_commit": {
+        "imreeyal": "a252cc8f3f67c455c5b5e8af9a97fd2d56a046a7",
+        "uoh-sqak": "unknown"
+      },
+      "tokens": {
+        "imreeyal": 0,
+        "uoh-sqak": 0
+      },
+      "score": {
+        "imreeyal": 5,
+        "uoh-sqak": 20
+      },
+      "log_files": {
+        "imreeyal": "log_imreeyal-vs-uoh-sqak_g02.json",
+        "uoh-sqak": "log_imreeyal-vs-uoh-sqak_g02.json"
+      },
+      "audit": {
+        "log_verified": true,
+        "tampered": false
+      }
+    }
+  ],
+  "final_result": {
+    "total_score": {
+      "imreeyal": 27,
+      "uoh-sqak": 27
+    },
+    "sub_games_won": {
+      "imreeyal": 1,
+      "uoh-sqak": 1
+    },
+    "ties": 0,
+    "winner_group": null,
+    "series_tie": true,
+    "tokens_total_series": {
+      "imreeyal": 0,
+      "uoh-sqak": 0
+    },
+    "games_played_including_this": {
+      "imreeyal": 1,
+      "uoh-sqak": 0
+    },
+    "first_meeting_between_groups": true,
+    "diversity_reward_applied": {
+      "imreeyal": false,
+      "uoh-sqak": false
+    }
+  },
+  "mutual_agreement": {
+    "sha256": "8ac68d14ae590c2af9e06a58a2748bad54f457cb0f2087380d39345bc14eb9fa",
+    "confirmed": true
+  }
+}

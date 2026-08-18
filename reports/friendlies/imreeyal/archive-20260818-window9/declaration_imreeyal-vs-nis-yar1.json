@@ -1,0 +1,73 @@
+{
+  "_schema": "Static declaration for the WHOLE game (the full series of sub-games) between two teams. This is the single home for every field that does NOT change while the sub-games are played: team identity, members, cop/thief repository URLs, MCP server URLs, hardware spec, LLM model, the agreed max-tokens-per-game cap, and the game start/end times. Roles (cop/thief) switch across the sub-games, so no role and no sub_game_number appear here. Both teams sign it and lock it cryptographically before play (book ch5 Step-0). Data that changes per sub-game (github_commit, moves, scores) lives in 3-game-log.json and 4-final-result.json.",
+  "schema_version": "1.1",
+  "declaration_type": "pre_game_declaration",
+  "game_id": "imreeyal-vs-nis-yar1",
+  "game_uid": "df1a2b30-84bc-fc98-0956-4aef8f317962",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-nis-yar1.json",
+    "config": "config_imreeyal-vs-nis-yar1_g<NN>.json",
+    "log": "log_imreeyal-vs-nis-yar1_g<NN>.json",
+    "result": "result_imreeyal-vs-nis-yar1.json"
+  },
+  "timezone": "Asia/Jerusalem",
+  "game_started_at": "2026-08-11T17:37:05.927514+00:00",
+  "game_ended_at": "2026-08-11T17:39:29.885181+00:00",
+  "num_sub_games": 6,
+  "max_tokens_per_game": 200000,
+  "groups": {
+    "group_1": {
+      "group_id": "imreeyal",
+      "group_name": "ImreEyal-Police",
+      "members": [
+        "Imree Cohen",
+        "Eyal Shtinmetz"
+      ],
+      "repos": {
+        "cop": "https://github.com/Imreec/copthief-p2p-cop",
+        "thief": "https://github.com/Imreec/copthief-p2p-thief"
+      },
+      "mcp_servers": {
+        "cop": "https://cop.imreeyal.com/mcp",
+        "thief": "https://thief.imreeyal.com/mcp"
+      },
+      "llm_model": "none",
+      "hardware_spec": {
+        "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+        "cpu_freq_mhz": 3693,
+        "cpu_cores": 24,
+        "ram_gb": 31.9,
+        "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+        "vram_gb": 12.0
+      },
+      "signature": "41e714067ace09ba71beb4021c360f7152788237b2c238e6bac25619ac87b23c"
+    },
+    "group_2": {
+      "group_id": "nis-yar1",
+      "group_name": "nis-yar1",
+      "members": [
+        "Nissim Deri",
+        "Yarden Tziar"
+      ],
+      "repos": {
+        "cop": "https://github.com/NisoDeri/nis-yar1-cop",
+        "thief": "https://github.com/NisoDeri/nis-yar1-thief"
+      },
+      "mcp_servers": {
+        "cop": "https://duckling-judgingly-frigidly.ngrok-free.dev/cop/mcp",
+        "thief": "https://duckling-judgingly-frigidly.ngrok-free.dev/thief/mcp"
+      },
+      "llm_model": "qwen3:14b",
+      "hardware_spec": {
+        "cpu_type": null,
+        "cpu_freq_mhz": null,
+        "cpu_cores": null,
+        "ram_gb": null,
+        "gpu_model": null,
+        "vram_gb": null
+      },
+      "signature": "9ed5882cce50b6400dd2069b09d1463174a07c6def6344482568367a095900f4"
+    }
+  }
+}

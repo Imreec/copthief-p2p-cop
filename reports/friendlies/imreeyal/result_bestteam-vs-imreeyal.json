@@ -34,14 +34,14 @@
         "imreeyal": "thief",
         "bestteam": "police"
       },
-      "started_at": "2026-08-16T17:17:07.744202+00:00",
-      "ended_at": "2026-08-16T17:19:03.744202+00:00",
+      "started_at": "2026-08-18T14:50:08.216810+00:00",
+      "ended_at": "2026-08-18T14:50:08.216810+00:00",
       "result": "survival",
       "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "2412bb4af28cfb18a61e6a24cc217dce42aeff91",
-        "bestteam": "unknown"
+        "imreeyal": "bdbce8a267615038224f6af61814f24f240d251c",
+        "bestteam": "51dbf196b45b659e9ff0b6b0cd81d33e6ac497ff"
       },
       "tokens": {
         "imreeyal": 0,
@@ -66,22 +66,22 @@
         "imreeyal": "police",
         "bestteam": "thief"
       },
-      "started_at": "2026-08-16T17:19:05.236994+00:00",
-      "ended_at": "2026-08-16T17:22:01.536994+00:00",
-      "result": "survival",
-      "winner_group": "bestteam",
+      "started_at": "2026-08-18T14:53:08.504155+00:00",
+      "ended_at": "2026-08-18T14:53:08.504155+00:00",
+      "result": "capture",
+      "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "2412bb4af28cfb18a61e6a24cc217dce42aeff91",
-        "bestteam": "unknown"
+        "imreeyal": "bdbce8a267615038224f6af61814f24f240d251c",
+        "bestteam": "8ecb84892371f6e2ca5ca881e6f152bdbceeba78"
       },
       "tokens": {
         "imreeyal": 0,
         "bestteam": 0
       },
       "score": {
-        "imreeyal": 5,
-        "bestteam": 10
+        "imreeyal": 20,
+        "bestteam": 5
       },
       "log_files": {
         "imreeyal": "log_bestteam-vs-imreeyal_g02.json",
@@ -98,14 +98,14 @@
         "imreeyal": "thief",
         "bestteam": "police"
       },
-      "started_at": "2026-08-16T17:22:00.003503+00:00",
-      "ended_at": "2026-08-16T17:23:55.703503+00:00",
+      "started_at": "2026-08-18T14:54:48.538555+00:00",
+      "ended_at": "2026-08-18T14:54:48.538555+00:00",
       "result": "survival",
       "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "2412bb4af28cfb18a61e6a24cc217dce42aeff91",
-        "bestteam": "unknown"
+        "imreeyal": "bdbce8a267615038224f6af61814f24f240d251c",
+        "bestteam": "51dbf196b45b659e9ff0b6b0cd81d33e6ac497ff"
       },
       "tokens": {
         "imreeyal": 0,
@@ -130,14 +130,14 @@
         "imreeyal": "police",
         "bestteam": "thief"
       },
-      "started_at": "2026-08-16T17:23:57.064752+00:00",
-      "ended_at": "2026-08-16T17:26:53.164752+00:00",
+      "started_at": "2026-08-18T14:57:48.254927+00:00",
+      "ended_at": "2026-08-18T14:57:48.254927+00:00",
       "result": "survival",
       "winner_group": "bestteam",
       "tie": false,
       "github_commit": {
-        "imreeyal": "2412bb4af28cfb18a61e6a24cc217dce42aeff91",
-        "bestteam": "unknown"
+        "imreeyal": "bdbce8a267615038224f6af61814f24f240d251c",
+        "bestteam": "8ecb84892371f6e2ca5ca881e6f152bdbceeba78"
       },
       "tokens": {
         "imreeyal": 0,
@@ -162,14 +162,14 @@
         "imreeyal": "thief",
         "bestteam": "police"
       },
-      "started_at": "2026-08-16T17:26:51.808741+00:00",
-      "ended_at": "2026-08-16T17:28:49.608741+00:00",
+      "started_at": "2026-08-18T14:59:51.253299+00:00",
+      "ended_at": "2026-08-18T14:59:51.253299+00:00",
       "result": "survival",
       "winner_group": "imreeyal",
       "tie": false,
       "github_commit": {
-        "imreeyal": "2412bb4af28cfb18a61e6a24cc217dce42aeff91",
-        "bestteam": "unknown"
+        "imreeyal": "bdbce8a267615038224f6af61814f24f240d251c",
+        "bestteam": "51dbf196b45b659e9ff0b6b0cd81d33e6ac497ff"
       },
       "tokens": {
         "imreeyal": 0,
@@ -194,14 +194,14 @@
         "imreeyal": "police",
         "bestteam": "thief"
       },
-      "started_at": "2026-08-16T17:28:50.946860+00:00",
-      "ended_at": "2026-08-16T17:31:49.146860+00:00",
+      "started_at": "2026-08-18T15:02:52.306973+00:00",
+      "ended_at": "2026-08-18T15:02:52.306973+00:00",
       "result": "survival",
       "winner_group": "bestteam",
       "tie": false,
       "github_commit": {
-        "imreeyal": "2412bb4af28cfb18a61e6a24cc217dce42aeff91",
-        "bestteam": "unknown"
+        "imreeyal": "bdbce8a267615038224f6af61814f24f240d251c",
+        "bestteam": "8ecb84892371f6e2ca5ca881e6f152bdbceeba78"
       },
       "tokens": {
         "imreeyal": 0,
@@ -223,16 +223,16 @@
   ],
   "final_result": {
     "total_score": {
-      "imreeyal": 47,
-      "bestteam": 47
+      "imreeyal": 60,
+      "bestteam": 40
     },
     "sub_games_won": {
-      "imreeyal": 3,
-      "bestteam": 3
+      "imreeyal": 4,
+      "bestteam": 2
     },
     "ties": 0,
-    "winner_group": null,
-    "series_tie": true,
+    "winner_group": "imreeyal",
+    "series_tie": false,
     "tokens_total_series": {
       "bestteam": 0,
       "imreeyal": 0
@@ -248,7 +248,7 @@
     }
   },
   "mutual_agreement": {
-    "sha256": "e87ce4381acfa4483b680114f95190e0bd5797b269b59ae4817ab0fac46ac854",
+    "sha256": "ff77bb1d6e31751adbb219ea2372e72379f2eccf2fd099b2692e14710b10bdc9",
     "confirmed": true
   }
 }

@@ -1,0 +1,1617 @@
+{
+  "סוג_דוח": "משחק_ליגה_רשמי",
+  "גרסת_קוד": "1.00",
+  "תפקיד_מדווח": "police",
+  "קבוצה_מדווחת": "ImreEyal-Police",
+  "מספר_משחקון": 1,
+  "זמן_התחלה": "2026-08-13T15:17:08.977992+00:00",
+  "משך_משחק_שניות": 94.1,
+  "הצהרת_מפרט_מחשב_וטוקנים": {
+    "מפרט_מחשב": {
+      "cpu_cores": 24,
+      "cpu_freq_mhz": 3693,
+      "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "gpu_cores_or_cuda": "cuda",
+      "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+      "os": "Windows (10.0.19045)",
+      "ram_gb": 31.9,
+      "vram_gb": 12.0
+    },
+    "דגם_שפה_בשימוש": "none",
+    "גרסת_קוד": "1.00",
+    "סך_טוקנים_שנצרכו": 0
+  },
+  "תוצאה": "הישרדות",
+  "מנצח": "thief",
+  "צעדים_שבוצעו": 34,
+  "הסכם_תפאורה_משא_ומתן": {
+    "board_size": 7,
+    "smell_grid_size": 5,
+    "decay_per_step": 0.1,
+    "emit_intensity": 0.9,
+    "min_center_intensity": 0.5,
+    "max_steps": 35,
+    "barriers_max": 14,
+    "setting": "New York",
+    "hint_max_words": 15,
+    "axis_origin_corner": "top-left",
+    "axis_start_index": 0,
+    "thief_start": [
+      3,
+      3
+    ],
+    "cop_start": [
+      0,
+      0
+    ],
+    "num_games": 6
+  },
+  "אימות_קריפטוגרפי": {
+    "צעדים_מאומתים": 35,
+    "צעדים_שנכשלו": []
+  },
+  "לוג_צעדים_מאומת": [
+    {
+      "מספר_צעד": 1,
+      "טביעת_זמן": "2026-08-13T15:17:09.313914+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still moving east — Wall Street is behind me now.",
+      "גריד_ריח_מצורף": {
+        "2,1": 0.3,
+        "2,2": 0.3,
+        "2,3": 0.3,
+        "2,4": 0.3,
+        "2,5": 0.3,
+        "3,1": 0.3,
+        "3,2": 0.6,
+        "3,3": 0.6,
+        "3,4": 0.6,
+        "3,5": 0.3,
+        "4,1": 0.3,
+        "4,2": 0.6,
+        "4,3": 0.9,
+        "4,4": 0.6,
+        "4,5": 0.3,
+        "5,1": 0.3,
+        "5,2": 0.6,
+        "5,3": 0.6,
+        "5,4": 0.6,
+        "5,5": 0.3,
+        "6,1": 0.3,
+        "6,2": 0.3,
+        "6,3": 0.3,
+        "6,4": 0.3,
+        "6,5": 0.3
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "d469f73a98f99c4a7e35ce098a289dc75cae0986688e32d6261762ada91c6b17"
+    },
+    {
+      "מספר_צעד": 2,
+      "טביעת_זמן": "2026-08-13T15:17:11.711511+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by the Brooklyn Bridge.",
+      "גריד_ריח_מצורף": {
+        "2,1": 0.2,
+        "2,2": 0.3,
+        "2,3": 0.3,
+        "2,4": 0.3,
+        "2,5": 0.3,
+        "2,6": 0.3,
+        "3,1": 0.2,
+        "3,2": 0.5,
+        "3,3": 0.6,
+        "3,4": 0.6,
+        "3,5": 0.6,
+        "3,6": 0.3,
+        "4,1": 0.2,
+        "4,2": 0.5,
+        "4,3": 0.8,
+        "4,4": 0.9,
+        "4,5": 0.6,
+        "4,6": 0.3,
+        "5,1": 0.2,
+        "5,2": 0.5,
+        "5,3": 0.6,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.3,
+        "6,1": 0.2,
+        "6,2": 0.3,
+        "6,3": 0.3,
+        "6,4": 0.3,
+        "6,5": 0.3,
+        "6,6": 0.3
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "20991d41eef2cea9f0767cc53b0cd8c804e92e1c587983ab7a30ae655251ca00"
+    },
+    {
+      "מספר_צעד": 3,
+      "טביעת_זמן": "2026-08-13T15:17:14.165978+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still moving east — Harlem is behind me now.",
+      "גריד_ריח_מצורף": {
+        "2,1": 0.1,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2,
+        "2,5": 0.2,
+        "2,6": 0.2,
+        "3,1": 0.1,
+        "3,2": 0.4,
+        "3,3": 0.5,
+        "3,4": 0.5,
+        "3,5": 0.5,
+        "3,6": 0.3,
+        "4,1": 0.1,
+        "4,2": 0.4,
+        "4,3": 0.7,
+        "4,4": 0.8,
+        "4,5": 0.6,
+        "4,6": 0.3,
+        "5,1": 0.1,
+        "5,2": 0.4,
+        "5,3": 0.6,
+        "5,4": 0.9,
+        "5,5": 0.6,
+        "5,6": 0.3,
+        "6,1": 0.1,
+        "6,2": 0.3,
+        "6,3": 0.6,
+        "6,4": 0.6,
+        "6,5": 0.6,
+        "6,6": 0.3
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "ad73665e4549a278c908e747e8b3ff5b2e2bbd07c9c48cc152fe55736f7b3bc7"
+    },
+    {
+      "מספר_צעד": 4,
+      "טביעת_זמן": "2026-08-13T15:17:18.113748+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by the Brooklyn Bridge.",
+      "גריד_ריח_מצורף": {
+        "2,2": 0.1,
+        "2,3": 0.1,
+        "2,4": 0.1,
+        "2,5": 0.1,
+        "2,6": 0.1,
+        "3,2": 0.3,
+        "3,3": 0.4,
+        "3,4": 0.4,
+        "3,5": 0.4,
+        "3,6": 0.3,
+        "4,2": 0.3,
+        "4,3": 0.6,
+        "4,4": 0.7,
+        "4,5": 0.6,
+        "4,6": 0.6,
+        "5,2": 0.3,
+        "5,3": 0.5,
+        "5,4": 0.8,
+        "5,5": 0.9,
+        "5,6": 0.6,
+        "6,2": 0.2,
+        "6,3": 0.5,
+        "6,4": 0.6,
+        "6,5": 0.6,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "1be80d1caa19ac00f5a4ad63789ff72935d347bc06be17758ab7d6321ba42f96"
+    },
+    {
+      "מספר_צעד": 5,
+      "טביעת_זמן": "2026-08-13T15:17:18.719375+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "You will not find me anywhere near Wall Street.",
+      "גריד_ריח_מצורף": {
+        "3,2": 0.2,
+        "3,3": 0.3,
+        "3,4": 0.3,
+        "3,5": 0.3,
+        "3,6": 0.2,
+        "4,2": 0.2,
+        "4,3": 0.5,
+        "4,4": 0.6,
+        "4,5": 0.5,
+        "4,6": 0.5,
+        "5,2": 0.2,
+        "5,3": 0.4,
+        "5,4": 0.7,
+        "5,5": 0.8,
+        "5,6": 0.6,
+        "6,2": 0.1,
+        "6,3": 0.4,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "a0c389eb19790a1699bc4d9784d19db2e72d749b2b8db1f3186ad4094cbca378"
+    },
+    {
+      "מספר_צעד": 6,
+      "טביעת_זמן": "2026-08-13T15:17:21.356920+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by the waterfront.",
+      "גריד_ריח_מצורף": {
+        "3,2": 0.1,
+        "3,3": 0.2,
+        "3,4": 0.2,
+        "3,5": 0.2,
+        "3,6": 0.1,
+        "4,2": 0.1,
+        "4,3": 0.4,
+        "4,4": 0.5,
+        "4,5": 0.4,
+        "4,6": 0.4,
+        "5,2": 0.1,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.7,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "de7d89c895acca7335624bf2c5a59bfb0a747fe596bbde78753ff66a83bcd043"
+    },
+    {
+      "מספר_צעד": 7,
+      "טביעת_זמן": "2026-08-13T15:17:22.946353+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still moving east — the East Village is behind me now.",
+      "גריד_ריח_מצורף": {
+        "3,3": 0.1,
+        "3,4": 0.1,
+        "3,5": 0.1,
+        "4,3": 0.3,
+        "4,4": 0.4,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "09b260d5af54751dfc9a5147f81a39cf08cd6222f8de79f22273165481df4123"
+    },
+    {
+      "מספר_צעד": 8,
+      "טביעת_זמן": "2026-08-13T15:17:25.294353+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I'm hiding near the subway entrance on the Lower East Side.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "33f7b5b72bccd8b33cc08b11328dd71c27baf01310da0803fe52bb72686b0661"
+    },
+    {
+      "מספר_צעד": 9,
+      "טביעת_זמן": "2026-08-13T15:17:25.659817+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past Wall Street while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "fb40bd8a8f0943f1bac7a2ab85e58384480f79af4ebf2f5abf24f0c5f3fb02ef"
+    },
+    {
+      "מספר_צעד": 10,
+      "טביעת_זמן": "2026-08-13T15:17:27.911005+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I'm hiding near the old library on Fifth Avenue, waiting you out.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "01ddeab2e075b9c734872c76b9d0622af6c8dea2ba0f1777dec58a7d1e125202"
+    },
+    {
+      "מספר_צעד": 11,
+      "טביעת_זמן": "2026-08-13T15:17:29.672694+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "You will not find me anywhere near the East Village.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "4c91a53a92cc8a38ea9f9afc69fcd24dafdf2c2743a922d2c06a7398fdf5f02c"
+    },
+    {
+      "מספר_צעד": 12,
+      "טביעת_זמן": "2026-08-13T15:17:38.912030+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still moving through the streets.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "46ce2f4497892ed494eed82819806037d20756ade4757415cf564abe1976fe8e"
+    },
+    {
+      "מספר_צעד": 13,
+      "טביעת_זמן": "2026-08-13T15:17:39.784619+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by Harlem.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "1c633b8709065b5c57d41e2ce4de95577aa7f44b15eb9ed362a31cd3f8498bff"
+    },
+    {
+      "מספר_צעד": 14,
+      "טביעת_זמן": "2026-08-13T15:17:43.410816+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past the Brooklyn Bridge while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "064b58997f490e5d6a4eb8fc22f6255e92139e97aa781b71c33709fda1fac1dd"
+    },
+    {
+      "מספר_צעד": 15,
+      "טביעת_זמן": "2026-08-13T15:17:44.155509+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still moving north — Times Square is behind me now.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "c97ffa9de2f1b6d341a4acf67c6e5e83a38c84fc783ce7622b462f717a3fd00a"
+    },
+    {
+      "מספר_צעד": 16,
+      "טביעת_זמן": "2026-08-13T15:17:46.900593+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I'm hiding near the subway entrance downtown.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "871e1464aa8c0b47cf04b7b1aea259e709a940d8473217532f03578e9aefa47c"
+    },
+    {
+      "מספר_צעד": 17,
+      "טביעת_זמן": "2026-08-13T15:17:47.266768+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "You will not find me anywhere near the East Village.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "2d86684f3f6de0b687420e69b50ead3788ad0715b78be5b82f42e73be00f7d60"
+    },
+    {
+      "מספר_צעד": 18,
+      "טביעת_זמן": "2026-08-13T15:17:50.001888+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past the waterfront while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "c5f7d6e1e201f8fe673b0d5c0f72109a26df1f549c876eb359b5abbf8abdfc23"
+    },
+    {
+      "מספר_צעד": 19,
+      "טביעת_זמן": "2026-08-13T15:17:50.922821+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past Harlem while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "7f1693cb3be64b69e6fb9713544db59501f0643c60f969c66b664a7242faca6b"
+    },
+    {
+      "מספר_צעד": 20,
+      "טביעת_זמן": "2026-08-13T15:17:54.427061+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past Wall Street while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "2b42d421519dbd322778b4be9c1ceb4e5210573c90f9064416c00e01047db87e"
+    },
+    {
+      "מספר_צעד": 21,
+      "טביעת_זמן": "2026-08-13T15:17:56.054115+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by Wall Street.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "f71aa938a95f8c218242cd9cc5060672678e3c990b87fe9cf12d67f5603a748c"
+    },
+    {
+      "מספר_צעד": 22,
+      "טביעת_זמן": "2026-08-13T15:17:59.071243+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I'm hiding near the Brooklyn Bridge underpass.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "6732ff666f67883f1177a2a26379945d46140a55d576844a89675b493ef7c0c2"
+    },
+    {
+      "מספר_צעד": 23,
+      "טביעת_זמן": "2026-08-13T15:18:00.983765+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by the East Village.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "f09871f7ecb122841115e17e9d73688b827eb7c3955a44bfe8e1e613cbb43d38"
+    },
+    {
+      "מספר_צעד": 24,
+      "טביעת_זמן": "2026-08-13T15:18:03.846852+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by the East Village.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "c49e9b22c99c1c16499cfc96a6a0b44c2ecd6f034e2b0e2637e3ada4abf8de78"
+    },
+    {
+      "מספר_צעד": 25,
+      "טביעת_זמן": "2026-08-13T15:18:05.091866+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by the waterfront.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "95c82d9c9a606aae9987af1cb27871a4a22bad116bb2063d2f7f96fe2244fc0a"
+    },
+    {
+      "מספר_צעד": 26,
+      "טביעת_זמן": "2026-08-13T15:18:10.203378+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I'm heading toward Central Park, come find me.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "2e0c937a88256a6fdc3c020678c0666504fe7aa7e753f13bf83ac1f262ab7fbe"
+    },
+    {
+      "מספר_צעד": 27,
+      "טביעת_זמן": "2026-08-13T15:18:11.697107+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Taking the long way round by the waterfront.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "061ce05b8f01ffb38edac277b191ffd1ecdd29b5d3f5e57c812bd0a227c63995"
+    },
+    {
+      "מספר_צעד": 28,
+      "טביעת_זמן": "2026-08-13T15:18:16.458000+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I'm hiding near the Brooklyn Bridge, watching the water.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "810365894e82f4ca5e8292bdb3309b4f11d3d51cfeb01eada0820542396c6fdc"
+    },
+    {
+      "מספר_צעד": 29,
+      "טביעת_זמן": "2026-08-13T15:18:17.371670+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past Wall Street while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,3": 0.3,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.6,
+        "6,3": 0.3,
+        "6,4": 0.6,
+        "6,5": 0.9,
+        "6,6": 0.6
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "5ecb9e7f23432dbb86b7b6a8f41256fd636306e2a142ef4ffeb65631e067e517"
+    },
+    {
+      "מספר_צעד": 30,
+      "טביעת_זמן": "2026-08-13T15:18:20.932362+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "You will not find me anywhere near Harlem.",
+      "גריד_ריח_מצורף": {
+        "4,2": 0.3,
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.3,
+        "5,2": 0.3,
+        "5,3": 0.6,
+        "5,4": 0.6,
+        "5,5": 0.6,
+        "5,6": 0.5,
+        "6,2": 0.3,
+        "6,3": 0.6,
+        "6,4": 0.9,
+        "6,5": 0.8,
+        "6,6": 0.5
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "5730c84afb1d1ced16c5f27829703724a46eb74ffc9c6a7cba98997d31479046"
+    },
+    {
+      "מספר_צעד": 31,
+      "טביעת_זמן": "2026-08-13T15:18:23.029691+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past the East Village while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,1": 0.3,
+        "4,2": 0.3,
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.3,
+        "4,6": 0.2,
+        "5,1": 0.3,
+        "5,2": 0.6,
+        "5,3": 0.6,
+        "5,4": 0.6,
+        "5,5": 0.5,
+        "5,6": 0.4,
+        "6,1": 0.3,
+        "6,2": 0.6,
+        "6,3": 0.9,
+        "6,4": 0.8,
+        "6,5": 0.7,
+        "6,6": 0.4
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "0dfb5c677d653acf1e0fa47a976e348d5bb9a6756d61d8c8a90a6d6c3bda55c3"
+    },
+    {
+      "מספר_צעד": 32,
+      "טביעת_זמן": "2026-08-13T15:18:25.763145+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still moving through the streets.",
+      "גריד_ריח_מצורף": {
+        "4,0": 0.3,
+        "4,1": 0.3,
+        "4,2": 0.3,
+        "4,3": 0.3,
+        "4,4": 0.3,
+        "4,5": 0.2,
+        "4,6": 0.1,
+        "5,0": 0.3,
+        "5,1": 0.6,
+        "5,2": 0.6,
+        "5,3": 0.6,
+        "5,4": 0.5,
+        "5,5": 0.4,
+        "5,6": 0.3,
+        "6,0": 0.3,
+        "6,1": 0.6,
+        "6,2": 0.9,
+        "6,3": 0.8,
+        "6,4": 0.7,
+        "6,5": 0.6,
+        "6,6": 0.3
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "1e75e7ee4f2ca0ec6ef422cae91497f8129ee9c4fec466701160343feb8b4412"
+    },
+    {
+      "מספר_צעד": 33,
+      "טביעת_זמן": "2026-08-13T15:18:26.951190+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past Central Park while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,0": 0.3,
+        "4,1": 0.3,
+        "4,2": 0.3,
+        "4,3": 0.3,
+        "4,4": 0.2,
+        "4,5": 0.1,
+        "5,0": 0.6,
+        "5,1": 0.6,
+        "5,2": 0.6,
+        "5,3": 0.5,
+        "5,4": 0.4,
+        "5,5": 0.3,
+        "5,6": 0.2,
+        "6,0": 0.6,
+        "6,1": 0.9,
+        "6,2": 0.8,
+        "6,3": 0.7,
+        "6,4": 0.6,
+        "6,5": 0.5,
+        "6,6": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "dc86999c4402aa6375c6a43e8917944616202db09e44f11d139da69a272067c0"
+    },
+    {
+      "מספר_צעד": 34,
+      "טביעת_זמן": "2026-08-13T15:18:32.884263+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I'm hiding near the Brooklyn Bridge, checking the river view.",
+      "גריד_ריח_מצורף": {
+        "4,0": 0.3,
+        "4,1": 0.3,
+        "4,2": 0.3,
+        "4,3": 0.3,
+        "4,4": 0.1,
+        "5,0": 0.6,
+        "5,1": 0.6,
+        "5,2": 0.6,
+        "5,3": 0.4,
+        "5,4": 0.3,
+        "5,5": 0.2,
+        "5,6": 0.1,
+        "6,0": 0.6,
+        "6,1": 0.9,
+        "6,2": 0.7,
+        "6,3": 0.6,
+        "6,4": 0.5,
+        "6,5": 0.4,
+        "6,6": 0.1
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "68c044d56f07d8d11b9a3273a1271db76ef8219b094ffd0c6f9f6969347e7220"
+    },
+    {
+      "מספר_צעד": 35,
+      "טביעת_זמן": "2026-08-13T15:18:33.661888+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping past Harlem while you look the wrong way.",
+      "גריד_ריח_מצורף": {
+        "4,0": 0.3,
+        "4,1": 0.3,
+        "4,2": 0.3,
+        "4,3": 0.3,
+        "5,0": 0.6,
+        "5,1": 0.6,
+        "5,2": 0.6,
+        "5,3": 0.3,
+        "5,4": 0.2,
+        "5,5": 0.1,
+        "6,0": 0.6,
+        "6,1": 0.9,
+        "6,2": 0.6,
+        "6,3": 0.5,
+        "6,4": 0.4,
+        "6,5": 0.3
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "e9d508e587f78a3ff8be9a89726f707e82366aab94ec10c7e3549b4dbc493eb1"
+    }
+  ],
+  "הצהרות_חתומות_שלי": [
+    {
+      "commit": "c19c332c83275922554d641c7406c5ddb5e9aac7aab43a6ffa962fa1565f232e",
+      "nonce": "7f368c319f2b6c19ab1a85fc2b5fe3d1",
+      "payload": {
+        "code_version": "1.00",
+        "github_commit": "ab40f4f8f1ad81ba3c9989cbdfb74811df57ba35",
+        "group_name": "ImreEyal-Police",
+        "model": "none",
+        "num_games_declared": 6,
+        "scent_model_sha256": "81ebee59640e80eae8ca9ee5f86abd26e7edf5cdbb27d15925cb6ee45ca6ddf4",
+        "spec": {
+          "cpu_cores": 24,
+          "cpu_freq_mhz": 3693,
+          "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+          "gpu_cores_or_cuda": "cuda",
+          "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+          "os": "Windows (10.0.19045)",
+          "ram_gb": 31.9,
+          "vram_gb": 12.0
+        },
+        "step": 0,
+        "sub_game_number": 1,
+        "type": "system_spec"
+      }
+    },
+    {
+      "commit": "15898202d38a236b94423ad9ad27860f1948785916ab66fb29e0734eae6f7d6e",
+      "nonce": "bba0b282587dc27d1e05dd68f3c06c91",
+      "payload": {
+        "hint": "They say the crowds near Hell's Kitchen hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 1,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "06b032b6ed8ee7cdbeedeba0169d3404cc94fb0d785f4574de39c186b317e5d6",
+      "nonce": "6060877c6c9d92a9f24740cbd705d095",
+      "payload": {
+        "hint": "I heard sirens somewhere around Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 2,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ae6933d2d5b05edaf68284a03ca436f42c9d489fcd6b4cf2aaa700c5bc9d6a58",
+      "nonce": "ca646f11a167ead12d212249aa6720c8",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          2
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 2];barriers=[]",
+        "step": 3,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "b1652e6e8cd1a9965105851ffea17bf5e29ce73d8018169a290bdfc7360639f3",
+      "nonce": "92c3709673ff0e463634b616f34846e0",
+      "payload": {
+        "hint": "Word is, keep an eye on Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 4,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "1299fa9b631da9727e4c49de829c83cc59c3fd117c16c2377392f95501708f97",
+      "nonce": "74eab201772ffb19aa299b925fbf072c",
+      "payload": {
+        "hint": "Someone was asking about Hell's Kitchen just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 5,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "97132c9ce04e23bd7d5ca7afb16a1e651c4fe12e08cf260a6a5be114076c9ea6",
+      "nonce": "de9489f477baf61024e9854ad03725dd",
+      "payload": {
+        "hint": "All roads seem to lead to Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 6,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "191609c971621dc035ccb1dc81645f58eb6c3b28b0aca3387b871c4334ea2e3b",
+      "nonce": "11fd5c7998a501b943ae15001456aeec",
+      "payload": {
+        "hint": "They say the crowds near Hell's Kitchen hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 7,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "1270aace39f974e528007aa7f07f3457554cfbd94e6a396e28c3b397f3f5cbf1",
+      "nonce": "03159e88c29fed9db3d42c5c52fd4b89",
+      "payload": {
+        "hint": "I heard sirens somewhere around Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 8,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "2ad2cf1e67a8afa77f641262fee53530088247a2efe16808bd73d0adec056e25",
+      "nonce": "59cbc74bad582d24febff736f07daada",
+      "payload": {
+        "hint": "The shadows by Hell's Kitchen feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          3,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[3, 0];barriers=[]",
+        "step": 9,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "db27c6c0c5b2098c7d7cdd56a1bb7a2a6c225e10fac7fc4163524f103ac490e1",
+      "nonce": "87f64cbe4e08bbfcad8ecf579282448c",
+      "payload": {
+        "hint": "Word is, keep an eye on Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 10,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "81a10528774eaa3b85a50cd43da6d48c0739c5b6aaf166fb070c093ba42c65b3",
+      "nonce": "f640665847f60f8923de435d1a076c0e",
+      "payload": {
+        "hint": "Someone was asking about Hell's Kitchen just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 11,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "6f8b2e123e1db0eef661ce9e72f588ef2484db3c3ce0546d55a1e27adb53d47a",
+      "nonce": "0e8ecff57b95f44ce6dc8c95cd8fe5e6",
+      "payload": {
+        "hint": "All roads seem to lead to Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 12,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "bffe96319ded66a56a8530c5029f5bde9593eebafffcd9446120840ec6d57ebc",
+      "nonce": "be1b257f3ded411463764988b8d9bbd5",
+      "payload": {
+        "hint": "They say the crowds near Hell's Kitchen hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          2,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 0];barriers=[]",
+        "step": 13,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "d3cd02e1d708a5ac0d2fb7f4f84281a684c2364c6596ae884e4bdd2b894d2019",
+      "nonce": "5987b293753f6b813cbc24ad9396ec1c",
+      "payload": {
+        "hint": "I heard sirens somewhere around Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 14,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "db4091b4ce178907957d4a6761f3c571f50716124b922c93dd75fd3164020abb",
+      "nonce": "b910d20258f2f62573e7ab4d0edfc096",
+      "payload": {
+        "hint": "The shadows by Hell's Kitchen feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 15,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ba373111535b737adaf30903feef19756767246a41d2185be923aa143e9b49c0",
+      "nonce": "26aa04d68d58876b54958f977c08d908",
+      "payload": {
+        "hint": "Word is, keep an eye on Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 16,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "d0c94271d7a61f3499a7070190b335a2335a07a0dbf3a892b2a0a7f03c9d1b4e",
+      "nonce": "4e65df7ba0442711c9c83de25f303dde",
+      "payload": {
+        "hint": "Someone was asking about Hell's Kitchen just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 17,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "098b3c6b3136cd1c5771464a15b85c8ca85ec607f1c56ac890af45781fa7065a",
+      "nonce": "3057d667608ee4de3e8aec5119b6d7b2",
+      "payload": {
+        "hint": "All roads seem to lead to Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 18,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "0f4805d38400971480de6b9ee7435288b5a3c2763053ccae0215ef64b0cb908e",
+      "nonce": "de75ca202a66181e8bc0acb4aba0d1af",
+      "payload": {
+        "hint": "They say the crowds near Central Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          2
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 2];barriers=[]",
+        "step": 19,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ebf24fb7fc22dce81dca51e4c48b5db93c43636c74207c5a3f4974daa915b01a",
+      "nonce": "12ee142e9d1b71ea666265d5c6333b6f",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 20,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "f358c47156932db550e559d6b48bd2f92ccd3ecb2e1e29162fc7e8abfcd68a17",
+      "nonce": "db418c556e2017b3b9bc276ce390b747",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 21,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "08520a708edd55d01b5ca4d2aad524c418c91bda86ce899b1005367e53bbad86",
+      "nonce": "c9cebfcacd3a06a328885229faeb7e0d",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 22,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "fcbc9202770fa4a8c379f8539f373be75e08a03342420ffdb4ef9751c23af714",
+      "nonce": "ca4793087feb405270408d83fc944c24",
+      "payload": {
+        "hint": "Someone was asking about Central Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 23,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ec45e26100b592adb34a17eef7c06fdf50fd11b1cd33bd0d66b3b203634908a7",
+      "nonce": "b70f9f92b4e6df7aada45cb753a2969d",
+      "payload": {
+        "hint": "All roads seem to lead to Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 24,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "25d8bb2973c528bac633a781245c44c13ee2b5b2223d199af014b4e167dce7c9",
+      "nonce": "a2fa9f984b6355df2a58d89b0e68c01f",
+      "payload": {
+        "hint": "They say the crowds near Central Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 25,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "e3f4fc2d7ff4255bbbaee49cca95a2b0694e4ec1cb40f542980a148a0122a534",
+      "nonce": "e3ce4a2caf023676c5039bb782c367b7",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 3];barriers=[]",
+        "step": 26,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "a8bdba1f2d1b1d65fd5db5800e7d4e5f5090867aa541e76658f68ce324abfd3e",
+      "nonce": "0b2893b4950f8a216be54fdb6e075d8c",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          2,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 4];barriers=[]",
+        "step": 27,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "3567d7f9ae4fee87e3318212961558583ebaeb61995e84cfc9554ce9dac3a2fc",
+      "nonce": "2669931033b0eca712024e0ec5072757",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 28,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "1e7bd380ecc595bc4ff3602d47df3de66a694e2b0305404dcc08acc4525d69f3",
+      "nonce": "a31b686ab3faacce73ac0e3e6603bf36",
+      "payload": {
+        "hint": "Someone was asking about Central Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          5
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 5];barriers=[]",
+        "step": 29,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "b6a18231998148c89370a55262f2f60c10f17c67ab575b3fe68ecf531b31bf27",
+      "nonce": "53829819c82981a96ea57833ccaef32a",
+      "payload": {
+        "hint": "All roads seem to lead to Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 30,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "e3bb2a70a68f7e19534e08a3006f8bb4d63430564144c74d54aadae8f8be8727",
+      "nonce": "916046eb27505cc35c39d1f41fba4276",
+      "payload": {
+        "hint": "They say the crowds near Central Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[2, 4];barriers=[]",
+        "step": 31,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "6b8cdc16a22334df33c08af90ef9c6148933565dc7baac612fb3f84cb0831645",
+      "nonce": "7a1a665e21e73c1c55efdb365dc67b3a",
+      "payload": {
+        "hint": "I heard sirens somewhere around Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 32,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "742766cf51c608cca5d04fa07774beda8631b568b76f4cd56d417bc3a3c1e468",
+      "nonce": "3aff89dacfa98eeb1599816bfdd9c773",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 33,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "be72af42dae729bbb8f4662304fbfbfe821d48718443881d2ce36156649684dc",
+      "nonce": "c04111fa6feab791f9031789f6c3940f",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          0,
+          3
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[0, 3];barriers=[]",
+        "step": 34,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    }
+  ],
+  "הסכמה_הדדית": true,
+  "חתימת_קונסנזוס_משותפת": "78c979055cb7218c6df782e2f00f27eaf045086924ace504151b9d02c0f891fd"
+}
