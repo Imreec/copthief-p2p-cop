@@ -1,0 +1,841 @@
+{
+  "סוג_דוח": "משחק_ליגה_רשמי",
+  "גרסת_קוד": "1.00",
+  "תפקיד_מדווח": "police",
+  "קבוצה_מדווחת": "ImreEyal-Police",
+  "מספר_משחקון": 2,
+  "זמן_התחלה": "2026-08-19T22:26:57.052073+00:00",
+  "משך_משחק_שניות": 86.5,
+  "הצהרת_מפרט_מחשב_וטוקנים": {
+    "מפרט_מחשב": {
+      "cpu_cores": 24,
+      "cpu_freq_mhz": 3693,
+      "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+      "gpu_cores_or_cuda": "cuda",
+      "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+      "os": "Windows (10.0.19045)",
+      "ram_gb": 31.9,
+      "vram_gb": 12.0
+    },
+    "דגם_שפה_בשימוש": "none",
+    "גרסת_קוד": "1.00",
+    "סך_טוקנים_שנצרכו": 0
+  },
+  "תוצאה": "לכידה",
+  "מנצח": "police",
+  "צעדים_שבוצעו": 14,
+  "הסכם_תפאורה_משא_ומתן": {
+    "board_size": 7,
+    "smell_grid_size": 5,
+    "decay_per_step": 0.1,
+    "emit_intensity": 0.9,
+    "min_center_intensity": 0.5,
+    "max_steps": 35,
+    "barriers_max": 14,
+    "setting": "New York",
+    "hint_max_words": 15,
+    "axis_origin_corner": "top-left",
+    "axis_start_index": 0,
+    "thief_start": [
+      3,
+      3
+    ],
+    "cop_start": [
+      0,
+      0
+    ],
+    "num_games": 6
+  },
+  "אימות_קריפטוגרפי": {
+    "צעדים_מאומתים": 15,
+    "צעדים_שנכשלו": []
+  },
+  "לוג_צעדים_מאומת": [
+    {
+      "מספר_צעד": 1,
+      "טביעת_זמן": "2026-08-19T22:26:57.438515+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still out here, still moving, still ahead of you.",
+      "גריד_ריח_מצורף": {
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2,
+        "2,5": 0.2,
+        "3,1": 0.2,
+        "3,2": 0.5,
+        "3,3": 0.5,
+        "3,4": 0.5,
+        "3,5": 0.2,
+        "4,1": 0.2,
+        "4,2": 0.5,
+        "4,3": 0.8,
+        "4,4": 0.5,
+        "4,5": 0.2,
+        "5,1": 0.2,
+        "5,2": 0.5,
+        "5,3": 0.5,
+        "5,4": 0.5,
+        "5,5": 0.2,
+        "6,1": 0.2,
+        "6,2": 0.2,
+        "6,3": 0.2,
+        "6,4": 0.2,
+        "6,5": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "c49c52157034f512fb9a3022dec99a620e20aac0bdacf8e93154e42188d5d0c6"
+    },
+    {
+      "מספר_צעד": 2,
+      "טביעת_זמן": "2026-08-19T22:26:58.653992+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still out here, still moving, still ahead of you.",
+      "גריד_ריח_מצורף": {
+        "2,1": 0.1,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2,
+        "2,5": 0.2,
+        "2,6": 0.2,
+        "3,1": 0.1,
+        "3,2": 0.4,
+        "3,3": 0.5,
+        "3,4": 0.5,
+        "3,5": 0.5,
+        "3,6": 0.2,
+        "4,1": 0.1,
+        "4,2": 0.4,
+        "4,3": 0.7,
+        "4,4": 0.8,
+        "4,5": 0.5,
+        "4,6": 0.2,
+        "5,1": 0.1,
+        "5,2": 0.4,
+        "5,3": 0.5,
+        "5,4": 0.5,
+        "5,5": 0.5,
+        "5,6": 0.2,
+        "6,1": 0.1,
+        "6,2": 0.2,
+        "6,3": 0.2,
+        "6,4": 0.2,
+        "6,5": 0.2,
+        "6,6": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "f2d13bf063990efc77c6fd27a3e7c284b15eab19c5ef2f292880f93ce21f3518"
+    },
+    {
+      "מספר_צעד": 3,
+      "טביעת_זמן": "2026-08-19T22:27:00.043355+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "You talk a lot for someone who has found nothing.",
+      "גריד_ריח_מצורף": {
+        "1,2": 0.2,
+        "1,3": 0.2,
+        "1,4": 0.2,
+        "1,5": 0.2,
+        "1,6": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.5,
+        "2,4": 0.5,
+        "2,5": 0.5,
+        "2,6": 0.2,
+        "3,2": 0.3,
+        "3,3": 0.5,
+        "3,4": 0.8,
+        "3,5": 0.5,
+        "3,6": 0.2,
+        "4,2": 0.3,
+        "4,3": 0.6,
+        "4,4": 0.7,
+        "4,5": 0.5,
+        "4,6": 0.2,
+        "5,2": 0.3,
+        "5,3": 0.4,
+        "5,4": 0.4,
+        "5,5": 0.4,
+        "5,6": 0.2,
+        "6,2": 0.1,
+        "6,3": 0.1,
+        "6,4": 0.1,
+        "6,5": 0.1,
+        "6,6": 0.1
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "be9a0e461f967e063876b784eab843e435f178120ed0e364ebb179432425c191"
+    },
+    {
+      "מספר_צעד": 4,
+      "טביעת_זמן": "2026-08-19T22:28:01.986391+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping around midtown while you waste time.",
+      "גריד_ריח_מצורף": {
+        "1,2": 0.2,
+        "1,3": 0.2,
+        "1,4": 0.2,
+        "1,5": 0.2,
+        "1,6": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.5,
+        "2,4": 0.5,
+        "2,5": 0.5,
+        "2,6": 0.2,
+        "3,2": 0.2,
+        "3,3": 0.5,
+        "3,4": 0.8,
+        "3,5": 0.5,
+        "3,6": 0.2,
+        "4,2": 0.2,
+        "4,3": 0.5,
+        "4,4": 0.6,
+        "4,5": 0.5,
+        "4,6": 0.2,
+        "5,2": 0.2,
+        "5,3": 0.3,
+        "5,4": 0.3,
+        "5,5": 0.3,
+        "5,6": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "f2cc64896bdcd39efb86af359e54953948881ea7de5a423919cd1b8f5e128a1d"
+    },
+    {
+      "מספר_צעד": 5,
+      "טביעת_זמן": "2026-08-19T22:28:03.507343+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Keep guessing. The city is bigger than your patience.",
+      "גריד_ריח_מצורף": {
+        "1,2": 0.1,
+        "1,3": 0.1,
+        "1,4": 0.1,
+        "1,5": 0.1,
+        "1,6": 0.1,
+        "2,2": 0.2,
+        "2,3": 0.4,
+        "2,4": 0.4,
+        "2,5": 0.4,
+        "2,6": 0.2,
+        "3,2": 0.2,
+        "3,3": 0.5,
+        "3,4": 0.7,
+        "3,5": 0.5,
+        "3,6": 0.2,
+        "4,2": 0.2,
+        "4,3": 0.5,
+        "4,4": 0.8,
+        "4,5": 0.5,
+        "4,6": 0.2,
+        "5,2": 0.2,
+        "5,3": 0.5,
+        "5,4": 0.5,
+        "5,5": 0.5,
+        "5,6": 0.2,
+        "6,2": 0.2,
+        "6,3": 0.2,
+        "6,4": 0.2,
+        "6,5": 0.2,
+        "6,6": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "01a2499246b4bc911ca8734f0a1ddac50343b708067a4d6d25416803a934dd8a"
+    },
+    {
+      "מספר_צעד": 6,
+      "טביעת_זמן": "2026-08-19T22:28:05.125633+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping around broadway while you waste time.",
+      "גריד_ריח_מצורף": {
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.3,
+        "2,4": 0.3,
+        "2,5": 0.3,
+        "2,6": 0.1,
+        "3,1": 0.2,
+        "3,2": 0.5,
+        "3,3": 0.5,
+        "3,4": 0.6,
+        "3,5": 0.4,
+        "3,6": 0.1,
+        "4,1": 0.2,
+        "4,2": 0.5,
+        "4,3": 0.8,
+        "4,4": 0.7,
+        "4,5": 0.4,
+        "4,6": 0.1,
+        "5,1": 0.2,
+        "5,2": 0.5,
+        "5,3": 0.5,
+        "5,4": 0.5,
+        "5,5": 0.4,
+        "5,6": 0.1,
+        "6,1": 0.2,
+        "6,2": 0.2,
+        "6,3": 0.2,
+        "6,4": 0.2,
+        "6,5": 0.2,
+        "6,6": 0.1
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "7a4c56a216825ad66b144d0c2a391dc402ec550e22c4ac3ea48a1037a53c7cf8"
+    },
+    {
+      "מספר_צעד": 7,
+      "טביעת_זמן": "2026-08-19T22:28:06.647649+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "I have been in worse corners than this one.",
+      "גריד_ריח_מצורף": {
+        "2,0": 0.2,
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2,
+        "2,5": 0.2,
+        "3,0": 0.2,
+        "3,1": 0.5,
+        "3,2": 0.5,
+        "3,3": 0.5,
+        "3,4": 0.5,
+        "3,5": 0.3,
+        "4,0": 0.2,
+        "4,1": 0.5,
+        "4,2": 0.8,
+        "4,3": 0.7,
+        "4,4": 0.6,
+        "4,5": 0.3,
+        "5,0": 0.2,
+        "5,1": 0.5,
+        "5,2": 0.5,
+        "5,3": 0.5,
+        "5,4": 0.4,
+        "5,5": 0.3,
+        "6,0": 0.2,
+        "6,1": 0.2,
+        "6,2": 0.2,
+        "6,3": 0.2,
+        "6,4": 0.2,
+        "6,5": 0.1
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "276138307ea35d36d3ea9511e0c4a4203d212c07eb34fcb6f9e29d3c38292425"
+    },
+    {
+      "מספר_צעד": 8,
+      "טביעת_זמן": "2026-08-19T22:28:08.199280+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still out here, still moving, still ahead of you.",
+      "גריד_ריח_מצורף": {
+        "2,0": 0.2,
+        "2,1": 0.2,
+        "2,2": 0.2,
+        "2,3": 0.2,
+        "2,4": 0.2,
+        "2,5": 0.1,
+        "3,0": 0.2,
+        "3,1": 0.5,
+        "3,2": 0.5,
+        "3,3": 0.5,
+        "3,4": 0.4,
+        "3,5": 0.2,
+        "4,0": 0.2,
+        "4,1": 0.5,
+        "4,2": 0.8,
+        "4,3": 0.6,
+        "4,4": 0.5,
+        "4,5": 0.2,
+        "5,0": 0.2,
+        "5,1": 0.5,
+        "5,2": 0.5,
+        "5,3": 0.5,
+        "5,4": 0.3,
+        "5,5": 0.2,
+        "6,0": 0.2,
+        "6,1": 0.2,
+        "6,2": 0.2,
+        "6,3": 0.2,
+        "6,4": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "14a1c63730cea6ae0dc39844bd93f30183920b8181f749e210e738ed380a65dd"
+    },
+    {
+      "מספר_צעד": 9,
+      "טביעת_זמן": "2026-08-19T22:28:09.735130+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still out here, still moving, still ahead of you.",
+      "גריד_ריח_מצורף": {
+        "2,0": 0.1,
+        "2,1": 0.1,
+        "2,2": 0.1,
+        "2,3": 0.1,
+        "2,4": 0.1,
+        "3,0": 0.2,
+        "3,1": 0.4,
+        "3,2": 0.4,
+        "3,3": 0.4,
+        "3,4": 0.3,
+        "3,5": 0.1,
+        "4,0": 0.2,
+        "4,1": 0.5,
+        "4,2": 0.7,
+        "4,3": 0.5,
+        "4,4": 0.4,
+        "4,5": 0.1,
+        "5,0": 0.2,
+        "5,1": 0.5,
+        "5,2": 0.8,
+        "5,3": 0.5,
+        "5,4": 0.2,
+        "5,5": 0.1,
+        "6,0": 0.2,
+        "6,1": 0.5,
+        "6,2": 0.5,
+        "6,3": 0.5,
+        "6,4": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "2e7a75d82eabb0f1471e5f3c4394a0d2c350c0b8dd75f0360ddd64e7ef94ee04"
+    },
+    {
+      "מספר_צעד": 10,
+      "טביעת_זמן": "2026-08-19T22:28:11.374856+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Keep guessing. The city is bigger than your patience.",
+      "גריד_ריח_מצורף": {
+        "3,0": 0.2,
+        "3,1": 0.3,
+        "3,2": 0.3,
+        "3,3": 0.3,
+        "3,4": 0.2,
+        "4,0": 0.5,
+        "4,1": 0.5,
+        "4,2": 0.6,
+        "4,3": 0.4,
+        "4,4": 0.3,
+        "5,0": 0.5,
+        "5,1": 0.8,
+        "5,2": 0.7,
+        "5,3": 0.4,
+        "5,4": 0.1,
+        "6,0": 0.5,
+        "6,1": 0.5,
+        "6,2": 0.5,
+        "6,3": 0.4,
+        "6,4": 0.1
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "b857542789a456e5e5a3347036fe4c6b2e24a850eeae8c72d6258a886037dc66"
+    },
+    {
+      "מספר_צעד": 11,
+      "טביעת_זמן": "2026-08-19T22:28:12.925425+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Still out here, still moving, still ahead of you.",
+      "גריד_ריח_מצורף": {
+        "3,0": 0.1,
+        "3,1": 0.2,
+        "3,2": 0.2,
+        "3,3": 0.2,
+        "3,4": 0.1,
+        "4,0": 0.4,
+        "4,1": 0.4,
+        "4,2": 0.5,
+        "4,3": 0.3,
+        "4,4": 0.2,
+        "5,0": 0.5,
+        "5,1": 0.7,
+        "5,2": 0.6,
+        "5,3": 0.3,
+        "6,0": 0.5,
+        "6,1": 0.8,
+        "6,2": 0.5,
+        "6,3": 0.3
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "7e712af504929622030c15183d685fda73a075b6e93aa57275b03fc6fcd176fd"
+    },
+    {
+      "מספר_צעד": 12,
+      "טביעת_זמן": "2026-08-19T22:28:14.438673+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "You talk a lot for someone who has found nothing.",
+      "גריד_ריח_מצורף": {
+        "3,1": 0.1,
+        "3,2": 0.1,
+        "3,3": 0.1,
+        "4,0": 0.3,
+        "4,1": 0.3,
+        "4,2": 0.4,
+        "4,3": 0.2,
+        "4,4": 0.1,
+        "5,0": 0.5,
+        "5,1": 0.6,
+        "5,2": 0.5,
+        "5,3": 0.2,
+        "6,0": 0.8,
+        "6,1": 0.7,
+        "6,2": 0.4,
+        "6,3": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "b35290bbee2880f23185abe15c3dae0a127fc4a9d339c6e2908046b8f0b007b1"
+    },
+    {
+      "מספר_צעד": 13,
+      "טביעת_זמן": "2026-08-19T22:28:15.747842+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Slipping around queens while you waste time.",
+      "גריד_ריח_מצורף": {
+        "4,0": 0.2,
+        "4,1": 0.2,
+        "4,2": 0.3,
+        "4,3": 0.1,
+        "5,0": 0.5,
+        "5,1": 0.5,
+        "5,2": 0.4,
+        "5,3": 0.1,
+        "6,0": 0.8,
+        "6,1": 0.6,
+        "6,2": 0.3,
+        "6,3": 0.1
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "51fc4f47ed0529e7dd2d861649d60392ffc0bbcb8e815f0d65c9d7f7c30d2b58"
+    },
+    {
+      "מספר_צעד": 14,
+      "טביעת_זמן": "2026-08-19T22:28:17.022343+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "Already past astoria, and still moving.",
+      "גריד_ריח_מצורף": {
+        "4,0": 0.2,
+        "4,1": 0.2,
+        "4,2": 0.2,
+        "5,0": 0.5,
+        "5,1": 0.5,
+        "5,2": 0.3,
+        "6,0": 0.8,
+        "6,1": 0.5,
+        "6,2": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "b2680bf80ab89e3420917449c4d9835c92d6af273b274d938c88a56e19f513d0"
+    },
+    {
+      "מספר_צעד": 15,
+      "טביעת_זמן": "2026-08-19T22:28:18.305701+00:00",
+      "שולח": "thief",
+      "רמז_מילולי_שנשלח": "You got me.",
+      "גריד_ריח_מצורף": {
+        "4,0": 0.2,
+        "4,1": 0.2,
+        "4,2": 0.2,
+        "5,0": 0.5,
+        "5,1": 0.5,
+        "5,2": 0.2,
+        "6,0": 0.8,
+        "6,1": 0.5,
+        "6,2": 0.2
+      },
+      "מחסום_שהוצב": null,
+      "חתימת_מצב": "1dbbe871061b64048a016c07063718a17d75051dbcbfb5575af670df988a3083"
+    }
+  ],
+  "הצהרות_חתומות_שלי": [
+    {
+      "commit": "7290a16613738f1721de1064591262d892885e88d54b977f72d1567a994a0af9",
+      "nonce": "8ef7fbd13b8b960ef7b36fe4eb01bb38",
+      "payload": {
+        "code_version": "1.00",
+        "github_commit": "bdd451a66af252e9031b19dfd142afbd3df2be31",
+        "group_name": "ImreEyal-Police",
+        "model": "none",
+        "num_games_declared": 6,
+        "scent_model_sha256": "81ebee59640e80eae8ca9ee5f86abd26e7edf5cdbb27d15925cb6ee45ca6ddf4",
+        "spec": {
+          "cpu_cores": 24,
+          "cpu_freq_mhz": 3693,
+          "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+          "gpu_cores_or_cuda": "cuda",
+          "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+          "os": "Windows (10.0.19045)",
+          "ram_gb": 31.9,
+          "vram_gb": 12.0
+        },
+        "step": 0,
+        "sub_game_number": 2,
+        "type": "system_spec"
+      }
+    },
+    {
+      "commit": "66a52b4ddd8f16d12dcbdcb55a931394af243f8f663b9fd4d12d7d1445f1f30a",
+      "nonce": "d88636269e5c294326ebfab7b74ff5c5",
+      "payload": {
+        "hint": "They say the crowds near Hell's Kitchen hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          1,
+          0
+        ],
+        "response_seconds": 0.045,
+        "state": "grid=7x7;self=[1, 0];barriers=[]",
+        "step": 1,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "bf5fa587bfda8330571dcdebc8b12c72ce1b2eb4388a72f3c80d96cc11905285",
+      "nonce": "596db39c745c5de1bedd23786053d4eb",
+      "payload": {
+        "hint": "I heard sirens somewhere around Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.083,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 2,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "4c0c25b5d9bcf597d18b7998af1ff8829a503de927154acd74caa99f98377c9f",
+      "nonce": "4424068d26efb5eed052918d46883a12",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          2
+        ],
+        "response_seconds": 0.159,
+        "state": "grid=7x7;self=[1, 2];barriers=[]",
+        "step": 3,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ac0c14b2832ea1180ed9cc1e1ecc753de759ecee4d392fd7dcdc3da32962bde7",
+      "nonce": "d4f42d7165c866b9841e5f0e7c8730ff",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          3
+        ],
+        "response_seconds": 0.214,
+        "state": "grid=7x7;self=[1, 3];barriers=[]",
+        "step": 4,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ea7888f911010fc1c8c3d82e3c2d8a561395cf07f2a80d103b8cef82d5fc13c3",
+      "nonce": "7ee41c3605afcb392c36369830fb6af9",
+      "payload": {
+        "hint": "Someone was asking about Central Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.239,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 5,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "20ad76619ce86b61cdde56ce5d17cce50280f39ff179ccb64762e57b89c76a26",
+      "nonce": "20096fe41029d4d611ad8d3f4c74e537",
+      "payload": {
+        "hint": "All roads seem to lead to Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          4
+        ],
+        "response_seconds": 0.222,
+        "state": "grid=7x7;self=[2, 4];barriers=[]",
+        "step": 6,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "5f8567aded9085f3faa994c7c4e87b135fcb4b057bea28f9ea64252add7a3972",
+      "nonce": "748fbd050c7054472d93feb825350c23",
+      "payload": {
+        "hint": "They say the crowds near Grand Central hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          3,
+          4
+        ],
+        "response_seconds": 0.23,
+        "state": "grid=7x7;self=[3, 4];barriers=[]",
+        "step": 7,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "6570b6adfec182d16f1c12b1e6ae0baf5fde2aa4eb01b6ff4743f6f2409ef262",
+      "nonce": "32f361bcaee14001957aec6b458b262d",
+      "payload": {
+        "hint": "I heard sirens somewhere around Grand Central.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          3,
+          3
+        ],
+        "response_seconds": 0.244,
+        "state": "grid=7x7;self=[3, 3];barriers=[]",
+        "step": 8,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "b53830e23b701ed9b5f53540495c3fef09a958347420f056464bfa2bad808666",
+      "nonce": "594cbd2e46bea37fd31502bc2bbd81cb",
+      "payload": {
+        "hint": "The shadows by Grand Central feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          4,
+          3
+        ],
+        "response_seconds": 0.32,
+        "state": "grid=7x7;self=[4, 3];barriers=[]",
+        "step": 9,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "56e54807d3b1060fae083e58ce053f2a8efe9b1d070c21211fea99b0ae5f0958",
+      "nonce": "ee2973dac2f3683293bcfb2a03b62711",
+      "payload": {
+        "hint": "Word is, keep an eye on Greenwich Village.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          4,
+          2
+        ],
+        "response_seconds": 0.237,
+        "state": "grid=7x7;self=[4, 2];barriers=[]",
+        "step": 10,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "8027879c534ed36150b4bfa80cc1bddebf4fec893246ab1915ab781f300a8b94",
+      "nonce": "f071f2c40dd8c47996cb513ae105f42b",
+      "payload": {
+        "hint": "Someone was asking about Greenwich Village just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          5,
+          2
+        ],
+        "response_seconds": 0.18,
+        "state": "grid=7x7;self=[5, 2];barriers=[]",
+        "step": 11,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ee2f56d9c3b11bee5f31de4d38de2338744562e4466c6e2a95c8d31300298491",
+      "nonce": "2d6a63be9556763e7e6f9d711dcfbdcb",
+      "payload": {
+        "hint": "All roads seem to lead to Battery Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          5,
+          1
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[5, 1];barriers=[]",
+        "step": 12,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "8be419307e7287befcbac8a72a3637f7588d2aa5fd0755b30a0dddd81e83d8dc",
+      "nonce": "8c2299fce0f183adfcbb2cd1b92bcadf",
+      "payload": {
+        "hint": "They say the crowds near Battery Park hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "BARRIER",
+        "position": [
+          5,
+          1
+        ],
+        "response_seconds": 0.001,
+        "state": "grid=7x7;self=[5, 1];barriers=[[5, 0]]",
+        "step": 13,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "7ae36e9e7ccaa6875c302bb5af8b422e5a9c2500d05cfaf851d46d442ea56ce7",
+      "nonce": "91498e50f68fb16a9024aef8db77f0fb",
+      "payload": {
+        "hint": "I heard sirens somewhere around Battery Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "BARRIER",
+        "position": [
+          5,
+          1
+        ],
+        "response_seconds": 0.0,
+        "state": "grid=7x7;self=[5, 1];barriers=[[5, 0], [6, 1]]",
+        "step": 14,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    }
+  ],
+  "הסכמה_הדדית": true,
+  "חתימת_קונסנזוס_משותפת": "9311f948418e360fe4ffb9e3e8656a61d3e3d0327f8041137165de32c976f9f8"
+}
