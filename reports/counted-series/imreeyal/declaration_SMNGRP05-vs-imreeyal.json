@@ -1,0 +1,73 @@
+{
+  "_schema": "Static declaration for the WHOLE game (the full series of sub-games) between two teams. This is the single home for every field that does NOT change while the sub-games are played: team identity, members, cop/thief repository URLs, MCP server URLs, hardware spec, LLM model, the agreed max-tokens-per-game cap, and the game start/end times. Roles (cop/thief) switch across the sub-games, so no role and no sub_game_number appear here. Both teams sign it and lock it cryptographically before play (book ch5 Step-0). Data that changes per sub-game (github_commit, moves, scores) lives in 3-game-log.json and 4-final-result.json.",
+  "schema_version": "1.1",
+  "declaration_type": "pre_game_declaration",
+  "game_id": "SMNGRP05-vs-imreeyal",
+  "game_uid": "b9e8c36d-0c11-72a6-2a4c-88451a5e5ad6",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_SMNGRP05-vs-imreeyal.json",
+    "config": "config_SMNGRP05-vs-imreeyal_g<NN>.json",
+    "log": "log_SMNGRP05-vs-imreeyal_g<NN>.json",
+    "result": "result_SMNGRP05-vs-imreeyal.json"
+  },
+  "timezone": "Asia/Jerusalem",
+  "game_started_at": "2026-08-19T22:25:05.839482+00:00",
+  "game_ended_at": "2026-08-19T22:37:06.346191+00:00",
+  "num_sub_games": 6,
+  "max_tokens_per_game": 200000,
+  "groups": {
+    "group_1": {
+      "group_id": "imreeyal",
+      "group_name": "ImreEyal-Police",
+      "members": [
+        "Imree Cohen",
+        "Eyal Shtinmetz"
+      ],
+      "repos": {
+        "cop": "https://github.com/Imreec/copthief-p2p-cop",
+        "thief": "https://github.com/Imreec/copthief-p2p-thief"
+      },
+      "mcp_servers": {
+        "cop": "https://cop.imreeyal.com/mcp",
+        "thief": "https://thief.imreeyal.com/mcp"
+      },
+      "llm_model": "none",
+      "hardware_spec": {
+        "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+        "cpu_freq_mhz": 3693,
+        "cpu_cores": 24,
+        "ram_gb": 31.9,
+        "gpu_model": "NVIDIA GeForce RTX 3080 Ti",
+        "vram_gb": 12.0
+      },
+      "signature": "41e714067ace09ba71beb4021c360f7152788237b2c238e6bac25619ac87b23c"
+    },
+    "group_2": {
+      "group_id": "SMNGRP05",
+      "group_name": "SMNGRP05",
+      "members": [
+        "Afaf Gharra",
+        "Reem Awawdy"
+      ],
+      "repos": {
+        "cop": "https://github.com/afaf-gharra/SMNGRP05-police",
+        "thief": "https://github.com/afaf-gharra/SMNGRP05-thief"
+      },
+      "mcp_servers": {
+        "cop": "https://f0eb-147-236-163-154.ngrok-free.app/mcp",
+        "thief": "https://f0eb-147-236-163-154.ngrok-free.app/mcp"
+      },
+      "llm_model": "template-zero-token",
+      "hardware_spec": {
+        "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+        "cpu_freq_mhz": null,
+        "cpu_cores": 12,
+        "ram_gb": null,
+        "gpu_model": "NVIDIA GeForce RTX 3070",
+        "vram_gb": 8.0
+      },
+      "signature": "bee620e3c6b4b7231c7ce564cebd833cc74481ba72d4389087b09ec7cbe8b77c"
+    }
+  }
+}

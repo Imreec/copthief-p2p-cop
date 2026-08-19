@@ -13,7 +13,7 @@ sub_game_number = 1
 # whole-match declaration; the reference's writer requires every key.
 members = ["Imree Cohen", "Eyal Shtinmetz"]
 llm_model = "none"
-# M7-41 league ledger (book §9.2.1; rules 37-38). Declared mutually at every game start
+# M7-41 league ledger (book Â§9.2.1; rules 37-38). Declared mutually at every game start
 # and read by the diversity weighting. UPDATE AFTER EVERY COUNTED SERIES, never after a
 # warm-up: a stale count makes the NEXT counted game declare "first meeting" falsely,
 # which is a project-level disqualification (rule 38). First counted series played
@@ -21,12 +21,12 @@ llm_model = "none"
 # series 2026-08-10 vs vibecode (30-90; T=21:25, both audits Verified OK). Fourth
 # counted series 2026-08-11 vs nis-yar1 (90-30 sweep; T=22:37, all audits Verified OK,
 # +10 diversity as winner of the first meeting). Fifth counted series 2026-08-13 vs
-# najamjad (30-90; T=19:00, all audits Verified OK ×6, both reports auto-fired to the
+# najamjad (30-90; T=19:00, all audits Verified OK Ã—6, both reports auto-fired to the
 # lecturer; +10 diversity theirs as winner of the first meeting). Advanced 2026-08-15
 # after the sixth counted series vs best2934 (47-47 TIE, 3-3, six survivals, series_add;
-# all audits Verified OK ×6; diversity to nobody - a tie has no winner).
-counted_games_played = 7
-counted_opponents = ["anrbj666", "uoh-sqak", "vibecode", "nis-yar1", "najamjad", "best2934", "bestteam"]
+# all audits Verified OK Ã—6; diversity to nobody - a tie has no winner).
+counted_games_played = 8
+counted_opponents = ["anrbj666", "uoh-sqak", "vibecode", "nis-yar1", "najamjad", "best2934", "bestteam", "SMNGRP05"]
 
 [game.repos]
 cop = "https://github.com/Imreec/copthief-p2p-cop"
