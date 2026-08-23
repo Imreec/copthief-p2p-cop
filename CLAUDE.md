@@ -88,7 +88,8 @@ mock LLM + in-process MCP fake; kit CORE vectors as permanent fixtures; sync-man
 `@pytest.mark.live` excluded from CI. **Evidence tiers:** unit/property (keyless CI) ·
 integration full-series over fakes (keyless CI) · committed live evidence (oracle-spike logs,
 chaos-drill logs, friendly cross-audits, arena/tuning outputs). Arena champion-regression gate:
-a new brain must not lose to the previous champion.
+a new brain must not lose to the previous champion (post-league the gate runs via the
+on-demand arena lane — mandatory before merging any strategy change; ADR-0018).
 
 ## 6. Code quality
 

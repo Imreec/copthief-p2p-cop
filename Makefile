@@ -1,6 +1,9 @@
 # Quality gates — mirror of .github/workflows/quality.yml. Run `make grade` before every PR.
+# `test` inherits pyproject addopts (-m 'not live and not arena'); the heavy
+# strategy-measurement evals are `make test-arena` (ADR-0018 — mandatory before
+# merging any strategy change; CI twin is the on-demand arena.yml workflow).
 
-.PHONY: lint format-check type test sizes patterns hardcoded sync-verify submission grade
+.PHONY: lint format-check type test test-arena sizes patterns hardcoded sync-verify submission grade
 
 lint:
 	uv run ruff check .
@@ -13,6 +16,9 @@ type:
 
 test:
 	uv run pytest --cov=src --cov-report=term-missing --cov-fail-under=85
+
+test-arena:
+	uv run pytest -n auto --dist loadscope -m "arena and not live" -v
 
 sizes:
 	uv run python scripts/check_file_sizes.py
