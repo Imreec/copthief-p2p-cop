@@ -27,6 +27,8 @@ dev = [
 ]
 viz = [
     "matplotlib>=3.8",
+    # M8-1: GIF assembly for scripts/render_replay_gif.py (analysis-time only).
+    "pillow>=10.0",
 ]
 notebook = [
     "nbformat>=5.10",

@@ -3,7 +3,28 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR (this one) — report/vm__fabi-counted-closeout (tenth counted banked: vm__fabi W 90–30, the cap)
+## PR (this one) — docs/m8-readme-report (M8-1 + M8-2: the academic report + the disclosure pair)
+
+- **Driver:** Imree ("I want our readme to be a masterpiece... take the HW6 readme as the
+  floor") · **Author:** Claude (terminal) · **Reviewer:** cross-model review on the thread.
+- **What was asked:** the full §9.4.2 academic-report README (six mandatory components +
+  guidelines §2.1 user-manual sections + the contradiction-choices narrative + screenshots),
+  with visual assets worth the campaign it describes; KNOWN_LIMITATIONS.md + SELF_GRADE.md.
+- **Outcome:** README rebuilt as the complete report (Dec-POMDP formalism table, orchestration
+  dilemmas each citing the live incident that forced it, the strategy program with measured
+  numbers and honest negatives, GA/self-play learning curves, the league campaign with all ten
+  counted series, the eight documented book contradictions, user manual, engineering envelope).
+  New regenerable assets: an animated replay GIF of the fastest counted capture (ali-ahm1 g04,
+  step 10) from its committed audit log (`scripts/render_replay_gif.py` + `replay_gif_data.py`;
+  pillow joins the viz group), the league-campaign chart derived from the ten banked result
+  artifacts (`scripts/render_league_chart.py`), notebook-figure extraction
+  (`scripts/export_notebook_figs.py`), fresh belief-overlay PNGs from the vm__fabi g02 counted
+  log via the shipped `copthief overlay`. KNOWN_LIMITATIONS.md catalogues ten accepted
+  residuals with why-accepted; SELF_GRADE.md == `self_grade.py` output (93.0, rule-55
+  code-quality only, config v1.01). TODO M8-1/M8-2 ticked; M7-0 recorded closed-as-overtaken
+  (L-08).
+
+## PR #152 — report/vm__fabi-counted-closeout (tenth counted banked: vm__fabi W 90–30, the cap)
 
 - **Driver:** Imree (lane owner for the day: pairing thread, every send, the recipient
   authorization "you have my approval to add the lecturer as the recipient", and the

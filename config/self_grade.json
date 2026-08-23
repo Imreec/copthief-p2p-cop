@@ -1,42 +1,42 @@
 {
-  "version": "1.00",
-  "note": "Code quality only — never league results (App E rule 55). Scores stay 0 until the work exists; prose in docs/SELF_GRADE.md must match script output at M8.",
+  "version": "1.01",
+  "note": "Code quality only - never league results (App E rule 55). Prose in SELF_GRADE.md must match script output exactly (M8).",
   "categories": [
     {
       "name": "Architecture & orchestration patterns",
       "weight": 20,
-      "score": 0,
-      "justification": "M0 — not yet gradeable; no production code exists."
+      "score": 94,
+      "justification": "Layering held end-to-end: pure domain (no I/O/clock/network), single SDK facade, one rules module driving referee and peer modes, strict state machine, byte-verified core mirror across two repos, 165 modules all within the 150-line rule. Held back by: the peer layer grew to 25 modules with orchestration concerns spread across them, and the one-MCP-session-per-call transport design (KNOWN_LIMITATIONS L-06) is a shape we would not choose again."
     },
     {
       "name": "Protocol/crypto correctness & interop evidence",
       "weight": 20,
-      "score": 0,
-      "justification": "M0 — not yet gradeable; kit conformance lands at M1, oracle spike at M2."
+      "score": 95,
+      "justification": "Kit CORE vectors are CI-blocking fixtures; three distinct canonicalizations kept under distinct helper names; commit-reveal binds state, intent and token counts; all ten counted settlements agreed byte-for-byte with independently-built opponents. Held back by: reader-side spelling gaps (L-05) and the M7-58 finding that the scent-physics check had compared zero steps against real opponents for six series before its tolerant-reader fix."
     },
     {
       "name": "Strategy-module engineering (clarity, tests, tuning methodology)",
       "weight": 20,
-      "score": 0,
-      "justification": "M0 — not yet gradeable; brains land at M5."
+      "score": 91,
+      "justification": "The methodology is the strength: champion-regression and pool gates that refused two tempting harvests with data, golden-oracle fidelity floors on opponent arms, kept-with-data sweeps, honest negatives recorded (M7-20, M7-30). Held back by: the arena graded a capture rule the wire does not grade until the M13 forensics caught it (an instrument defect that stood for weeks), one arm below the 90 percent fidelity bar (L-03), a counted determinism leak (L-04), and the unmodelled verbal channel (L-09)."
     },
     {
       "name": "Reliability engineering (state machine, deadline, watchdog, chaos evidence)",
       "weight": 15,
-      "score": 0,
-      "justification": "M0 — not yet gradeable."
+      "score": 90,
+      "justification": "19-drill keyless chaos battery with per-defense assertions, live kill-drills over a real edge, watchdog measuring loop liveness with snapshot-and-die, budgets asserted at load. Held back by: two deadline-coverage defects (M7-57, the session-teardown stall) and one latent echo-handling bug (g05) were found IN live matches by opponents' clocks rather than by our drills - each cost real sub-games before the fix."
     },
     {
       "name": "Documentation & research artifacts",
       "weight": 15,
-      "score": 0,
-      "justification": "M0 — planning docs approved and landed; scored only with the full evidence layer at M8."
+      "score": 95,
+      "justification": "Both repos carry the full academic report with regenerable figures; 16 ADRs including every documented book contradiction and the choice made; the notebook is committed with outputs and pinned renders-clean in CI; the evidence directory backs every quantitative claim; the honest-disclosure triad is current. Held back by: evidence dirs exist for six of ten counted series (the other four have artifacts but not full wire logs)."
     },
     {
       "name": "Process discipline",
       "weight": 10,
-      "score": 0,
-      "justification": "M0 — gates wired; scored across the project's PR history at M8."
+      "score": 92,
+      "justification": "Conventional commits, branch-PR-review-squash with cross-model review on every PR, truthful per-PR prompt log, TODO ticked only as work landed. Held back by: a few tracked doc-repo drift moments (a sibling milestone tracked stale for days; entry-discipline compressions needed a dedicated truth-pass) - each caught and corrected, but they happened."
     }
   ]
 }
