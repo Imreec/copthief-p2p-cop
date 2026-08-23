@@ -19,7 +19,7 @@ our public conformance kit:
   surgery, containment, forcing endgame solver and belief-momentum intercept; doctrine
   evader with k-wall pocket forecast), automatic reporting behind the recipient
   interlock, replay GUI, and the arena/GA tuning instruments. Decisions: ADRs
-  0001–0015 in [docs/adr/](docs/adr/); five counted series banked
+  0001–0015 in [docs/adr/](docs/adr/); ten counted series banked (the league cap)
   (`reports/counted-series/`).
 - Quality gates wired: ruff, mypy --strict, pytest+coverage, 150-line limit, anti-pattern /
   no-hardcoded scanners, core-mirror manifest check, self-grade validation, submission

@@ -3,7 +3,47 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR (this one) — report/bestteam-counted-close (seventh counted banked: bestteam W 60–40)
+## PR (this one) — report/vm__fabi-counted-closeout (tenth counted banked: vm__fabi W 90–30, the cap)
+
+- **Driver:** Imree (lane owner for the day: pairing thread, every send, the recipient
+  authorization "you have my approval to add the lecturer as the recipient", and the
+  close-out go) · **Author:** Claude (terminal) · **Reviewer:** merged on driver's word
+  (evidence/config-only, per the #145/#150/#151 precedent).
+- **What was asked:** play and bank the vm__fabi counted (2026-08-23), then close it out.
+- **Outcome:** friendly 15:27 clean 6/6 (mail rail proven both ways, cross-diff exact, 0 scent
+  refusals); counted attempt 1 (16:15) and attempt 2 (17:20) both died at the g3→g4 seam and
+  were VOIDED in writing with nothing mailed by either side — attempt 1 on our stale tunnel
+  (reused from the friendly instead of the T−5 restart ritual), attempt 2 on the opponent's
+  unbounded audit wait colliding with our ~60 s between-window rebind gap. Joint fixes:
+  their bounded audit wait + void-and-stop semantics (their #105/#106), our
+  `handshake_retry_budget` 3→12 in the pairing config, fresh tunnel at T−5, live external door
+  probes, an unmistakable 418 stand-in, real-MCP T−2 probes. Attempt 3 (T=20:20) played
+  through ten ~100 s outages of their endpoint on the new budgets: **90–30, 6–0, twelve
+  audits verified, +10 diversity derived to imreeyal, report fired exit 0 lecturer-alone,
+  mutual sha 54911867… equal declared and recomputed on both filings.** This PR: the 20
+  counted artifacts + 6 wire JSONL, ledger 9→10 + "vm__fabi", README count (the league cap
+  reached), and the owed PROMPTS entries below (#149/#150/#151).
+
+## PR #151 — report/ali-ahm1-counted-closeout (ninth counted banked: ali-ahm1 W 90–30)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** merged on driver's word.
+- **Outcome:** counted artifacts + 6 wire JSONL, ledger 8→9 + "ali-ahm1". First attempt
+  (T=16:10) voided cleanly on their one-shot watchdog trip, retry T=17:05 swept 6–0.
+
+## PR #150 — report/smngrp05-counted-closeout (eighth counted banked: SMNGRP05 W 90–30)
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** merged on driver's word.
+- **Outcome:** counted artifact set + 6 wire JSONL + the second friendly's archive set;
+  ledger 7→8 + "SMNGRP05". Per-pairing overrides (`w_intercept`, `contain_min_shrink`)
+  armed in the pairing config only — main's defaults untouched.
+
+## PR #149 — report/smngrp05-friendly-evidence
+
+- **Driver:** Imree · **Author:** Claude (terminal) · **Reviewer:** merged on driver's word.
+- **Outcome:** the 2026-08-19 SMNGRP05 friendly (6/6 settled) as committed evidence; no
+  code paths touched.
+
+## PR #145 — report/bestteam-counted-close (seventh counted banked: bestteam W 60–40)
 
 - **Driver:** Imree ("run the full ledger PR and the rest of the post series work") ·
   **Author:** Claude (terminal) · **Reviewer:** merged on driver's word (evidence/config-only,
