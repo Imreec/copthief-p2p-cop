@@ -1,0 +1,729 @@
+{
+  "_schema": "Per-sub-game match log consumed by the Replay Viewer for cryptographic audit. Each step is committed as SHA-256(State || Move || Intent || Nonce) and later revealed; nonces are revealed only at the final audit (book ch5 commit-reveal, ch7 replay). Static team metadata (hardware, members, repos, model) is NOT repeated here — it lives in 1-pre-game-declaration.json; join by game_uid. Step 0 is the signed step-zero record carrying only what changes per sub-game (github_commit). The 'prompt_discussion' block records the natural-language exchange and the LLM prompt/reasoning behind each hint (book ch6 prompt engineering).",
+  "schema_version": "1.1",
+  "game_id": "imreeyal-vs-vm__fabi",
+  "game_uid": "0e07bcda-4bfd-3668-1fec-86833963b58c",
+  "links": {
+    "_remark": "These are logical roles, NOT fixed filenames. Each actual file name MUST be derived from the game_id so that files from different games are never mixed. Match-level files (declaration, result) are named <role>_<game_id>.json; per-sub-game files (config, log) are named <role>_<game_id>_g<NN>.json where <NN> is the sub_game_number. The names below are derived from this report's own game_id.",
+    "declaration": "declaration_imreeyal-vs-vm__fabi.json",
+    "config": "config_imreeyal-vs-vm__fabi_g<NN>.json",
+    "log": "log_imreeyal-vs-vm__fabi_g<NN>.json",
+    "result": "result_imreeyal-vs-vm__fabi.json"
+  },
+  "summary": {
+    "sub_game_number": 5,
+    "group_id": "imreeyal",
+    "role": "thief",
+    "opponent_group_id": "vm__fabi",
+    "result": "survival",
+    "winner_role": "thief",
+    "steps": 35,
+    "timezone": "Asia/Jerusalem",
+    "started_at": "2026-08-23T17:32:29.579554+00:00",
+    "ended_at": "2026-08-23T17:36:44.479554+00:00",
+    "duration_seconds": 254.9,
+    "tokens_total": 0,
+    "audit": {
+      "passed": true,
+      "verified_steps": 34,
+      "failed_steps": []
+    }
+  },
+  "records": [
+    {
+      "commit": "2eec2efeaf5182144647c3d47f5b45333a3863510010649a872dd5a375bf7a1b",
+      "nonce": "967d1fe38a227cee4baa57a11c1ea46c",
+      "payload": {
+        "code_version": "1.00",
+        "github_commit": "f5a64c065e33cbaef555053844fc4cfb2142b7ad",
+        "group_name": "ImreEyal-Police",
+        "model": "none",
+        "num_games_declared": 6,
+        "scent_model_sha256": "81ebee59640e80eae8ca9ee5f86abd26e7edf5cdbb27d15925cb6ee45ca6ddf4",
+        "spec": {
+          "cpu_cores": 24,
+          "cpu_freq_mhz": 3693,
+          "cpu_type": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+          "gpu_cores_or_cuda": "cuda",
+          "gpu_type": "NVIDIA GeForce RTX 3080 Ti",
+          "os": "Windows (10.0.19045)",
+          "ram_gb": 31.9,
+          "vram_gb": 12.0
+        },
+        "step": 0,
+        "sub_game_number": 5,
+        "type": "system_spec"
+      }
+    },
+    {
+      "commit": "64c60ffe83f4712f504896dfc4e0231fafb20ac42624e03117d38707ab703e2b",
+      "nonce": "b9f704c1bf82a826d0d4729fad5fde70",
+      "payload": {
+        "hint": "They say the crowds near Greenwich Village hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          3,
+          2
+        ],
+        "response_seconds": 0.004,
+        "state": "grid=7x7;self=[3, 2];barriers=[]",
+        "step": 1,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "2fb81cd3125e6acabfc9f8a7c3311dd32931a88000a5d0729a4cd2347ad03cb1",
+      "nonce": "85a7d70a33f74161d4d8d8b87eaa2386",
+      "payload": {
+        "hint": "I heard sirens somewhere around Greenwich Village.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          4,
+          2
+        ],
+        "response_seconds": 0.005,
+        "state": "grid=7x7;self=[4, 2];barriers=[]",
+        "step": 2,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "f91a5fce3d9b5e6812ace6d781ebf39dc231c51a5a4716001ded05cd57a25ba2",
+      "nonce": "2336cde0d26a152b0bff163a29ad0aa9",
+      "payload": {
+        "hint": "The shadows by Grand Central feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          4,
+          3
+        ],
+        "response_seconds": 0.005,
+        "state": "grid=7x7;self=[4, 3];barriers=[]",
+        "step": 3,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "7472a9793d348ed4766ea6090f0e03a53c00e4ea927315ebf5dabdc193608177",
+      "nonce": "dbb05ffcdd4009a5a0a253b61b4d914d",
+      "payload": {
+        "hint": "Word is, keep an eye on Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          4,
+          4
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[4, 4];barriers=[]",
+        "step": 4,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "6d0b05138b6a183334937170f2f2c674e25b5337d97c4ec40d9379639a17b6b3",
+      "nonce": "b9ad4bec896919354302d5dc5c21b087",
+      "payload": {
+        "hint": "Someone was asking about Brooklyn Bridge just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          4,
+          4
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[4, 4];barriers=[]",
+        "step": 5,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "39cb17a9055c3bbbba0356a93f3929f7e6466d21513d75f254618f5a7238533f",
+      "nonce": "6afbd88fbe860c015c2eb8e0447374d4",
+      "payload": {
+        "hint": "All roads seem to lead to Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          4,
+          4
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[4, 4];barriers=[]",
+        "step": 6,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "3ba7bf4fa15119db6c0244114dde47780a6088b85391b6db39cd8c7244067d60",
+      "nonce": "397a7d9c2e633fc027f99d8d8fad001e",
+      "payload": {
+        "hint": "They say the crowds near Brooklyn Bridge hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          4,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[4, 5];barriers=[]",
+        "step": 7,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "6d4b537a5e1459ed163b573797cc2bfd266ad101d88cd40ee0655a271972725f",
+      "nonce": "7c590758e10d92039987e20f0243bc47",
+      "payload": {
+        "hint": "I heard sirens somewhere around Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          5,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 5];barriers=[]",
+        "step": 8,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "3b3d61158dbd5e52f2bb90626022738aaaec33c1d4d2559b54aea5ed6bb4afe9",
+      "nonce": "9a229a2a4edc241a210b7fd934d22282",
+      "payload": {
+        "hint": "The shadows by Brooklyn Bridge feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          5,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 5];barriers=[]",
+        "step": 9,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "f43c1d57d423da51af0d500dd682aa38f08414c8e28a07281f8966ca99ffb5e2",
+      "nonce": "e19047ec7f256f608ed463f129e1903b",
+      "payload": {
+        "hint": "Word is, keep an eye on Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          5,
+          4
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[5, 4];barriers=[]",
+        "step": 10,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "bb0fe9aa3d98d085d3c3c846369acb288907e2b1e0178d9e07a99fe1a3652ffe",
+      "nonce": "8f94c5178ce30753855d77c1fc198dd4",
+      "payload": {
+        "hint": "Someone was asking about Brooklyn Bridge just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          5,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 5];barriers=[]",
+        "step": 11,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "50f3c0b9c7c6aa8dfca3849ce43fafa9b16ec96f593c0d811aa786c05b932109",
+      "nonce": "d7360bc2356d94315eefd137e4ecc497",
+      "payload": {
+        "hint": "All roads seem to lead to Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          4,
+          5
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[4, 5];barriers=[]",
+        "step": 12,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "f2fb030ff1f73551c0716b899a8996199c7b256671e0406b6be8d4b991af49e7",
+      "nonce": "6b8b4b92e477bcd5e80054cfd8987c59",
+      "payload": {
+        "hint": "They say the crowds near Grand Central hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          3,
+          5
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[3, 5];barriers=[]",
+        "step": 13,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "f964dd60ecb3d22b42b952a0bf96f9c486a99910f5a259da638f6f6f286b7837",
+      "nonce": "235d0f7fc16e85a722038937b3dbc85f",
+      "payload": {
+        "hint": "I heard sirens somewhere around Grand Central.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          2,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[2, 5];barriers=[]",
+        "step": 14,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "159e560d1bac9b27261868df337a51da8f7a86e35565a05d8b67283fa181a577",
+      "nonce": "240b6dfad7c72ebb969b2f6265b9748e",
+      "payload": {
+        "hint": "The shadows by Central Park feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[1, 5];barriers=[]",
+        "step": 15,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "383385550e1347973919570b02d58d2d5279db34b9edaa37f7bb516245ff83f8",
+      "nonce": "bb8eee46df8c18a47912158517201f29",
+      "payload": {
+        "hint": "Word is, keep an eye on Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[1, 5];barriers=[]",
+        "step": 16,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ecd62c929759b9f99c06a2a49d07b89fbf4dd8eb8c9bafaa2e21c389580c101f",
+      "nonce": "9de4f13c3cc0296fd5794d8d329a8380",
+      "payload": {
+        "hint": "Someone was asking about Central Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          1,
+          4
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[1, 4];barriers=[]",
+        "step": 17,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "ff8fe5d716a9272fa43335f7fe0e4ae09fe128b61c4cb8d69c6e2497167dfa8e",
+      "nonce": "3f5a847ab66a286f7666aa7d175fe95d",
+      "payload": {
+        "hint": "All roads seem to lead to Central Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "E",
+        "position": [
+          1,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[1, 5];barriers=[]",
+        "step": 18,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "62d073f07aa42f933759a0552f348a5eed4372c7df7bdb7e4392d15b42b3942e",
+      "nonce": "ef20c9f816d990012be5973707c13e67",
+      "payload": {
+        "hint": "They say the crowds near Grand Central hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          2,
+          5
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[2, 5];barriers=[]",
+        "step": 19,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "bcb7d264c7245592e7aae99bf961145fae9f89daa091b63df7f862deef2d5ae9",
+      "nonce": "1fa57a743efd04b7f7444abbbbe078e6",
+      "payload": {
+        "hint": "I heard sirens somewhere around Grand Central.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          3,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[3, 5];barriers=[]",
+        "step": 20,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "674cd7c95114de2cc421fcf91c7168097b7ea2ce723ad44941351a996fbeb335",
+      "nonce": "12059f2686a0fad6793396907894deb8",
+      "payload": {
+        "hint": "The shadows by Brooklyn Bridge feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          4,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[4, 5];barriers=[]",
+        "step": 21,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "2df5231bd6a00490bc2d56c431667e5adbc9d07ab7e53d305399902fd5f6c99e",
+      "nonce": "27c68d3ac8a538d235e6f4e74ff83d0b",
+      "payload": {
+        "hint": "Word is, keep an eye on Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          5,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 5];barriers=[]",
+        "step": 22,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "fc6923a5dd0166a97abac40ce43bb04e0e64633ac98d7ca2aa7f9015e5099bac",
+      "nonce": "e9d56712275bce5781c97eafbd4c2f91",
+      "payload": {
+        "hint": "Someone was asking about Brooklyn Bridge just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          5,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 5];barriers=[]",
+        "step": 23,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "c8c9b8763469af6ab90b83d60f676c02571c18329037baec61bd79f998d5346c",
+      "nonce": "e1308071218873f7ce5b874e02445992",
+      "payload": {
+        "hint": "All roads seem to lead to Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          4,
+          5
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[4, 5];barriers=[]",
+        "step": 24,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "961d58d1039abf05887147ab2b2b6a7692f22e769624afda96a3e8cf6233df7d",
+      "nonce": "1f4385eadea22d73ce34f9f6390c5d20",
+      "payload": {
+        "hint": "They say the crowds near Brooklyn Bridge hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "S",
+        "position": [
+          5,
+          5
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 5];barriers=[]",
+        "step": 25,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "af3fd66ca3e96002287424162dd89d3182fe7e95a569a344f8f8c714d1029353",
+      "nonce": "4150bd74223a890233f260d7a82fae1e",
+      "payload": {
+        "hint": "I heard sirens somewhere around Brooklyn Bridge.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          5,
+          4
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[5, 4];barriers=[]",
+        "step": 26,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "4e94c156d1f7d43ef7319e4d674122816ea2ba302eed1c8a3c77f5418943ce81",
+      "nonce": "8d52da3ad2ad19abe77e5c7884efb8f5",
+      "payload": {
+        "hint": "The shadows by Greenwich Village feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          5,
+          3
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[5, 3];barriers=[]",
+        "step": 27,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "af86e2588c8036cdc4d763d8100a66e03bb8029b129551669d7f6bf6b9e3cc7b",
+      "nonce": "77c09ef24b4f90b06f6570b708b45e35",
+      "payload": {
+        "hint": "Word is, keep an eye on Greenwich Village.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          5,
+          2
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 2];barriers=[]",
+        "step": 28,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "c95d8fd1a3e4b922b23b5c767bd24f12e4785ccb5df991b99be2d0ebc8928e64",
+      "nonce": "cd583aa1a14b8f3e34ca6c42221e8be6",
+      "payload": {
+        "hint": "Someone was asking about Battery Park just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "W",
+        "position": [
+          5,
+          1
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 1];barriers=[]",
+        "step": 29,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "124b6d1ca765dd76bba89d22a6e87d4fc310b0632c10090aa30ee6d7b6684f81",
+      "nonce": "4f3fd61a4c836e00e75346f64e6595e2",
+      "payload": {
+        "hint": "All roads seem to lead to Battery Park.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          5,
+          1
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[5, 1];barriers=[]",
+        "step": 30,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "b66a4fb30e3201fec34dc98add6c5f1a04ac10bd86db00e8e2f0bf6d9c494ef6",
+      "nonce": "206a25dfabe9c99c55e8a5b47a6f0568",
+      "payload": {
+        "hint": "They say the crowds near Greenwich Village hide anyone.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          4,
+          1
+        ],
+        "response_seconds": 0.006,
+        "state": "grid=7x7;self=[4, 1];barriers=[]",
+        "step": 31,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "8c11d8ce83e7c8fcb59731473a0d893c52042444bf0b39a55d7c269edceed399",
+      "nonce": "aa4dd58d8896c83fb60ebf904612da21",
+      "payload": {
+        "hint": "I heard sirens somewhere around Greenwich Village.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          3,
+          1
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[3, 1];barriers=[]",
+        "step": 32,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "112f58391ecda2ca2856971673e27ad4dedf7452f516bfaaf61351fff2d52780",
+      "nonce": "c001b15a5036f60540256b6a5976200d",
+      "payload": {
+        "hint": "The shadows by Hell's Kitchen feel busy tonight.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          2,
+          1
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[2, 1];barriers=[]",
+        "step": 33,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "c67126979f150d5a5d2fa9799d0f6e22e1ae91a2c9bedd2f5d921c0748fddfdd",
+      "nonce": "49724d860abbfb6da1b77f62612badf5",
+      "payload": {
+        "hint": "Word is, keep an eye on Hell's Kitchen.",
+        "intent": "truth",
+        "model": "none",
+        "move": "N",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 34,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    },
+    {
+      "commit": "87eb545c890329c201fc544c2ffeff3c3611356a8c48d9116e785e088c86495b",
+      "nonce": "a653ec44ecd00ccc0629ccf373bf43bc",
+      "payload": {
+        "hint": "Someone was asking about Hell's Kitchen just now.",
+        "intent": "truth",
+        "model": "none",
+        "move": "STAY",
+        "position": [
+          1,
+          1
+        ],
+        "response_seconds": 0.007,
+        "state": "grid=7x7;self=[1, 1];barriers=[]",
+        "step": 35,
+        "tokens_step": 0,
+        "tokens_total": 0
+      }
+    }
+  ],
+  "mutual_agreement": {
+    "opponent_group_id": "vm__fabi",
+    "sha256": "bc68d9cd779f542e5417ce5549fc7d52eb76c02e0b41e33743650a220fb9a110",
+    "confirmed": true
+  }
+}
