@@ -5,7 +5,8 @@
     ".claude/skills/pr-discipline/SKILL.md": "a2743a764009a4b6dea39caa1156b62dc4d06da398a0e6a7b22a3f052570a226",
     ".claude/skills/self-grade/SKILL.md": "2322978e54d5c5d239359791456cc8b418578345b23b8fae7d6437418982f8b8",
     ".claude/skills/tdd-cycle/SKILL.md": "603b808da80a724a65868452d28e64d3badaa513deed81ed0d0542a31101def1",
-    ".github/workflows/quality.yml": "65f712b53b18837b13fe9e2b6cfab25b4e08ed3d4ed8b3bb8d7d0902993ebc55",
+    ".github/workflows/arena.yml": "f742bd159298b6c77ffbcf68aeb4992a51480e34e32e3fd7861991591a4cbc04",
+    ".github/workflows/quality.yml": "7ba33bac748376764481f29c1c89f172fba18c48926a24edf284c42d49e1bafd",
     "docs/REVIEW_PROCESS.md": "00c0a77abbb89ccc5a22695b44e1c093df6196f4de360ba9182479d20b9c1688",
     "scripts/arena_run.py": "6a9fe56aa19cfcef0768d09068dba6a9715668cc75b7d3fbf9acec1dc10e75bf",
     "scripts/balance_run.py": "4845724ceffe1022fca11714ddd69b2859acb1553de2c08a3a2fe11a8115d521",
@@ -204,8 +205,8 @@
     "tests/conformance/vectors/terms_signature.json": "479cf58decb26a8298fcdd7e9286052b674e568cfb1aa667fe1fbd3be21c7b70",
     "tests/integration/live_series_harness.py": "609d5f9873e0701dab2ddf308bf6559d8f925ad67a8302c215e368024dfe38dd",
     "tests/integration/series_fixtures.py": "14775e43b079385a1499ebd4d959dcdf82693e6b2311b91c96453fa22625cf6c",
-    "tests/integration/test_arena_dod.py": "6d98cf18b2781054f7a5e29e1be95b4fcf5520fa8ea676ad40ea94702142953f",
-    "tests/integration/test_arena_harness.py": "3aefe4bdd571f654a6b3c297ff764f6dc642e3d66f8d4c480e9bcbaf9cd0b46b",
+    "tests/integration/test_arena_dod.py": "d7d8303e22130101c6855afb79fc3112db569053660c4e65d7dddced3ba015cc",
+    "tests/integration/test_arena_harness.py": "040f4b1494db45c5300d0fc7cda0b62fbb2ae58c472374849e932a2d13db34f0",
     "tests/integration/test_belief_vs_baseline.py": "2c903c162ae38687d86aefd7d7aebb9b4dd3a77c9a0abe5841f706a73d1df8c3",
     "tests/integration/test_bookv1_referee.py": "657119edba6119b2ecce8b6f8c19d993e1374b7fadba1f0c0bfc747ab980c0ff",
     "tests/integration/test_frame_check_injection.py": "592644de96724e76abd50f55fd3a0e479f48989c06894b22d56e7c964842970c",
@@ -357,7 +358,7 @@
     "tests/unit/strategy/test_evader_brains.py": "44989e1b7081ee62ca9d05e9fa4002bebfde66f9a95d119c4add2f9bb0d8ac98",
     "tests/unit/strategy/test_ga_candidate_feed.py": "22202d819fb5ec8efeab5b55fde961ddcbf82cd185a3bc22f90777fbb4b101e4",
     "tests/unit/strategy/test_ga_claims.py": "97d98f58a5a52b7524220f56a8fd129ccf4ced471c0f2cd68d298bfcc0099e7f",
-    "tests/unit/strategy/test_genetic.py": "f0bb1a4095da722fdececfba965ea85b31f6dec8f9ab3b089ac3c642537d4ede",
+    "tests/unit/strategy/test_genetic.py": "b1ff59d5d4c382b12594f2d23017aa40e1bd4cd95102f0e319bf3cf1deb0df62",
     "tests/unit/strategy/test_hints.py": "67d309c0bd4efde65d86d775bd248d640271d1e6e210e9e7e66da0bc93141b10",
     "tests/unit/strategy/test_hunter_cop.py": "0cc7f026302aadbde7ec9845b38d5b2bbbfa825c2954e96b9962ee9e023488e4",
     "tests/unit/strategy/test_info_feed.py": "439f09f05fb8068634003b0898cb8dadc055b7eff9a36af371e8bda5eedd7969",
@@ -378,7 +379,7 @@
     "tests/unit/wire/test_audit_control.py": "96112c5ad9102e515134db59908b1437dd1ef665170c9c01549256e8a879bc1c",
     "tests/unit/wire/test_turn_message.py": "7d82777b45962e7b0d5abdc62af26508c5421f1eee1019d4429e8596d5dba87f"
   },
-  "source_commit": "6601b04",
+  "source_commit": "7d8324e",
   "source_repo": "copthief-p2p-cop",
-  "tree_hash": "dea236888d12515a1546d21c321ae0b789382ebb58be3365740f7e495ac2cf35"
+  "tree_hash": "f291597f1abc7709a0c40dab86b561b21f16772e5576f7de60ff334dc8b613ee"
 }
