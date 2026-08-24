@@ -3,11 +3,24 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR (this one) — m8-structure-polish (per-opponent reports tree + README corrections + TODO truth pass)
+## PR (this one) — m8-final-audit (M8-5: doc↔repo alignment + standing-duty close-out)
+
+- **Driver:** Imree ("yes" to the final audit) · **Author:** Claude (terminal).
+- **Outcome:** mechanical audit over both repos — every relative README link resolves;
+  counts re-derived from the trees. Found + fixed: ADR count 16→17 (ADR-0018 postdated the
+  README), the thief's test badge counted on a different basis than the cop's (1122→1128),
+  a stale thief evidence-file count. M8-5 ticked with the findings; standing S-1…S-5 closed
+  as held-through-the-project; PROMPTS entries retitled to their final PR numbers. Repo
+  hygiene same day (no PR needed): all non-main branches deleted on origin in both repos
+  after tagging the two off-main commits played declarations pin (`pin/…` tags), locals
+  pruned, the private scout worktree left untouched.
+
+## PR #156 — m8-structure-polish (per-opponent reports tree + README corrections + TODO truth pass; merged on Imree's word after his review)
 
 - **Driver:** Imree (review round: per-opponent report folders, no Hebrew in the README,
   unambiguous point totals, lead-repo statement, stale TODO boxes) · **Author:** Claude
-  (terminal) · **Reviewer:** PR left open for Imree's review — not self-merged.
+  (terminal) · **Reviewer:** left open for Imree's review, merged on his word; the
+  same-branch clarity sweep (plain-language numbers, no insider shorthand) rode it.
 - **Outcome:** `reports/` reorganized by opponent via pure `git mv` (361 moves, zero content
   changes): `counted-series/<opponent>/` ×10, `friendlies/<opponent>/` + `friendlies/snapshots/`
   for the four whole-tree window snapshots; the writer keeps the reference's own-group-id

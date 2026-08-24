@@ -379,7 +379,7 @@ The book's submission criterion judges the *whole project* — code, structure, 
 | **1156 keyless tests, 96% coverage** | unit / integration / role / chaos / conformance; coverage gate ≥85% (fail-under in CI), deterministic core ≥90%. |
 | **Kit CORE vectors as CI fixtures** | any change touching wire bytes, canonicalization or hashing re-verifies against the [conformance kit](https://github.com/Imreec/copthief-league-protocol) before merge. |
 | **Core-mirror integrity** | the SHA-256 sync manifest is verified in both repos' CI; core edits happen only here. |
-| **16 ADRs** | Context/Decision/Status/Consequences for every load-bearing choice — [`docs/adr/`](docs/adr/). |
+| **17 ADRs** | Context/Decision/Status/Consequences for every load-bearing choice — [`docs/adr/`](docs/adr/). |
 | **Cross-model review** | a different model family (Antigravity) reviews every PR; findings accepted/rejected with reasons on the thread ([`docs/REVIEW_PROCESS.md`](docs/REVIEW_PROCESS.md)). |
 | **Process** | Conventional Commits · branch → PR → review → squash · never push `main` · TDD (RED→GREEN→REFACTOR) · per-PR prompt log ([`docs/PROMPTS.md`](docs/PROMPTS.md)). |
 
@@ -425,7 +425,7 @@ copthief-p2p-cop/
 ├── src/copthief_police/      # ⚑ the cop brain: search, barriers, containment, endgame, intercept
 ├── tests/                    # unit · integration · role · chaos(19 drills) · conformance(kit vectors)
 ├── config/                   # game.json (signed) · game.toml (private) · rate_limits · instruments
-├── docs/                     # PRD/PLAN/TODO · 10 PRDs · 16 ADRs · evidence/ · PROMPTS.md
+├── docs/                     # PRD/PLAN/TODO · 10 PRDs · 17 ADRs · evidence/ · PROMPTS.md
 ├── reports/counted-series/   # the ten banked series' full artifact sets
 ├── assets/                   # every figure in this README (all regenerable from evidence)
 └── scripts/                  # CI scanners · instruments · sync_core.py · self_grade.py
