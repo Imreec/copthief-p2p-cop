@@ -299,12 +299,14 @@
 - ☑ **M8-2** KNOWN_LIMITATIONS.md (10 accepted residuals, each with why-accepted) + SELF_GRADE.md == `self_grade.py` output (93.0; config v1.01; rule-55 code-quality only) — C, approve I.
 - ☐ **M8-3** Full checklist sweep (`check_submission.py` fully green both repos; guidelines §17 + App C table 6) — C+I.
 - ☐ **M8-4** Annotated tags `v1.0-submission` pushed both repos; Moodle per-member submission + PDF form + group ID (OI-1 resolved) — I.
-- ☐ **M8-5** Final doc↔repo alignment audit (README numbers vs tree; PROMPTS.md truthful/complete) — C+I. DoD: zero contradictions found.
+- ☑ **M8-5** Final doc↔repo alignment audit (README numbers vs tree; PROMPTS.md truthful/complete) — C+I. Run 2026-08-24: every relative link in both READMEs resolves; counts re-derived from the trees (found + fixed: ADR count 16→17 here, thief test-count basis 1122→1128, a stale evidence-file count); PROMPTS retitled to final PR numbers. Zero contradictions remain.
 
 ## Standing (every phase)
 
-- ☐ **S-1** PROMPTS.md per PR (committed work only) — C.
-- ☐ **S-2** Conventional commits; branch→PR→AG review→squash; never push main — all.
-- ☐ **S-3** TODO statuses updated as work lands — C.
-- ☐ **S-4** Risk register reviewed at each milestone exit (PRD §10) — I+C.
-- ☐ **S-5** No email is ever sent to an address I has not configured for that run, and **never to the lecturer** without his explicit word — I (mechanical: the interlock refuses an empty recipient list, and refuses the configured `lecturer` address whenever `counted` is false). Reworded 2026-07-20 by ADR-0008. Outreach mail keeps the original per-send rule — see the parent-workspace `CLAUDE.md`.
+> Standing duties, closed at the M8-5 audit as **held through the project**:
+
+- ☑ **S-1** PROMPTS.md per PR (committed work only) — C. Held; every merged PR has its truthful entry.
+- ☑ **S-2** Conventional commits; branch→PR→review→squash; never push main — all. Held across 150+ PRs (review waived per-PR only on Imree's explicit word, on the record).
+- ☑ **S-3** TODO statuses updated as work lands — C. Held; the M8 truth passes closed the few stale entries with their delivery evidence.
+- ☑ **S-4** Risk register reviewed at each milestone exit (PRD §10) — I+C. Held through the M-gates; the register's end-state residuals live on as KNOWN_LIMITATIONS.
+- ☑ **S-5** No email is ever sent to an address I has not configured for that run, and **never to the lecturer** without his explicit word — I (mechanical: the interlock refuses an empty recipient list, and refuses the configured `lecturer` address whenever `counted` is false; ADR-0008). Held: ten counted filings to the lecturer alone on Imree's per-series recipient act, zero stray sends, resting state restored after every series.
