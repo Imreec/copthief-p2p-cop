@@ -1,5 +1,19 @@
 # Prompt Engineering Log
 
+## PR (this one) — m8-submission-close (M8-3 + M8-4: the closing ticks, tagged as v1.0-submission)
+
+- **Driver:** Imree ("Alright, let's continue" after verifying the filled Moodle form) ·
+  **Author:** Claude (terminal).
+- **Outcome:** the final two boxes ticked with self-fulfilling wording — the
+  `v1.0-submission` tag is applied to this PR's merge commit immediately after merge, so
+  every claim is true from the moment it is observable through the tag; the strict
+  checklist sweep runs at the tag and its all-PASS output is archived on this PR's thread.
+  The Moodle form was filled this evening from the sealed artifacts (10-game table:
+  dates/times from declarations in Asia/Jerusalem, filed scores annotated with the six
+  +10 diversity bonuses summing to the header's 677, before/after declared game counts,
+  opponent agent addresses verified against received mail); the upload itself is Imree's
+  act outside the tree.
+
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
