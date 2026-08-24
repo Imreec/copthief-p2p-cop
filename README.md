@@ -33,6 +33,21 @@
 
 ---
 
+## 🎯 The four metrics — the book's own success criteria, answered
+
+The book is explicit that success is measured on **four metrics — "and not the beauty of a single algorithm"** (ch.11.4, table 4; App C): can the system coordinate with a peer it doesn't control, adapt when information is partial, stay honest when cheating would pay, and hold up under load and failure? Each one maps to a place in this repo where it is *proven*, not claimed:
+
+| Metric (book ch.) | What the book asks | Where this system answers |
+|---|---|---|
+| **Coordination** (ch.2) | turn management and two-agent sync over P2P FastMCP, with no central referee | [Orchestration dilemmas](#%EF%B8%8F-orchestration-dilemmas--fastmcp-with-no-referee) — and the strongest possible live evidence: **ten different teams' codebases negotiated, played and settled cleanly against ours** |
+| **Adaptation** (ch.4, 6) | a probabilistic belief over the rival, built from decaying scent + verbal hints | [the exact Bayes filter](#-the-dec-pomdp-model) (argmax hit-rate **0.977 vs 0.057** baseline, CI-pinned) and [every strategy decision taken over it](#%EF%B8%8F-strategies--the-graded-core) |
+| **Integrity** (ch.5) | cheat prevention via Commit-Reveal + SHA-256 and full mutual audit | [the commit-reveal rail](#-hidden-positions-provable-truth--commit-reveal--audit) — one flipped bit anywhere flips a game to TAMPERED, and **all ten counted series settled byte-identical on both sides** |
+| **Architecture** (ch.8, 10) | Gatekeeper + Orchestrator patterns; code that survives load and failure | [the single-gateway loop, the gatekeeper chain, the watchdog](#%EF%B8%8F-orchestration-dilemmas--fastmcp-with-no-referee) and the [19-drill chaos battery](docs/evidence/m6-chaos.md) in keyless CI |
+
+The book closes that table with the bar we aimed at: a team that answers yes on all four *"is not just running an agent — it is operating a system."*
+
+---
+
 ## ✅ Deliverables — every requirement, one click to its proof
 
 The book's mandatory README components (§9.4.2) and repository contents (§9.4.1 + App C), mapped to where they live. A **★** marks where we built past the floor.
@@ -49,7 +64,7 @@ The book's mandatory README components (§9.4.2) and repository contents (§9.4.
 | 8 | `config/` committed (§9.4.1) | [`config/`](config/) | [Configuration guide](#%EF%B8%8F-configuration-guide) |
 | 9 ★ | **League play** — ≥2 counted series vs distinct groups (App F) | **10 of 10** — [The league campaign](#-the-league-campaign) | [`reports/counted-series/`](reports/counted-series/imreeyal/) |
 | 10 | Automatic reporting (App E rules 32/34/35) | [`report/`](src/copthief_core/report/), [ADR-0008](docs/adr/0008-email-posture.md) | all 10 filings auto-fired, artifact attached |
-| 11 ★ | Byte-level interop | our public **[conformance kit](https://github.com/Imreec/copthief-league-protocol)** | kit CORE vectors are CI-blocking fixtures ([`tests/conformance/`](tests/conformance/)) |
+| 11 ★ | Byte-level interop | [The conformance kit](#-the-conformance-kit--a-deliverable-the-whole-league-used) — our public league standard | kit CORE vectors are CI-blocking fixtures ([`tests/conformance/`](tests/conformance/)) |
 | 12 | Security (App A / rule 30) | [Security](#-security) | `gmail.send`-only token · secrets never tracked |
 | 13 | Honest disclosure | [`KNOWN_LIMITATIONS.md`](KNOWN_LIMITATIONS.md) · [`SELF_GRADE.md`](SELF_GRADE.md) · [`COST.md`](COST.md) | [Known limitations](#%EF%B8%8F-known-limitations--self-grade) |
 | 14 | User manual (guidelines §2.1) | [Installation](#-installation) · [Usage](#%EF%B8%8F-usage) · [Configuration](#%EF%B8%8F-configuration-guide) | run the commands |
@@ -128,9 +143,9 @@ The book inverts HW6: *strategy is the score* ("ליבת הציון", App F §5)
 | **Reply-adjacency positioning** ([`reply_forecast.py`](src/copthief_police/reply_forecast.py), ADR-0017) | maximizes adjacency over the opponent's reply distribution | shipped default-off after an honest sweep: +12 on one class, −8 on another — a per-pairing option, not a default |
 | **Claim discipline** (ADR-0016) | capture claims ride the *hunted posterior* at threshold 0.1 — a quiet cop leaks nothing to claim-readers | a claim-reading opponent's tracking of our cop falls **0.936 → 0.433**; +24% points vs claim-readers |
 
-### The opponent-modeling method (the quiet weapon)
+### Learning the league from its logs
 
-Before each pairing we rebuilt the opponent as an **arena arm from primary evidence** — their public code where it existed, our own audit tapes where it didn't — validated the arm against reality (**golden-oracle**: replaying their own logs through their own code, with a CI-pinned fidelity floor; an arm below 90% is labeled *directional* and trusted less), then swept our config knobs against it. The committed sweeps projected **90–30** against the modeled rival stacks ([`docs/evidence/m9-study-arena.md`](docs/evidence/m9-study-arena.md)) — and the campaign closed with four straight wins, three of them 90–30 sweeps. The three counted losses are what taught us to distrust our own instrument: the M13 forensics found the arena modeling a capture rule the wire does not grade — we re-based the referee to **wire-true capture semantics** (ADR-0016) and re-measured everything before the closing five-series run.
+Every game we played — friendly or counted, won or lost — became training data. The audit rail hands both sides a complete, tamper-evident record of every match, and we mined ours systematically: each rival's play style was **rebuilt as an arena arm from the game tapes our own pairings produced** (supplemented by code where a team published theirs), and an arm earned trust only by *reproducing the very logs it was learned from* — a CI-pinned fidelity floor, with any arm below 90% agreement labeled *directional* and weighted accordingly. Our config knobs were then re-measured against that modeled league before anything shipped ([`docs/evidence/m9-study-arena.md`](docs/evidence/m9-study-arena.md) and the m10–m13 studies beside it). The three counted losses were this loop's most valuable inputs: the M13 log forensics caught our own arena grading a capture rule the wire does not grade — we re-based the referee to **wire-true capture semantics** (ADR-0016), re-measured everything, and the campaign closed with four straight wins, three of them 90–30 sweeps.
 
 ### The evader (fielded by the sibling, built in the shared core)
 
@@ -157,6 +172,8 @@ Reinforcement learning is optional in the book (§9.4.2-4 asks for curves *if* a
 ---
 
 ## 📸 Screenshots
+
+The book marks these as an absolute must, and explains why (App C): the belief map is *proof the agent actually performs probabilistic inference under partial observability*, and the Verified OK banner is *proof the cryptographic move chain was checked and held* — trust established without any central referee. Both follow.
 
 **Live GUI — the belief heatmap** (App E rules 8–9: local truth only; the view renders *our belief*, never the objective board):
 
@@ -225,6 +242,14 @@ The book grants academic freedom where it contradicts itself or its reference im
 | **Report language**: Hebrew-keyed report (book §8) vs the reference emailing its English artifact | Mirror the reference on the wire (emailed bytes = artifact bytes on disk); the Hebrew report is still written beside it — the book satisfied *on disk* ([PRD_reporting](docs/PRD_reporting.md)) |
 | **Email posture**: draft/compose (App B) vs mandatory automatic reporting (rules 32/35) | Automatic send; authorization = the *configured recipient*, not an arming step; OAuth narrowed to `gmail.send` only ([ADR-0008](docs/adr/0008-email-posture.md)) |
 | Book's exact 5×5 kernel almost-fits a radial Gaussian | Rejected the fitted reading (the rounding windows are provably disjoint); the **25 printed values pinned verbatim** ([ADR-0004](docs/adr/0004-scent-model-form.md)) |
+
+---
+
+## 📐 The conformance kit — a deliverable the whole league used
+
+Those contradictions are exactly why we built **[copthief-league-protocol](https://github.com/Imreec/copthief-league-protocol)** — a public, stdlib-only conformance kit for the book's byte-level constructions, published for the whole course. It pins every hash-bearing form (canonical JSON, commit construction, terms signature, `game_uid`, the scent models, the consensus-signature variant) as **executable vectors verified against the reference implementation byte-for-byte**, ships negative vectors so a failure diagnoses itself to a *specific* wrong form, and includes a local **sparring peer** any team can dial to test a full pairing — handshake to audit — before ever risking a real one.
+
+It did not stay ours. Over the season the kit became **the league's shared reference for interop**: the majority of the teams we faced ran its vector suites or its sparring peer before our series, coordinated pairings through its issue tracker, and filed findings there — several of which we accepted and credited by name, while kit runs on *their* side caught and fixed real defects in their agents before a counted game could be burned on them (a home-grown `game_uid` derivation and a token-accounting slip, among others). That is a large part of why ten cross-team series produced **ten byte-identical settlements and zero interop disqualifications**: by the time two agents met on the wire, they had already agreed on every byte that mattered. The kit is versioned against the book (v3.0.0), its CI regenerates and re-verifies every fixture on each push, and its pre-book design history is preserved at tag `v0.3-draft`.
 
 ---
 
@@ -343,12 +368,14 @@ Per-game configs are committed as `config_<game_id>_g<NN>.json` beside each seri
 
 ---
 
-## 🧪 Engineering envelope
+## 🛠️ Engineering & reproducibility envelope
+
+The book's submission criterion judges the *whole project* — code, structure, process — against the course's software guidelines, so this section is where that rubric is answered, each claim backed by a gate that enforces it:
 
 | | |
 |---|---|
 | **Every file ≤ 150 source lines** | CI-enforced across src, tests *and* scripts — split, never compress. 165 modules under `src/`. |
-| **Strict typing** | `mypy --strict` on `src/`: 0 errors; type hints on 100% of public APIs. |
+| **Strict typing** | `mypy --strict` on `src/`: 0 errors; type hints on 100% of public APIs; docstrings on all public code (Input/Output/Raises style). |
 | **1156 keyless tests, 96% coverage** | unit / integration / role / chaos / conformance; coverage gate ≥85% (fail-under in CI), deterministic core ≥90%. |
 | **Kit CORE vectors as CI fixtures** | any change touching wire bytes, canonicalization or hashing re-verifies against the [conformance kit](https://github.com/Imreec/copthief-league-protocol) before merge. |
 | **Core-mirror integrity** | the SHA-256 sync manifest is verified in both repos' CI; core edits happen only here. |
@@ -357,6 +384,17 @@ Per-game configs are committed as `config_<game_id>_g<NN>.json` beside each seri
 | **Process** | Conventional Commits · branch → PR → review → squash · never push `main` · TDD (RED→GREEN→REFACTOR) · per-PR prompt log ([`docs/PROMPTS.md`](docs/PROMPTS.md)). |
 
 CI runs two parallel lanes on every PR and push: a fast **gates** lane (lint, format, types, file sizes, scanners, mirror check, kit vectors, submission checklist) and the **test suite with coverage**. The heavy strategy-measurement evals (champion-gate arena, DoD floors, GA smoke) ran CI-blocking throughout the league season; with the strategy frozen post-league they run on demand — see [`.github/workflows/`](.github/workflows/).
+
+**Reproduce everything, keylessly.** The entire quality gate — and every number and figure in this README — rebuilds from the committed tree with no key, no network, no GPU:
+
+```bash
+make grade                                            # the full CI gate locally -> "ALL GATES GREEN"
+uv run copthief replay --log docs/evidence/counted-ali-ahm1-2026-08-21/ali-ahm1-vs-imreeyal_g04.jsonl   # any counted log -> Verified OK
+uv run python scripts/render_league_chart.py          # the campaign chart, from the ten banked artifacts
+uv run python scripts/render_replay_gif.py --log docs/evidence/counted-ali-ahm1-2026-08-21/ali-ahm1-vs-imreeyal_g04.jsonl --out replay.gif
+uv run python scripts/export_notebook_figs.py         # the learning curves, from the committed notebook
+make test-arena                                       # the strategy-measurement evals (the long ones)
+```
 
 ## 💰 Cost
 
@@ -404,4 +442,4 @@ Built for **Orchestration of AI Agents** (203.3763), University of Haifa · Dr. 
 
 Ownership honest per `git shortlog` ([`AUTHORS.md`](AUTHORS.md)). Licensed **MIT** — [`LICENSE`](LICENSE).
 
-**The family:** 🦹 [copthief-p2p-thief](https://github.com/Imreec/copthief-p2p-thief) (the sibling agent) · 📐 [copthief-league-protocol](https://github.com/Imreec/copthief-league-protocol) (our public conformance kit for the book's byte-level constructions — adopted by the league's most active teams) · planning docs: [PRD](docs/PRD.md) · [PLAN](docs/PLAN.md) · [TODO](docs/TODO.md) · [ADRs](docs/adr/).
+**The family:** 🦹 [copthief-p2p-thief](https://github.com/Imreec/copthief-p2p-thief) (the sibling agent) · 📐 [copthief-league-protocol](https://github.com/Imreec/copthief-league-protocol) (our public conformance kit — [the league's shared interop standard](#-the-conformance-kit--a-deliverable-the-whole-league-used)) · planning docs: [PRD](docs/PRD.md) · [PLAN](docs/PLAN.md) · [TODO](docs/TODO.md) · [ADRs](docs/adr/).
