@@ -93,10 +93,10 @@
 - ☑ **M7-3** First external friendly PLAYED AND AUTO-REPORTED 2026-07-25 (imreeyal 75–35 vs anrbj666, six sub-games, all audits clean, replays Verified OK, one auto-report to both teams). Evidence: `docs/evidence/m7-3-first-external-friendly.md` + `reports/imreeyal/`. Both raised discrepancies resolved 2026-07-26.
 - ☑ **M7-4** First counted series — discharged by M7-41 below.
 - ☑ **M7-4b** *(a second entry historically also numbered M7-4)* Live-series machinery: sealed `--sub-game` index seam, `report/summary_from_log` + `series_from_logs` (report exactly what we archived; refuse an incomplete series), `sdk/live_series` as the series owner, `RunMode` CLI flags. Evidence: `docs/evidence/m7-4-live-series.md`. Its two residuals (full 6-sub-game rehearsal, live send) were discharged by M7-10/M7-27.
-- ◐ **M7-5** Counted series vs distinct teams — **three played, App F pass floor met** (anrbj666 M7-41 lost 30–90; uoh-sqak M7-52 won 60–40 +10 diversity; **vibecode 2026-08-10 lost 30–90 0–6** — played knowingly on the friendly-then-counted word after two clean same-day friendlies; deterministic replay, both audits Verified OK, evidence `reports/counted-series/imreeyal/`; postmortem drove the M10 counter-tune). Fourth candidate best2934: dialect adopted by them but they went quiet 2026-08-09 — on hold. gal-roy1 counted offer (kit #48, through Tue 11 Aug) held on Imree's word.
+- ☑ **M7-5** Counted series vs distinct teams — **COMPLETE AT THE CAP: ten played vs ten distinct groups, 6W-3L-1T, +10 diversity in all six wins** (App F pass floor met at #2; artifacts per opponent under `reports/counted-series/`; the league table lives in the README). The early trail (anrbj666 L, uoh-sqak W, vibecode L) and each loss's postmortem are recorded in the M7–M13 entries below.
 - ☑ **M7-6** 🚦 Email posture correction (ADR-0008, PRs #54/#55): automatic send is the posture (App E rules 32/35, §9.3); **authorization = the configured recipient**; draft dropped, token re-consented to `gmail.send` only (verified: `getProfile` 403s); recipient is a list; artifact attached (rule 34); lecturer-guard refuses his address whenever `counted` is false. CLAUDE.md #16/§4 amended in both repos + parent workspace.
 - ☑ **M7-7** 🚦 Real-tunnel kill-drill defects — all four fixed + push-exhaustion residual (PR #60): watchdog measures loop liveness not I/O (signed budget untouched), snapshot pinned to `logs/`, flush-before-exit, replay reads `peer_result` + ≥1-record guard. Live re-drill + both mid-push drills clean (lost by rule, not self-termination). Evidence: `docs/evidence/m6-chaos.md` §M7-7 + drill logs.
-- ◐ **M7-8** At-least-once inbound tolerance — code half + them→us live half DONE (`peer/inbox_order.InboundSequencer`, dedup keyed on the commit; 6 chaos drills; live duplicate absorbed over the real edge 2026-07-22, evidence §M7-8). **The us→them-dedup and reorder live halves were never drilled; two clean counted series have since retired the practical risk. Disposition: accepted residual — KNOWN_LIMITATIONS candidate at M8.** (Reference-oracle finding kept on record: the reference applies duplicates twice — a physics mismatch we raise may be caused by a duplicate WE sent; evidence-grade only.)
+- ☑ **M7-8** At-least-once inbound tolerance — code half + them→us live half DONE (`peer/inbox_order.InboundSequencer`, dedup keyed on the commit; 6 chaos drills; live duplicate absorbed over the real edge 2026-07-22, evidence §M7-8). **The us→them-dedup and reorder live halves were never drilled; ten clean counted series retired the practical risk. Disposition: accepted residual, recorded at M8 as KNOWN_LIMITATIONS L-01.** (Reference-oracle finding kept on record: the reference applies duplicates twice — a physics mismatch we raise may be caused by a duplicate WE sent; evidence-grade only.)
 - ☑ **M7-9** `RunMode` split (ADR-0009): `strict_rules` × `counted_series`; lecturer needs BOTH by construction; `--rehearsal`/`--counted` CLI flags carried into every child. Recorded honestly: before this, every live game ran with App F rows disarmed.
 - ☑ **M7-10** Handshake pairing + redelivery + port guard (+ M7-10b preflight: a report-owing run refuses to start if it cannot deliver): `negotiate` declares sealed `sub_game_number` + `role`, kit §7 truth table (omission never refuses); agreement re-pushed each lap; one live peer per role. First project email really sent 2026-07-24. **Opponent's half confirmed on the wire by Alon/Renat (Round 15) — closed both directions.**
 - ☑ **M7-11** Per-role opponent dialing (`sdk/series_endpoints`; role-split topology) + **M7-11b** bystander refusal (`PairingRefusal` refuses on the record and keeps waiting, bounded). Rig-proven vs a faithful two-runner simulator; vs Alon's shape we run `--role thief`.
@@ -126,7 +126,7 @@
 - ☑ **M7-38** Identity reader accepts the declaration-shaped `hardware_spec` key beside `spec` (their 16:00 null-hardware mystery = our missing tolerance; validated on the real log).
 - ☑ **M7-39** Four repo links ride the result (`report/league.github_links`; rule 49 + p.96; opponent links only from what THEY declared) + the truthful `_remark` (single deliberate divergence from the reference sample, pinned exactly).
 - ☑ **M7-40** Series mail is result-only again (Round 29: chatbot ruling + the reference's own emailing code + pair symmetry); one-line flip back retained if the lecturer ever rules otherwise.
-- ☑ **M7-41** 🏁 **FIRST COUNTED SERIES** vs anrbj666 (2026-08-04, T=01:00): 30–90, six sub-games, all audits clean, one report to the lecturer alone, **cross-team agreement byte-level** (`mutual_agreement.sha256` matched). Ledger advanced to 1. Evidence: `docs/evidence/m7-41-counted-series-anrbj666.md` + `reports/counted-series/imreeyal/`.
+- ☑ **M7-41** 🏁 **FIRST COUNTED SERIES** vs anrbj666 (2026-08-04, T=01:00): 30–90, six sub-games, all audits clean, one report to the lecturer alone, **cross-team agreement byte-level** (`mutual_agreement.sha256` matched). Ledger advanced to 1. Evidence: `docs/evidence/m7-41-counted-series-anrbj666.md` + `reports/counted-series/anrbj666/`.
 - ☑ **M7-42** Audit continuity keys on record TYPE, not step number (uoh-sqak g01 settlement failure — root cause ours; closed set of non-game types, tamper-check kept; verified against his real bytes) (PR #107). The scent-registration underdetermination it exposed (combine + snapshot anchor) was settled with them pre-series: combine=`max`, order=`deposit_then_decay`.
 - ☑ **M7-43** (+43b/44) Series pacing + completeness: hold, catch up, never settle an empty window; a partial series is never reported as whole (the 2-of-6 mail defect fixed) (PR #108).
 - ☑ **M7-45** best2934 modeled as arena arms from their real code; matchup measured ~79–51 favoured (PR #109). Lesson pinned: never quote a rate from an instrument with one of our channels off.
@@ -163,8 +163,10 @@
   round robin dropped the POLICE entry's feed (pinned).
 - ☑ **M9-7** Move-echo hint tier DROPPED as redundant (fresh-peak subsumes it on every wire we
   play) — reasoning in ADR-0011.
-- ☐ **M9-8** Thief-repo sync branch: core mirror + sibling `game.toml` selects `doctrine-evader`
-  and sets `[belief] fresh_peak_trust` — without it the live thief plays the old brain.
+- ☑ **M9-8** Thief-repo sync branch: core mirror + sibling `game.toml` selects `doctrine-evader`
+  and sets `[belief] fresh_peak_trust` — delivered via the M10-5 sync (thief #86); the sibling's
+  `game.toml` fields `doctrine-evader` + `fresh_peak_trust 199` to this day, and the fielded
+  brain's counted record (15/15 survivals in the last five series) is the live proof.
 
 ## Phase M10 — vibecode counter-tune (the 08-10 30–90; ADR-0012)
 
@@ -185,12 +187,11 @@
   green pre-commit, mirror 341 intact both sides); both `game.toml` v1.05 + ALL 8 runbook
   dirs hand-armed and parse-verified; sparring verified cold. Live-path wiring audit proved
   both knobs reach the fielded brains through the real loaders (repo + runbook + counted).
-- ☐ **M10-6** Live validation of the M10 stack + rebuilt arms — RE-SCOPED: the counted vs
-  vibecode was played 2026-08-10 BEFORE the tune merged (pairing spent), so a validation
-  friendly no longer gates a counted decision; its purpose is proving arena models predict
-  live play (the M10 caveat). Folded into the M11 validation gate —
-  `notes/SESSION-PROMPT-M11-ROBUST-BRAINS.md`. gal-roy1 offer (was through 11/08): check
-  status before assuming either way.
+- ☑ **M10-6** Live validation of the M10 stack + rebuilt arms — RE-SCOPED into the M11+ live
+  campaign and DELIVERED there: the armed stack played every remaining counted series, and the
+  modeled-league predictions matched live play across the closing four wins (three 90–30
+  sweeps; the m9-study offline sweeps' 90–30 projections realized on the wire). The gal-roy1
+  offer lapsed unplayed (expired 2026-08-11).
 
 ## Phase M11 — robust brains (the 08-11 red-team + nis-yar1 hardening; ADR-0013)
 
@@ -246,10 +247,11 @@
   final pool ZERO cop regressions (anrbj666-thief exactly 26/6, sqak 32/0, vibecode
   30/2→32/0), evader holds every arm except the documented anrbj666-police k-trade.
   Projection vs their stack (ours truth-lag1, theirs sharp199): ~90–30, P(6-0) ≈ 0.91.
-- ☐ **M12-5** Post-merge propagation: thief-repo `game.toml` v1.08 (`forecast_walls 4.0`,
-  `forecast_wall_reach 2.0`) via sync PR; ALL runbook config dirs hand-armed (intercept +
-  evader knobs + overlay pins); sparring untouched. Live validation = the next best2934
-  friendly (their mail gate + Imree's counted sign-off unchanged).
+- ☑ **M12-5** Post-merge propagation DONE: thief-repo `game.toml` carries `forecast_walls 4.0`
+  + `forecast_wall_reach 2.0` (landed via the sync chain, at v1.09 by M13); runbook config
+  dirs were hand-armed during the ops sessions (project notes, outside the repo); sparring
+  untouched. Live validation happened via the 08-15/16/17 best2934+bestteam windows and the
+  closing campaign (the evader was never caught again in counted play).
 
 ## Phase M13 — wire-true capture semantics (the 4/18 conversion lesson; ADR-0016)
 

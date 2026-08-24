@@ -12,8 +12,8 @@
     "result": "result_SMNGRP05-vs-imreeyal.json"
   },
   "timezone": "Asia/Jerusalem",
-  "game_started_at": "2026-08-19T12:30:06.020673+00:00",
-  "game_ended_at": "2026-08-19T12:40:50.113665+00:00",
+  "game_started_at": "2026-08-24T10:59:22.466607+00:00",
+  "game_ended_at": "2026-08-24T11:15:47.651178+00:00",
   "num_sub_games": 6,
   "max_tokens_per_game": 200000,
   "groups": {
@@ -55,8 +55,8 @@
         "thief": "https://github.com/afaf-gharra/SMNGRP05-thief"
       },
       "mcp_servers": {
-        "cop": "https://f0eb-147-236-163-154.ngrok-free.app/mcp",
-        "thief": "https://f0eb-147-236-163-154.ngrok-free.app/mcp"
+        "cop": "https://e6d6-147-236-163-154.ngrok-free.app/mcp",
+        "thief": "https://e6d6-147-236-163-154.ngrok-free.app/mcp"
       },
       "llm_model": "template-zero-token",
       "hardware_spec": {
@@ -67,7 +67,7 @@
         "gpu_model": "NVIDIA GeForce RTX 3070",
         "vram_gb": 8.0
       },
-      "signature": "bee620e3c6b4b7231c7ce564cebd833cc74481ba72d4389087b09ec7cbe8b77c"
+      "signature": "24eaaeed284d94cd297aa900ed68c7fc043c6c1cf1f25885247faddc0021eda5"
     }
   }
 }

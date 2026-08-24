@@ -4,7 +4,7 @@
 
 ### The **cop agent** of a two-agent autonomous league system: hidden-position pursuit over P2P FastMCP, cryptographically audited, with no referee anywhere.
 
-*Two symmetric agents — this **Cop** and its sibling **[Thief](https://github.com/Imreec/copthief-p2p-thief)** — play the official book's 7×7 scent-tracking race against other teams' agents over public MCP endpoints. Every move is committed before it is revealed, every game ends in a mutual byte-level audit, every series reports itself to the lecturer automatically. The strategy layer is the graded core — and it was rebuilt three times mid-league, from evidence, after real losses.*
+*Two symmetric agents — this **Cop** and its sibling **[Thief](https://github.com/Imreec/copthief-p2p-thief)** — play the official book's 7×7 scent-tracking race against other teams' agents over public MCP endpoints. Every move is committed before it is revealed, every game ends in a mutual byte-level audit, every series reports itself to the lecturer automatically. **This is the lead repo of the pair**: the shared engine is developed here and byte-mirrored to the thief. The strategy layer is the graded core — and it was rebuilt three times mid-league, from evidence, after real losses.*
 
 ![Python](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)
 ![uv](https://img.shields.io/badge/packaging-uv-DE5FE9)
@@ -21,7 +21,7 @@
 ---
 
 > ### 📌 TL;DR — the headline result
-> We played the **full league cap: 10 counted series against 10 distinct teams**, every one a first meeting, and finished **6W–3L–1T, 617–517 points, with the +10 diversity bonus in all six wins**. Every settled series ended with **both teams' independently-computed reports agreeing byte-for-byte** (`mutual_agreement.sha256` matched on every filing — ours *and* theirs), and every report was **emailed autonomously by the agent itself**, as the book's rules 32/35 demand. The strategy core earned it the hard way: after an 0–6 start-of-league loss the cop was rebuilt from forensic evidence **three times** (containment walling → belief-momentum interception → wire-true capture semantics), and after the last loss we **never lost again — four straight wins closing the campaign, and four 90–30 sweeps among the six wins** — including the fastest capture of the campaign, step 10, animated below from its committed audit log. Match-time LLM tokens across all ten series: **0, for both sides, sealed inside the commit-reveal payloads**.
+> We played the **full league cap: 10 counted series against 10 distinct teams**, every one a first meeting, and finished **6W–3L–1T with 617 points to their 517** — **677 to 547 once the +10 first-meeting diversity bonuses land, ours earned in all six wins**. Every settled series ended with **both teams' independently-computed reports agreeing byte-for-byte** (`mutual_agreement.sha256` matched on every filing — ours *and* theirs), and every report was **emailed autonomously by the agent itself**, as the book's rules 32/35 demand. The strategy core earned it the hard way: after an 0–6 start-of-league loss the cop was rebuilt from forensic evidence **three times** (containment walling → belief-momentum interception → wire-true capture semantics), and after the last loss we **never lost again — four straight wins closing the campaign, and four 90–30 sweeps among the six wins** — including the fastest capture of the campaign, step 10, animated below from its committed audit log. Match-time LLM tokens across all ten series: **0, for both sides, sealed inside the commit-reveal payloads**.
 
 <div align="center">
 
@@ -62,7 +62,7 @@ The book's mandatory README components (§9.4.2) and repository contents (§9.4.
 | 6 | **Sibling-repo link** (§9.4.2-6) | [copthief-p2p-thief](https://github.com/Imreec/copthief-p2p-thief) | its README links back here |
 | 7 | PRD / PLAN / TODO + per-mechanism PRDs (§9.4.1) | [`docs/`](docs/) | 10 PRDs, gate-approved before their code |
 | 8 | `config/` committed (§9.4.1) | [`config/`](config/) | [Configuration guide](#%EF%B8%8F-configuration-guide) |
-| 9 ★ | **League play** — ≥2 counted series vs distinct groups (App F) | **10 of 10** — [The league campaign](#-the-league-campaign) | [`reports/counted-series/`](reports/counted-series/imreeyal/) |
+| 9 ★ | **League play** — ≥2 counted series vs distinct groups (App F) | **10 of 10** — [The league campaign](#-the-league-campaign) | [`reports/counted-series/`](reports/counted-series/) — one folder per opponent |
 | 10 | Automatic reporting (App E rules 32/34/35) | [`report/`](src/copthief_core/report/), [ADR-0008](docs/adr/0008-email-posture.md) | all 10 filings auto-fired, artifact attached |
 | 11 ★ | Byte-level interop | [The conformance kit](#-the-conformance-kit--a-deliverable-the-whole-league-used) — our public league standard | kit CORE vectors are CI-blocking fixtures ([`tests/conformance/`](tests/conformance/)) |
 | 12 | Security (App A / rule 30) | [Security](#-security) | `gmail.send`-only token · secrets never tracked |
@@ -129,7 +129,7 @@ The same rail carries fairness: the **step-0 declaration** seals our git commit,
 
 ## ♟️ Strategies — the graded core
 
-The book inverts HW6: *strategy is the score* ("ליבת הציון", App F §5). Our strategy story is the league story — every brain below was built or rebuilt in response to measured evidence, gated by a champion-regression arena before it could ship, and validated live. Decisions live in [ADR-0005](docs/adr/0005-strategy-track.md) and [ADRs 0011–0017](docs/adr/); no RL and no LLM sit anywhere in the decision path — deterministic search + engineered features over the exact belief, with **offline GA tuning of config-owned weights**.
+The book inverts HW6: *strategy is the score* — App F §5 names the strategy module "the grading core". Our strategy story is the league story — every brain below was built or rebuilt in response to measured evidence, gated by a champion-regression arena before it could ship, and validated live. Decisions live in [ADR-0005](docs/adr/0005-strategy-track.md) and [ADRs 0011–0017](docs/adr/); no RL and no LLM sit anywhere in the decision path — deterministic search + engineered features over the exact belief, with **offline GA tuning of config-owned weights**.
 
 ### The cop (this repo, [`src/copthief_police/`](src/copthief_police/))
 
@@ -203,7 +203,7 @@ The book marks these as an absolute must, and explains why (App C): the belief m
 ## 🏆 The league campaign
 
 <p align="center">
-  <img src="assets/league-campaign.png" width="85%" alt="Paired bar chart of all ten counted series in play order: losses to anrbj666, vibecode, najamjad; wins over uoh-sqak, nis-yar1, bestteam, SMNGRP05, ali-ahm1, vm__fabi; tie with best2934; 617-517 aggregate"/>
+  <img src="assets/league-campaign.png" width="85%" alt="Paired bar chart of all ten counted series in play order: losses to anrbj666, vibecode, najamjad; wins over uoh-sqak, nis-yar1, bestteam, SMNGRP05, ali-ahm1, vm__fabi; tie with best2934; 617 points for, 517 against"/>
 </p>
 
 | # | Opponent | Result | Score | Sub-games | Diversity |
@@ -219,7 +219,7 @@ The book marks these as an absolute must, and explains why (App C): the belief m
 | 9 | ali-ahm1 | **W** | 90–30 | 6–0 | **+10** |
 | 10 | vm__fabi | **W** | 90–30 | 6–0 | **+10** |
 
-Ten series, ten distinct teams, ten first meetings — the +10 diversity bonus applied in **all six wins**. Every counted artifact set (declaration, six per-game configs, six logs, six Hebrew reports, final result) is committed under [`reports/counted-series/imreeyal/`](reports/counted-series/imreeyal/), with six series' full wire logs under [`docs/evidence/`](docs/evidence/). `tokens_total_series` is **0 for both sides in all ten filings**.
+Ten series, ten distinct teams, ten first meetings. On the board: **617 points for, 517 against**; after the +10 first-meeting diversity bonuses (ours in all six wins, theirs in their three) the league tally is **677 to 547**. Every counted artifact set (declaration, six per-game configs, six logs, six Hebrew reports, final result) is committed under [`reports/counted-series/`](reports/counted-series/) — **one folder per opponent** — with six series' full wire logs under [`docs/evidence/`](docs/evidence/). `tokens_total_series` is **0 for both sides in all ten filings**.
 
 Three things this table doesn't show:
 
