@@ -3,7 +3,22 @@
 > Truthful, per-PR entries for **committed** work only (CLAUDE.md §7). Development prompts —
 > runtime agent prompts live in source. Format: PR · driver/reviewer · what was asked · outcome.
 
-## PR (this one) — docs/m8-readme-report (M8-1 + M8-2: the academic report + the disclosure pair)
+## PR (this one) — m8-structure-polish (per-opponent reports tree + README corrections + TODO truth pass)
+
+- **Driver:** Imree (review round: per-opponent report folders, no Hebrew in the README,
+  unambiguous point totals, lead-repo statement, stale TODO boxes) · **Author:** Claude
+  (terminal) · **Reviewer:** PR left open for Imree's review — not self-merged.
+- **Outcome:** `reports/` reorganized by opponent via pure `git mv` (361 moves, zero content
+  changes): `counted-series/<opponent>/` ×10, `friendlies/<opponent>/` + `friendlies/snapshots/`
+  for the four whole-tree window snapshots; the writer keeps the reference's own-group-id
+  convention at run time (documented in `reports/README.md`). Every reference updated: README,
+  TODO, ADR-0011, two evidence docs, the archive README, and `render_league_chart.py`
+  (rglob + `617:517` title; chart regenerated). README: Hebrew removed, lead-repo statement
+  added to the header, point totals stated exactly (617:517 board, 677:547 with diversity).
+  TODO truth pass: M7-5 (ten played — the cap), M7-8 (residual = L-01), M9-8, M10-6, M12-5
+  ticked with their delivery evidence; M8-3/4/5 + standing S-items remain genuinely open.
+
+## PR #154 — docs/m8-readme-report (M8-1 + M8-2: the academic report + the disclosure pair; polish follow-up #155)
 
 - **Driver:** Imree ("I want our readme to be a masterpiece... take the HW6 readme as the
   floor") · **Author:** Claude (terminal) · **Reviewer:** cross-model review on the thread.

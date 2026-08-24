@@ -9,7 +9,7 @@ no negotiated term, no signed value.
 ## Context
 
 The counted series against anrbj666 (2026-08-04) was a 30–90 sweep with one root cause
-visible in our own sealed logs (`reports/counted-series/imreeyal/`): as thief we walked a
+visible in our own sealed logs (`reports/counted-series/` (curated per opponent at M8)): as thief we walked a
 deterministic path into the (6,6) corner and camped until the two-wall seal closed —
 three byte-identical games; as cop we advanced, placed three walls, and then played STAY
 for ~20 turns while the clock ran out. Both failures reduce to the same pair: a

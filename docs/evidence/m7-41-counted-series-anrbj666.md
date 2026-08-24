@@ -11,7 +11,7 @@ before the T. Both sides' commit columns agree in both artifacts.
 ## Result
 
 **anrbj666 wins 30–90, six sub-games to nil.** Artifacts:
-`reports/counted-series/imreeyal/` (20 files, the counted tree's first use).
+`reports/counted-series/anrbj666/` (20 files, the counted tree's first use; originally archived under our own group id, curated per opponent at M8).
 
 | Sub-game | Our role | Outcome | Steps | Audit |
 |---|---|---|---|---|
